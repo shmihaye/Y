@@ -1,5 +1,7 @@
 To setup your local copy:
+
 cd path //Navigate to the folder where you want to clone the project
+
 git clone https://github.com/shmihaye/Y //You should be all set!
 
 Command cheat sheet:
