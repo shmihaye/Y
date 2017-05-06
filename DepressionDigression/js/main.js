@@ -3,7 +3,7 @@
 // by Team Y
 
 // Create global game container object
-var Game = {var convmap = [0,0,0,0];};
+var Game = {};
 
 // Boot state
 Game.Boot = function(){};
@@ -36,7 +36,7 @@ Game.Load.prototype = {
 
 		// Load game images
 		this.load.path = 'assets/img/';
-		this.load.image('cheescake', 'cheesecake.png');
+		game.load.image('cheesecake', 'cheesecake.png');
 	},
 	create: function() {
 		// Disable preload bar crop while we wait for mp3 decoding
