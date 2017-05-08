@@ -155,9 +155,9 @@ Game.Play.prototype = {
 	}
 };
 
-// Hall state
+/*// Hall state
 Game.Hall = function(){};
-Game.Hall.prototype = {};
+Game.Hall.prototype = {};*/
 
 // Talk state
 Game.Talk = function(){};
@@ -169,7 +169,8 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO);
 game.state.add('Boot', Game.Boot); // Booting up
 game.state.add('Load', Game.Load); // Loading assets
 game.state.add('Play', Game.Play); // Playing the game
-game.state.add('Hall', Game.Hall); // Navigating the hall
+//game.state.add('Hall', Game.Hall); // Navigating the hall
+game.state.add('Hallway', hallwayState); // Navigating the hall
 game.state.add('Talk', Game.Talk); // Talking to a passenger
 // Begin boot state
 game.state.start('Boot');

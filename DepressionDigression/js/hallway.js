@@ -53,7 +53,7 @@ var hallwayState = {
 		
 		// Load green state.
 		
-	}
+	},
 	
 	blueDoorOpened: function() {
 		
@@ -62,9 +62,6 @@ var hallwayState = {
 		
 		// Load blue state.
 		
-	},
+	}
 
 };
-
-game.state.add('hallway', hallwayState);
-game.state.start('hallway');
