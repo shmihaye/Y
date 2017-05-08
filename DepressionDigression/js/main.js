@@ -37,6 +37,7 @@ Game.Load.prototype = {
 		// Load game images
 		this.load.path = 'assets/img/';
 		game.load.image('cheesecake', 'cheesecake.png');
+		game.load.image('goToHallwayButton', 'goToHallwayButton.png');
 	},
 	create: function() {
 		// Disable preload bar crop while we wait for mp3 decoding
@@ -94,6 +95,11 @@ Game.Play.prototype = {
 			asteroid.scale.set(2 * Math.random() + 1);
 			asteroid.anchor.set(0.5);
 		}
+		
+		// Add in the button for hallway state.
+		goToHallwayButton = game.add.sprite(10, 10, 'goToHallwayButton');
+		goToHallwayButton.inputEnabled = true;
+		goToHallwayButton.events.onInputDown.add(function() { game.state.start('Hallway'); });
 		
 		// Initialize keyboard controls
 		cursors = game.input.keyboard.createCursorKeys();
@@ -155,9 +161,9 @@ Game.Play.prototype = {
 	}
 };
 
-// Hall state
+/*// Hall state
 Game.Hall = function(){};
-Game.Hall.prototype = {};
+Game.Hall.prototype = {};*/
 
 // Talk state
 Game.Talk = function(){};
@@ -169,7 +175,8 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO);
 game.state.add('Boot', Game.Boot); // Booting up
 game.state.add('Load', Game.Load); // Loading assets
 game.state.add('Play', Game.Play); // Playing the game
-game.state.add('Hall', Game.Hall); // Navigating the hall
+//game.state.add('Hall', Game.Hall); // Navigating the hall
+game.state.add('Hallway', hallwayState);
 game.state.add('Talk', Game.Talk); // Talking to a passenger
 // Begin boot state
 game.state.start('Boot');
