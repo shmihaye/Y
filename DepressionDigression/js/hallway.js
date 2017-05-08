@@ -1,5 +1,3 @@
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'GameDiv');
-
 // The index of dialogues of each crew member
 var convoIndexRed = 0;
 var convoIndexGreen = 0;
