@@ -1,60 +1,13 @@
 
-// Depression Digression
-// by Team Y
+// Global variables for play state
+var cursors, player, arm, claw, grabbed, grabCooldown, asteroids;
+var armLeftKey, armRightKey, armExtendKey, armContractKey, armGrabKey;
 
-// Create global game container object
-var Game = {};
+// Play state container
+var playState = {
 
-// Boot state
-Game.Boot = function(){};
-Game.Boot.prototype = {
-	init: function(){
-		// Don't pause the game if focus is lost
-		this.stage.disableVisibilityChange = true;
-	},
-	preload: function(){
-		// Prepare assets for load state
-		this.load.path = 'assets/img/';
-		this.load.image('bar', 'bar.png');
-	},
-	create: function(){
-		// Enter the load state
-		this.state.start('Load');
-	}
-};
-
-// Load state
-Game.Load = function(){};
-Game.Load.prototype = {
-	preload: function(){
-		// Display "Loading..." text
-		this.add.text(320, 260, 'Loading...', {fontSize: '32px', fill: 'white'});
-
-		// Add preloader bar and set as preloader sprite (auto-crops sprite)
-		this.preloadBar = this.add.sprite(this.world.centerX-100, this.world.centerY,'bar');
-		this.load.setPreloadSprite(this.preloadBar);
-
-		// Load game images
-		this.load.path = 'assets/img/';
-		game.load.image('cheesecake', 'cheesecake.png');
-		game.load.image('goToHallwayButton', 'goToHallwayButton.png');
-	},
 	create: function() {
-		// Disable preload bar crop while we wait for mp3 decoding
-		this.preloadBar.cropEnabled = false;
-	},
-	update: function() {
-		this.state.start('Play');
-	}
-};
 
-// Play state
-Game.Play = function(){
-	var cursors, player, arm, claw, grabbed, grabCooldown, asteroids;
-	var armLeftKey, armRightKey, armExtendKey, armContractKey, armGrabKey;
-};
-Game.Play.prototype = {
-	create: function() {
 		// Enable FPS monitoring
 		game.time.advancedTiming = true;
 		
@@ -109,7 +62,9 @@ Game.Play.prototype = {
 		armContractKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
 		armGrabKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 	},
+	
 	update: function() {
+		
 		if(cursors.left.isDown){ // Move left if left is pressed
 			player.body.velocity.x = -300;
 		}
@@ -153,34 +108,10 @@ Game.Play.prototype = {
 		game.physics.arcade.overlap(claw, asteroids, grabObject, null, this);
 		game.physics.arcade.overlap(asteroids, asteroids, destroyAsteroids, null, this);
 		if(grabCooldown > 0) grabCooldown--;
-	},
-	render: function() {
-		// Display debug information
-		game.debug.text(`Debugging Phaser ${Phaser.VERSION}`, 20, 560, 'yellow');
-		game.debug.text('FPS: ' + game.time.fps, 20, 580, 'yellow');
 	}
 };
 
-/*// Hall state
-Game.Hall = function(){};
-Game.Hall.prototype = {};*/
-
-// Talk state
-Game.Talk = function(){};
-Game.Talk.prototype = {};
-
-// Create game
-var game = new Phaser.Game(800, 600, Phaser.AUTO);
-// Add game states
-game.state.add('Boot', Game.Boot); // Booting up
-game.state.add('Load', Game.Load); // Loading assets
-game.state.add('Play', Game.Play); // Playing the game
-//game.state.add('Hall', Game.Hall); // Navigating the hall
-game.state.add('Hallway', hallwayState);
-game.state.add('Talk', Game.Talk); // Talking to a passenger
-// Begin boot state
-game.state.start('Boot');
-
+// Misc. functions (phaser doesn't like them inside the play state container...)
 function grabObject(player, asteroid){
 	// If the grab key is pressed, set grabbedObject to the object
 	if(armGrabKey.isDown && grabCooldown == 0 && grabbed == null){grabbed = asteroid; grabCooldown = 20;}
