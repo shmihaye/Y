@@ -8,6 +8,7 @@ var hallwayState = {
 	preload: function() {
 		
 		game.load.path = 'assets/img/';
+		game.load.image('background', 'hallwayBackgroundBase.jpg');
 		game.load.image('redDoor', 'redDoor.png');
 		game.load.image('greenDoor', 'greenDoor.png');
 		game.load.image('blueDoor', 'blueDoor.png');
@@ -15,6 +16,8 @@ var hallwayState = {
 	},
 
 	create: function() {
+		
+		game.add.sprite(0, 0, 'background');
 
 		redDoor = game.add.sprite(game.world.centerX - 100, game.world.centerY, 'redDoor');
 		greenDoor = game.add.sprite(game.world.centerX, game.world.centerY, 'greenDoor');
