@@ -1,7 +1,4 @@
 
-// Pressure
-// by Team Y
-
 // Create global game container object
 var Game = {};
 

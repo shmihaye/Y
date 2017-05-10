@@ -1,11 +1,20 @@
 
 // Global variables for play state
-var cursors, player, asteroids, asteroidTimer;
-var armGrabKey;
+var player, asteroids, timestep;
+var levelNum = 0;
+var asteroidTimer; // [TEMPORARY]
 
 // Play state container
 var playState = {
-
+	
+	preload: function(){
+		
+		// Load next level data
+		let levelName = levelNum.toString() + '.level';
+		game.load.path = 'assets/data/level/';
+		game.load.text('level', levelName);
+	},
+	
 	create: function() {
 
 		// Enable FPS monitoring
@@ -21,7 +30,12 @@ var playState = {
 		// Create asteroids group
 		asteroids = game.add.group();
 		asteroids.enableBody = true;
-		asteroidTimer = 100;
+		asteroidTimer = 100; // [TEMPORARY]
+		
+		// Load in level data
+		let levelData = game.cache.getText('level');
+		timestep = 0;
+		// [FUTURE] Parse level data into a queue of objects to summon!
 		
 		// Add in the button for hallway state.
 		goToHallwayButton = game.add.sprite(10, 10, 'goToHallwayButton');
@@ -50,7 +64,12 @@ var playState = {
 			game.add.existing(asteroid);
 			asteroids.add(asteroid);
 			asteroidTimer = 120;
+			timestep++;
 		}
+		
+		// [FUTURE] Compare timestep to the time at the top of the queue,
+		// pop off the top & summon obstacles if they are equal
+		
 	}
 };
 
@@ -59,10 +78,10 @@ function grabObject(claw, asteroid){
 	// If the grab key is pressed, set grabbedObject to the object
 	if(game.input.activePointer.leftButton.isDown && player.grabCooldown == 0 && player.grabbed == null){
 		player.grabbed = asteroid;
-		player.grabCooldown = 20;
 	}
 }
 function hurtShip(player, asteroid){
+	// [TEMPORARY] If the player touches an asteroid that hasn't been grabbed, reset the game
 	if(asteroid != player.grabbed && !asteroid.primed){
 		player.x = 0;
 		player.y = game.world.height-300;
@@ -70,6 +89,7 @@ function hurtShip(player, asteroid){
 	}
 }
 function destroyAsteroids(asteroid1, asteroid2){
+	// Destroy asteroids with thrown asteroids
 	if(asteroid1.primed || asteroid2.primed){
 		asteroid1.kill();
 		asteroid2.kill();

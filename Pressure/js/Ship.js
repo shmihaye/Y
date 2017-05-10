@@ -13,6 +13,8 @@ function Ship(game, image){
 	this.arm = game.add.sprite(0, 0, 'cheesecake');
 	this.arm.scale.set(3, 0.25);
 	this.arm.anchor.y = 0.5;
+	this.arm.clockwise = 0;
+	this.arm.speedUp = 0;
 	
 	// Add claw
 	this.claw = game.add.sprite(0, 0, 'cheesecake');
