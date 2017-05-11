@@ -1,34 +1,32 @@
 // The index of dialogues of each crew member
-var convoIndexRed = 0;
-var convoIndexGreen = 0;
-var convoIndexBlue = 0;
+var convoIndex1 = 0;
+var convoIndex2 = 0;
+var convoIndex3 = 0;
+var convoIndex4 = 0;
 
 var hallwayState = {
 	
 	preload: function() {
 		
 		game.load.path = 'assets/img/';
-		game.load.image('background', 'hallwayBackgroundBase.jpg');
-		game.load.image('redDoor', 'redDoor.png');
-		game.load.image('greenDoor', 'greenDoor.png');
-		game.load.image('blueDoor', 'blueDoor.png');
+		game.load.image('hallwayBackground', 'hallwayBackgroundBase.jpg');
+		game.load.image('hallwayDoor', 'hallwayDoor.png');
 		
 	},
 
 	create: function() {
 		
-		game.add.sprite(0, 0, 'background');
+		game.add.sprite(0, 0, 'hallwayBackground');
 
-		redDoor = game.add.sprite(game.world.centerX - 100, game.world.centerY, 'redDoor');
-		greenDoor = game.add.sprite(game.world.centerX, game.world.centerY, 'greenDoor');
-		blueDoor = game.add.sprite(game.world.centerX + 100, game.world.centerY, 'blueDoor');
+		var door1 = game.add.sprite(58, 335, 'hallwayDoor');
+		var door2 = game.add.sprite(263.5, 335, 'hallwayDoor');
+		var door3 = game.add.sprite(469.5, 335, 'hallwayDoor');
+		var door4 = game.add.sprite(675.5, 335, 'hallwayDoor');
 		
-		redDoor.inputEnabled = true;
-		redDoor.events.onInputDown.add(this.redDoorOpened, this);
-		greenDoor.inputEnabled = true;
-		greenDoor.events.onInputDown.add(this.greenDoorOpened, this);
-		blueDoor.inputEnabled = true;
-		blueDoor.events.onInputDown.add(this.blueDoorOpened, this);
+		door1.inputEnabled = true; door1.events.onInputDown.add(this.door1Opened, this);
+		door2.inputEnabled = true; door2.events.onInputDown.add(this.door2Opened, this);
+		door3.inputEnabled = true; door3.events.onInputDown.add(this.door3Opened, this);
+		door4.inputEnabled = true; door4.events.onInputDown.add(this.door4Opened, this);
 		
 	},
 	
@@ -38,30 +36,39 @@ var hallwayState = {
 	
 	},
 	
-	redDoorOpened: function() {
+	door1Opened: function() {
 		
-		convoIndexRed++;
-		console.log('r' + convoIndexRed);
+		convoIndex1++;
+		console.log('1 ' + convoIndex1);
 		
-		// Load red state.
-		
-	},
-	
-	greenDoorOpened: function() {
-		
-		convoIndexGreen++;
-		console.log('g' + convoIndexGreen);
-		
-		// Load green state.
+		// Load state 1.
 		
 	},
 	
-	blueDoorOpened: function() {
+	door2Opened: function() {
 		
-		convoIndexBlue++;
-		console.log('b' + convoIndexBlue);
+		convoIndex2++;
+		console.log('2 ' + convoIndex2);
 		
-		// Load blue state.
+		// Load state 2.
+		
+	},
+	
+	door3Opened: function() {
+		
+		convoIndex3++;
+		console.log('3 ' + convoIndex3);
+		
+		// Load state 3.
+		
+	},
+	
+	door4Opened: function() {
+		
+		convoIndex4++;
+		console.log('4 ' + convoIndex4);
+		
+		// Load state 4.
 		
 	}
 
