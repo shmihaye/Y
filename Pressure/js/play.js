@@ -49,7 +49,7 @@ var playState = {
 		// Call destroyAsteroids if two asteroids overlap
 		game.physics.arcade.overlap(obstacles, obstacles, destroyAsteroids, null, this);
 		
-		// Object creation from queue
+		// Object creation from JSON object
 		if(levelData.timestamps.length > 0 && timestep == levelData.timestamps[0].time){
 			let spawnList = levelData.timestamps.shift();
 			let listSize = spawnList.objects.length;
