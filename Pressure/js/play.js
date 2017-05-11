@@ -1,8 +1,7 @@
 
 // Global variables for play state
-var player, asteroids, timestep;
+var player, obstacles, timestep, levelData;
 var levelNum = 0;
-var asteroidTimer; // [TEMPORARY]
 
 // Play state container
 var playState = {
@@ -10,9 +9,9 @@ var playState = {
 	preload: function(){
 		
 		// Load next level data
-		let levelName = levelNum.toString() + '.level';
+		let levelName = levelNum.toString() + '.json';
 		game.load.path = 'assets/data/level/';
-		game.load.text('level', levelName);
+		game.load.json('level', levelName);
 	},
 	
 	create: function() {
@@ -27,20 +26,13 @@ var playState = {
 		player = new Ship(game, 'cheesecake');
 		game.add.existing(player);
 		
-		// Create asteroids group
-		asteroids = game.add.group();
-		asteroids.enableBody = true;
-		asteroidTimer = 100; // [TEMPORARY]
+		// Create obstacles group
+		obstacles = game.add.group();
+		obstacles.enableBody = true;
 		
 		// Load in level data
-		let levelData = game.cache.getText('level');
+		levelData = game.cache.getJSON('level');
 		timestep = 0;
-		// [FUTURE] Parse level data into a queue of objects to summon!
-		
-		// Add in the button for hallway state.
-		goToHallwayButton = game.add.sprite(10, 10, 'goToHallwayButton');
-		goToHallwayButton.inputEnabled = true;
-		goToHallwayButton.events.onInputDown.add(function() { game.state.start('Hallway'); });
 		
 		// Initialize keyboard controls
 		game.input.mouse.capture = true;
@@ -49,27 +41,40 @@ var playState = {
 	update: function() {
 		
 		// Call grabObject if the claw overlaps with an asteroid
-		game.physics.arcade.overlap(player.claw, asteroids, grabObject, null, this);
+		game.physics.arcade.overlap(player.claw, obstacles, grabObject, null, this);
 		
 		// Call hurtShip if the ship overlaps with an asteroid
-		game.physics.arcade.overlap(player, asteroids, hurtShip, null, this);
+		game.physics.arcade.overlap(player, obstacles, hurtShip, null, this);
 		
 		// Call destroyAsteroids if two asteroids overlap
-		game.physics.arcade.overlap(asteroids, asteroids, destroyAsteroids, null, this);
+		game.physics.arcade.overlap(obstacles, obstacles, destroyAsteroids, null, this);
 		
-		// [TEMPORARY] Add asteroids at a regular interval
-		if(asteroidTimer > 0) asteroidTimer--;
-		else{
-			var asteroid = new Asteroid(game, 'cheesecake');
-			game.add.existing(asteroid);
-			asteroids.add(asteroid);
-			asteroidTimer = 120;
-			timestep++;
+		// Object creation from queue
+		if(levelData.timestamps.length > 0 && timestep == levelData.timestamps[0].time){
+			let spawnList = levelData.timestamps.shift();
+			let listSize = spawnList.objects.length;
+			for(let i = 0; i < listSize; i++){
+				// Create equivalent object
+				let spawnObj = spawnList.objects.shift();
+				var newObj;
+				if(spawnObj.type == 'Asteroid') newObj = new Asteroid(game, 'cheesecake');
+				// Retrieve object properties
+				if(spawnObj.x !== undefined) newObj.x = spawnObj.x;
+				if(spawnObj.y !== undefined) newObj.y = spawnObj.y;
+				if(spawnObj.xvel !== undefined) newObj.body.velocity.x = spawnObj.xvel;
+				if(spawnObj.yvel !== undefined) newObj.body.velocity.y = spawnObj.yvel;
+				if(spawnObj.scale !== undefined) newObj.setScale(spawnObj.scale);
+				game.add.existing(newObj);
+				obstacles.add(newObj);
+			}
 		}
-		
-		// [FUTURE] Compare timestep to the time at the top of the queue,
-		// pop off the top & summon obstacles if they are equal
-		
+		timestep++;
+	},
+	
+	render: function() {
+		// Display debug information
+		game.debug.text(`Debugging Phaser ${Phaser.VERSION}`, 20, 560, 'yellow');
+		game.debug.text('FPS: ' + game.time.fps, 20, 580, 'yellow');
 	}
 };
 
@@ -82,11 +87,7 @@ function grabObject(claw, asteroid){
 }
 function hurtShip(player, asteroid){
 	// [TEMPORARY] If the player touches an asteroid that hasn't been grabbed, reset the game
-	if(asteroid != player.grabbed && !asteroid.primed){
-		player.x = 0;
-		player.y = game.world.height-300;
-		asteroids.forEach(function(asteroid){asteroid.kill();}, this);
-	}
+	game.state.start('Play');
 }
 function destroyAsteroids(asteroid1, asteroid2){
 	// Destroy asteroids with thrown asteroids
