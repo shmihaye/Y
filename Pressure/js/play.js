@@ -63,7 +63,7 @@ var playState = {
 				if(spawnObj.y !== undefined) newObj.y = spawnObj.y;
 				if(spawnObj.xvel !== undefined) newObj.body.velocity.x = spawnObj.xvel;
 				if(spawnObj.yvel !== undefined) newObj.body.velocity.y = spawnObj.yvel;
-				if(spawnObj.scale !== undefined) newObj.setScale(spawnObj.scale);
+				if(spawnObj.scale !== undefined) newObj.scale.setTo(spawnObj.scale);
 				game.add.existing(newObj);
 				obstacles.add(newObj);
 			}
