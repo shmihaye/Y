@@ -47,11 +47,11 @@ var playState = {
 		// Call grabObject if the claw overlaps with an obstacle
 		game.physics.arcade.overlap(player.claw, obstacles, grabObject, null, this);
 		
-		// Call hurtShip if the ship overlaps with an obstacle
-		game.physics.arcade.overlap(player, obstacles, hurtShip, null, this);
-		
 		// Call hurtShield if the ship's shield overlaps with an obstacle
 		if(player.shieldEnabled) game.physics.arcade.overlap(player.shield, obstacles, hurtShield, null, this);
+		
+		// Call hurtShip if the ship overlaps with an obstacle
+		game.physics.arcade.overlap(player, obstacles, hurtShip, null, this);
 		
 		// Call destroyObstacles if two obstacles overlap
 		game.physics.arcade.overlap(obstacles, obstacles, destroyObstacles, null, this);
@@ -106,10 +106,9 @@ function hurtShip(player, obstacle){
 	if(player.health == 0) game.state.start('Play');
 }
 function hurtShield(shield, obstacle){
-	// If an obstacle hit the shield, destroy the obstacle but also damage the shield
+	// If an obstacle hit the shield, destroy the obstacle
 	if(obstacle != player.grabbed && !obstacle.primed && player.shield.active){
 		obstacle.kill();
-		shield.scale.setTo(shield.scale.x - player.shieldHit);
 	}
 }
 function destroyObstacles(obstacle1, obstacle2){

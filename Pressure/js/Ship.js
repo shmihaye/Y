@@ -42,13 +42,23 @@ function Ship(game, image){
 		this.shield = game.add.sprite(0, 0, 'cheesecake');
 		game.physics.arcade.enable(this.shield);
 		this.shield.anchor.set(0.5);
+		this.shield.scale.set(0.5);
 		this.shield.active = false;
-		this.shield.alpha = 0.2;
-		this.shieldSize = 2 + (0.5 * convoIndex2); // The max scale of the shield sprite: min = 2.5, max = 4
-		this.shieldHit = 1.2 - (0.2 * convoIndex2); // The amount of damage done to the shield when it is hit: min = 0.4, max = 1
-		this.shieldDrain = 0.005; // The rate at which the shield shrinks when in use
-		this.shieldRegen = 0.005; // The rate at which the shield grows when not in use
+		this.shield.alpha = 0.1;
+		this.shieldSize = 2 + (0.5 * convoIndex2); // The size & duration of the shield: min = 2.5, max = 4
+		this.shieldRegen = 0.001 * convoIndex2; // The rate at which the shield regenerates after use: min = 0.001, max = 0.004
 	}
+	
+	// Add beam if convoIndex3 > 0 (WIP)
+	/*this.beamEnabled = false;
+	if(convoIndex3 > 0){
+		this.beamEnabled = true;
+		this.beam = game.add.sprite(0, 0, 'cheesecake');
+		game.physics.arcade.enable(this.beam);
+		this.beam.anchor.set(0.5);
+		this.beamTime = 0;
+		this.beamCooldown = 120;
+	}*/
 	
 	// Add grabbed pointer
 	this.grabbed = null;
@@ -115,20 +125,36 @@ Ship.prototype.update = function(){
 	// Move shield to ship
 	this.shield.x = this.x;
 	this.shield.y = this.y;
-	
-	// Activate shield when space is pressed
-	if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)){
-		this.shield.active = true;
-		this.shield.alpha = 0.7;
-		// Slowly shrink shield when in use
-		if(this.shield.scale.x > 0) this.shield.scale.setTo(this.shield.scale.x - this.shieldDrain);
+	// If the shield is active, grow it until it hits its max scale
+	if(this.shield.active){
+		if(this.shield.scale.x < this.shieldSize) this.shield.scale.setTo(this.shield.scale.x + 0.1);
+		else{ // When the shielding is finished
+			this.shield.active = false;
+			this.shield.alpha = 0.1;
+		}
 	}
+	// If the shield is not active, shrink it until it hits a scale of 1 (ready for use again)
 	else{
-		this.shield.active = false;
-		this.shield.alpha = 0.2;
-		// Slowly grow the shield when not in use
-		if(this.shield.scale.x < this.shieldSize) this.shield.scale.setTo(this.shield.scale.x + this.shieldRegen);
+		if(this.shield.scale.x > 0.7) this.shield.scale.setTo(this.shield.scale.x - this.shieldRegen);
+		else if(game.input.keyboard.justPressed(Phaser.Keyboard.SPACEBAR)){ // The shield is ready & summoned!
+			this.shield.active = true;
+			this.shield.alpha = 0.8;
+		}
 	}}
+	
+	// Beam ability (WIP)
+	/*if(this.beamEnabled){
+	// If left-click is double-clicked, create tractor beam!
+	if(this.beamTime >= 0){ // Check to make sure the ability isn't on cooldown.
+		if(game.input.activePointer.leftButton.justPressed){
+			if(this.beamTime > 0){
+				this.beam.x = game.input.x;
+				this.beam.y = game.input.y;
+				this.beamTime = -this.beamCooldown;
+			}
+			else this.beamTime = 30;
+		}
+	}}*/
 	
 	// Move arm to ship
 	this.arm.x = this.x;
