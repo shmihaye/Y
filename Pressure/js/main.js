@@ -36,6 +36,8 @@ Game.Load.prototype = {
 		game.load.image('cheesecake', 'cheesecake.png');
 		game.load.image('ship', 'ship.png');
 		game.load.image('spaceBackground', 'spaceBackground.png');
+		game.load.image('hallwayDoor', 'hallwayDoor.png');
+		game.load.image('hallwayBackground', 'hallwayBackgroundBase.png');
 	},
 	create: function() {
 		// Disable preload bar crop while we wait for mp3 decoding

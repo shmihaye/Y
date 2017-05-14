@@ -6,14 +6,8 @@ var convoIndex4 = 0;
 
 var hallwayState = {
 	
-	preload: function() {
-		
-		game.load.path = 'assets/img/';
-		game.load.image('hallwayBackground', 'hallwayBackgroundBase.jpg');
-		game.load.image('hallwayDoor', 'hallwayDoor.png');
-		
-	},
-
+	// Place image loading in the Load state in main.js
+	
 	create: function() {
 		
 		game.add.sprite(0, 0, 'hallwayBackground');
