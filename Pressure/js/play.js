@@ -34,6 +34,14 @@ var playState = {
 		obstacles = game.add.group();
 		obstacles.enableBody = true;
 		
+		/*// Create asteroids group
+		asteroids = game.add.group();
+		asteroids.enableBody = true;
+		
+		// Create gravRocks group;
+		gravRocks = game.add.group();
+		gravRocks.enableBody = true;*/
+		
 		// Load in level data
 		levelData = game.cache.getJSON('level');
 		timestep = 0;
@@ -67,6 +75,7 @@ var playState = {
 				// Go to hallway state at the end of the level
 				if(spawnObj.type == 'END') game.state.start('Hallway');
 				else if(spawnObj.type == 'Asteroid') newObj = new Asteroid(game, 'cheesecake');
+        else if(spawnObj.type == 'GravRock') newObj = new GravRock(game, 'gravRock');
 				// Retrieve object properties
 				if(spawnObj.x !== undefined) newObj.x = spawnObj.x;
 				if(spawnObj.y !== undefined) newObj.y = spawnObj.y;

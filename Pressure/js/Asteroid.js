@@ -1,7 +1,7 @@
-function Asteroid(game, image){
-	// Call to Phaser.sprite
-	Phaser.Sprite.call(this, game, 850, 0, image);
-	// Add properties
+function Asteroid(game, image){	
+	// Call to Phaser.Sprite
+	Phaser.Sprite.call(this, game, 850, 0, image);	
+	// Add properties and set default values
 	game.physics.enable(this);
 	this.body.gravity.y = 0;
 	this.body.velocity.x = -60;

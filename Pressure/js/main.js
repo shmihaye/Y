@@ -35,6 +35,7 @@ Game.Load.prototype = {
 		this.load.path = 'assets/img/';
 		game.load.image('cheesecake', 'cheesecake.png');
 		game.load.image('ship', 'ship.png');
+    game.load.image('gravRock', 'gravRock.png');
 		game.load.image('spaceBackground', 'spaceBackground.png');
 		game.load.image('hallwayDoor', 'hallwayDoor.png');
 		game.load.image('hallwayBackground', 'hallwayBackgroundBase.png');
