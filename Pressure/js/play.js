@@ -63,7 +63,7 @@ var playState = {
 			for(let i = 0; i < listSize; i++){
 				// Create equivalent object
 				let spawnObj = spawnList.objects.shift();
-				var newObj;
+				var newObj = null;
 				// Go to hallway state at the end of the level
 				if(spawnObj.type == 'END') game.state.start('Hallway');
 				else if(spawnObj.type == 'Asteroid') newObj = new Asteroid(game, 'cheesecake');
@@ -73,8 +73,10 @@ var playState = {
 				if(spawnObj.xvel !== undefined) newObj.body.velocity.x = spawnObj.xvel;
 				if(spawnObj.yvel !== undefined) newObj.body.velocity.y = spawnObj.yvel;
 				if(spawnObj.scale !== undefined) newObj.scale.setTo(spawnObj.scale);
-				game.add.existing(newObj);
-				obstacles.add(newObj);
+				if(newObj != null){
+					game.add.existing(newObj);
+					obstacles.add(newObj);
+				}
 			}
 		}
 		timestep++;

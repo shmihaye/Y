@@ -1,6 +1,7 @@
 {
   "timestamps": [
     {"time":30, "objects": [{"type":"Asteroid", "y":300}]},
-	{"time":95, "objects": [{"type":"Asteroid", "y":300, "scale":2},{"type":"Asteroid", "xvel":-40, "scale":3}]}
+	{"time":500, "objects": [{"type":"Asteroid", "y":200, "scale":2},{"type":"Asteroid", "y":500, "xvel":-80, "scale":3}]},
+	{"time":1400, "objects": [{"type":"END"}]}
   ]
 }

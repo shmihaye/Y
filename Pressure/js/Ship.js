@@ -31,7 +31,7 @@ function Ship(game, image){
 		this.dashEnabled = true;
 		this.dashTime = 0;
 		this.dashDirection = 0;
-		this.dashSpeed = 500 + (100 * convoIndex1); // The speed and distance of the dash: min = 600, max = 900
+		this.dashSpeed = 500 + (150 * convoIndex1); // The speed and distance of the dash: min = 650, max = 1100
 		this.dashCooldown = 120 - (20 * convoIndex1); // The cooldown of the dash: min = 40, max = 100
 	}
 	

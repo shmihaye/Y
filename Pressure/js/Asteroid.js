@@ -4,7 +4,7 @@ function Asteroid(game, image){
 	// Add properties
 	game.physics.enable(this);
 	this.body.gravity.y = 0;
-	this.body.velocity.x = -30;
+	this.body.velocity.x = -60;
 	this.scale.set(2 * Math.random() + 1);
 	this.anchor.set(0.5);
 	this.primed = false;
