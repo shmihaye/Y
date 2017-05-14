@@ -1,6 +1,11 @@
 {
   "timestamps": [
-    {"time":30, "objects": [{"type":"Asteroid", "y":300}]},
-	{"time":95, "objects": [{"type":"Asteroid", "y":300, "scale":2},{"type":"Asteroid", "xvel":-40, "scale":3}]}
+  
+    {"time":100, "objects": [{"type":"Asteroid", "y":300}]},
+	
+	{"time":200, "objects": [{"type":"GravRock", "y":200}]},
+	
+	{"time":300, "objects": [{"type":"Asteroid", "y":300, "scale":2},{"type":"Asteroid", "xvel":-40, "scale":3}]}
+	
   ]
 }

@@ -34,6 +34,7 @@ Game.Load.prototype = {
 		// Load game images
 		this.load.path = 'assets/img/';
 		game.load.image('cheesecake', 'cheesecake.png');
+		game.load.image('gravRock', 'gravRock.png');
 		game.load.image('goToHallwayButton', 'goToHallwayButton.png');
 	},
 	create: function() {

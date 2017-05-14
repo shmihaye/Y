@@ -1,6 +1,7 @@
 
 // Global variables for play state
 var player, obstacles, timestep, levelData;
+//var asteroids, gravRocks;
 var levelNum = 0;
 
 // Play state container
@@ -30,6 +31,14 @@ var playState = {
 		obstacles = game.add.group();
 		obstacles.enableBody = true;
 		
+		/*// Create asteroids group
+		asteroids = game.add.group();
+		asteroids.enableBody = true;
+		
+		// Create gravRocks group;
+		gravRocks = game.add.group();
+		gravRocks.enableBody = true;*/
+		
 		// Load in level data
 		levelData = game.cache.getJSON('level');
 		timestep = 0;
@@ -57,7 +66,13 @@ var playState = {
 				// Create equivalent object
 				let spawnObj = spawnList.objects.shift();
 				var newObj;
-				if(spawnObj.type == 'Asteroid') newObj = new Asteroid(game, 'cheesecake');
+				if(spawnObj.type == 'Asteroid') {
+					newObj = new Asteroid(game, 'cheesecake');
+				}
+				if(spawnObj.type == 'GravRock') {
+					newObj = new GravRock(game, 'gravRock');
+				}
+				newObj.anchor.setTo(0.5);
 				// Retrieve object properties
 				if(spawnObj.x !== undefined) newObj.x = spawnObj.x;
 				if(spawnObj.y !== undefined) newObj.y = spawnObj.y;
