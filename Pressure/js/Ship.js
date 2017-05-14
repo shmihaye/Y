@@ -8,6 +8,8 @@ function Ship(game, image){
 	this.body.gravity.y = 0;
 	this.body.collideWorldBounds = true;
 	this.anchor.set(0.5);
+	this.health = 5;
+	this.invincibility = 0;
 	
 	// Add arm
 	this.arm = game.add.sprite(0, 0, 'cheesecake');
@@ -26,30 +28,64 @@ function Ship(game, image){
 	// Add grabbed pointer
 	this.grabbed = null;
 	this.grabCooldown = 0;
+	
+	// Add power variables
+	this.dashTime = 0;
+	this.dashDirection = 0;
 }
 Ship.prototype = Object.create(Phaser.Sprite.prototype);
 Ship.prototype.constructor = Ship;
 Ship.prototype.update = function(){
 	
 	// Ship movement
-	if(game.input.keyboard.isDown(Phaser.Keyboard.A)){
-		// Move left if left is pressed
-		this.body.velocity.x = -300;
+	if(this.dashTime > -70){ // Do not move if the dash ability was just used
+		if(game.input.keyboard.isDown(Phaser.Keyboard.A)){
+			// Move left if left is pressed
+			this.body.velocity.x = -300;
+		}
+		else if(game.input.keyboard.isDown(Phaser.Keyboard.D)){
+			// Move right if right is pressed
+			this.body.velocity.x = 300;
+		}
+		else this.body.velocity.x = 0;
+		if(game.input.keyboard.isDown(Phaser.Keyboard.W)){
+			// Move up if up is pressed
+			this.body.velocity.y = -300;
+		}
+		else if(game.input.keyboard.isDown(Phaser.Keyboard.S)){
+			// Move down if down is pressed
+			this.body.velocity.y = 300;
+		}
+		else this.body.velocity.y = 0;
 	}
-	else if(game.input.keyboard.isDown(Phaser.Keyboard.D)){
-		// Move right if right is pressed
-		this.body.velocity.x = 300;
+	
+	// Dash ability
+	// If a key is double-tapped, quickly move the ship in that direction.
+	if(this.dashTime >= 0){ // Check to make sure the ability isn't on cooldown.
+		if(game.input.keyboard.justPressed(Phaser.Keyboard.A)){
+			if(this.dashDirection == 0 && this.dashTime > 0){this.body.velocity.x = -1000; this.dashTime = -80; this.tint = 0x0000ff;}
+			else{this.dashDirection = 0; this.dashTime = 60;}
+		}
+		if(game.input.keyboard.justPressed(Phaser.Keyboard.D)){
+			if(this.dashDirection == 1 && this.dashTime > 0){this.body.velocity.x = 1000; this.dashTime = -80; this.tint = 0x0000ff;}
+			else{this.dashDirection = 1; this.dashTime = 60;}
+		}
+		if(game.input.keyboard.justPressed(Phaser.Keyboard.W)){
+			if(this.dashDirection == 2 && this.dashTime > 0){this.body.velocity.y = -1000; this.dashTime = -80; this.tint = 0x0000ff;}
+			else{this.dashDirection = 2; this.dashTime = 60;}
+		}
+		if(game.input.keyboard.justPressed(Phaser.Keyboard.S)){
+			if(this.dashDirection == 3 && this.dashTime > 0){this.body.velocity.y = 1000; this.dashTime = -80; this.tint = 0x0000ff;}
+			else{this.dashDirection = 3; this.dashTime = 60;}
+		}
 	}
-	else this.body.velocity.x = 0;
-	if(game.input.keyboard.isDown(Phaser.Keyboard.W)){
-		// Move up if up is pressed
-		this.body.velocity.y = -300;
+	if(this.dashTime > 0) this.dashTime--; // Key is single-tapped and ready for dash!
+	else if(this.dashTime < 0){ // Dash was just used, cooldown in effect.
+		if(this.dashTime == -70) this.tint = 0xADD8E6; // Add blue tint after initial speed burst
+		if(this.dashTime == -1) this.tint = 0xffffff; // Remove tint when cooldown is over
+		this.dashTime++;
 	}
-	else if(game.input.keyboard.isDown(Phaser.Keyboard.S)){
-		// Move down if down is pressed
-		this.body.velocity.y = 300;
-	}
-	else this.body.velocity.y = 0;
+	
 	
 	// Move arm to ship
 	this.arm.x = this.x;
@@ -99,4 +135,7 @@ Ship.prototype.update = function(){
 	
 	// Decrement grabCooldown (which keeps the player from grab-spamming)
 	if(this.grabCooldown > 0) this.grabCooldown--;
+	
+	// Decrement invincibility frame
+	if(this.invincibility > 0) this.invincibility--;
 }

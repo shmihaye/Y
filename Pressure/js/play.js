@@ -1,7 +1,8 @@
 
 // Global variables for play state
-var player, obstacles, timestep, levelData;
+var player, obstacles, background, timestep, levelData;
 var levelNum = 0;
+var health = 5;
 
 // Play state container
 var playState = {
@@ -15,15 +16,18 @@ var playState = {
 	},
 	
 	create: function() {
-
+		
 		// Enable FPS monitoring
 		game.time.advancedTiming = true;
 		
 		// Enable the Arcade physics system
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		
+		// Add background
+		this.background = game.add.tileSprite(0, 0, game.width, game.height, 'spaceBackground');
+		
 		// Create the player ship
-		player = new Ship(game, 'cheesecake');
+		player = new Ship(game, 'ship');
 		game.add.existing(player);
 		
 		// Create obstacles group
@@ -57,7 +61,9 @@ var playState = {
 				// Create equivalent object
 				let spawnObj = spawnList.objects.shift();
 				var newObj;
-				if(spawnObj.type == 'Asteroid') newObj = new Asteroid(game, 'cheesecake');
+				// Go to hallway state at the end of the level
+				if(spawnObj.type == 'END') game.state.start('Hallway');
+				else if(spawnObj.type == 'Asteroid') newObj = new Asteroid(game, 'cheesecake');
 				// Retrieve object properties
 				if(spawnObj.x !== undefined) newObj.x = spawnObj.x;
 				if(spawnObj.y !== undefined) newObj.y = spawnObj.y;
@@ -69,6 +75,9 @@ var playState = {
 			}
 		}
 		timestep++;
+		
+		// Scroll background
+		this.background.tilePosition.x -= 10;
 	},
 	
 	render: function() {
@@ -87,7 +96,8 @@ function grabObject(claw, asteroid){
 }
 function hurtShip(player, asteroid){
 	// [TEMPORARY] If the player touches an asteroid that hasn't been grabbed, reset the game
-	game.state.start('Play');
+	if(asteroid != player.grabbed && !asteroid.primed && !player.invincible){player.health--; player.invincibility = 60;}
+	if(player.health == 0) game.state.start('Play');
 }
 function destroyAsteroids(asteroid1, asteroid2){
 	// Destroy asteroids with thrown asteroids
