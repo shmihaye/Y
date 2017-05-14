@@ -6,14 +6,8 @@ var convoIndex4 = 0;
 
 var hallwayState = {
 	
-	preload: function() {
-		
-		game.load.path = 'assets/img/';
-		game.load.image('hallwayBackground', 'hallwayBackgroundBase.jpg');
-		game.load.image('hallwayDoor', 'hallwayDoor.png');
-		
-	},
-
+	// Place image loading in the Load state in main.js
+	
 	create: function() {
 		
 		game.add.sprite(0, 0, 'hallwayBackground');
@@ -23,10 +17,10 @@ var hallwayState = {
 		var door3 = game.add.sprite(469.5, 335, 'hallwayDoor');
 		var door4 = game.add.sprite(675.5, 335, 'hallwayDoor');
 		
-		door1.inputEnabled = true; door1.events.onInputDown.add(this.door1Opened, this);
-		door2.inputEnabled = true; door2.events.onInputDown.add(this.door2Opened, this);
-		door3.inputEnabled = true; door3.events.onInputDown.add(this.door3Opened, this);
-		door4.inputEnabled = true; door4.events.onInputDown.add(this.door4Opened, this);
+		if(convoIndex1 < 4){door1.inputEnabled = true; door1.events.onInputDown.add(this.door1Opened, this);}
+		if(convoIndex2 < 4){door2.inputEnabled = true; door2.events.onInputDown.add(this.door2Opened, this);}
+		if(convoIndex3 < 4){door3.inputEnabled = true; door3.events.onInputDown.add(this.door3Opened, this);}
+		if(convoIndex4 < 4){door4.inputEnabled = true; door4.events.onInputDown.add(this.door4Opened, this);}
 		
 	},
 	
@@ -43,6 +37,7 @@ var hallwayState = {
 		
 		// Load state 1.
 		
+		game.state.start('Play');
 	},
 	
 	door2Opened: function() {
@@ -52,6 +47,7 @@ var hallwayState = {
 		
 		// Load state 2.
 		
+		game.state.start('Play');
 	},
 	
 	door3Opened: function() {
@@ -61,6 +57,7 @@ var hallwayState = {
 		
 		// Load state 3.
 		
+		game.state.start('Play');
 	},
 	
 	door4Opened: function() {
@@ -70,6 +67,7 @@ var hallwayState = {
 		
 		// Load state 4.
 		
+		game.state.start('Play');
 	}
 
 };

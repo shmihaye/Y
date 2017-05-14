@@ -34,8 +34,11 @@ Game.Load.prototype = {
 		// Load game images
 		this.load.path = 'assets/img/';
 		game.load.image('cheesecake', 'cheesecake.png');
-		game.load.image('gravRock', 'gravRock.png');
-		game.load.image('goToHallwayButton', 'goToHallwayButton.png');
+		game.load.image('ship', 'ship.png');
+    game.load.image('gravRock', 'gravRock.png');
+		game.load.image('spaceBackground', 'spaceBackground.png');
+		game.load.image('hallwayDoor', 'hallwayDoor.png');
+		game.load.image('hallwayBackground', 'hallwayBackgroundBase.png');
 	},
 	create: function() {
 		// Disable preload bar crop while we wait for mp3 decoding

@@ -8,6 +8,8 @@ function Ship(game, image){
 	this.body.gravity.y = 0;
 	this.body.collideWorldBounds = true;
 	this.anchor.set(0.5);
+	this.health = 5;
+	this.invincibility = 0;
 	
 	// Add arm
 	this.arm = game.add.sprite(0, 0, 'cheesecake');
@@ -23,33 +25,136 @@ function Ship(game, image){
 	this.claw.scale.set(0.5);
 	this.claw.anchor.y = 0.5;
 	
+	// Add dash if convoIndex1 > 0
+	this.dashEnabled = false;
+	if(convoIndex1 > 0){
+		this.dashEnabled = true;
+		this.dashTime = 0;
+		this.dashDirection = 0;
+		this.dashSpeed = 500 + (150 * convoIndex1); // The speed and distance of the dash: min = 650, max = 1100
+		this.dashCooldown = 120 - (20 * convoIndex1); // The cooldown of the dash: min = 40, max = 100
+	}
+	
+	// Add shield if convoIndex2 > 0
+	this.shieldEnabled = false;
+	if(convoIndex2 > 0){
+		this.shieldEnabled = true;
+		this.shield = game.add.sprite(0, 0, 'cheesecake');
+		game.physics.arcade.enable(this.shield);
+		this.shield.anchor.set(0.5);
+		this.shield.scale.set(0.5);
+		this.shield.active = false;
+		this.shield.alpha = 0.1;
+		this.shieldSize = 2 + (0.5 * convoIndex2); // The size & duration of the shield: min = 2.5, max = 4
+		this.shieldRegen = 0.001 * convoIndex2; // The rate at which the shield regenerates after use: min = 0.001, max = 0.004
+	}
+	
+	// Add beam if convoIndex3 > 0 (WIP)
+	/*this.beamEnabled = false;
+	if(convoIndex3 > 0){
+		this.beamEnabled = true;
+		this.beam = game.add.sprite(0, 0, 'cheesecake');
+		game.physics.arcade.enable(this.beam);
+		this.beam.anchor.set(0.5);
+		this.beamTime = 0;
+		this.beamCooldown = 120;
+	}*/
+	
 	// Add grabbed pointer
 	this.grabbed = null;
 	this.grabCooldown = 0;
+	
 }
 Ship.prototype = Object.create(Phaser.Sprite.prototype);
 Ship.prototype.constructor = Ship;
 Ship.prototype.update = function(){
 	
 	// Ship movement
-	if(game.input.keyboard.isDown(Phaser.Keyboard.A)){
-		// Move left if left is pressed
-		this.body.velocity.x = -300;
+	// Do not move if the dash ability was just used (if it is enabled)
+	if(!this.dashEnabled || this.dashTime > -this.dashCooldown + 8){
+		if(game.input.keyboard.isDown(Phaser.Keyboard.A)){
+			// Move left if left is pressed
+			this.body.velocity.x = -300;
+		}
+		else if(game.input.keyboard.isDown(Phaser.Keyboard.D)){
+			// Move right if right is pressed
+			this.body.velocity.x = 300;
+		}
+		else this.body.velocity.x = 0;
+		if(game.input.keyboard.isDown(Phaser.Keyboard.W)){
+			// Move up if up is pressed
+			this.body.velocity.y = -300;
+		}
+		else if(game.input.keyboard.isDown(Phaser.Keyboard.S)){
+			// Move down if down is pressed
+			this.body.velocity.y = 300;
+		}
+		else this.body.velocity.y = 0;
 	}
-	else if(game.input.keyboard.isDown(Phaser.Keyboard.D)){
-		// Move right if right is pressed
-		this.body.velocity.x = 300;
+	
+	// Dash ability
+	if(this.dashEnabled){
+	// If a key is double-tapped, quickly move the ship in that direction.
+	if(this.dashTime >= 0){ // Check to make sure the ability isn't on cooldown.
+		if(game.input.keyboard.justPressed(Phaser.Keyboard.A)){
+			if(this.dashDirection == 0 && this.dashTime > 0){this.body.velocity.x = -this.dashSpeed; this.dashTime = -this.dashCooldown; this.tint = 0x0000ff;}
+			else{this.dashDirection = 0; this.dashTime = 30;}
+		}
+		if(game.input.keyboard.justPressed(Phaser.Keyboard.D)){
+			if(this.dashDirection == 1 && this.dashTime > 0){this.body.velocity.x = this.dashSpeed; this.dashTime = -this.dashCooldown; this.tint = 0x0000ff;}
+			else{this.dashDirection = 1; this.dashTime = 30;}
+		}
+		if(game.input.keyboard.justPressed(Phaser.Keyboard.W)){
+			if(this.dashDirection == 2 && this.dashTime > 0){this.body.velocity.y = -this.dashSpeed; this.dashTime = -this.dashCooldown; this.tint = 0x0000ff;}
+			else{this.dashDirection = 2; this.dashTime = 30;}
+		}
+		if(game.input.keyboard.justPressed(Phaser.Keyboard.S)){
+			if(this.dashDirection == 3 && this.dashTime > 0){this.body.velocity.y = this.dashSpeed; this.dashTime = -this.dashCooldown; this.tint = 0x0000ff;}
+			else{this.dashDirection = 3; this.dashTime = 30;}
+		}
 	}
-	else this.body.velocity.x = 0;
-	if(game.input.keyboard.isDown(Phaser.Keyboard.W)){
-		// Move up if up is pressed
-		this.body.velocity.y = -300;
+	if(this.dashTime > 0) this.dashTime--; // Key is single-tapped and ready for dash!
+	else if(this.dashTime < 0){ // Dash was just used, cooldown in effect.
+		if(this.dashTime == -this.dashCooldown + 8) this.tint = 0xADD8E6; // Add blue tint after initial speed burst
+		if(this.dashTime == -1) this.tint = 0xffffff; // Remove tint when cooldown is over
+		this.dashTime++;
+	}}
+	
+	// Shield ability
+	if(this.shieldEnabled){
+	// Move shield to ship
+	this.shield.x = this.x;
+	this.shield.y = this.y;
+	// If the shield is active, grow it until it hits its max scale
+	if(this.shield.active){
+		if(this.shield.scale.x < this.shieldSize) this.shield.scale.setTo(this.shield.scale.x + 0.1);
+		else{ // When the shielding is finished
+			this.shield.active = false;
+			this.shield.alpha = 0.1;
+		}
 	}
-	else if(game.input.keyboard.isDown(Phaser.Keyboard.S)){
-		// Move down if down is pressed
-		this.body.velocity.y = 300;
-	}
-	else this.body.velocity.y = 0;
+	// If the shield is not active, shrink it until it hits a scale of 1 (ready for use again)
+	else{
+		if(this.shield.scale.x > 0.7) this.shield.scale.setTo(this.shield.scale.x - this.shieldRegen);
+		else if(game.input.keyboard.justPressed(Phaser.Keyboard.SPACEBAR)){ // The shield is ready & summoned!
+			this.shield.active = true;
+			this.shield.alpha = 0.8;
+		}
+	}}
+	
+	// Beam ability (WIP)
+	/*if(this.beamEnabled){
+	// If left-click is double-clicked, create tractor beam!
+	if(this.beamTime >= 0){ // Check to make sure the ability isn't on cooldown.
+		if(game.input.activePointer.leftButton.justPressed){
+			if(this.beamTime > 0){
+				this.beam.x = game.input.x;
+				this.beam.y = game.input.y;
+				this.beamTime = -this.beamCooldown;
+			}
+			else this.beamTime = 30;
+		}
+	}}*/
 	
 	// Move arm to ship
 	this.arm.x = this.x;
@@ -99,4 +204,11 @@ Ship.prototype.update = function(){
 	
 	// Decrement grabCooldown (which keeps the player from grab-spamming)
 	if(this.grabCooldown > 0) this.grabCooldown--;
+	
+	// Decrement invincibility frame and flash ship
+	if(this.invincibility > 0){
+		if(this.invincibility == 1) this.visible = true;
+		else if(this.invincibility % 4 == 0) this.visible = !this.visible;
+		this.invincibility--;
+	}
 }

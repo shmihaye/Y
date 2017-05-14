@@ -1,8 +1,8 @@
 
 // Global variables for play state
-var player, obstacles, timestep, levelData;
-//var asteroids, gravRocks;
+var player, obstacles, background, timestep, levelData;
 var levelNum = 0;
+var health = 5;
 
 // Play state container
 var playState = {
@@ -16,15 +16,18 @@ var playState = {
 	},
 	
 	create: function() {
-
+		
 		// Enable FPS monitoring
 		game.time.advancedTiming = true;
 		
 		// Enable the Arcade physics system
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		
+		// Add background
+		this.background = game.add.tileSprite(0, 0, game.width, game.height, 'spaceBackground');
+		
 		// Create the player ship
-		player = new Ship(game, 'cheesecake');
+		player = new Ship(game, 'ship');
 		game.add.existing(player);
 		
 		// Create obstacles group
@@ -49,14 +52,17 @@ var playState = {
 	
 	update: function() {
 		
-		// Call grabObject if the claw overlaps with an asteroid
+		// Call grabObject if the claw overlaps with an obstacle
 		game.physics.arcade.overlap(player.claw, obstacles, grabObject, null, this);
 		
-		// Call hurtShip if the ship overlaps with an asteroid
+		// Call hurtShield if the ship's shield overlaps with an obstacle
+		if(player.shieldEnabled) game.physics.arcade.overlap(player.shield, obstacles, hurtShield, null, this);
+		
+		// Call hurtShip if the ship overlaps with an obstacle
 		game.physics.arcade.overlap(player, obstacles, hurtShip, null, this);
 		
-		// Call destroyAsteroids if two asteroids overlap
-		game.physics.arcade.overlap(obstacles, obstacles, destroyAsteroids, null, this);
+		// Call destroyObstacles if two obstacles overlap
+		game.physics.arcade.overlap(obstacles, obstacles, destroyObstacles, null, this);
 		
 		// Object creation from JSON object
 		if(levelData.timestamps.length > 0 && timestep == levelData.timestamps[0].time){
@@ -65,25 +71,27 @@ var playState = {
 			for(let i = 0; i < listSize; i++){
 				// Create equivalent object
 				let spawnObj = spawnList.objects.shift();
-				var newObj;
-				if(spawnObj.type == 'Asteroid') {
-					newObj = new Asteroid(game, 'cheesecake');
-				}
-				if(spawnObj.type == 'GravRock') {
-					newObj = new GravRock(game, 'gravRock');
-				}
-				newObj.anchor.setTo(0.5);
+				var newObj = null;
+				// Go to hallway state at the end of the level
+				if(spawnObj.type == 'END') game.state.start('Hallway');
+				else if(spawnObj.type == 'Asteroid') newObj = new Asteroid(game, 'cheesecake');
+        else if(spawnObj.type == 'GravRock') newObj = new GravRock(game, 'gravRock');
 				// Retrieve object properties
 				if(spawnObj.x !== undefined) newObj.x = spawnObj.x;
 				if(spawnObj.y !== undefined) newObj.y = spawnObj.y;
 				if(spawnObj.xvel !== undefined) newObj.body.velocity.x = spawnObj.xvel;
 				if(spawnObj.yvel !== undefined) newObj.body.velocity.y = spawnObj.yvel;
 				if(spawnObj.scale !== undefined) newObj.scale.setTo(spawnObj.scale);
-				game.add.existing(newObj);
-				obstacles.add(newObj);
+				if(newObj != null){
+					game.add.existing(newObj);
+					obstacles.add(newObj);
+				}
 			}
 		}
 		timestep++;
+		
+		// Scroll background
+		this.background.tilePosition.x -= 10;
 	},
 	
 	render: function() {
@@ -94,20 +102,28 @@ var playState = {
 };
 
 // Misc. functions (phaser doesn't like them inside the play state container...)
-function grabObject(claw, asteroid){
-	// If the grab key is pressed, set grabbedObject to the object
+function grabObject(claw, obstacle){
+	// If the grab key is pressed, set grabbedObject to the obstacle
 	if(game.input.activePointer.leftButton.isDown && player.grabCooldown == 0 && player.grabbed == null){
-		player.grabbed = asteroid;
+		player.grabbed = obstacle;
 	}
 }
-function hurtShip(player, asteroid){
-	// [TEMPORARY] If the player touches an asteroid that hasn't been grabbed, reset the game
-	game.state.start('Play');
+function hurtShip(player, obstacle){
+	// If the player touches an obstacle that hasn't been grabbed, lower health
+	if(obstacle != player.grabbed && !obstacle.primed && player.invincibility == 0){player.health--; player.invincibility = 60;}
+	// If the player runs out of health, restart the stage
+	if(player.health == 0) game.state.start('Play');
 }
-function destroyAsteroids(asteroid1, asteroid2){
-	// Destroy asteroids with thrown asteroids
-	if(asteroid1.primed || asteroid2.primed){
-		asteroid1.kill();
-		asteroid2.kill();
+function hurtShield(shield, obstacle){
+	// If an obstacle hit the shield, destroy the obstacle
+	if(obstacle != player.grabbed && !obstacle.primed && player.shield.active){
+		obstacle.kill();
+	}
+}
+function destroyObstacles(obstacle1, obstacle2){
+	// Destroy obstacles with thrown obstacles
+	if(obstacle1.primed || obstacle2.primed){
+		obstacle1.kill();
+		obstacle2.kill();
 	}
 }
