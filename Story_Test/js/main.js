@@ -1,4 +1,4 @@
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'StoryTEST');
+//var game = new Phaser.Game(800, 600, Phaser.AUTO, 'StoryTEST');
 
 // library of all text for a given "chapter"
  DiaA = "pick ME!!!"
@@ -45,10 +45,12 @@ var narratvieState = {
 	 	slot3 = game.add.text(0, 0, choice3, { font: "32px Source Sans Pro", fill: unselected_color, align: "left" })
     
 
+    	exitSign = game.add.text(768,500, 'exit', {font: } "32px Source Sans Pro", fill: '#8B0000', align: "right" })
+
     	slot1.inputEnabled = true
     	slot2.inputEnabled = true
     	slot3.inputEnabled = true
-   
+   		exitSign.input.Enabled = false
 
 //  	slot1.input.enableDrag()  
 //  	slot2.input.enableDrag()
@@ -67,6 +69,12 @@ var narratvieState = {
     	slot3.events.onInputOver.add(this.color_change, slot3)
   		slot3.events.onInputOut.add(this.color_revert, slot3)
   		slot3.events.onInputDown.add(this.nextDia3, slot3)
+
+		exitSign.events.onInputOver.add(this.color_change, exitSign)
+  		exitSign.events.onInputOut.add(this.color_revert, exitSign)
+  		exitSign.events.onInputDown.add(this.moveon, exitSign)
+
+
 	},
 	
 	update: function() {
@@ -77,6 +85,9 @@ var narratvieState = {
 		slot1.inputEnabled = false
 		slot2.inputEnabled = false 
 		slot3.inputEnabled = false
+
+		exitSign.inputEnabled = true
+
 	}
 
 	},
@@ -158,7 +169,18 @@ var narratvieState = {
 			Ccount+=1
 		}
 	},
+
+	moveon: function(item){
+		game.state.start('hallway')
+
+
+	}
+
+
+
+
+
 };
 
-game.state.add('narratvieState', narratvieState);
-game.state.start('narratvieState');
+//game.state.add('narratvieState', narratvieState);
+//game.state.start('narratvieState');
