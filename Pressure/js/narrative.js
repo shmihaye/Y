@@ -1,4 +1,3 @@
-//var game = new Phaser.Game(800, 600, Phaser.AUTO, 'StoryTEST');
 
 // library of all text for a given "chapter"
  DiaA = "pick ME!!!"
@@ -29,7 +28,7 @@ var unselected_color = "#F0F8FF"
 var selected_color = "#00CED1"
 
 
-var narratvieState = {
+var narrativeState = {
 	
 	preload: function() {
 		
@@ -45,12 +44,12 @@ var narratvieState = {
 	 	slot3 = game.add.text(0, 0, choice3, { font: "32px Source Sans Pro", fill: unselected_color, align: "left" })
     
 
-    	exitSign = game.add.text(768,500, 'exit', {font: } "32px Source Sans Pro", fill: '#8B0000', align: "right" })
+    	exitSign = game.add.text(768,500, 'exit', {font: "32px Source Sans Pro", fill: '#8B0000', align: "right" })
 
     	slot1.inputEnabled = true
     	slot2.inputEnabled = true
     	slot3.inputEnabled = true
-   		exitSign.input.Enabled = false
+   		exitSign.inputEnabled = false
 
 //  	slot1.input.enableDrag()  
 //  	slot2.input.enableDrag()
@@ -171,16 +170,8 @@ var narratvieState = {
 	},
 
 	moveon: function(item){
-		game.state.start('hallway')
+		game.state.start('Hallway');
 
 
 	}
-
-
-
-
-
 };
-
-//game.state.add('narratvieState', narratvieState);
-//game.state.start('narratvieState');

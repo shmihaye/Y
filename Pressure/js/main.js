@@ -2,6 +2,15 @@
 // Create global game container object
 var Game = {};
 
+// Global variables
+// energy -- how much "health" the player has in the play state. Recharges over time
+var energy = 100;
+// convoIndex1-4 -- how many times the player has talked to characters 1-4
+var convoIndex1 = 0;
+var convoIndex2 = 0;
+var convoIndex3 = 0;
+var convoIndex4 = 0;
+
 // Boot state
 Game.Boot = function(){};
 Game.Boot.prototype = {
@@ -35,7 +44,7 @@ Game.Load.prototype = {
 		this.load.path = 'assets/img/';
 		game.load.image('cheesecake', 'cheesecake.png');
 		game.load.image('ship', 'ship.png');
-    game.load.image('gravRock', 'gravRock.png');
+		game.load.image('gravRock', 'gravRock.png');
 		game.load.image('spaceBackground', 'spaceBackground.png');
 		game.load.image('hallwayDoor', 'hallwayDoor.png');
 		game.load.image('hallwayBackground', 'hallwayBackgroundBase.png');
@@ -56,6 +65,7 @@ game.state.add('Boot', Game.Boot); // Booting up
 game.state.add('Load', Game.Load); // Loading assets
 game.state.add('Play', playState); // Playing the game
 game.state.add('Hallway', hallwayState); // Navigating the hallway
+game.state.add('Narrative', narrativeState); // Talking to a character
 // Begin boot state
 game.state.start('Boot');
 

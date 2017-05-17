@@ -110,9 +110,9 @@ function grabObject(claw, obstacle){
 }
 function hurtShip(player, obstacle){
 	// If the player touches an obstacle that hasn't been grabbed, lower health
-	if(obstacle != player.grabbed && !obstacle.primed && player.invincibility == 0){player.health--; player.invincibility = 60;}
+	if(obstacle != player.grabbed && !obstacle.primed && player.invincibility == 0){energy -= 30; player.invincibility = 60;}
 	// If the player runs out of health, restart the stage
-	if(player.health == 0) game.state.start('Play');
+	if(energy <= 0) game.state.start('Hallway');
 }
 function hurtShield(shield, obstacle){
 	// If an obstacle hit the shield, destroy the obstacle
