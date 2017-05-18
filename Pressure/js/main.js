@@ -10,6 +10,8 @@ var convoIndex1 = 0;
 var convoIndex2 = 0;
 var convoIndex3 = 0;
 var convoIndex4 = 0;
+// hallStart -- The x position where the camera should start in the hallstart
+var hallStart = 0;
 
 // Boot state
 Game.Boot = function(){};
@@ -42,13 +44,15 @@ Game.Load.prototype = {
 
 		// Load game images
 		this.load.path = 'assets/img/';
-		game.load.image('cheesecake', 'cheesecake.png');
-		game.load.image('ship', 'ship.png');
-		game.load.image('gravRock', 'gravRock.png');
+		game.load.spritesheet('ship', 'ship.png', 64, 64);
+		game.load.image('arm1', 'arm1.png');
+		game.load.image('arm2', 'arm2.png');
+		game.load.spritesheet('claw', 'claw.png', 12, 12);
 		game.load.image('spaceBackground', 'spaceBackground.png');
+		game.load.image('gravRock', 'gravRock.png');
 		game.load.image('hallwayDoor', 'hallwayDoor.png');
-		game.load.image('hallwayBackground', 'hallwayBackgroundBase.png');
-		game.load.image('controlHubBackground', 'controlHubBackgroundBase.png');
+		game.load.image('hallwayBackground', 'hallwayBackground.png');
+		game.load.image('controlHubBackground', 'controlHubBackground.png');
 	},
 	create: function() {
 		// Disable preload bar crop while we wait for mp3 decoding

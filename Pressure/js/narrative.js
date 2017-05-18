@@ -170,6 +170,7 @@ var narrativeState = {
 	},
 
 	moveon: function(item){
+		hallStart = 0;
 		game.state.start('Hallway');
 
 

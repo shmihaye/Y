@@ -12,17 +12,21 @@ function Ship(game, image){
 	this.invincibility = 0;
 	
 	// Add arm
-	this.arm = game.add.sprite(0, 0, 'cheesecake');
-	this.arm.scale.set(3, 0.25);
-	this.arm.anchor.y = 0.5;
-	this.arm.clockwise = 0;
-	this.arm.speedUp = 0;
+	this.arm2 = game.add.sprite(0, 0, 'arm2');
+	this.arm2.anchor.y = 0.5;
+	this.arm2.scale.setTo(2);
+	this.arm2.extDist = 0; // The distance the arm has extended
+	this.arm1 = game.add.sprite(0, 0, 'arm1');
+	this.arm1.anchor.y = 0.5;
+	this.arm1.scale.setTo(2);
+	this.arm1.clockwise = 0;
+	this.arm1.speedUp = 0;
 	
 	// Add claw
-	this.claw = game.add.sprite(0, 0, 'cheesecake');
+	this.claw = game.add.sprite(0, 0, 'claw');
 	game.physics.arcade.enable(this.claw);
 	this.claw.body.gravity.y = 0;
-	this.claw.scale.set(0.5);
+	this.claw.scale.setTo(2);
 	this.claw.anchor.y = 0.5;
 	
 	// Add dash if convoIndex1 > 0
@@ -39,7 +43,7 @@ function Ship(game, image){
 	this.shieldEnabled = false;
 	if(convoIndex2 > 0){
 		this.shieldEnabled = true;
-		this.shield = game.add.sprite(0, 0, 'cheesecake');
+		this.shield = game.add.sprite(0, 0, 'gravRock');
 		game.physics.arcade.enable(this.shield);
 		this.shield.anchor.set(0.5);
 		this.shield.scale.set(0.5);
@@ -59,6 +63,13 @@ function Ship(game, image){
 		this.beamTime = 0;
 		this.beamCooldown = 120;
 	}*/
+	
+	// Add animations
+	this.animations.add('fly', [0,1], 10, true);
+	this.animations.play('fly');
+	this.claw.animations.add('closed', [0], 10, true);
+	this.claw.animations.add('open', [1], 10, true);
+	this.claw.animations.play('open');
 	
 	// Add grabbed pointer
 	this.grabbed = null;
@@ -156,35 +167,51 @@ Ship.prototype.update = function(){
 		}
 	}}*/
 	
-	// Move arm to ship
-	this.arm.x = this.x;
-	this.arm.y = this.y;
+	// Move arm1 to ship
+	this.arm1.x = this.x;
+	this.arm1.y = this.y;
 	
 	// Calulate desired arm angle and move towards it
 	let desiredAngle = (180 * Math.atan((this.y-game.input.y)/(this.x-game.input.x))/3.14);
 	if(game.input.x <= this.x) desiredAngle += 180;
 	if(desiredAngle >= 180) desiredAngle -= 360;
-	if(Math.abs(desiredAngle-this.arm.angle) < 10) this.arm.angle = desiredAngle;
-	else if(this.arm.angle > desiredAngle){
-		if(this.arm.angle-desiredAngle > 180) this.arm.angle += 5;
-		else this.arm.angle -= 5;
+	if(Math.abs(desiredAngle-this.arm1.angle) < 10) this.arm1.angle = desiredAngle;
+	else if(this.arm1.angle > desiredAngle){
+		if(this.arm1.angle-desiredAngle > 180) this.arm1.angle += 5;
+		else this.arm1.angle -= 5;
 	}
-	else{ //desiredAngle > arm.angle
-		if(this.arm.angle-desiredAngle < -180) this.arm.angle -= 5;
-		else this.arm.angle += 5;
+	else{ //desiredAngle > arm1.angle
+		if(this.arm1.angle-desiredAngle < -180) this.arm1.angle -= 5;
+		else this.arm1.angle += 5;
 	}
 	
-	// Calculate desired arm length and move towards it
-	desiredLength = 0.02 * Math.sqrt(((this.y-game.input.y)*(this.y-game.input.y))+((this.x-game.input.x)*(this.x-game.input.x)));
-	if(desiredLength > this.arm.scale.x+0.2) this.arm.scale.x += 0.2;
-	else if(desiredLength < this.arm.scale.x-0.2) this.arm.scale.x -= 0.2;
-	if(this.arm.scale.x < 0.5) this.arm.scale.x = 0.5;
-	else if(this.arm.scale.x > 4) this.arm.scale.x = 4;
+	// Set the other arm segment and claw to the same angle
+	this.arm2.angle = this.arm1.angle;
+	this.claw.angle = this.arm1.angle;
 	
-	// Move claw to end of arm
-	this.claw.x = this.x + (this.arm.width * Math.cos(3.14 * this.arm.angle/180));
-	this.claw.y = this.y + (this.arm.width * Math.sin(3.14 * this.arm.angle/180));
-	this.claw.angle = this.arm.angle;
+	// Break the angle into x and y components
+	let angleX = Math.cos(3.14 * this.arm1.angle/180);
+	let angleY = Math.sin(3.14 * this.arm1.angle/180);
+	
+	// Calculate desired extension and move towards it
+	let desiredLength = 0;
+	// Only extend desiredLength past 0 if the y component of the angle
+	// and the distance between the ship and mouse cursor have the same sign
+	if((angleY * (game.input.y-this.claw.y) >= 0) && (angleX * (game.input.x-this.claw.x) >= 0)) desiredLength = Math.sqrt(((this.y+(80*angleY)-game.input.y)*(this.y+(80*angleY)-game.input.y))+((this.x+(80*angleX)-game.input.x)*(this.x+(80*angleX)-game.input.x)));
+	if(desiredLength > this.arm2.extDist + 5) this.arm2.extDist += 5;
+	else if(desiredLength < this.arm2.extDist - 5) this.arm2.extDist -= 5;
+	if(this.arm2.extDist < 0) this.arm2.extDist = 0;
+	else if(this.arm2.extDist > 80) this.arm2.extDist = 80;
+	
+	// Move arm2 extDist past arm1 and move claw to end of arm2
+	this.arm2.x = this.arm1.x + (this.arm2.extDist * angleX);
+	this.arm2.y = this.arm1.y + (this.arm2.extDist * angleY);
+	this.claw.x = this.arm2.x + (72 * angleX);
+	this.claw.y = this.arm2.y + (72 * angleY);
+	
+	// Open and close claw
+	if(!game.input.activePointer.leftButton.isDown) this.claw.animations.play('open');
+	else this.claw.animations.play('closed');
 	
 	// Move grabbed object with claw
 	if(this.grabbed != null){

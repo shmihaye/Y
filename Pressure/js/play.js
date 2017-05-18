@@ -26,21 +26,13 @@ var playState = {
 		// Add background
 		this.background = game.add.tileSprite(0, 0, game.width, game.height, 'spaceBackground');
 		
-		// Create the player ship
-		player = new Ship(game, 'ship');
-		game.add.existing(player);
-		
 		// Create obstacles group
 		obstacles = game.add.group();
 		obstacles.enableBody = true;
 		
-		/*// Create asteroids group
-		asteroids = game.add.group();
-		asteroids.enableBody = true;
-		
-		// Create gravRocks group;
-		gravRocks = game.add.group();
-		gravRocks.enableBody = true;*/
+		// Create the player ship
+		player = new Ship(game, 'ship');
+		game.add.existing(player);
 		
 		// Load in level data
 		levelData = game.cache.getJSON('level');
@@ -73,9 +65,12 @@ var playState = {
 				let spawnObj = spawnList.objects.shift();
 				var newObj = null;
 				// Go to hallway state at the end of the level
-				if(spawnObj.type == 'END') game.state.start('Hallway');
-				else if(spawnObj.type == 'Asteroid') newObj = new Asteroid(game, 'cheesecake');
-        else if(spawnObj.type == 'GravRock') newObj = new GravRock(game, 'gravRock');
+				if(spawnObj.type == 'END'){
+					hallStart = 800;
+					game.state.start('Hallway');
+				}
+				else if(spawnObj.type == 'Asteroid') newObj = new Asteroid(game, 'gravRock');
+				else if(spawnObj.type == 'GravRock') newObj = new GravRock(game, 'gravRock');
 				// Retrieve object properties
 				if(spawnObj.x !== undefined) newObj.x = spawnObj.x;
 				if(spawnObj.y !== undefined) newObj.y = spawnObj.y;
