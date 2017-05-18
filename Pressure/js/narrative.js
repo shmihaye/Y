@@ -1,20 +1,20 @@
 
 // library of all text for a given "chapter"
- DiaA = "pick ME!!!"
- DiaB = "don't pick me!"
- DiaC = "Praise the Sun!"
+ DiaA = "Here is how you will be able to talk to your crew"
+ DiaB = "You click on a sentence and it'll expand as the NPC elaborates"
+ DiaC = "But be careful you only have so many expansions"
 
- DiaA1 = "\nGJ"
- DiaA2 = "\nNo problem son"
- DiaA3 = "\nuuuhhhh"
+ DiaA1 = "\nWith each visit will strike up a new conversation"
+ DiaA2 = "\nSlowly you will get to know them"
+ DiaA3 = "\nAnd as you complete each interaction, your crew will perform better"
 
- DiaB1 = "\nI'm so sorry"
- DiaB2 = "\nBuck up son welcome to space"
- DiaB3 = "\n........"
+ DiaB1 = "\nYeah! just like that!"
+ DiaB2 = "\nWow u are an ambitious one"
+ DiaB3 = "\nstahp pls"
 
- DiaC1 = "\nHEY, U HOLLOW LOOKING ASS MOTHE..."
- DiaC2 = "\nPraise the Sun..."
- DiaC3 = "\nGo play hunipop you dirty casual"
+ DiaC1 = "\nDon't waste them here"
+ DiaC2 = "\nSeriously stop"
+ DiaC3 = "\nAre you happy with yourself?"
 
 choice1 = DiaA
 choice2 = DiaB
@@ -44,7 +44,7 @@ var narrativeState = {
 	 	slot3 = game.add.text(0, 0, choice3, { font: "32px Source Sans Pro", fill: unselected_color, align: "left" })
     
 
-    	exitSign = game.add.text(768,500, 'exit', {font: "32px Source Sans Pro", fill: '#8B0000', align: "right" })
+    	exitSign = game.add.text(700,500, 'exit', {font: "32px Source Sans Pro", fill: '#8B0000', align: "left" })
 
     	slot1.inputEnabled = true
     	slot2.inputEnabled = true
