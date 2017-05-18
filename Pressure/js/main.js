@@ -48,13 +48,14 @@ Game.Load.prototype = {
 		game.load.image('spaceBackground', 'spaceBackground.png');
 		game.load.image('hallwayDoor', 'hallwayDoor.png');
 		game.load.image('hallwayBackground', 'hallwayBackgroundBase.png');
+		game.load.image('controlHubBackground', 'controlHubBackgroundBase.png');
 	},
 	create: function() {
 		// Disable preload bar crop while we wait for mp3 decoding
 		this.preloadBar.cropEnabled = false;
 	},
 	update: function() {
-		this.state.start('Play');
+		this.state.start('Hallway');
 	}
 };
 
