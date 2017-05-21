@@ -54,7 +54,7 @@ var playState = {
 		game.physics.arcade.overlap(player, obstacles, hurtShip, null, this);
 		
 		// Call destroyObstacles if two obstacles overlap
-		game.physics.arcade.overlap(obstacles, obstacles, destroyObstacles, null, this);
+		//game.physics.arcade.overlap(obstacles, obstacles, destroyObstacles, null, this);
 		
 		// Object creation from JSON object
 		if(levelData.timestamps.length > 0 && timestep == levelData.timestamps[0].time){
@@ -69,8 +69,9 @@ var playState = {
 					hallStart = 800;
 					game.state.start('Hallway');
 				}
-				else if(spawnObj.type == 'Asteroid') newObj = new Asteroid(game, 'gravRock');
+				else if(spawnObj.type == 'Asteroid') newObj = new Asteroid(game, 'gravRock'); // Place holder image
 				else if(spawnObj.type == 'GravRock') newObj = new GravRock(game, 'gravRock');
+				else if(spawnObj.type == 'BombRock') newObj = new BombRock(game, 'gravRock'); // Place holder image
 				// Retrieve object properties
 				if(spawnObj.x !== undefined) newObj.x = spawnObj.x;
 				if(spawnObj.y !== undefined) newObj.y = spawnObj.y;
@@ -115,10 +116,10 @@ function hurtShield(shield, obstacle){
 		obstacle.kill();
 	}
 }
-function destroyObstacles(obstacle1, obstacle2){
+/*function destroyObstacles(obstacle1, obstacle2){
 	// Destroy obstacles with thrown obstacles
 	if(obstacle1.primed || obstacle2.primed){
-		obstacle1.kill();
-		obstacle2.kill();
+		if (obstacle1.constructor.name != "BombRock") obstacle1.kill();
+		if (obstacle2.constructor.name != "BombRock") obstacle2.kill();
 	}
-}
+}*/
