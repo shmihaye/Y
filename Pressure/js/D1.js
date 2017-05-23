@@ -4,36 +4,7 @@
 
 
 
- DiaA = "Reminds me of the service, being out like this."
- DiaB = "These asteroids hit real hard..."
- DiaC = "Come and have a drink cap."
-
- DiaA1 = "\nHopefully I won't get as many.. souvenirs from this."
- DiaA2 = "\nSorry was that too grim for you?"
- DiaA3 = "\nMy comedy is a bit uuhh.. out of practice I guess."
-
- DiaB1 = "\nAt least my leg has atuo stablizers."
- DiaB2 = "\nI won't be falling on anyone when things get shaky."
- DiaB3 = "\nThey even called me 'ol steady' before I had this thing."
-
- DiaC1 = "\nI have my private stash here."
- DiaC2 = "\nBetter get some before I wisen up and down it all."
- DiaC3 = "\nYou should see my collection back home! Its magnificent."
-
-choice1 = DiaA
-choice2 = DiaB
-choice3 = DiaC
-
-Acount= 1
-Bcount= 1
-Ccount= 1
-
-var unselected_color = "#7FFFD4"
-var selected_color = "#00BFFF"
-var done_color = "#0000FF"
-
-
-var narrativeState = {
+var D1 = {
 	
 	preload: function() {
 		
@@ -42,6 +13,35 @@ var narrativeState = {
 	},
 
 	create: function() {
+		 DiaA = "Reminds me of the service, being out like this."
+		 DiaB = "These asteroids hit real hard..."
+		 DiaC = "Come and have a drink cap."
+		
+		 DiaA1 = "\nHopefully I won't get as many.. souvenirs from this."
+		 DiaA2 = "\nSorry was that too grim for you?"
+		 DiaA3 = "\nMy comedy is a bit uuhh.. out of practice I guess."
+		
+		 DiaB1 = "\nAt least my leg has atuo stablizers."
+		 DiaB2 = "\nI won't be falling on anyone when things get shaky."
+		 DiaB3 = "\nThey even called me 'ol steady' before I had this thing."
+		
+		 DiaC1 = "\nI have my private stash here."
+		 DiaC2 = "\nBetter get some before I wisen up and down it all."
+		 DiaC3 = "\nYou should see my collection back home! Its magnificent."
+		
+		choice1 = DiaA
+		choice2 = DiaB
+		choice3 = DiaC
+		
+		Acount= 1
+		Bcount= 1
+		Ccount= 1
+		
+		var unselected_color = "#7FFFD4"
+		var selected_color = "#00BFFF"
+		var done_color = "#0000FF"
+
+		
 		BG = game.add.sprite(0, 0, 'space');
 		slot1 = game.add.text(0, 0, choice1, { font: "32px Source Sans Pro", fill: unselected_color, align: "left" })
 		slot2 = game.add.text(0, 0, choice2, { font: "32px Source Sans Pro", fill: unselected_color, align: "left" })

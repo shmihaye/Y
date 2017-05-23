@@ -1,35 +1,7 @@
 
-// library of all text for a given "chapter"
- DiaA = "Do you think anyone is going to care about us?"
- DiaB = "It doesn't matter..."
- DiaC = "Somethings aren't worth recovering..."
-
- DiaA1 = "\nSure they'll miss the meds, but not us."
- DiaA2 = "\nOut of sight out of mind."
- DiaA3 = "\nWe are a number, a unit, a casualty.."
-
- DiaB1 = "\n3 months alone in the hospital taught me"
- DiaB2 = "\n10 years wihtout a word from them taught me"
- DiaB3 = "\nPeople like me get left behind, no one comes looking"
-
- DiaC1 = "\nMy unit didn't want to remember me,"
- DiaC2 = "\nI am just a bad memory."
- DiaC3 = "\nand this ship could be one too..."
-
-choice1 = DiaA
-choice2 = DiaB
-choice3 = DiaC
-
-Acount= 1
-Bcount= 1
-Ccount= 1
-
-var unselected_color = "#7FFFD4"
-var selected_color = "#00BFFF"
-var done_color = "#0000FF"
 
 
-var narrativeState = {
+var D3 = {
 	
 	preload: function() {
 		
@@ -38,6 +10,39 @@ var narrativeState = {
 	},
 
 	create: function() {
+
+
+
+		// library of all text for a given "chapter"
+		 DiaA = "Do you think anyone is going to care about us?"
+		 DiaB = "It doesn't matter..."
+		 DiaC = "Somethings aren't worth recovering..."
+		
+		 DiaA1 = "\nSure they'll miss the meds, but not us."
+		 DiaA2 = "\nOut of sight out of mind."
+		 DiaA3 = "\nWe are a number, a unit, a casualty.."
+		
+		 DiaB1 = "\n3 months alone in the hospital taught me"
+		 DiaB2 = "\n10 years wihtout a word from them taught me"
+		 DiaB3 = "\nPeople like me get left behind, no one comes looking"
+		
+		 DiaC1 = "\nMy unit didn't want to remember me,"
+		 DiaC2 = "\nI am just a bad memory."
+		 DiaC3 = "\nand this ship could be one too..."
+		
+		choice1 = DiaA
+		choice2 = DiaB
+		choice3 = DiaC
+		
+		Acount= 1
+		Bcount= 1
+		Ccount= 1
+		
+		var unselected_color = "#7FFFD4"
+		var selected_color = "#00BFFF"
+		var done_color = "#0000FF"
+
+
 		BG = game.add.sprite(0, 0, 'space');
 		slot1 = game.add.text(0, 0, choice1, { font: "32px Source Sans Pro", fill: unselected_color, align: "left" })
 		slot2 = game.add.text(0, 0, choice2, { font: "32px Source Sans Pro", fill: unselected_color, align: "left" })

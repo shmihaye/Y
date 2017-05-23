@@ -1,35 +1,7 @@
 
-// library of all text for a given "chapter"
- DiaA = "Feels wrong going off on our own like this."
- DiaB = "We could float off and we'd be forgotten."
- DiaC = "I don't regret the decision, but I don't like it."
-
- DiaA1 = "\nLike being in a lake in the middle of the night."
- DiaA2 = "\nThat used to be a rush, but now..."
- DiaA3 = "\nIt makes my blood run cold."
-
- DiaB1 = "\nPeople forget the painful memories."
- DiaB2 = "\nAnd thats fine.. when you arent that memory."
- DiaB3 = "\nWhen you are, there are ways that we can forget oursleves."
-
- DiaC1 = "\nI'm just following orders, doing what I gotta do."
- DiaC2 = "\nSo many people need help, I can't put me before them."
- DiaC3 = "\nI can handle myself... I have to."
-
-choice1 = DiaA
-choice2 = DiaB
-choice3 = DiaC
-
-Acount= 1
-Bcount= 1
-Ccount= 1
-
-var unselected_color = "#7FFFD4"
-var selected_color = "#00BFFF"
-var done_color = "#0000FF"
 
 
-var narrativeState = {
+var D2 = {
 	
 	preload: function() {
 		
@@ -38,6 +10,36 @@ var narrativeState = {
 	},
 
 	create: function() {
+
+		// library of all text for a given "chapter"
+		 DiaA = "Feels wrong going off on our own like this."
+		 DiaB = "We could float off and we'd be forgotten."
+		 DiaC = "I don't regret the decision, but I don't like it."
+		
+		 DiaA1 = "\nLike being in a lake in the middle of the night."
+		 DiaA2 = "\nThat used to be a rush, but now..."
+		 DiaA3 = "\nIt makes my blood run cold."
+		
+		 DiaB1 = "\nPeople forget the painful memories."
+		 DiaB2 = "\nAnd thats fine.. when you arent that memory."
+		 DiaB3 = "\nWhen you are, there are ways that we can forget oursleves."
+		
+		 DiaC1 = "\nI'm just following orders, doing what I gotta do."
+		 DiaC2 = "\nSo many people need help, I can't put me before them."
+		 DiaC3 = "\nI can handle myself... I have to."
+		
+		choice1 = DiaA
+		choice2 = DiaB
+		choice3 = DiaC
+		
+		Acount= 1
+		Bcount= 1
+		Ccount= 1
+		
+		var unselected_color = "#7FFFD4"
+		var selected_color = "#00BFFF"
+		var done_color = "#0000FF"
+
 		BG = game.add.sprite(0, 0, 'space');
 		slot1 = game.add.text(0, 0, choice1, { font: "32px Source Sans Pro", fill: unselected_color, align: "left" })
 		slot2 = game.add.text(0, 0, choice2, { font: "32px Source Sans Pro", fill: unselected_color, align: "left" })
