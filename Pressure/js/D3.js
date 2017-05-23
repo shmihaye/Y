@@ -89,9 +89,9 @@ var D3 = {
 			slot1.inputEnabled = false
 			slot2.inputEnabled = false 
 			slot3.inputEnabled = false
-			slot1.fill = done_color
-			slot2.fill = done_color
-			slot3.fill = done_color
+//		slot1.fill = done_color
+//		slot2.fill = done_color
+//		slot3.fill = done_color
 			exitSign.inputEnabled = true
 
 		}
