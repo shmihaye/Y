@@ -49,7 +49,11 @@ Game.Load.prototype = {
 		game.load.image('arm2', 'arm2.png');
 		game.load.spritesheet('claw', 'claw.png', 12, 12);
 		game.load.image('spaceBackground', 'spaceBackground.png');
-		game.load.image('gravRock', 'gravRock.png');
+		
+		game.load.image('rock', 'rock.png');
+		game.load.spritesheet('gravRock', 'gravRock.png');
+		game.load.spritesheet('bombRock', 'bombRock.png');
+		
 		game.load.image('hallwayDoor', 'hallwayDoor.png');
 		game.load.image('hallwayBackground', 'hallwayBackground.png');
 		game.load.image('controlHubBackground', 'controlHubBackground.png');

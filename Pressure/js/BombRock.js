@@ -1,7 +1,7 @@
 var currentBombRock;
 
 // Parameters
-var bombDistance = 300;
+var bombDistance = 200;
 
 function BombRock(game, image) {
 	
@@ -19,6 +19,14 @@ function BombRock(game, image) {
 
 BombRock.prototype = Object.create(Phaser.Sprite.prototype);
 BombRock.prototype.constructor = BombRock;
+
+BombRock.prototype.create = function() {
+	
+	this.animations.add('default', [1, 2, 3, 4, 5], 10, true);
+	
+	this.animations.play('default');
+	
+}
 
 BombRock.prototype.update = function() {
 	
