@@ -56,18 +56,18 @@ FragRock.prototype.update = function() {
 
 function shatter(fragRock, collidedObject) {
 	
-	//for (let i = 1; i <= 3; i++) {
+	for (let i = 1; i <= 3; i++) {
 	
 		let fragPiece = new FragRock(game, currentFragRock.x, currentFragRock.y, 'gravRock', false); // Place holder image
 		
-		fragPiece.body.velocity.x = -300; fragPiece.body.velocity.y = 30;
-		//if (i == 2) { fragPiece.body.velocity.x = 300; fragPiece.body.velocity.y = 30; }
-		//if (i == 3) { fragPiece.body.velocity.x = 0; fragPiece.body.velocity.y = -50; }
+		if (i === 1) { fragPiece.body.velocity.x = -300; fragPiece.body.velocity.y = 30; } // ERROR: The frag piece's speed will go to -30 whatsoever.
+		if (i === 2) { fragPiece.body.velocity.x = 300; fragPiece.body.velocity.y = 30; }
+		if (i === 3) { fragPiece.body.velocity.x = 0; fragPiece.body.velocity.y = -50; }
 		
 		game.add.existing(fragPiece);
 		obstacles.add(fragPiece);
 	
-	//}
+	}
 	
 	collidedObject.kill();
 	currentFragRock.kill();
