@@ -70,6 +70,10 @@ game.state.add('Boot', Game.Boot); // Booting up
 game.state.add('Load', Game.Load); // Loading assets
 game.state.add('Play', playState); // Playing the game
 game.state.add('Hallway', hallwayState); // Navigating the hallway
+game.state.add('D1', D1); // Delson conversation 1
+game.state.add('D2', D2); // Delson conversation 2
+game.state.add('D3', D3); // Delson conversation 3
+game.state.add('D4', D4); // Delson conversation 4
 game.state.add('Narrative', narrativeState); // Talking to a character
 // Begin boot state
 game.state.start('Boot');
