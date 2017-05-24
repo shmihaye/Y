@@ -1,4 +1,5 @@
 
+
 var energyBar;
 
 var hallwayState = {
@@ -41,9 +42,40 @@ var hallwayState = {
 	},
 	
 	door1Opened: function() {
-		
-		convoIndex1++;
-		game.state.start('Narrative');
+
+		if (convoIndex1 == 3){
+			game.state.start('D4');
+					convoIndex1++
+
+		}
+
+
+		if (convoIndex1 == 2){
+
+			game.state.start('D3');
+					convoIndex1++
+
+		}
+
+
+		if (convoIndex1 == 1){
+			game.state.start('D2');
+					convoIndex1++
+
+		}
+
+
+		if (convoIndex1 == 0){
+
+			game.state.start('D1');
+					convoIndex1++
+
+		}
+//		game.state.start('Narrative');
+
+
+
+
 	},
 	
 	door2Opened: function() {
@@ -68,5 +100,4 @@ var hallwayState = {
 		
 		game.state.start('Play');
 	}
-
 };
