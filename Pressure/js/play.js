@@ -69,10 +69,10 @@ var playState = {
 					hallStart = 800;
 					game.state.start('Hallway');
 				}
-				else if(spawnObj.type == 'Asteroid') newObj = new Asteroid(game, 'rock'); // Place holder image
-				else if(spawnObj.type == 'GravRock') newObj = new GravRock(game, 'rock');
-				else if(spawnObj.type == 'BombRock') newObj = new BombRock(game, 'bombRock'); // Place holder image
-				else if(spawnObj.type == 'FragRock') newObj = new FragRock(game, 850, 0, 'rock', true); // Place holder image
+				else if(spawnObj.type == 'Asteroid') newObj = new Asteroid(game, 'rock');
+				else if(spawnObj.type == 'GravRock') newObj = new GravRock(game, 'gravRock');
+				else if(spawnObj.type == 'BombRock') newObj = new BombRock(game, 'bombRock');
+				else if(spawnObj.type == 'FragRock') newObj = new FragRock(game, 850, 0, 'fragRock1', true);
 				// Retrieve object properties
 				if(spawnObj.x !== undefined) newObj.x = spawnObj.x;
 				if(spawnObj.y !== undefined) newObj.y = spawnObj.y;

@@ -15,18 +15,15 @@ function BombRock(game, image) {
 	this.anchor.set(0.5);
 	this.primed = false;
 	
+	// Add animations
+	this.animations.add('default', [0,1,2], 10, true);
+	this.animations.play('default');
+	var anim = this.animations.add('explode', [3,4,5,6,7,8,9,10,11,12,13], 10, false);
+	anim.killOnComplete = true;
 };
 
 BombRock.prototype = Object.create(Phaser.Sprite.prototype);
 BombRock.prototype.constructor = BombRock;
-
-BombRock.prototype.create = function() {
-	
-	this.animations.add('default', [1, 2, 3, 4, 5], 10, true);
-	
-	this.animations.play('default');
-	
-}
 
 BombRock.prototype.update = function() {
 	
@@ -51,6 +48,6 @@ function explode(bombRock, collidedObject) {
 		
 	});
 	
-	currentBombRock.kill();
+	this.animations.play('explode'); // The rock will be killed when the animation is complete
 	
 }

@@ -21,6 +21,10 @@ function GravRock(game, image) {
 	this.anchor.set(0.5);
 	this.primed = false;
 	
+	// Add animations
+	this.animations.add('default', [0,1,2,3,4,5,6,7,8,9,10], 10, true);
+	this.animations.play('default');
+	
 };
 
 GravRock.prototype = Object.create(Phaser.Sprite.prototype);

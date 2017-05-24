@@ -10,7 +10,7 @@ function FragRock(game, posX, posY, image, collisionEnabled) {
 	// Physics
 	game.physics.arcade.enable(this);
 	this.body.gravity.y = 0;
-	//this.body.velocity.x = 0;
+	this.body.velocity.x = -60;
 	
 	this.anchor.set(0.5);
 	
@@ -57,12 +57,13 @@ FragRock.prototype.update = function() {
 function shatter(fragRock, collidedObject) {
 	
 	for (let i = 1; i <= 3; i++) {
-	
-		let fragPiece = new FragRock(game, currentFragRock.x, currentFragRock.y, 'gravRock', false); // Place holder image
+		let imgName = 'fragRock' + (i+1).toString();
+		let fragPiece = new FragRock(game, currentFragRock.x, currentFragRock.y, imgName, false);
+		fragPiece.scale.setTo(currentFragRock.scale.x);
 		
 		if (i === 1) { fragPiece.body.velocity.x = -300; fragPiece.body.velocity.y = 30; } // ERROR: The frag piece's speed will go to -30 whatsoever.
 		if (i === 2) { fragPiece.body.velocity.x = 300; fragPiece.body.velocity.y = 30; }
-		if (i === 3) { fragPiece.body.velocity.x = 0; fragPiece.body.velocity.y = -50; }
+		if (i === 3) { fragPiece.body.velocity.x = 0; fragPiece.body.velocity.y = -200; }
 		
 		game.add.existing(fragPiece);
 		obstacles.add(fragPiece);

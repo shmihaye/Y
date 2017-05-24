@@ -1,6 +1,8 @@
 {
   "timestamps": [
   
+	{"time":0, "objects": [{"type":"FragRock", "y":100, "scale":1.6}]},
+  
 	{"time":30, "objects": [{"type":"Asteroid", "y":300, "scale":1.6}]},
   
 	{"time":150, "objects": [{"type":"Asteroid", "y":150, "scale":2}, {"type":"Asteroid", "y":400, "scale":2}]},

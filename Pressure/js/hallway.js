@@ -5,16 +5,16 @@ var hallwayState = {
 	
 	create: function() {
 		
-		game.world.resize(1600, 600);
+		game.world.resize(1400, 600);
 		game.camera.x = hallStart;
+		this.background = game.add.tileSprite(0, 0, 1400, game.height, 'spaceBackground');
 		game.add.sprite(0, 0, 'hallwayBackground');
-		game.add.sprite(800, 0, 'controlHubBackground');
 
-		var door1 = game.add.sprite(58, 335, 'hallwayDoor');
-		var door2 = game.add.sprite(263.5, 335, 'hallwayDoor');
-		var door3 = game.add.sprite(469.5, 335, 'hallwayDoor');
-		var door4 = game.add.sprite(675.5, 335, 'hallwayDoor');
-		var pilotButton = game.add.sprite(1145.5, 335, 'rock'); // Placeholder image
+		var door1 = game.add.sprite(30, 320, 'hallwayDoor');
+		var door2 = game.add.sprite(230, 320, 'hallwayDoor');
+		var door3 = game.add.sprite(435, 320, 'hallwayDoor');
+		var door4 = game.add.sprite(645, 320, 'hallwayDoor');
+		var pilotButton = game.add.sprite(1015, 320, 'hallwayDoor');
 		energyBar = game.add.sprite(35, 10, 'rock'); // Placeholder image
 		energyBar.scale.x = 10;
 		energyBar.scale.y = 0.25;
@@ -35,6 +35,9 @@ var hallwayState = {
 		if(energy < 0) energy = 0;
 		else if(energy < 100) energy += 0.01;
 		energyBar.scale.x = energy/11;
+		
+		// Scroll background
+		this.background.tilePosition.x -= 20;
 	},
 	
 	door1Opened: function() {
