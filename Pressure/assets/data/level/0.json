@@ -1,31 +1,41 @@
 {
   "timestamps": [
+	
+	{"time":0, "objects": [{"type":"FragRock", "y":100, "scale":1.6}, {"type":"Asteroid", "y":400, "scale":2}]},
   
-	{"time":0, "objects": [{"type":"FragRock", "y":100, "scale":1.6}]},
-  
-	{"time":30, "objects": [{"type":"Asteroid", "y":300, "scale":1.6}]},
-  
-	{"time":150, "objects": [{"type":"Asteroid", "y":150, "scale":2}, {"type":"Asteroid", "y":400, "scale":2}]},
-  
-	{"time":300, "objects": [{"type":"Asteroid", "y":400, "scale":2}]},
-  
-	{"time":350, "objects": [{"type":"GravRock", "y":100, "scale":2}, {"type":"Asteroid", "y":300, "scale":2.6}]},
+	{"time":10, "objects": [{"type":"Asteroid", "y":100, "scale":2}, {"type":"FragRock", "y":300, "scale":2.6}, {"type":"Asteroid", "y":500, "scale":1.8}]},
 	
-	{"time":550, "objects": [{"type":"BombRock", "y":400, "scale":1.6}]},
+	{"time":20, "objects": [{"type":"BombRock", "y":400, "scale":1.6}]},
 	
-	{"time":600, "objects": [{"type":"Asteroid", "y":350, "scale":2}, {"type":"Asteroid", "y":500, "scale":2}]},
+	{"time":25, "objects": [{"type":"Asteroid", "y":100, "scale":1.5}, {"type":"Asteroid", "y":150, "scale":1.5}, {"type":"Asteroid", "y":200, "scale":1.5}, {"type":"Asteroid", "y":250, "scale":1.5}, {"type":"Asteroid", "y":300, "scale":1.5}]},
 	
-	{"time":650, "objects": [{"type":"Asteroid", "y":100, "scale":2.5}, {"type":"Asteroid", "y":350, "scale":2}, {"type":"Asteroid", "y":600, "scale":2.5}]},
+	{"time":30, "objects": [{"type":"Asteroid", "y":500, "scale":3, "xvel":-300}]},
 	
-	{"time":700, "objects": [{"type":"Asteroid", "y":200, "scale":2.2}, {"type":"Asteroid", "y":400, "scale":1.6}, {"type":"Asteroid", "y":570, "scale":2.5}]},
+	{"time":40, "objects": [{"type":"FragRock", "y":100, "scale":2}, {"type":"FragRock", "y":400, "scale":2}]},
 	
-	{"time":850, "objects": [{"type":"Asteroid", "y":250, "scale":2}, {"type":"Asteroid", "y":600, "scale":2.8}]},
+	{"time":43, "objects": [{"type":"FragRock", "y":200, "scale":1.5}, {"type":"FragRock", "y":500, "scale":1.5}]},
 	
-	{"time":900, "objects": [{"type":"Asteroid", "y":350, "scale":2.3}]},
+	{"time":46, "objects": [{"type":"FragRock", "y":150, "scale":3}, {"type":"FragRock", "y":450, "scale":3}]},
 	
-	{"time":950, "objects": [{"type":"Asteroid", "y":350, "scale":1.2}]},
+	{"time":49, "objects": [{"type":"BombRock", "y":300, "scale":2}, {"type":"Asteroid", "y":400, "scale":2}]},
 	
-	{"time":1400, "objects": [{"type":"END"}]}
+	{"time":52, "objects": [{"type":"FragRock", "y":50, "scale":1.5}, {"type":"FragRock", "y":100, "scale":1.5}, {"type":"FragRock", "y":150, "scale":1.5}, {"type":"FragRock", "y":200, "scale":1.5}, {"type":"FragRock", "y":250, "scale":1.5}, {"type":"FragRock", "y":300, "scale":1.5}, {"type":"FragRock", "y":350, "scale":1.5}, {"type":"FragRock", "y":400, "scale":1.5}, {"type":"FragRock", "y":450, "scale":1.5}, {"type":"FragRock", "y":500, "scale":1.5}, {"type":"FragRock", "y":550, "scale":1.5}]},
+	
+	{"time":65, "objects": [{"type":"Asteroid", "y":100, "scale":2.5, "xvel":-100, "yvel":10}, {"type":"Asteroid", "y":500, "scale":2.5, "xvel":-100, "yvel":-10}, {"type":"Asteroid", "y":300, "xvel":-100, "scale":2.5}]},
+	
+	{"time":70, "objects": [{"type":"BombRock", "y":50, "scale":2, "xvel":-20}, {"type":"BombRock", "y":550, "scale":2, "xvel":-20}]},
+	
+	{"time":75, "objects": [{"type":"BombRock", "y":50, "scale":2, "xvel":-20}, {"type":"BombRock", "y":550, "scale":2, "xvel":-20}]},
+	
+	{"time":80, "objects": [{"type":"Asteroid", "y":30, "scale":1.5}, {"type":"Asteroid", "y":60, "scale":1.5}, {"type":"Asteroid", "y":90, "scale":1.5}, {"type":"Asteroid", "y":120, "scale":1.5}, {"type":"Asteroid", "y":150, "scale":1.5}]},
+	
+	{"time":83, "objects": [{"type":"Asteroid", "y":570, "scale":1.5}, {"type":"Asteroid", "y":540, "scale":1.5}, {"type":"Asteroid", "y":510, "scale":1.5}, {"type":"Asteroid", "y":480, "scale":1.5}, {"type":"Asteroid", "y":450, "scale":1.5}]},
+	
+	{"time":86, "objects": [{"type":"Asteroid", "y":180, "scale":1.5}, {"type":"Asteroid", "y":210, "scale":1.5}, {"type":"Asteroid", "y":240, "scale":1.5}, {"type":"Asteroid", "y":270, "scale":1.5}, {"type":"Asteroid", "y":300, "scale":1.5}]},
+	
+	{"time":89, "objects": [{"type":"Asteroid", "y":420, "scale":1.5}, {"type":"Asteroid", "y":390, "scale":1.5}, {"type":"Asteroid", "y":360, "scale":1.5}, {"type":"Asteroid", "y":330, "scale":1.5}, {"type":"Asteroid", "y":300, "scale":1.5}]},
+	
+	{"time":110, "objects": [{"type":"END"}]}
 	
   ]
 }

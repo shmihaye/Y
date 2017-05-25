@@ -1,22 +1,16 @@
 var currentFragRock;
 
-// Parameters
-var collisionActivationTime = 2; // 2 Seconds
-
 function FragRock(game, posX, posY, image, collisionEnabled) {
 	
 	Phaser.Sprite.call(this, game, posX, posY, image);
 	
 	// Physics
 	game.physics.arcade.enable(this);
-	this.body.gravity.y = 0;
-	this.body.velocity.x = -60;
-	
-	this.anchor.set(0.5);
-	
-	this.primed = false;
 	this.collisionEnabled = collisionEnabled;
+	this.collisionActivationTime = 2;
 	
+	// Resize hitbox
+	this.body.setSize(30, 30, 17, 17);
 }
 
 FragRock.prototype = Object.create(Phaser.Sprite.prototype);
@@ -39,7 +33,7 @@ FragRock.prototype.update = function() {
 	}
 	
 	// Enable collision after some time.
-	if (! this.collisionEnabled && game.time.totalElapsedSeconds() - spawnTime >= collisionActivationTime) {
+	if (! this.collisionEnabled && game.time.totalElapsedSeconds() - spawnTime >= this.collisionActivationTime) {
 		
 		this.collisionEnabled = true;
 		
@@ -55,22 +49,24 @@ FragRock.prototype.update = function() {
 }
 
 function shatter(fragRock, collidedObject) {
-	
+	if(fragRock.primed || collidedObject.primed){
 	for (let i = 1; i <= 3; i++) {
 		let imgName = 'fragRock' + (i+1).toString();
-		let fragPiece = new FragRock(game, currentFragRock.x, currentFragRock.y, imgName, false);
+		let fragPiece = new FragRock(game, fragRock.x, fragRock.y, imgName, false);
 		fragPiece.scale.setTo(currentFragRock.scale.x);
 		
 		if (i === 1) { fragPiece.body.velocity.x = -300; fragPiece.body.velocity.y = 30; } // ERROR: The frag piece's speed will go to -30 whatsoever.
 		if (i === 2) { fragPiece.body.velocity.x = 300; fragPiece.body.velocity.y = 30; }
 		if (i === 3) { fragPiece.body.velocity.x = 0; fragPiece.body.velocity.y = -200; }
 		
+		fragPiece.primed = true;
 		game.add.existing(fragPiece);
 		obstacles.add(fragPiece);
 	
 	}
 	
 	collidedObject.kill();
-	currentFragRock.kill();
+	fragRock.kill();
+	}
 	
 }

@@ -57,7 +57,7 @@ var playState = {
 		//game.physics.arcade.overlap(obstacles, obstacles, destroyObstacles, null, this);
 		
 		// Object creation from JSON object
-		if(levelData.timestamps.length > 0 && timestep == levelData.timestamps[0].time){
+		if(levelData.timestamps.length > 0 && levelData.timestamps[0].time == timestep/60){
 			let spawnList = levelData.timestamps.shift();
 			let listSize = spawnList.objects.length;
 			for(let i = 0; i < listSize; i++){
@@ -66,22 +66,28 @@ var playState = {
 				var newObj = null;
 				// Go to hallway state at the end of the level
 				if(spawnObj.type == 'END'){
-					hallStart = 800;
+					hallStart = 600;
 					game.state.start('Hallway');
 				}
 				else if(spawnObj.type == 'Asteroid') newObj = new Asteroid(game, 'rock');
 				else if(spawnObj.type == 'GravRock') newObj = new GravRock(game, 'gravRock');
 				else if(spawnObj.type == 'BombRock') newObj = new BombRock(game, 'bombRock');
-				else if(spawnObj.type == 'FragRock') newObj = new FragRock(game, 850, 0, 'fragRock1', true);
+				else if(spawnObj.type == 'FragRock') newObj = new FragRock(game, 820, 0, 'fragRock1', true);
 				// Retrieve object properties
 				if(spawnObj.x !== undefined) newObj.x = spawnObj.x;
+				else newObj.x = 850;
 				if(spawnObj.y !== undefined) newObj.y = spawnObj.y;
 				if(spawnObj.xvel !== undefined) newObj.body.velocity.x = spawnObj.xvel;
+				else newObj.body.velocity.x = -60;
 				if(spawnObj.yvel !== undefined) newObj.body.velocity.y = spawnObj.yvel;
 				if(spawnObj.scale !== undefined) newObj.scale.setTo(spawnObj.scale);
 				if(newObj != null){
 					game.add.existing(newObj);
 					obstacles.add(newObj);
+					newObj.primed = false;
+					newObj.friendly = false;
+					newObj.body.gravity.y = 0;
+					newObj.anchor.set(0.5);
 				}
 			}
 		}
@@ -89,12 +95,17 @@ var playState = {
 		
 		// Scroll background
 		this.background.tilePosition.x -= 10;
+		
+		// Delete off-screen objects
+		for (let i = 0, len = obstacles.children.length; i < len; i++){checkBounds(obstacles.children[i]);}
 	},
 	
 	render: function() {
 		// Display debug information
 		game.debug.text(`Debugging Phaser ${Phaser.VERSION}`, 20, 560, 'yellow');
 		game.debug.text('FPS: ' + game.time.fps, 20, 580, 'yellow');
+		for (let i = 0, len = obstacles.children.length; i < len; i++){if(obstacles.children[i].alive) game.debug.body(obstacles.children[i]);}
+		game.debug.body(player);
 	}
 };
 
@@ -107,7 +118,7 @@ function grabObject(claw, obstacle){
 }
 function hurtShip(player, obstacle){
 	// If the player touches an obstacle that hasn't been grabbed, lower health
-	if(obstacle != player.grabbed && !obstacle.primed && player.invincibility == 0){energy -= 30; player.invincibility = 60;}
+	if(obstacle != player.grabbed && !obstacle.friendly && player.invincibility == 0){energy -= 30; player.invincibility = 60;}
 	// If the player runs out of health, restart the stage
 	if(energy <= 0) game.state.start('Hallway');
 }
@@ -116,6 +127,11 @@ function hurtShield(shield, obstacle){
 	if(obstacle != player.grabbed && !obstacle.primed && player.shield.active){
 		obstacle.kill();
 	}
+}
+function checkBounds(obstacle){
+	// Delete obstacles that leave the level bounds
+	if(obstacle.x < -100 || obstacle.x > 900 || obstacle.y < -100 || obstacle.y > 700) obstacle.kill();
+	
 }
 /*function destroyObstacles(obstacle1, obstacle2){
 	// Destroy obstacles with thrown obstacles

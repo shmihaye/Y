@@ -75,6 +75,9 @@ function Ship(game, image){
 	this.grabbed = null;
 	this.grabCooldown = 0;
 	
+	// Resize hitbox
+	this.body.setSize(50, 50, 7, 7);
+	
 }
 Ship.prototype = Object.create(Phaser.Sprite.prototype);
 Ship.prototype.constructor = Ship;
@@ -224,6 +227,7 @@ Ship.prototype.update = function(){
 			this.grabbed.body.velocity.y = 50*(this.grabbed.y - prevy);
 			this.grabbed.body.velocity.x = 50*(this.grabbed.x - prevx);
 			this.grabbed.primed = true;
+			this.grabbed.friendly = true;
 			this.grabbed = null;
 			this.grabCooldown = 40;
 		}

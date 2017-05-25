@@ -16,7 +16,7 @@ var hallwayState = {
 		var door3 = game.add.sprite(435, 320, 'hallwayDoor');
 		var door4 = game.add.sprite(645, 320, 'hallwayDoor');
 		var pilotButton = game.add.sprite(1015, 320, 'hallwayDoor');
-		energyBar = game.add.sprite(35, 10, 'rock'); // Placeholder image
+		energyBar = game.add.sprite(35, 10, 'bar'); // Placeholder image
 		energyBar.scale.x = 10;
 		energyBar.scale.y = 0.25;
 		energyBar.fixedToCamera = true;
@@ -31,11 +31,11 @@ var hallwayState = {
 	
 	update : function() {
 		
-		if(game.input.x > 700) game.camera.x += 10;
-		else if(game.input.x < 100) game.camera.x -= 10;
+		if(game.input.x > 650) game.camera.x += 10;
+		else if(game.input.x < 150) game.camera.x -= 10;
 		if(energy < 0) energy = 0;
 		else if(energy < 100) energy += 0.01;
-		energyBar.scale.x = energy/11;
+		energyBar.scale.x = energy/30;
 		
 		// Scroll background
 		this.background.tilePosition.x -= 20;
