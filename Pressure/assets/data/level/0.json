@@ -1,7 +1,7 @@
 {
   "timestamps": [
 	
-	{"time":0, "objects": [{"type":"ToxicRock", "y":100, "scale":1.6}, {"type":"Asteroid", "y":400, "scale":2}]},
+	{"time":0, "objects": [{"type":"OrbitRock", "y":100, "scale":1}, {"type":"Asteroid", "y":400, "scale":2}]},
   
 	{"time":10, "objects": [{"type":"Asteroid", "y":100, "scale":2}, {"type":"FragRock", "y":300, "scale":2.6}, {"type":"Asteroid", "y":500, "scale":1.8}]},
 	

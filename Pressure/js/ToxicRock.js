@@ -16,6 +16,6 @@ ToxicRock.prototype.constructor = ToxicRock;
 
 ToxicRock.prototype.update = function() {
 	
-
+	
 	
 }

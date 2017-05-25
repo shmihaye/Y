@@ -221,6 +221,13 @@ Ship.prototype.update = function(){
 		let prevy = this.grabbed.y;
 		this.grabbed.x = this.claw.x;
 		this.grabbed.y = this.claw.y;
+		
+		if (this.grabbed.constructor.name === 'ToxicRock') {
+			
+			energy--;
+			
+		}
+		
 		// Release grabbed object if mouse button is no longer down
 		if(!game.input.activePointer.leftButton.isDown){
 			this.grabbed.body.velocity.y = 50*(this.grabbed.y - prevy);
@@ -230,13 +237,6 @@ Ship.prototype.update = function(){
 			this.grabbed = null;
 			this.grabCooldown = 40;
 		}
-		
-		if (this.grabbed.constructor.name === 'ToxicRock') {
-			
-			energy--;
-			
-		}
-		
 	}
 	
 	// Decrement grabCooldown (which keeps the player from grab-spamming)
