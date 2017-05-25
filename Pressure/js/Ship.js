@@ -8,7 +8,6 @@ function Ship(game, image){
 	this.body.gravity.y = 0;
 	this.body.collideWorldBounds = true;
 	this.anchor.set(0.5);
-	this.health = 5;
 	this.invincibility = 0;
 	
 	// Add arm
@@ -231,6 +230,13 @@ Ship.prototype.update = function(){
 			this.grabbed = null;
 			this.grabCooldown = 40;
 		}
+		
+		if (this.grabbed.constructor.name === 'ToxicRock') {
+			
+			energy--;
+			
+		}
+		
 	}
 	
 	// Decrement grabCooldown (which keeps the player from grab-spamming)

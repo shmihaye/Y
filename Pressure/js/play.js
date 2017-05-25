@@ -73,6 +73,7 @@ var playState = {
 				else if(spawnObj.type == 'GravRock') newObj = new GravRock(game, 'gravRock');
 				else if(spawnObj.type == 'BombRock') newObj = new BombRock(game, 'bombRock');
 				else if(spawnObj.type == 'FragRock') newObj = new FragRock(game, 820, 0, 'fragRock1', true);
+				else if(spawnObj.type == 'ToxicRock') newObj = new ToxicRock(game, 'toxicRock');
 				// Retrieve object properties
 				if(spawnObj.x !== undefined) newObj.x = spawnObj.x;
 				else newObj.x = 850;
@@ -117,9 +118,9 @@ function grabObject(claw, obstacle){
 	}
 }
 function hurtShip(player, obstacle){
-	// If the player touches an obstacle that hasn't been grabbed, lower health
+	// If the player touches an obstacle that hasn't been grabbed, lower energy
 	if(obstacle != player.grabbed && !obstacle.friendly && player.invincibility == 0){energy -= 30; player.invincibility = 60;}
-	// If the player runs out of health, restart the stage
+	// If the player runs out of energy, restart the stage
 	if(energy <= 0) game.state.start('Hallway');
 }
 function hurtShield(shield, obstacle){

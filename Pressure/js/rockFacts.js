@@ -13,7 +13,11 @@ function getDistance(object1, object2) {
 
 function isSpecialRock(rock) {
 	
-	if (rock.constructor.name == 'GravRock' || rock.constructor.name == 'BombRock' || rock.constructor.name == 'FragRock') { return true; } // Keep updating this line with new rock types
+	// Keep updating the list of special rocks below.
+	if (rock.constructor.name === 'GravRock' || rock.constructor.name === 'BombRock' || rock.constructor.name === 'FragRock') { return true; }
+	
+	// Toxic rock should collide just like normal rocks.
+	if (rock.constructor.name === 'ToxicRock') { return false; }
 	
 	else { return false; }
 	

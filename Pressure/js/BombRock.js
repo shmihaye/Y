@@ -32,21 +32,24 @@ BombRock.prototype.update = function() {
 }
 
 function explode(bombRock, collidedObject) {
-	if(bombRock.primed || collidedObject.primed){
-	obstacles.children.forEach(function(obstacle) {
-		
-		// Skip self.
-		if (obstacle === currentBombRock) { return; }
-		
-		if (getDistance(bombRock, obstacle) < bombDistance) {
-			
-			obstacle.kill();
-			
-		}
-		
-	});
 	
-	this.animations.play('explode'); // The rock will be killed when the animation is complete
+	if(bombRock.primed || collidedObject.primed) {
+		
+		obstacles.children.forEach(function(obstacle) {
+		
+			// Skip self.
+			if (obstacle === currentBombRock) { return; }
+			
+			if (getDistance(bombRock, obstacle) < bombDistance) {
+				
+				obstacle.kill();
+				
+			}
+		
+		});
+	
+		this.animations.play('explode'); // The rock will be killed when the animation is complete
+		
 	}
 	
 }
