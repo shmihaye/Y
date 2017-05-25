@@ -194,7 +194,7 @@ Ship.prototype.update = function(){
 		let radarSize = this.radar.length;
 		for(let i = 0; i < radarSize; i++){
 			let radarSprite = this.radar[i];
-			if(radarSprite.trackObj.x < 850) radarSprite.kill();
+			if(radarSprite.trackObj.x < 850 || !radarSprite.trackObj.alive) radarSprite.kill();
 			else{
 				radarSprite.y = radarSprite.trackObj.y;
 				if(radarSprite.blinkTimer <= 0){

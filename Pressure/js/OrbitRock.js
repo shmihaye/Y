@@ -7,6 +7,9 @@ function OrbitRock(game, image) {
 	
 	// Physics
 	game.physics.arcade.enable(this);
+	
+	// Resize hitbox
+	this.body.setSize(30, 30, 17, 17);
 }
 
 OrbitRock.prototype = Object.create(Phaser.Sprite.prototype);
