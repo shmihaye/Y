@@ -1,10 +1,10 @@
-var currentBombRock;
 
 // Parameters
 var bombDistance = 200;
 
 function BombRock(game, image) {
 	
+	// Call to Phaser.Sprite
 	Phaser.Sprite.call(this, game, 850, 0, image);
 	
 	// Physics
@@ -21,32 +21,22 @@ function BombRock(game, image) {
 };
 
 BombRock.prototype = Object.create(Phaser.Sprite.prototype);
+
 BombRock.prototype.constructor = BombRock;
 
-BombRock.prototype.update = function() {
-	
-	currentBombRock = this;
-	
-	var collided = game.physics.arcade.collide(this, obstacles, explode, null, this);
-	
-}
-
-function explode(bombRock, collidedObject) {
-	if(bombRock.primed || collidedObject.primed){
+BombRock.prototype.die = function(){
 	obstacles.children.forEach(function(obstacle) {
 		
 		// Skip self.
-		if (obstacle === currentBombRock) { return; }
+		if (obstacle === this) { return; }
 		
-		if (getDistance(bombRock, obstacle) < bombDistance) {
+		if (getDistance(this, obstacle) < bombDistance) {
 			
 			obstacle.kill();
-			
 		}
 		
 	});
-	
+	this.body.velocity.x = 0;
+	this.body.velocity.y = 0;
 	this.animations.play('explode'); // The rock will be killed when the animation is complete
-	}
-	
 }

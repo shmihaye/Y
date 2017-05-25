@@ -1,5 +1,4 @@
 // Parameters
-var gravRockVelocityX = -30;
 var gravDistance = 300;
 
 // Just for the gravAttach function
@@ -10,12 +9,9 @@ function GravRock(game, image) {
 	// Call to Phaser.Sprite
 	Phaser.Sprite.call(this, game, 850, 0, image);
 	
-	// Add properties and set default values
-	
 	// Physics
-	game.physics.enable(this);
+	game.physics.arcade.enable(this);
 	this.body.immovable = true;
-	this.body.velocity.x = gravRockVelocityX;
 	
 	// Add animations
 	this.animations.add('default', [0,1,2,3,4,5,6,7,8,9,10], 10, true);
@@ -57,7 +53,7 @@ GravRock.prototype.update = function() {
 		// But if it's not colliding because the grav rock is dead, give attached obstacle the velocity of inertia.
 		if (! currentGravRock.alive) {
 			
-			obstacle.body.velocity.x = gravRockVelocityX;
+			obstacle.body.velocity.x = this.body.velocity.x;
 			
 			return;
 			
@@ -73,6 +69,12 @@ GravRock.prototype.update = function() {
 	gravRockLastPosY = this.y;
 	
 }
+
+GravRock.prototype.die = function(){
+	
+	this.kill();
+}
+
 
 function gravPull(object) {
 	

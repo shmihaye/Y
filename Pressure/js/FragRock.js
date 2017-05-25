@@ -1,72 +1,34 @@
-var currentFragRock;
 
-function FragRock(game, posX, posY, image, collisionEnabled) {
+function FragRock(game, image) {
 	
-	Phaser.Sprite.call(this, game, posX, posY, image);
+	// Call to Phaser.Sprite
+	Phaser.Sprite.call(this, game, 850, 0, image);
 	
 	// Physics
 	game.physics.arcade.enable(this);
-	this.collisionEnabled = collisionEnabled;
-	this.collisionActivationTime = 2;
+	this.canBreak = false;
 	
 	// Resize hitbox
 	this.body.setSize(30, 30, 17, 17);
 }
 
 FragRock.prototype = Object.create(Phaser.Sprite.prototype);
+
 FragRock.prototype.constructor = FragRock;
 
-FragRock.prototype.update = function() {
-	
-	currentFragRock = this;
-	
-	// Record the spawn time.
-	var spawnTime = 0;
-	var spawnTimeSet = false;
-	
-	if (! this.collisionEnabled && ! spawnTimeSet) {
-		
-		spawnTime = game.time.totalElapsedSeconds();
-		
-		spawnTimeSet = true;
-		
-	}
-	
-	// Enable collision after some time.
-	if (! this.collisionEnabled && game.time.totalElapsedSeconds() - spawnTime >= this.collisionActivationTime) {
-		
-		this.collisionEnabled = true;
-		
-	}
-	
-	// Collide other objects if collision is enabled.
-	if (this.collisionEnabled) {
-	
-		game.physics.arcade.collide(this, obstacles, shatter, null, this);
-		
-	}
-	
+FragRock.prototype.update = function(){
+	if(this.primedCooldown == 0) this.primed = true;
+	else if(this.primedCooldown > 0) this.primedCooldown--;
 }
 
-function shatter(fragRock, collidedObject) {
-	if(fragRock.primed || collidedObject.primed){
-	for (let i = 1; i <= 3; i++) {
-		let imgName = 'fragRock' + (i+1).toString();
-		let fragPiece = new FragRock(game, fragRock.x, fragRock.y, imgName, false);
-		fragPiece.scale.setTo(currentFragRock.scale.x);
-		
-		if (i === 1) { fragPiece.body.velocity.x = -300; fragPiece.body.velocity.y = 30; } // ERROR: The frag piece's speed will go to -30 whatsoever.
-		if (i === 2) { fragPiece.body.velocity.x = 300; fragPiece.body.velocity.y = 30; }
-		if (i === 3) { fragPiece.body.velocity.x = 0; fragPiece.body.velocity.y = -200; }
-		
-		fragPiece.primed = true;
-		game.add.existing(fragPiece);
-		obstacles.add(fragPiece);
-	
+FragRock.prototype.die = function(){
+	if(this.canBreak){
+		var fragment1 = {type:"FragRock2", x:this.x, y:this.y, scale:this.scale.x, primedCooldown:20, xvel:-300, yvel:30, canBreak:false};
+		var fragment2 = {type:"FragRock3", x:this.x, y:this.y, scale:this.scale.x, primedCooldown:20, xvel:300, yvel:30, canBreak:false};
+		var fragment3 = {type:"FragRock4", x:this.x, y:this.y, scale:this.scale.x, primedCooldown:20, xvel:0, yvel:-200, canBreak:false};
+		addObstacles.push(fragment1);
+		addObstacles.push(fragment2);
+		addObstacles.push(fragment3);
 	}
-	
-	collidedObject.kill();
-	fragRock.kill();
-	}
-	
+	this.kill();
 }

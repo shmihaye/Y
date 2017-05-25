@@ -8,7 +8,6 @@ function Ship(game, image){
 	this.body.gravity.y = 0;
 	this.body.collideWorldBounds = true;
 	this.anchor.set(0.5);
-	this.health = 5;
 	this.invincibility = 0;
 	
 	// Add arm
@@ -82,6 +81,10 @@ function Ship(game, image){
 Ship.prototype = Object.create(Phaser.Sprite.prototype);
 Ship.prototype.constructor = Ship;
 Ship.prototype.update = function(){
+	
+	// Keep track of claw motion
+	let lastclawx = this.claw.x;
+	let lastclawy = this.claw.y;
 	
 	// Ship movement
 	// Do not move if the dash ability was just used (if it is enabled)
@@ -175,10 +178,14 @@ Ship.prototype.update = function(){
 	this.arm1.y = this.y;
 	
 	// Calulate desired arm angle and move towards it
+	let changeLength = false;
 	let desiredAngle = (180 * Math.atan((this.y-game.input.y)/(this.x-game.input.x))/3.14);
 	if(game.input.x <= this.x) desiredAngle += 180;
 	if(desiredAngle >= 180) desiredAngle -= 360;
-	if(Math.abs(desiredAngle-this.arm1.angle) < 10) this.arm1.angle = desiredAngle;
+	if(Math.abs(desiredAngle-this.arm1.angle) < 10){
+		this.arm1.angle = desiredAngle;
+		changeLength = true;
+	}
 	else if(this.arm1.angle > desiredAngle){
 		if(this.arm1.angle-desiredAngle > 180) this.arm1.angle += 5;
 		else this.arm1.angle -= 5;
@@ -197,6 +204,7 @@ Ship.prototype.update = function(){
 	let angleY = Math.sin(3.14 * this.arm1.angle/180);
 	
 	// Calculate desired extension and move towards it
+	if(changeLength){
 	let desiredLength = 0;
 	// Only extend desiredLength past 0 if the y component of the angle
 	// and the distance between the ship and mouse cursor have the same sign
@@ -205,6 +213,7 @@ Ship.prototype.update = function(){
 	else if(desiredLength < this.arm2.extDist - 5) this.arm2.extDist -= 5;
 	if(this.arm2.extDist < 0) this.arm2.extDist = 0;
 	else if(this.arm2.extDist > 80) this.arm2.extDist = 80;
+	}
 	
 	// Move arm2 extDist past arm1 and move claw to end of arm2
 	this.arm2.x = this.arm1.x + (this.arm2.extDist * angleX);
@@ -220,8 +229,8 @@ Ship.prototype.update = function(){
 	if(this.grabbed != null){
 		let prevx = this.grabbed.x;
 		let prevy = this.grabbed.y;
-		this.grabbed.x = this.claw.x;
-		this.grabbed.y = this.claw.y;
+		this.grabbed.x += (this.claw.x - lastclawx);
+		this.grabbed.y += (this.claw.y - lastclawy);
 		// Release grabbed object if mouse button is no longer down
 		if(!game.input.activePointer.leftButton.isDown){
 			this.grabbed.body.velocity.y = 50*(this.grabbed.y - prevy);

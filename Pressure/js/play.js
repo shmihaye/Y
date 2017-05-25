@@ -3,6 +3,7 @@
 var player, obstacles, background, timestep, levelData;
 var levelNum = 0;
 var health = 5;
+var addObstacles = [];
 
 // Play state container
 var playState = {
@@ -54,7 +55,16 @@ var playState = {
 		game.physics.arcade.overlap(player, obstacles, hurtShip, null, this);
 		
 		// Call destroyObstacles if two obstacles overlap
-		//game.physics.arcade.overlap(obstacles, obstacles, destroyObstacles, null, this);
+		game.physics.arcade.overlap(obstacles, obstacles, destroyObstacles, null, this);
+		
+		// Add any obstacles pushed onto the stack
+		if(addObstacles.length > 0){
+			let numObstacles = addObstacles.length;
+			for(let i = 0; i < numObstacles; i++){
+				let spawnObj = addObstacles.shift();
+				createObj(spawnObj);
+			}
+		}
 		
 		// Object creation from JSON object
 		if(levelData.timestamps.length > 0 && levelData.timestamps[0].time == timestep/60){
@@ -63,32 +73,13 @@ var playState = {
 			for(let i = 0; i < listSize; i++){
 				// Create equivalent object
 				let spawnObj = spawnList.objects.shift();
-				var newObj = null;
+				
 				// Go to hallway state at the end of the level
 				if(spawnObj.type == 'END'){
 					hallStart = 600;
 					game.state.start('Hallway');
 				}
-				else if(spawnObj.type == 'Asteroid') newObj = new Asteroid(game, 'rock');
-				else if(spawnObj.type == 'GravRock') newObj = new GravRock(game, 'gravRock');
-				else if(spawnObj.type == 'BombRock') newObj = new BombRock(game, 'bombRock');
-				else if(spawnObj.type == 'FragRock') newObj = new FragRock(game, 820, 0, 'fragRock1', true);
-				// Retrieve object properties
-				if(spawnObj.x !== undefined) newObj.x = spawnObj.x;
-				else newObj.x = 850;
-				if(spawnObj.y !== undefined) newObj.y = spawnObj.y;
-				if(spawnObj.xvel !== undefined) newObj.body.velocity.x = spawnObj.xvel;
-				else newObj.body.velocity.x = -60;
-				if(spawnObj.yvel !== undefined) newObj.body.velocity.y = spawnObj.yvel;
-				if(spawnObj.scale !== undefined) newObj.scale.setTo(spawnObj.scale);
-				if(newObj != null){
-					game.add.existing(newObj);
-					obstacles.add(newObj);
-					newObj.primed = false;
-					newObj.friendly = false;
-					newObj.body.gravity.y = 0;
-					newObj.anchor.set(0.5);
-				}
+				else createObj(spawnObj);
 			}
 		}
 		timestep++;
@@ -114,6 +105,8 @@ function grabObject(claw, obstacle){
 	// If the grab key is pressed, set grabbedObject to the obstacle
 	if(game.input.activePointer.leftButton.isDown && player.grabCooldown == 0 && player.grabbed == null){
 		player.grabbed = obstacle;
+		obstacle.body.velocity.x = 0;
+		obstacle.body.velocity.y = 0;
 	}
 }
 function hurtShip(player, obstacle){
@@ -124,7 +117,7 @@ function hurtShip(player, obstacle){
 }
 function hurtShield(shield, obstacle){
 	// If an obstacle hit the shield, destroy the obstacle
-	if(obstacle != player.grabbed && !obstacle.primed && player.shield.active){
+	if(obstacle != player.grabbed && !obstacle.friendly && player.shield.active){
 		obstacle.kill();
 	}
 }
@@ -133,10 +126,44 @@ function checkBounds(obstacle){
 	if(obstacle.x < -100 || obstacle.x > 900 || obstacle.y < -100 || obstacle.y > 700) obstacle.kill();
 	
 }
-/*function destroyObstacles(obstacle1, obstacle2){
+function destroyObstacles(obstacle1, obstacle2){
 	// Destroy obstacles with thrown obstacles
 	if(obstacle1.primed || obstacle2.primed){
-		if (obstacle1.constructor.name != "BombRock") obstacle1.kill();
-		if (obstacle2.constructor.name != "BombRock") obstacle2.kill();
+		obstacle1.die(game);
+		obstacle2.die(game);
 	}
-}*/
+}
+function createObj(spawnObj){
+	var newObj = null;
+	if(spawnObj.type == 'Asteroid') newObj = new Asteroid(game, 'rock');
+	else if(spawnObj.type == 'GravRock') newObj = new GravRock(game, 'gravRock');
+	else if(spawnObj.type == 'BombRock') newObj = new BombRock(game, 'bombRock');
+	else if(spawnObj.type == 'FragRock') newObj = new FragRock(game, 'fragRock1');
+	else if(spawnObj.type == 'FragRock2') newObj = new FragRock(game, 'fragRock2');
+	else if(spawnObj.type == 'FragRock3') newObj = new FragRock(game, 'fragRock3');
+	else if(spawnObj.type == 'FragRock4') newObj = new FragRock(game, 'fragRock4');
+	// Retrieve object properties
+	if(spawnObj.x !== undefined) newObj.x = spawnObj.x;
+	else newObj.x = 850;
+	if(spawnObj.y !== undefined) newObj.y = spawnObj.y;
+	else newObj.y = 300;
+	if(spawnObj.xvel !== undefined) newObj.body.velocity.x = spawnObj.xvel;
+	else newObj.body.velocity.x = -100;
+	if(spawnObj.yvel !== undefined) newObj.body.velocity.y = spawnObj.yvel;
+	else newObj.body.velocity.y = 0;
+	if(spawnObj.scale !== undefined) newObj.scale.setTo(spawnObj.scale);
+	else newObj.scale.setTo(1);
+	if(spawnObj.primed !== undefined) newObj.primed = spawnObj.primed;
+	else newObj.primed = false;
+	if(spawnObj.primedCooldown !== undefined) newObj.primedCooldown = spawnObj.primedCooldown;
+	else newObj.primedCooldown = -1;
+	if(spawnObj.canBreak !== undefined) newObj.canBreak = spawnObj.canBreak;
+	else newObj.canBreak = true;
+	if(newObj != null){
+		newObj.friendly = false;
+		newObj.body.gravity.y = 0;
+		newObj.anchor.set(0.5);
+		game.add.existing(newObj);
+		obstacles.add(newObj);
+	}
+}

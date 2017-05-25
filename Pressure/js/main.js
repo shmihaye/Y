@@ -89,7 +89,7 @@ Game.Load.prototype = {
 		this.preloadBar.cropEnabled = false;
 	},
 	update: function() {
-		this.state.start('Hallway');
+		this.state.start('Play');
 	}
 };
 
