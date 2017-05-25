@@ -93,6 +93,9 @@ var playState = {
 		}
 		timestep++;
 		
+		// If the player runs out of energy, restart the stage
+		if(energy <= 0) game.state.start('Hallway');
+		
 		// Scroll background
 		this.background.tilePosition.x -= (5 * speedUp);
 		
@@ -119,10 +122,8 @@ function grabObject(claw, obstacle){
 	}
 }
 function hurtShip(player, obstacle){
-	// If the player touches an obstacle that hasn't been grabbed, lower health
+	// If the player touches an obstacle that hasn't been grabbed, lower energy
 	if(obstacle != player.grabbed && !obstacle.friendly && player.invincibility == 0){energy -= 30; player.invincibility = 60;}
-	// If the player runs out of health, restart the stage
-	if(energy <= 0) game.state.start('Hallway');
 }
 function hurtShield(shield, obstacle){
 	// If an obstacle hit the shield, destroy the obstacle
@@ -131,6 +132,18 @@ function hurtShield(shield, obstacle){
 	}
 }
 function checkBounds(obstacle){
+	
+	// Don't delete orbit rock's moon.
+	if (obstacle.constructor.name === 'OrbitRock') {
+		
+		//if (! obstacle.isCenter) {
+			
+			return;
+			
+		//}
+		
+	}
+	
 	// Delete obstacles that leave the level bounds
 	if(obstacle.x < -100 || obstacle.x > 1500 || obstacle.y < -100 || obstacle.y > 700) obstacle.kill();
 	
@@ -151,6 +164,8 @@ function createObj(spawnObj){
 	else if(spawnObj.type == 'FragRock2') newObj = new FragRock(game, 'fragRock2');
 	else if(spawnObj.type == 'FragRock3') newObj = new FragRock(game, 'fragRock3');
 	else if(spawnObj.type == 'FragRock4') newObj = new FragRock(game, 'fragRock4');
+  else if(spawnObj.type == 'ToxicRock') newObj = new ToxicRock(game, 'toxicRock');
+	else if(spawnObj.type == 'OrbitRock') newObj = new OrbitRock(game, 850, 0, 'rock', true);
 	// Retrieve object properties
 	if(spawnObj.x !== undefined) newObj.x = spawnObj.x;
 	else newObj.x = 1100;
