@@ -1,3 +1,4 @@
+var currentBombRock;
 
 // Parameters
 var bombDistance = 200;
@@ -21,16 +22,21 @@ function BombRock(game, image) {
 };
 
 BombRock.prototype = Object.create(Phaser.Sprite.prototype);
-
 BombRock.prototype.constructor = BombRock;
+
+BombRock.prototype.update = function() {
+	
+	currentBombRock = this;
+	
+}
 
 BombRock.prototype.die = function(){
 	obstacles.children.forEach(function(obstacle) {
 		
 		// Skip self.
-		if (obstacle === this) { return; }
+		if (obstacle === currentBombRock) { return; }
 		
-		if (getDistance(this, obstacle) < bombDistance) {
+		if (getDistance(currentBombRock, obstacle) < bombDistance) {
 			
 			obstacle.kill();
 		}
