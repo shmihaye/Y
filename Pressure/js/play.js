@@ -164,8 +164,9 @@ function createObj(spawnObj){
 	else if(spawnObj.type == 'FragRock2') newObj = new FragRock(game, 'fragRock2');
 	else if(spawnObj.type == 'FragRock3') newObj = new FragRock(game, 'fragRock3');
 	else if(spawnObj.type == 'FragRock4') newObj = new FragRock(game, 'fragRock4');
-  else if(spawnObj.type == 'ToxicRock') newObj = new ToxicRock(game, 'toxicRock');
-	else if(spawnObj.type == 'OrbitRock') newObj = new OrbitRock(game, 850, 0, 'rock', true);
+	else if(spawnObj.type == 'ToxicRock') newObj = new ToxicRock(game, 'toxicRock');
+	else if(spawnObj.type == 'OrbitRock') newObj = new OrbitRock(game, 'rock');
+	
 	// Retrieve object properties
 	if(spawnObj.x !== undefined) newObj.x = spawnObj.x;
 	else newObj.x = 1100;
@@ -199,6 +200,20 @@ function createObj(spawnObj){
 				radarSprite.blinkTimer = 10;
 				player.radar.push(radarSprite);
 			}
+		}
+		// Add moon if creating an OrbitRock
+		if(spawnObj.type == 'OrbitRock'){
+			var orbitMoon = new OrbitRock(game, 'rock');
+			orbitMoon.x = newObj.x;
+			orbitMoon.y = newObj.y + 100;
+			orbitMoon.scale.setTo(1);
+			orbitMoon.primed = false;
+			orbitMoon.friendly = false;
+			orbitMoon.body.gravity.y = 0;
+			orbitMoon.anchor.set(0.5);
+			game.add.existing(orbitMoon);
+			obstacles.add(orbitMoon);
+			newObj.moon = orbitMoon;
 		}
 	}
 }

@@ -14,6 +14,11 @@ function ToxicRock(game, image) {
 ToxicRock.prototype = Object.create(Phaser.Sprite.prototype);
 ToxicRock.prototype.constructor = ToxicRock;
 
+ToxicRock.prototype.die = function(){
+	
+	this.kill();
+}
+
 ToxicRock.prototype.update = function() {
 	
 	
