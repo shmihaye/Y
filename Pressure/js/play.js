@@ -1,6 +1,6 @@
 
 // Global variables for play state
-var player, obstacles, background, timestep, levelData;
+var player, obstacles, background, timestep, levelData, speedUp;
 var levelNum = 0;
 var health = 5;
 var addObstacles = [];
@@ -27,6 +27,9 @@ var playState = {
 		// Add background
 		this.background = game.add.tileSprite(0, 0, game.width, game.height, 'spaceBackground');
 		
+		// Set scroll speed to 1
+		speedUp = 1;
+		
 		// Create obstacles group
 		obstacles = game.add.group();
 		obstacles.enableBody = true;
@@ -41,6 +44,7 @@ var playState = {
 		
 		// Initialize keyboard controls
 		game.input.mouse.capture = true;
+		
 	},
 	
 	update: function() {
@@ -77,7 +81,12 @@ var playState = {
 				// Go to hallway state at the end of the level
 				if(spawnObj.type == 'END'){
 					hallStart = 600;
-					game.state.start('Hallway');
+					//levelNum++; UNCOMMENT WHEN WE HAVE ANOTHER LEVEL :)
+					this.camera.fade('#ffffff');
+					this.camera.onFadeComplete.add(fadeComplete,this);
+				}
+				else if(spawnObj.type == 'SPDUP'){
+					speedUp *= 2;
 				}
 				else createObj(spawnObj);
 			}
@@ -85,7 +94,7 @@ var playState = {
 		timestep++;
 		
 		// Scroll background
-		this.background.tilePosition.x -= 10;
+		this.background.tilePosition.x -= (5 * speedUp);
 		
 		// Delete off-screen objects
 		for (let i = 0, len = obstacles.children.length; i < len; i++){checkBounds(obstacles.children[i]);}
@@ -95,8 +104,8 @@ var playState = {
 		// Display debug information
 		game.debug.text(`Debugging Phaser ${Phaser.VERSION}`, 20, 560, 'yellow');
 		game.debug.text('FPS: ' + game.time.fps, 20, 580, 'yellow');
-		for (let i = 0, len = obstacles.children.length; i < len; i++){if(obstacles.children[i].alive) game.debug.body(obstacles.children[i]);}
-		game.debug.body(player);
+		//for (let i = 0, len = obstacles.children.length; i < len; i++){if(obstacles.children[i].alive) game.debug.body(obstacles.children[i]);}
+		//game.debug.body(player);
 	}
 };
 
@@ -123,12 +132,12 @@ function hurtShield(shield, obstacle){
 }
 function checkBounds(obstacle){
 	// Delete obstacles that leave the level bounds
-	if(obstacle.x < -100 || obstacle.x > 900 || obstacle.y < -100 || obstacle.y > 700) obstacle.kill();
+	if(obstacle.x < -100 || obstacle.x > 1500 || obstacle.y < -100 || obstacle.y > 700) obstacle.kill();
 	
 }
 function destroyObstacles(obstacle1, obstacle2){
-	// Destroy obstacles with thrown obstacles
-	if(obstacle1.primed || obstacle2.primed){
+	// Destroy obstacles with thrown obstacles (unless the collision is off-screen)
+	if((obstacle1.primed || obstacle2.primed) && obstacle1.x < 850 && obstacle2.x < 850){
 		obstacle1.die(game);
 		obstacle2.die(game);
 	}
@@ -144,7 +153,7 @@ function createObj(spawnObj){
 	else if(spawnObj.type == 'FragRock4') newObj = new FragRock(game, 'fragRock4');
 	// Retrieve object properties
 	if(spawnObj.x !== undefined) newObj.x = spawnObj.x;
-	else newObj.x = 850;
+	else newObj.x = 1100;
 	if(spawnObj.y !== undefined) newObj.y = spawnObj.y;
 	else newObj.y = 300;
 	if(spawnObj.xvel !== undefined) newObj.body.velocity.x = spawnObj.xvel;
@@ -165,5 +174,19 @@ function createObj(spawnObj){
 		newObj.anchor.set(0.5);
 		game.add.existing(newObj);
 		obstacles.add(newObj);
+		// If a new object is created offscreen, add a new sprite to the player's radar
+		if(player.radarEnabled && newObj.x > 850){
+			if(spawnObj.type == 'Asteroid' || (convoIndex4 > 1 && (spawnObj.type == 'FragRock' || spawnObj.type == 'GravRock')) || (convoIndex4 > 2 && spawnObj.type == 'BombRock')){
+				var radarSprite = game.add.sprite(780, newObj.y, newObj.key);
+				radarSprite.anchor.set(0.5);
+				radarSprite.trackObj = newObj;
+				radarSprite.tint = 0xADD8E6;
+				radarSprite.blinkTimer = 10;
+				player.radar.push(radarSprite);
+			}
+		}
 	}
+}
+function fadeComplete(){
+	this.state.start('Hallway'); 
 }

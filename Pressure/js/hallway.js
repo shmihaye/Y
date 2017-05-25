@@ -8,6 +8,7 @@ var hallwayState = {
 		
 		game.world.resize(1400, 600);
 		game.camera.x = hallStart;
+		if(hallStart == 600) this.camera.flash('#ffffff');
 		this.background = game.add.tileSprite(0, 0, 1400, game.height, 'spaceBackground');
 		game.add.sprite(0, 0, 'hallwayBackground');
 

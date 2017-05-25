@@ -52,16 +52,21 @@ function Ship(game, image){
 		this.shieldRegen = 0.001 * convoIndex2; // The rate at which the shield regenerates after use: min = 0.001, max = 0.004
 	}
 	
-	// Add beam if convoIndex3 > 0 (WIP)
-	/*this.beamEnabled = false;
+	// Add punch if convoIndex3 > 0
+	this.punchEnabled = false;
 	if(convoIndex3 > 0){
-		this.beamEnabled = true;
-		this.beam = game.add.sprite(0, 0, 'cheesecake');
-		game.physics.arcade.enable(this.beam);
-		this.beam.anchor.set(0.5);
-		this.beamTime = 0;
-		this.beamCooldown = 120;
-	}*/
+		this.punchEnabled = true;
+		this.punchTime = 0;
+		this.claw.punchStrength = 200 + (100 * convoIndex3);
+		this.punchCooldown = 240 - (20 * convoIndex3);
+	}
+	
+	// Add radar if convoIndex4 > 0
+	this.radarEnabled = false;
+	if(convoIndex4 > 0){
+		this.radarEnabled = true;
+		this.radar = [];
+	}
 	
 	// Add animations
 	this.animations.add('fly', [0,1], 10, true);
@@ -115,19 +120,19 @@ Ship.prototype.update = function(){
 	if(this.dashTime >= 0){ // Check to make sure the ability isn't on cooldown.
 		if(game.input.keyboard.justPressed(Phaser.Keyboard.A)){
 			if(this.dashDirection == 0 && this.dashTime > 0){this.body.velocity.x = -this.dashSpeed; this.dashTime = -this.dashCooldown; this.tint = 0x0000ff;}
-			else{this.dashDirection = 0; this.dashTime = 30;}
+			else{this.dashDirection = 0; this.dashTime = 20;}
 		}
 		if(game.input.keyboard.justPressed(Phaser.Keyboard.D)){
 			if(this.dashDirection == 1 && this.dashTime > 0){this.body.velocity.x = this.dashSpeed; this.dashTime = -this.dashCooldown; this.tint = 0x0000ff;}
-			else{this.dashDirection = 1; this.dashTime = 30;}
+			else{this.dashDirection = 1; this.dashTime = 20;}
 		}
 		if(game.input.keyboard.justPressed(Phaser.Keyboard.W)){
 			if(this.dashDirection == 2 && this.dashTime > 0){this.body.velocity.y = -this.dashSpeed; this.dashTime = -this.dashCooldown; this.tint = 0x0000ff;}
-			else{this.dashDirection = 2; this.dashTime = 30;}
+			else{this.dashDirection = 2; this.dashTime = 20;}
 		}
 		if(game.input.keyboard.justPressed(Phaser.Keyboard.S)){
 			if(this.dashDirection == 3 && this.dashTime > 0){this.body.velocity.y = this.dashSpeed; this.dashTime = -this.dashCooldown; this.tint = 0x0000ff;}
-			else{this.dashDirection = 3; this.dashTime = 30;}
+			else{this.dashDirection = 3; this.dashTime = 20;}
 		}
 	}
 	if(this.dashTime > 0) this.dashTime--; // Key is single-tapped and ready for dash!
@@ -159,19 +164,47 @@ Ship.prototype.update = function(){
 		}
 	}}
 	
-	// Beam ability (WIP)
-	/*if(this.beamEnabled){
-	// If left-click is double-clicked, create tractor beam!
-	if(this.beamTime >= 0){ // Check to make sure the ability isn't on cooldown.
-		if(game.input.activePointer.leftButton.justPressed){
-			if(this.beamTime > 0){
-				this.beam.x = game.input.x;
-				this.beam.y = game.input.y;
-				this.beamTime = -this.beamCooldown;
+	// Punch ability
+	if(this.punchEnabled){
+	// If left-click is double-clicked, fling nearby objects away from the ship
+	if(this.punchTime >= 0){ // Check to make sure the ability isn't on cooldown.
+		if(game.input.activePointer.leftButton.justPressed()){
+			if(this.punchTime > 0 && this.punchTime < 19){
+				// Call punchObject on all obstacles that overlap with the claw
+				game.physics.arcade.overlap(this.claw, obstacles, punchObject, null, this);
+				this.punchTime = -this.punchCooldown;
+				this.claw.tint = 0x0000ff;
+				this.claw.scale.x = 4;
 			}
-			else this.beamTime = 30;
+			else this.punchTime = 20;
 		}
-	}}*/
+	}
+	if(this.punchTime > 0) this.punchTime--;
+	else if(this.punchTime < 0){
+		if(this.punchTime == -this.punchCooldown + 8){
+			this.claw.tint = 0xADD8E6; // Add blue tint after initial speed burst
+			this.claw.scale.setTo(2);
+		}
+		if(this.punchTime == -1) this.claw.tint = 0xffffff; // Remove tint when cooldown is over
+		this.punchTime++;
+	}}
+	
+	// Radar ability
+	if(this.radarEnabled){
+		let radarSize = this.radar.length;
+		for(let i = 0; i < radarSize; i++){
+			let radarSprite = this.radar[i];
+			if(radarSprite.trackObj.x < 850) radarSprite.kill();
+			else{
+				radarSprite.y = radarSprite.trackObj.y;
+				if(radarSprite.blinkTimer <= 0){
+					radarSprite.visible = !radarSprite.visible;
+					radarSprite.blinkTimer = 10;
+				}
+				else radarSprite.blinkTimer--;
+			}
+		}
+	}
 	
 	// Move arm1 to ship
 	this.arm1.x = this.x;
@@ -251,4 +284,12 @@ Ship.prototype.update = function(){
 		else if(this.invincibility % 4 == 0) this.visible = !this.visible;
 		this.invincibility--;
 	}
+}
+function punchObject(claw, obstacle){
+	// Punch all obstacles away at the claw's angle
+	obstacle.body.velocity.x = claw.punchStrength * Math.cos(3.14 * claw.angle/180);
+	obstacle.body.velocity.y = claw.punchStrength * Math.sin(3.14 * claw.angle/180);
+	obstacle.friendly = true;
+	obstacle.primed = true;
+	
 }
