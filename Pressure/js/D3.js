@@ -18,17 +18,17 @@ var D3 = {
 		 DiaB = "It doesn't matter..."
 		 DiaC = "Somethings aren't worth recovering..."
 		
-		 DiaA1 = "\nSure they'll miss the meds, but not us."
-		 DiaA2 = "\nOut of sight out of mind."
-		 DiaA3 = "\nWe are a number, a unit, a casualty.."
+		 DiaA1 = " Sure they'll miss the meds, but not us."
+		 DiaA2 = " Out of sight out of mind."
+		 DiaA3 = " We are a number, a unit, a casualty.."
 		
-		 DiaB1 = "\n3 months alone in the hospital taught me"
-		 DiaB2 = "\n10 years wihtout a word from them taught me"
-		 DiaB3 = "\nPeople like me get left behind, no one comes looking"
+		 DiaB1 = " 3 months alone in the hospital taught me"
+		 DiaB2 = " 10 years wihtout a word from them taught me"
+		 DiaB3 = " People like me get left behind, no one comes looking"
 		
-		 DiaC1 = "\nMy unit didn't want to remember me,"
-		 DiaC2 = "\nI am just a bad memory."
-		 DiaC3 = "\nand this ship could be one too..."
+		 DiaC1 = " My unit didn't want to remember me,"
+		 DiaC2 = " I am just a bad memory."
+		 DiaC3 = " and this ship could be one too..."
 		
 		choice1 = DiaA
 		choice2 = DiaB
@@ -44,10 +44,9 @@ var D3 = {
 
 
 		BG = game.add.sprite(0, 0, 'space');
-		slot1 = game.add.text(0, 0, choice1, { font: "32px Source Sans Pro", fill: unselected_color, align: "left" })
-		slot2 = game.add.text(0, 0, choice2, { font: "32px Source Sans Pro", fill: unselected_color, align: "left" })
-	 	slot3 = game.add.text(0, 0, choice3, { font: "32px Source Sans Pro", fill: unselected_color, align: "left" })
-    
+		slot1 = game.add.text(0, 0, choice1, { font: "32px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
+		slot2 = game.add.text(0, 0, choice2, { font: "32px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
+	 	slot3 = game.add.text(0, 0, choice3, { font: "32px Source Sans Pro", fill: unselected_color, align: "left", wordWrap: true,wordWrapWidth: 800 })
 
     	exitSign = game.add.text(700,500, 'exit', {font: "32px Source Sans Pro", fill: '#8B0000', align: "left" })
 

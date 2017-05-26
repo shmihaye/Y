@@ -16,17 +16,17 @@ var D2 = {
 		 DiaB = "We could float off and we'd be forgotten."
 		 DiaC = "I don't regret the decision, but I don't like it."
 		
-		 DiaA1 = "\nLike being in a lake in the middle of the night."
-		 DiaA2 = "\nThat used to be a rush, but now..."
-		 DiaA3 = "\nIt makes my blood run cold."
+		 DiaA1 = " Like being in a lake in the middle of the night."
+		 DiaA2 = " That used to be a rush, but now..."
+		 DiaA3 = " It makes my blood run cold."
 		
-		 DiaB1 = "\nPeople forget the painful memories."
-		 DiaB2 = "\nAnd thats fine.. when you arent that memory."
-		 DiaB3 = "\nWhen you are, there are ways that we can forget oursleves."
+		 DiaB1 = " People forget the painful memories."
+		 DiaB2 = " And thats fine.. when you arent that memory."
+		 DiaB3 = " When you are, there are ways that we can forget oursleves."
 		
-		 DiaC1 = "\nI'm just following orders, doing what I gotta do."
-		 DiaC2 = "\nSo many people need help, I can't put me before them."
-		 DiaC3 = "\nI can handle myself... I have to."
+		 DiaC1 = " I'm just following orders, doing what I gotta do."
+		 DiaC2 = " So many people need help, I can't put me before them."
+		 DiaC3 = " I can handle myself... I have to."
 		
 		choice1 = DiaA
 		choice2 = DiaB
@@ -41,10 +41,9 @@ var D2 = {
 		var done_color = "#0000FF"
 
 		BG = game.add.sprite(0, 0, 'space');
-		slot1 = game.add.text(0, 0, choice1, { font: "32px Source Sans Pro", fill: unselected_color, align: "left" })
-		slot2 = game.add.text(0, 0, choice2, { font: "32px Source Sans Pro", fill: unselected_color, align: "left" })
-	 	slot3 = game.add.text(0, 0, choice3, { font: "32px Source Sans Pro", fill: unselected_color, align: "left" })
-    
+		slot1 = game.add.text(0, 0, choice1, { font: "32px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
+		slot2 = game.add.text(0, 0, choice2, { font: "32px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
+	 	slot3 = game.add.text(0, 0, choice3, { font: "32px Source Sans Pro", fill: unselected_color, align: "left", wordWrap: true,wordWrapWidth: 800 })
 
     	exitSign = game.add.text(700,500, 'exit', {font: "32px Source Sans Pro", fill: '#8B0000', align: "left" })
 

@@ -13,21 +13,21 @@ var D4 = {
 
 
 		// library of all text for a given "chapter"
-		 DiaA = "Here is how you will be able to talk to your crew"
-		 DiaB = "You click on a sentence and it'll expand as the NPC elaborates"
-		 DiaC = "But be careful you only have so many expansions"
+		 DiaA = "Heh, you came back? after that shit show?"
+		 DiaB = "This leg is damn great, compared to my head."
+		 DiaC = "The crew here, they aren't like my old unit."
 		
-		 DiaA1 = "\nWith each visit will strike up a new conversation"
-		 DiaA2 = "\nSlowly you will get to know them"
-		 DiaA3 = "\nAnd as you complete each interaction, your crew will perform better"
+		 DiaA1 = " It..you..I...my demons come out sometimes and.."
+		 DiaA2 = " I've never had someone around during that before."
+		 DiaA3 = " Thank you, for sticking around, means a lot"
 		
-		 DiaB1 = "\nYeah! just like that!"
-		 DiaB2 = "\nWow u are an ambitious one"
-		 DiaB3 = "\nstahp pls"
+		 DiaB1 = " You'd think getting blown apart would mess with your head."
+		 DiaB2 = " But no, that heals without any bother"
+		 DiaB3 = " The isolation, the abandonment..The body can't handle that"
 		
-		 DiaC1 = "\nDon't waste them here"
-		 DiaC2 = "\nSeriously stop"
-		 DiaC3 = "\nAre you happy with yourself?"
+		 DiaC1 = " You aren't like them, they're not bad people. Just afraid"
+		 DiaC2 = " But you aren't scared of hurt people...."
+		 DiaC3 = " You let those memories change you and teach you."
 		
 		choice1 = DiaA
 		choice2 = DiaB
@@ -43,9 +43,9 @@ var D4 = {
 
 		
 		BG = game.add.sprite(0, 0, 'space');
-		slot1 = game.add.text(0, 0, choice1, { font: "32px Source Sans Pro", fill: unselected_color, align: "left" })
-		slot2 = game.add.text(0, 0, choice2, { font: "32px Source Sans Pro", fill: unselected_color, align: "left" })
-	 	slot3 = game.add.text(0, 0, choice3, { font: "32px Source Sans Pro", fill: unselected_color, align: "left" })
+		slot1 = game.add.text(0, 0, choice1, { font: "32px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
+		slot2 = game.add.text(0, 0, choice2, { font: "32px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
+	 	slot3 = game.add.text(0, 0, choice3, { font: "32px Source Sans Pro", fill: unselected_color, align: "left", wordWrap: true,wordWrapWidth: 800 })
     
 
     	exitSign = game.add.text(700,500, 'exit', {font: "32px Source Sans Pro", fill: '#8B0000', align: "left" })
