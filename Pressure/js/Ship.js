@@ -264,10 +264,13 @@ Ship.prototype.update = function(){
 		let prevy = this.grabbed.y;
 		this.grabbed.x += (this.claw.x - lastclawx);
 		this.grabbed.y += (this.claw.y - lastclawy);
-    if (this.grabbed.constructor.name === 'ToxicRock') {
+		if (this.grabbed.constructor.name === 'ToxicRock') {
 			energy--;
 		}
-    
+		this.grabbed.body.velocity.x = 0;
+		this.grabbed.body.velocity.y = 0;
+		this.grabbed.body.acceleration.x = 0;
+		this.grabbed.body.acceleration.y = 0;
 		// Release grabbed object if mouse button is no longer down
 		if(!game.input.activePointer.leftButton.isDown){
 			this.grabbed.body.velocity.y = 50*(this.grabbed.y - prevy);

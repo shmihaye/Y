@@ -1,8 +1,7 @@
 
 // Global variables for play state
-var player, obstacles, background, timestep, levelData, speedUp;
+var player, obstacles, background, timestep, levelData, speedUp, energyReduction;
 var levelNum = 0;
-var health = 5;
 var addObstacles = [];
 
 // Play state container
@@ -45,6 +44,14 @@ var playState = {
 		// Initialize keyboard controls
 		game.input.mouse.capture = true;
 		
+		// Create energy bar
+		energyReduction = game.add.sprite(65, 580, 'bar');
+		energyReduction.scale.x = 0;
+		energyReduction.scale.y = 0.5;
+		energyReduction.tint = 0xFF0000;
+		energyBar = game.add.sprite(65, 580, 'bar');
+		energyBar.scale.x = 3;
+		energyBar.scale.y = 0.5;
 	},
 	
 	update: function() {
@@ -80,8 +87,7 @@ var playState = {
 				
 				// Go to hallway state at the end of the level
 				if(spawnObj.type == 'END'){
-					hallStart = 600;
-					//levelNum++; UNCOMMENT WHEN WE HAVE ANOTHER LEVEL :)
+					levelNum++;
 					this.camera.fade('#ffffff');
 					this.camera.onFadeComplete.add(fadeComplete,this);
 				}
@@ -94,13 +100,22 @@ var playState = {
 		timestep++;
 		
 		// If the player runs out of energy, restart the stage
-		if(energy <= 0) game.state.start('Hallway');
+		if(energy <= 0){
+			this.camera.fade('#ffffff');
+			this.camera.onFadeComplete.add(fadeComplete,this);
+		}
 		
 		// Scroll background
 		this.background.tilePosition.x -= (5 * speedUp);
 		
 		// Delete off-screen objects
 		for (let i = 0, len = obstacles.children.length; i < len; i++){checkBounds(obstacles.children[i]);}
+		
+		// Update energy bar scaling
+		if(energy < 0) energy = 0;
+		energyBar.scale.x = energy/30;
+		if(energyBar.scale.x > energyReduction.scale.x) energyReduction.scale.x = energyBar.scale.x;
+		else if(energyBar.scale.x < energyReduction.scale.x) energyReduction.scale.x -= 0.02;
 	},
 	
 	render: function() {
@@ -132,17 +147,6 @@ function hurtShield(shield, obstacle){
 	}
 }
 function checkBounds(obstacle){
-	
-	// Don't delete orbit rock's moon.
-	if (obstacle.constructor.name === 'OrbitRock') {
-		
-		//if (! obstacle.isCenter) {
-			
-			return;
-			
-		//}
-		
-	}
 	
 	// Delete obstacles that leave the level bounds
 	if(obstacle.x < -100 || obstacle.x > 1500 || obstacle.y < -100 || obstacle.y > 700) obstacle.kill();
@@ -218,5 +222,6 @@ function createObj(spawnObj){
 	}
 }
 function fadeComplete(){
+	hallStart = 600;
 	this.state.start('Hallway'); 
 }

@@ -1,7 +1,4 @@
 
-
-var energyBar;
-
 var hallwayState = {
 	
 	create: function() {
@@ -17,11 +14,12 @@ var hallwayState = {
 		var door3 = game.add.sprite(435, 320, 'hallwayDoor');
 		var door4 = game.add.sprite(645, 320, 'hallwayDoor');
 		var pilotButton = game.add.sprite(1015, 320, 'hallwayDoor');
-		energyBar = game.add.sprite(35, 10, 'bar'); // Placeholder image
-		energyBar.scale.x = 10;
-		energyBar.scale.y = 0.25;
-		energyBar.fixedToCamera = true;
 		
+		// Create energy bar
+		energyBar = game.add.sprite(65, 580, 'bar');
+		energyBar.scale.x = 3;
+		energyBar.scale.y = 0.5;
+		energyBar.fixedToCamera = true;
 		
 		if(convoIndex1 < 4){door1.inputEnabled = true; door1.events.onInputDown.add(this.door1Opened, this);}
 		if(convoIndex2 < 4){door2.inputEnabled = true; door2.events.onInputDown.add(this.door2Opened, this);}
@@ -32,69 +30,45 @@ var hallwayState = {
 	
 	update : function() {
 		
+		// Move camera if mouse is near the edge of the screen
 		if(game.input.x > 650) game.camera.x += 10;
 		else if(game.input.x < 150) game.camera.x -= 10;
+		
+		// Update energy bar scaling
 		if(energy < 0) energy = 0;
 		else if(energy < 100) energy += 0.01;
 		energyBar.scale.x = energy/30;
 		
-		// Scroll background
-		this.background.tilePosition.x -= 20;
+		// Scroll background slowly
+		this.background.tilePosition.x -= 2;
 	},
 	
 	door1Opened: function() {
-
-		if (convoIndex1 == 3){
-			game.state.start('D4');
-					convoIndex1++
-
-		}
-
-
-		if (convoIndex1 == 2){
-
-			game.state.start('D3');
-					convoIndex1++
-
-		}
-
-
-		if (convoIndex1 == 1){
-			game.state.start('D2');
-					convoIndex1++
-
-		}
-
-
-		if (convoIndex1 == 0){
-
-			game.state.start('D1');
-					convoIndex1++
-
-		}
-//		game.state.start('Narrative');
-
-
-
-
+		
+		// Go to Patricia's next conversation
+		convoIndex1++;
+		game.state.start('P' + convoIndex1.toString());
 	},
 	
 	door2Opened: function() {
 		
+		// Go to Bridget's next conversation
 		convoIndex2++;
-		game.state.start('Narrative');
+		game.state.start('B' + convoIndex2.toString());
 	},
 	
 	door3Opened: function() {
 		
+		// Go to Delson's next conversation
 		convoIndex3++;
-		game.state.start('Narrative');
+		game.state.start('D' + convoIndex3.toString());
 	},
 	
 	door4Opened: function() {
 		
+		// Go to D4V3's next conversation
 		convoIndex4++;
-		game.state.start('Narrative');
+		game.state.start('R' + convoIndex4.toString());
 	},
 	
 	pilotShip: function() {

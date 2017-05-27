@@ -1,4 +1,3 @@
-var currentBombRock;
 
 // Parameters
 var bombDistance = 200;
@@ -16,6 +15,7 @@ function BombRock(game, image) {
 	this.animations.play('default');
 	var anim = this.animations.add('explode', [3,4,5,6,7,8,9,10,11,12,13], 10, false);
 	anim.killOnComplete = true;
+	this.exploded = false;
 	
 	// Resize hitbox
 	this.body.setSize(30, 30, 17, 17);
@@ -24,25 +24,16 @@ function BombRock(game, image) {
 BombRock.prototype = Object.create(Phaser.Sprite.prototype);
 BombRock.prototype.constructor = BombRock;
 
-BombRock.prototype.update = function() {
-	
-	currentBombRock = this;
-	
-}
-
 BombRock.prototype.die = function(){
-	obstacles.children.forEach(function(obstacle) {
-		
-		// Skip self.
-		if (obstacle === currentBombRock) { return; }
-		
-		if (getDistance(currentBombRock, obstacle) < bombDistance) {
-			
-			obstacle.kill();
+	if(!this.exploded){
+		this.exploded = true;
+		let obstacleLength = obstacles.children.length;
+		for(let i = 0; i < obstacleLength; i++){
+			if(obstacles.children[i].alive && obstacles.children[i] !== this && obstacles.children[i] !== player.grabbed 
+			&& getDistance(this, obstacles.children[i]) < bombDistance) obstacles.children[i].die();
 		}
-		
-	});
-	this.body.velocity.x = 0;
-	this.body.velocity.y = 0;
-	this.animations.play('explode'); // The rock will be killed when the animation is complete
+		this.body.velocity.x = 0;
+		this.body.velocity.y = 0;
+		this.animations.play('explode'); // The rock will be killed when the animation is complete
+	}
 }

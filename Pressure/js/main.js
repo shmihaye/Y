@@ -6,11 +6,16 @@ var Game = {};
 // Global variables
 // energy -- how much "health" the player has in the play state. Recharges over time
 var energy = 100;
+var energyBar;
 // convoIndex1-4 -- how many times the player has talked to characters 1-4
 var convoIndex1 = 0;
 var convoIndex2 = 0;
 var convoIndex3 = 0;
 var convoIndex4 = 0;
+// font colors for the narrative state
+var unselected_color = "#7FFFD4"
+var selected_color = "#00BFFF"
+var done_color = "#0000FF"
 // hallStart -- The x position where the camera should start in the hallstart
 var hallStart = 0;
 
@@ -62,10 +67,10 @@ Game.Load.prototype = {
 		game.load.image('hallwayDoor', 'hallwayDoor.png');
 		game.load.image('spaceBackground', 'spaceBackground.png');
 		game.load.image('hallwayBackground', 'hallwayBackground.png');
-		game.load.image('room1Background.png', 'room1Background.png');
-		//game.load.image('room2Background.png', 'room2Background.png');
-		game.load.image('room3Background.png', 'room3Background.png');
-		game.load.image('room4Background.png', 'room4Background.png');
+		game.load.image('room1Background', 'room1Background.png');
+		game.load.image('room2Background', 'room2Background.png');
+		game.load.image('room3Background', 'room3Background.png');
+		game.load.image('room4Background', 'room4Background.png');
 		
 		game.load.image('patricia1', 'patricia1.png');
 		game.load.image('patricia2', 'patricia2.png');
@@ -89,7 +94,7 @@ Game.Load.prototype = {
 		this.preloadBar.cropEnabled = false;
 	},
 	update: function() {
-		this.state.start('Play');
+		this.state.start('Hallway');
 	}
 };
 
@@ -100,10 +105,21 @@ game.state.add('Boot', Game.Boot); // Booting up
 game.state.add('Load', Game.Load); // Loading assets
 game.state.add('Play', playState); // Playing the game
 game.state.add('Hallway', hallwayState); // Navigating the hallway
+game.state.add('P1', P1); // Patricia conversation 1
+game.state.add('P2', P2); // Patricia conversation 2
+game.state.add('P3', P3); // Patricia conversation 3
+game.state.add('P4', P4); // Patricia conversation 4
+game.state.add('B1', B1); // Bridget conversation 1
+game.state.add('B2', B2); // Bridget conversation 2
+game.state.add('B3', B3); // Bridget conversation 3
+game.state.add('B4', B4); // Bridget conversation 4
 game.state.add('D1', D1); // Delson conversation 1
 game.state.add('D2', D2); // Delson conversation 2
 game.state.add('D3', D3); // Delson conversation 3
 game.state.add('D4', D4); // Delson conversation 4
-game.state.add('Narrative', narrativeState); // Talking to a character
+game.state.add('R1', R1); // D4V3 conversation 1
+game.state.add('R2', R2); // D4V3 conversation 2
+game.state.add('R3', R3); // D4V3 conversation 3
+game.state.add('R4', R4); // D4V3 conversation 4
 // Begin boot state
 game.state.start('Boot');

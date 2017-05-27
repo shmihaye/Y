@@ -1,18 +1,9 @@
- 
-// library of all text for a given "chapter
-
-
-
 
 var D1 = {
-	
-	preload: function() {
-		
-		game.load.path = 'assets/img/'
-		game.load.image('space', 'space.png')
-	},
 
 	create: function() {
+		
+		// library of all text for a given "chapter"
 		 DiaA = "Reminds me of the service, being out like this."
 		 DiaB = "These asteroids hit real hard..."
 		 DiaC = "Come and have a drink cap."
@@ -21,13 +12,13 @@ var D1 = {
 		 DiaA2 = " Sorry was that too grim for you?"
 		 DiaA3 = " My comedy is a bit uuhh.. out of practice I guess."
 		
-		 DiaB1 = " At least my leg has atuo stablizers."
+		 DiaB1 = " At least my leg has auto stablizers."
 		 DiaB2 = " I won't be falling on anyone when things get shaky."
 		 DiaB3 = " They even called me 'ol steady' before I had this thing."
 		
 		 DiaC1 = " I have my private stash here."
 		 DiaC2 = " Better get some before I wisen up and down it all."
-		 DiaC3 = " You should see my collection back home! Its magnificent."
+		 DiaC3 = " You should see my collection back home! It's magnificent."
 		
 		choice1 = DiaA
 		choice2 = DiaB
@@ -36,18 +27,20 @@ var D1 = {
 		Acount= 1
 		Bcount= 1
 		Ccount= 1
-		
-		var unselected_color = "#7FFFD4"
-		var selected_color = "#00BFFF"
-		var done_color = "#808080"
 
-		
-		BG = game.add.sprite(0, 0, 'space');
+		this.background = game.add.tileSprite(0, 0, game.width, game.height, 'spaceBackground');
+		BG = game.add.sprite(0, 0, 'room3Background');
 		slot1 = game.add.text(0, 0, choice1, { font: "32px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
 		slot2 = game.add.text(0, 0, choice2, { font: "32px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
 	 	slot3 = game.add.text(0, 0, choice3, { font: "32px Source Sans Pro", fill: unselected_color, align: "left", wordWrap: true,wordWrapWidth: 800 })
 
-    	exitSign = game.add.text(700,500, 'exit', {font: "32px Source Sans Pro", fill: '#8B0000', align: "left" })
+    	exitSign = game.add.text(375,500, 'exit', {font: "32px Source Sans Pro", fill: '#8B0000', align: "left" })
+		
+		// Create energy bar
+		energyBar = game.add.sprite(65, 580, 'bar');
+		energyBar.scale.x = 3;
+		energyBar.scale.y = 0.5;
+		energyBar.fixedToCamera = true;
 
     	slot1.inputEnabled = true
     	slot2.inputEnabled = true
@@ -93,6 +86,14 @@ var D1 = {
 			exitSign.inputEnabled = true
 
 		}
+		
+		// Update energy bar scaling
+		if(energy < 0) energy = 0;
+		else if(energy < 100) energy += 0.01;
+		energyBar.scale.x = energy/30;
+		
+		// Scroll background slowly
+		this.background.tilePosition.x -= 2;
 	},
 		
 	

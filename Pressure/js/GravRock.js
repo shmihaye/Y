@@ -2,7 +2,7 @@
 var gravDistance = 300;
 
 // Just for the gravAttach function
-var gravRockPosX, gravRockPosY, gravRockLastPosX, gravRockLastPosY;
+var gravRockPosX, gravRockPosY;
 
 function GravRock(game, image) {
 	
@@ -27,47 +27,24 @@ GravRock.prototype.constructor = GravRock;
 
 GravRock.prototype.update = function() {
 	
+	if(this.alive){
 	// Temporarily hold these values.
-	var currentGravRock = this;
 	gravRockPosX = this.x;
 	gravRockPosY = this.y;
 	
-	// Try to pull the player. Doesn't work yet.
-	//gravPull(player);
-	
 	// GravRock will be looking to pull every object in the scene.
-	obstacles.children.forEach(function(obstacle) {
-		
-		// Skip dead objects.
-		if (! obstacle.alive) { return; }
-		
-		// Skip self.
-		if (obstacle === currentGravRock) { return; }
-
-		// Collide other objects and attach them with self.
-		var collided = game.physics.arcade.collide(obstacle, currentGravRock, gravAttach, null, this);
-		
-		// Do nothing if it's already collided.
-		if (collided) { return; }
-		
-		// But if it's not colliding because the grav rock is dead, give attached obstacle the velocity of inertia.
-		if (! currentGravRock.alive) {
+	let obstacleLength = obstacles.children.length;
+	for(let i = 0; i < obstacleLength; i++){
+		if(obstacles.children[i].alive && obstacles.children[i] !== this && obstacles.children[i] !== player.grabbed ){
 			
-			obstacle.body.velocity.x = this.body.velocity.x;
+			// Collide other objects and attach them with self.
+			let collided = game.physics.arcade.collide(obstacles.children[i], this, gravAttach, null, this);
 			
-			return;
-			
+			// Try to pull obstacles that are not attached.
+			if(!collided) gravPull(obstacles.children[i]);
 		}
 		
-		// Try to pull obstacles.
-		gravPull(obstacle);
-		
-	});
-	
-	// Update self's latest position.
-	gravRockLastPosX = this.x;
-	gravRockLastPosY = this.y;
-	
+	}}
 }
 
 GravRock.prototype.die = function(){
@@ -93,13 +70,15 @@ function gravPull(object) {
 	
 }
 
-function gravAttach(obstacle, currentGravRock) {
+function gravAttach(obstacle, gravRock) {
 	
 	// Disable another object's original velocity.
-	obstacle.body.velocity.x = 0; obstacle.body.velocity.y = 0;
+	//obstacle.body.velocity.x = 0; obstacle.body.velocity.y = 0;
 	
 	// Ride
-	obstacle.x += gravRockPosX - gravRockLastPosX;
-	obstacle.y += gravRockPosY - gravRockLastPosY;
+	obstacle.body.velocity.x = gravRock.body.velocity.x;
+	obstacle.body.velocity.y = gravRock.body.velocity.y;
+	//obstacle.x += gravRockPosX - gravRockLastPosX;
+	//obstacle.y += gravRockPosY - gravRockLastPosY;
 	
 }
