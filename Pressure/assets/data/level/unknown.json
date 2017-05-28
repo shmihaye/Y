@@ -1,0 +1,18 @@
+{
+  "timestamps": [
+  
+	{"time":0, "objects": [{"type":"FragRock", "y":100, "scale":1.4}, {"type":"BombRock", "y":300, "scale":1.6}, {"type":"FragRock", "y":500, "scale":2}]},
+	
+	{"time":1.5, "objects": [{"type":"FragRock", "y":300, "scale":2}]},
+  
+	{"time":3, "objects": [{"type":"OrbitRock", "y":100, "scale":2.3}, {"type":"OrbitRock", "y":500, "scale":2.3}]},
+	
+	{"time":5.5, "objects": [{"type":"FragRock", "y":200, "scale":2.4}, {"type":"BombRock", "y":400, "scale":2}]},
+	
+	{"time":6.8, "objects": [{"type":"Asteroid", "y":50, "scale":1.6}, {"type":"Asteroid", "y":190, "scale":1.6}, {"type":"Asteroid", "y":470, "scale":1.6}]},
+	{"time":7, "objects": [{"type":"Asteroid", "y":120, "scale":1.6}, {"type":"Asteroid", "y":330, "scale":1.6}]},
+	{"time":7.2, "objects": [{"type":"Asteroid", "y":260, "scale":1.6}, {"type":"Asteroid", "y":400, "scale":1.6}, {"type":"Asteroid", "y":540, "scale":1.6}]}
+
+
+  ]
+}
