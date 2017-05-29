@@ -23,8 +23,8 @@ FragRock.prototype.update = function(){
 
 FragRock.prototype.die = function(){
 	if(this.canBreak){
-		var fragment1 = {type:"FragRock2", x:this.x, y:this.y, scale:this.scale.x, primedCooldown:20, xvel:-300, yvel:30, canBreak:false};
-		var fragment2 = {type:"FragRock3", x:this.x, y:this.y, scale:this.scale.x, primedCooldown:20, xvel:300, yvel:30, canBreak:false};
+		var fragment1 = {type:"FragRock2", x:this.x, y:this.y, scale:this.scale.x, primedCooldown:20, xvel:-100, yvel:100, canBreak:false};
+		var fragment2 = {type:"FragRock3", x:this.x, y:this.y, scale:this.scale.x, primedCooldown:20, xvel:100, yvel:100, canBreak:false};
 		var fragment3 = {type:"FragRock4", x:this.x, y:this.y, scale:this.scale.x, primedCooldown:20, xvel:0, yvel:-200, canBreak:false};
 		addObstacles.push(fragment1);
 		addObstacles.push(fragment2);

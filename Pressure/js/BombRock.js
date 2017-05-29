@@ -1,6 +1,6 @@
 
 // Parameters
-var bombDistance = 200;
+var bombDistance = 250;
 
 function BombRock(game, image) {
 	
