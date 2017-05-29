@@ -37,7 +37,28 @@
 		{"time":37, "objects": [{"type":"ToxicRock", "y":330, "scale":1.6, "xvel":-140}]},
 		{"time":38, "objects": [{"type":"ToxicRock", "y":450, "scale":1.7, "xvel":-150}]},
 		
-		{"time":1000, "objects": [{"type":"END"}]}
+		{"time":45, "objects": [{"type":"Asteroid", "y":200, "scale":3}]},
+		
+		{"time":51, "objects": [{"type":"Asteroid", "y":350, "scale":3.5}]},
+		
+		{"time":57, "objects": [{"type":"ToxicRock", "y":120, "scale":3.2, "xvel":-120}, {"type":"ToxicRock", "y":430, "scale":3.4}]},
+		{"time":59.5, "objects": [{"type":"Asteroid", "y":150, "scale":3, "xvel":-120, "yvel":20}]},
+		{"time":63, "objects": [{"type":"BombRock", "y":500, "scale":2.9, "xvel":-140, "yvel":-30}]},
+		{"time":65, "objects": [{"type":"FragRock", "y":100, "scale":3.2, "xvel":-120, "yvel":20}, {"type":"FragRock", "y":550, "scale":3.4, "xvel":-115, "yvel":-20}]},
+		{"time":68, "objects": [{"type":"ToxicRock", "y":200, "scale":3.4, "xvel":-120}, {"type":"FragRock", "y":450, "scale":3.3, "xvel":-130, "yvel":-5}]},
+		
+		{"time":72, "objects": [{"type":"FragRock", "y":400, "scale":3.5, "xvel":-130, "yvel":-30}]},
+		{"time":74, "objects": [{"type":"FragRock", "y":70, "scale":3.3, "xvel":-140, "yvel":40}, {"type":"ToxicRock", "y":300, "scale":3.5, "xvel":-90}, {"type":"FragRock", "y":500, "scale":3.4, "xvel":-130, "yvel":-20}]},
+		
+		{"time":79, "objects": [{"type":"ToxicRock", "y":300, "scale":3.2, "xvel":-120}]},
+		{"time":81, "objects": [{"type":"FragRock", "y":300, "scale":3.3, "xvel":-125}]},
+		{"time":84, "objects": [{"type":"FragRock", "y":100, "scale":3.4, "xvel":-140}, {"type":"BombRock", "y":550, "scale":3.5, "xvel":-160, "yvel":-50}]},
+		
+		{"time":86, "objects": [{"type":"ToxicRock", "y":120, "scale":3.6, "xvel":-130}, {"type":"ToxicRock", "y":480, "scale":3.6, "xvel":-130}]},
+		{"time":86.5, "objects": [{"type":"ToxicRock", "y":300, "scale":3.5, "xvel":-135}]},
+		
+		{"time":95, "objects": [{"type":"SPDUP"}]},
+		{"time":97, "objects": [{"type":"END"}]}
 	
 	]
 
