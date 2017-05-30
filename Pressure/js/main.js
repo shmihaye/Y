@@ -74,20 +74,20 @@ Game.Load.prototype = {
 		
 		game.load.image('patricia1', 'patricia1.png');
 		game.load.image('patricia2', 'patricia2.png');
-		//game.load.image('patricia3', 'patricia3.png');
-		//game.load.image('patricia4', 'patricia4.png');
-		//game.load.image('bridget1', 'bridget1.png');
-		//game.load.image('bridget2', 'bridget2.png');
-		//game.load.image('bridget3', 'bridget3.png');
-		//game.load.image('bridget4', 'bridget4.png');
+		game.load.image('patricia3', 'patricia3.png');
+		game.load.image('patricia4', 'patricia4.png');
+		game.load.image('bridget1', 'bridget1.png');
+		game.load.image('bridget2', 'bridget2.png');
+		game.load.image('bridget3', 'bridget3.png');
+		game.load.image('bridget4', 'bridget4.png');
 		game.load.image('delson1', 'delson1.png');
 		game.load.image('delson2', 'delson2.png');
-		//game.load.image('delson3', 'delson3.png');
-		//game.load.image('delson4', 'delson4.png');
-		//game.load.image('d4v31', 'd4v31.png');
-		//game.load.image('d4v32', 'd4v32.png');
-		//game.load.image('d4v33', 'd4v33.png');
-		//game.load.image('d4v34', 'd4v34.png');
+		game.load.image('delson3', 'delson3.png');
+		game.load.image('delson4', 'delson4.png');
+		game.load.image('d4v31', 'd4v31.png');
+		game.load.image('d4v32', 'd4v32.png');
+		game.load.image('d4v33', 'd4v33.png');
+		game.load.image('d4v34', 'd4v34.png');
 	},
 	create: function() {
 		// Disable preload bar crop while we wait for mp3 decoding

@@ -41,6 +41,9 @@ var P1 = {
 		energyBar.scale.x = 3;
 		energyBar.scale.y = 0.5;
 		energyBar.fixedToCamera = true;
+		
+		// Add character sprite
+		game.add.sprite(61, 313, 'patricia1');
 
     	slot1.inputEnabled = true
     	slot2.inputEnabled = true
