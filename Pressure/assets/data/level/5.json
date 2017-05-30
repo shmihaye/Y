@@ -1,0 +1,12 @@
+{
+
+	"timestamps": [
+		
+		// Anything goes -- as the finale, this level should be nice and tough!
+		
+		{"time":, "objects": [{"type":"SPDUP"}]},
+		{"time":, "objects": [{"type":"FIN"}]} // Trigger end animation & credits
+		
+	]
+
+}
