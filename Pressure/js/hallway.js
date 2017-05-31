@@ -116,7 +116,7 @@ var hallwayState = {
 		
 		// Update energy bar scaling
 		if(energy < 0) energy = 0;
-		else if(energy < 100) energy += 0.01;
+		else if(energy < 100) energy += energyRegen;
 		energyBar.scale.x = energy/30;
 		
 		// Scroll background slowly

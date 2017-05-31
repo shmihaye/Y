@@ -6,6 +6,7 @@ var Game = {};
 // Global variables
 // energy -- how much "health" the player has in the play state. Recharges over time
 var energy = 100;
+var energyRegen = 0.05;
 var energyBar;
 // convoIndex1-4 -- how many times the player has talked to characters 1-4
 var convoIndex1 = 0;
