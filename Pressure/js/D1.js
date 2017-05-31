@@ -40,9 +40,9 @@ var D1 = {
 		energyBar.scale.y = 0.5;
 		energyBar.fixedToCamera = true;
 		
-		slot1 = game.add.text(0, 0, choice1, { font: "30px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
-		slot2 = game.add.text(0, 0, choice2, { font: "30px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
-	 	slot3 = game.add.text(0, 0, choice3, { font: "30px Source Sans Pro", fill: unselected_color, align: "left", wordWrap: true,wordWrapWidth: 800 })
+		slot1 = game.add.text(0, 0, choice1, { font: "30px Source Sans Pro", fill: delrestclr, align: "left",  wordWrap: true,wordWrapWidth: 800})
+		slot2 = game.add.text(0, 0, choice2, { font: "30px Source Sans Pro", fill: delrestclr, align: "left",  wordWrap: true,wordWrapWidth: 800})
+	 	slot3 = game.add.text(0, 0, choice3, { font: "30px Source Sans Pro", fill: delrestclr, align: "left", wordWrap: true,wordWrapWidth: 800 })
 
     	exitSign = game.add.text(375,500, 'exit', {font: "32px Source Sans Pro", fill: '#8B0000', align: "left" })
 
@@ -106,11 +106,11 @@ var D1 = {
 		
 	
 	color_change: function(item) {
-		item.fill = selected_color
+		item.fill = delhoverclr
 	},
 	
 	color_revert: function(item) {
-		item.fill = unselected_color
+		item.fill = delrestclr
 		
 	},
 //	nextDia1: (item) => {
