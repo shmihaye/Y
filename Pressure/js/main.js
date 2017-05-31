@@ -17,7 +17,7 @@ var convoIndex4 = 0;
 var unselected_color = "#7FFFD4"
 var selected_color = "#00BFFF"
 var done_color = "#0000FF"
-var style1 = { font: "32px Arial", fill: unselected_color, align: "center", wordWrap: true, wordWrapWidth: 250, boundsAlignH: "center", boundsAlignV: "middle" };
+var style1 = { font: "32px Source Sans Pro", fill: unselected_color, align: "center", wordWrap: true, wordWrapWidth: 250, boundsAlignH: "center", boundsAlignV: "middle" };
 // hallStart -- The x position where the camera should start in the hallstart
 var hallStart = 0;
 
