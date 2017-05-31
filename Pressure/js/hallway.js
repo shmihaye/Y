@@ -1,5 +1,5 @@
 
-var door1, door2, door3, door4, pilotButton;
+var door1, door2, door3, door4, pilotButton, mouse;
 var abilityBox1, abilityBox2, abilityBox3, abilityBox4, textBackground;
 var abilityText1, abilityText2, abilityText3, abilityText4;
 
@@ -11,8 +11,6 @@ var hallwayState = {
 		
 		// Add hallway backgrounds
 		game.world.resize(1400, 600);
-		game.camera.x = hallStart;
-		if(hallStart == 600) this.camera.flash('#ffffff');
 		this.background = game.add.tileSprite(0, 0, 1400, game.height, 'spaceBackground');
 		game.add.sprite(0, 0, 'hallwayBackground');
 		
@@ -106,13 +104,22 @@ var hallwayState = {
 		energyBar.scale.x = 3;
 		energyBar.scale.y = 0.5;
 		energyBar.fixedToCamera = true;
+		
+		// Create invisible mouse sprite for the camera to follow
+		mouse = game.add.sprite(0, 0, 'rock');
+		mouse.anchor.set(0.5);
+		mouse.alpha = 0;
+		this.camera.follow(mouse, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
+		this.camera.deadzone = new Phaser.Rectangle(200, 0, 400, 600);
+		game.camera.x = hallStart;
+		if(hallStart == 600) this.camera.flash('#ffffff');
 	},
 	
 	update : function() {
 		
 		// Move camera if mouse is near the edge of the screen
-		if(game.input.x > 650) game.camera.x += 10;
-		else if(game.input.x < 150) game.camera.x -= 10;
+		mouse.x = game.input.x + game.camera.x;
+		mouse.y = game.input.y + game.camera.y;
 		
 		// Update energy bar scaling
 		if(energy < 0) energy = 0;
