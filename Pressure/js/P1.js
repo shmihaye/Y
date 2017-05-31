@@ -4,21 +4,21 @@ var P1 = {
 	create: function() {
 		
 		// library of all text for a given "chapter"
-		 DiaA = "Reminds me of the service, being out like this."
-		 DiaB = "These asteroids hit real hard..."
-		 DiaC = "Come and have a drink cap."
+		 DiaA = "Yes I know the primary engine has been making a rattling noise."
+		 DiaB = "Oh. I...I didn't mean to snap, its just that..."
+		 DiaC = "I’m still adjusting but I think I can manage."
 		
-		 DiaA1 = " Hopefully I won't get as many.. souvenirs from this."
-		 DiaA2 = " Sorry was that too grim for you?"
-		 DiaA3 = " My comedy is a bit uuhh.. out of practice I guess."
+		 DiaA1 = " I’ve been pouring over the schematics for the last two hours,"
+		 DiaA2 = " but I swear this blueprint was written backwards."
+		 DiaA3 = " Whoever wrote this is either an idiot or a genius, I can't tell."
 		
-		 DiaB1 = " At least my leg has atuo stablizers."
-		 DiaB2 = " I won't be falling on anyone when things get shaky."
-		 DiaB3 = " They even called me 'ol steady' before I had this thing."
+		 DiaB1 = " All the ships I've worked on were in-atmosphere back at the depot."
+		 DiaB2 = " I used to cherish the moments of silence in between the roaring of engines."
+		 DiaB3 = " But out here, there’s just somethin’ unsettling about all this quiet."
 		
-		 DiaC1 = " I have my private stash here."
-		 DiaC2 = " Better get some before I wisen up and down it all."
-		 DiaC3 = " You should see my collection back home! It's magnificent."
+		 DiaC1 = " I would’ve adjusted if we didn't have to go chasing into uncharted space…"
+		 DiaC2 = " it just had to be us, y’know?"
+		 DiaC3 = " Listen to me blab. I don't mean to keep ya if y’ need to be somewhere."
 		
 		choice1 = DiaA
 		choice2 = DiaB
@@ -40,9 +40,9 @@ var P1 = {
 		energyBar.scale.y = 0.5;
 		energyBar.fixedToCamera = true;
 		
-		slot1 = game.add.text(0, 0, choice1, { font: "32px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
-		slot2 = game.add.text(0, 0, choice2, { font: "32px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
-	 	slot3 = game.add.text(0, 0, choice3, { font: "32px Source Sans Pro", fill: unselected_color, align: "left", wordWrap: true,wordWrapWidth: 800 })
+		slot1 = game.add.text(0, 0, choice1, { font: "24px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
+		slot2 = game.add.text(0, 0, choice2, { font: "24px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
+	 	slot3 = game.add.text(0, 0, choice3, { font: "24px Source Sans Pro", fill: unselected_color, align: "left", wordWrap: true,wordWrapWidth: 800 })
 
     	exitSign = game.add.text(375,500, 'exit', {font: "32px Source Sans Pro", fill: '#8B0000', align: "left" })
 		
@@ -55,16 +55,21 @@ var P1 = {
 //  	slot2.input.enableDrag()
 //  	slot3.input.enableDrag()
 
-
+   		slot1.stroke = '#000000';
+    	slot1.strokeThickness = 6;
 		slot1.events.onInputOver.add(this.color_change, slot1)
   		slot1.events.onInputOut.add(this.color_revert, slot1)
  		slot1.events.onInputDown.add(this.nextDia1, slot1)
+   		
 
+   		slot2.stroke = '#000000';
+    	slot2.strokeThickness = 6;
     	slot2.events.onInputOver.add(this.color_change, slot2)
   		slot2.events.onInputOut.add(this.color_revert, slot2)
 		slot2.events.onInputDown.add(this.nextDia2, slot2)
 
-
+   		slot3.stroke = '#000000';
+    	slot3.strokeThickness = 6;
     	slot3.events.onInputOver.add(this.color_change, slot3)
   		slot3.events.onInputOut.add(this.color_revert, slot3)
   		slot3.events.onInputDown.add(this.nextDia3, slot3)

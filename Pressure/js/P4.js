@@ -4,21 +4,21 @@ var P4 = {
 	create: function() {
 
 		// library of all text for a given "chapter"
-		 DiaA = "Heh, you came back? after that shit show?"
-		 DiaB = "This leg is damn great, compared to my head."
-		 DiaC = "The crew here, they aren't like my old unit."
+		 DiaA = "Hey cap. I wanna thank you for takin’ the time to listen t’ me."
+		 DiaB = "When I got on this ship, I didn’t think that would change. I didn’t think I’d fit in."
+		 DiaC = "Who woulda thought a happenings like this..."
 		
-		 DiaA1 = " It..you..I...my demons come out sometimes and.."
-		 DiaA2 = " I've never had someone around during that before."
-		 DiaA3 = " Thank you, for sticking around, means a lot"
+		 DiaA1 = " Back when I was partyin’, I thought I knew who my friends were, and I thought I had a lot of ‘em."
+		 DiaA2 = " But after one bad night, I found myself completely abandoned."
+		 DiaA3 = " I’ve never really been able to trust anyone since."
 		
-		 DiaB1 = " You'd think getting blown apart would mess with your head."
-		 DiaB2 = " But no, that heals without any bother"
-		 DiaB3 = " The isolation, the abandonment..The body can't handle that"
+		 DiaB1 = " Sure I could pretend like I’m doin’ okay, but.."
+		 DiaB2 = " the honest truth is that I felt alone surrounded by this crew."
+		 DiaB3 = " But bein’ on this mission in deep, uncharted space has forced me to adapt, I suppose."
 		
-		 DiaC1 = " You aren't like them, they're not bad people. Just afraid"
-		 DiaC2 = " But you aren't scared of hurt people...."
-		 DiaC3 = " You let those memories change you and teach you."
+		 DiaC1 = " a potentially-fatal mission into space would bring people together?"
+		 DiaC2 = " But y’know what?"
+		 DiaC3 = " Feels 'bout right, nothing worth anything comes for free."
 		
 		choice1 = DiaA
 		choice2 = DiaB
@@ -40,9 +40,9 @@ var P4 = {
 		energyBar.scale.y = 0.5;
 		energyBar.fixedToCamera = true;
 		
-		slot1 = game.add.text(0, 0, choice1, { font: "32px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
-		slot2 = game.add.text(0, 0, choice2, { font: "32px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
-	 	slot3 = game.add.text(0, 0, choice3, { font: "32px Source Sans Pro", fill: unselected_color, align: "left", wordWrap: true,wordWrapWidth: 800 })
+		slot1 = game.add.text(0, 0, choice1, { font: "26px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
+		slot2 = game.add.text(0, 0, choice2, { font: "26px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
+	 	slot3 = game.add.text(0, 0, choice3, { font: "26px Source Sans Pro", fill: unselected_color, align: "left", wordWrap: true,wordWrapWidth: 800 })
     
     	exitSign = game.add.text(375,500, 'exit', {font: "32px Source Sans Pro", fill: '#8B0000', align: "left" })
 
@@ -55,16 +55,21 @@ var P4 = {
 //  	slot2.input.enableDrag()
 //  	slot3.input.enableDrag()
 
-
+   		slot1.stroke = '#000000';
+    	slot1.strokeThickness = 6;
 		slot1.events.onInputOver.add(this.color_change, slot1)
   		slot1.events.onInputOut.add(this.color_revert, slot1)
  		slot1.events.onInputDown.add(this.nextDia1, slot1)
+   		
 
+   		slot2.stroke = '#000000';
+    	slot2.strokeThickness = 6;
     	slot2.events.onInputOver.add(this.color_change, slot2)
   		slot2.events.onInputOut.add(this.color_revert, slot2)
 		slot2.events.onInputDown.add(this.nextDia2, slot2)
 
-
+   		slot3.stroke = '#000000';
+    	slot3.strokeThickness = 6;
     	slot3.events.onInputOver.add(this.color_change, slot3)
   		slot3.events.onInputOut.add(this.color_revert, slot3)
   		slot3.events.onInputDown.add(this.nextDia3, slot3)
@@ -77,8 +82,8 @@ var P4 = {
 	},
 	
 	update: function() {
-		slot2.y = (Acount*36)+12
-		slot3.y = ((Acount+Bcount)*36)+24
+		slot2.y = (Acount*36)+30
+		slot3.y = ((Acount+Bcount)*36)+66
 
 		if (Acount+Bcount+Ccount >= 9){
 			slot1.inputEnabled = false
