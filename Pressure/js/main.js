@@ -16,6 +16,19 @@ var convoIndex4 = 0;
 // font colors for the narrative state
 var unselected_color = "#7FFFD4"
 var selected_color = "#00BFFF"
+
+var patrestclr = "#4e7d48"
+var pathoverclr = "#7a9b76"
+var delrestclr = "#5e2f23"
+var delhoverclr = "#764134"
+var bridrestclr = "#2a2247"
+var bridhoverclr =  "#565264"
+var d4restclr = "#80432f"
+var d4hoverclr = "#9e6654"
+
+
+
+
 var done_color = "#0000FF"
 var style1 = { font: "32px Source Sans Pro", fill: unselected_color, align: "center", wordWrap: true, wordWrapWidth: 250, boundsAlignH: "center", boundsAlignV: "middle" };
 // hallStart -- The x position where the camera should start in the hallstart
