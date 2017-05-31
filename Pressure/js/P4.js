@@ -30,11 +30,9 @@ var P4 = {
 		
 		this.background = game.add.tileSprite(0, 0, game.width, game.height, 'spaceBackground');
 		BG = game.add.sprite(0, 0, 'room1Background');
-		slot1 = game.add.text(0, 0, choice1, { font: "32px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
-		slot2 = game.add.text(0, 0, choice2, { font: "32px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
-	 	slot3 = game.add.text(0, 0, choice3, { font: "32px Source Sans Pro", fill: unselected_color, align: "left", wordWrap: true,wordWrapWidth: 800 })
-    
-    	exitSign = game.add.text(375,500, 'exit', {font: "32px Source Sans Pro", fill: '#8B0000', align: "left" })
+		
+		// Add character sprite
+		game.add.sprite(176, 401, 'patricia4');
 		
 		// Create energy bar
 		energyBar = game.add.sprite(65, 580, 'bar');
@@ -42,8 +40,11 @@ var P4 = {
 		energyBar.scale.y = 0.5;
 		energyBar.fixedToCamera = true;
 		
-		// Add character sprite
-		game.add.sprite(176, 401, 'patricia4');
+		slot1 = game.add.text(0, 0, choice1, { font: "32px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
+		slot2 = game.add.text(0, 0, choice2, { font: "32px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
+	 	slot3 = game.add.text(0, 0, choice3, { font: "32px Source Sans Pro", fill: unselected_color, align: "left", wordWrap: true,wordWrapWidth: 800 })
+    
+    	exitSign = game.add.text(375,500, 'exit', {font: "32px Source Sans Pro", fill: '#8B0000', align: "left" })
 
     	slot1.inputEnabled = true
     	slot2.inputEnabled = true

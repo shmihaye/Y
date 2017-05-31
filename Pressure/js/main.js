@@ -16,6 +16,7 @@ var convoIndex4 = 0;
 var unselected_color = "#7FFFD4"
 var selected_color = "#00BFFF"
 var done_color = "#0000FF"
+var style1 = { font: "32px Arial", fill: unselected_color, align: "center", wordWrap: true, wordWrapWidth: 250, boundsAlignH: "center", boundsAlignV: "middle" };
 // hallStart -- The x position where the camera should start in the hallstart
 var hallStart = 0;
 
@@ -67,6 +68,7 @@ Game.Load.prototype = {
 		game.load.image('hallwayDoor', 'hallwayDoor.png');
 		game.load.image('spaceBackground', 'spaceBackground.png');
 		game.load.image('hallwayBackground', 'hallwayBackground.png');
+		game.load.image('textBackground', 'textBackground.png');
 		game.load.image('room1Background', 'room1Background.png');
 		game.load.image('room2Background', 'room2Background.png');
 		game.load.image('room3Background', 'room3Background.png');
@@ -88,6 +90,11 @@ Game.Load.prototype = {
 		game.load.image('d4v32', 'd4v32.png');
 		game.load.image('d4v33', 'd4v33.png');
 		game.load.image('d4v34', 'd4v34.png');
+		
+		game.load.image('abilityBox1', 'abilityBox1.png');
+		game.load.image('abilityBox2', 'abilityBox2.png');
+		game.load.image('abilityBox3', 'abilityBox3.png');
+		game.load.image('abilityBox4', 'abilityBox4.png');
 	},
 	create: function() {
 		// Disable preload bar crop while we wait for mp3 decoding

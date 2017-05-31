@@ -1,31 +1,111 @@
 
+var door1, door2, door3, door4, pilotButton;
+var abilityBox1, abilityBox2, abilityBox3, abilityBox4, textBackground;
+var abilityText1, abilityText2, abilityText3, abilityText4;
+
 var hallwayState = {
+	
+	
 	
 	create: function() {
 		
+		// Add hallway backgrounds
 		game.world.resize(1400, 600);
 		game.camera.x = hallStart;
 		if(hallStart == 600) this.camera.flash('#ffffff');
 		this.background = game.add.tileSprite(0, 0, 1400, game.height, 'spaceBackground');
 		game.add.sprite(0, 0, 'hallwayBackground');
-
-		var door1 = game.add.sprite(30, 320, 'hallwayDoor');
-		var door2 = game.add.sprite(230, 320, 'hallwayDoor');
-		var door3 = game.add.sprite(435, 320, 'hallwayDoor');
-		var door4 = game.add.sprite(645, 320, 'hallwayDoor');
-		var pilotButton = game.add.sprite(1015, 320, 'hallwayDoor');
+		
+		// Add doors
+		if(convoIndex1 < 4){
+			door1 = game.add.sprite(30, 320, 'hallwayDoor');
+			door1.inputEnabled = true;
+			door1.events.onInputDown.add(this.door1Opened, this);
+		}
+		if(convoIndex2 < 4){
+			door2 = game.add.sprite(230, 320, 'hallwayDoor');
+			door2.inputEnabled = true;
+			door2.events.onInputDown.add(this.door2Opened, this);
+		}
+		if(convoIndex3 < 4){
+			door3 = game.add.sprite(435, 320, 'hallwayDoor');
+			door3.inputEnabled = true;
+			door3.events.onInputDown.add(this.door3Opened, this);
+		}
+		if(convoIndex4 < 4){
+			door4 = game.add.sprite(645, 320, 'hallwayDoor');
+			door4.inputEnabled = true;
+			door4.events.onInputDown.add(this.door4Opened, this);
+		}
+		pilotButton = game.add.sprite(1015, 320, 'hallwayDoor');
+		pilotButton.inputEnabled = true;
+		pilotButton.events.onInputDown.add(this.pilotShip, this);
+		
+		// Create text background background and popup text
+		abilityBackground = game.add.sprite(250, 64, 'textBackground');
+		abilityBackground.alpha = 0;
+		abilityBackground.fixedToCamera = true;
+		abilityText1 = game.add.text(0, 0, 'Dash\n Patricia\'s ability\n Level ' + convoIndex1.toString() + '\n\n Double-tap a direction for a short burst of speed', style1);
+		abilityText1.setTextBounds(250, 64, 300, 400);
+		abilityText1.fixedToCamera = true;
+		abilityText1.alpha = 0;
+		abilityText2 = game.add.text(0, 0, 'Shield\n Bridget\'s ability\n Level ' + convoIndex2.toString() + '\n\n Press space for a temporary deflection shield', style1);
+		abilityText2.setTextBounds(250, 64, 300, 400);
+		abilityText2.fixedToCamera = true;
+		abilityText2.alpha = 0;
+		abilityText3 = game.add.text(0, 0, 'Punch\n Delson\'s ability\n Level ' + convoIndex3.toString() + '\n\n Double-click an object to push it away', style1);
+		abilityText3.setTextBounds(250, 64, 300, 400);
+		abilityText3.fixedToCamera = true;
+		abilityText3.alpha = 0;
+		abilityText4 = game.add.text(0, 0, 'Radar\n D4V3\'s ability\n Level ' + convoIndex4.toString() + '\n\n Icons will notify you of incoming objects', style1);
+		abilityText4.setTextBounds(250, 64, 300, 400);
+		abilityText4.fixedToCamera = true;
+		abilityText4.alpha = 0;
+		
+		
+		// Determine button positions
+		let count = 0;
+		if(convoIndex1 > 0) count++;
+		if(convoIndex2 > 0) count++;
+		if(convoIndex3 > 0) count++;
+		if(convoIndex4 > 0) count++;
+		let positions = [];
+		if(count == 1) positions = [368]
+		else if(count == 2) positions = [328, 408]
+		else if(count == 3) positions = [288, 368, 448]
+		else positions = [248, 328, 408, 488]
+		count = 0;
+		
+		// Add buttons
+		if(convoIndex1 > 0){
+			abilityBox1 = game.add.sprite(positions[count], 528, 'abilityBox1');
+			abilityBox1.fixedToCamera = true;
+			abilityBox1.inputEnabled = true;
+			count++;
+		}
+		if(convoIndex2 > 0){
+			abilityBox2 = game.add.sprite(positions[count], 528, 'abilityBox2');
+			abilityBox2.fixedToCamera = true;
+			abilityBox2.inputEnabled = true;
+			count++;
+		}
+		if(convoIndex3 > 0){
+			abilityBox3 = game.add.sprite(positions[count], 528, 'abilityBox3');
+			abilityBox3.fixedToCamera = true;
+			abilityBox3.inputEnabled = true;
+			count++;
+		}
+		if(convoIndex4 > 0){
+			abilityBox4 = game.add.sprite(positions[count], 528, 'abilityBox4');
+			abilityBox4.fixedToCamera = true;
+			abilityBox4.inputEnabled = true;
+		}
 		
 		// Create energy bar
 		energyBar = game.add.sprite(65, 580, 'bar');
 		energyBar.scale.x = 3;
 		energyBar.scale.y = 0.5;
 		energyBar.fixedToCamera = true;
-		
-		if(convoIndex1 < 4){door1.inputEnabled = true; door1.events.onInputDown.add(this.door1Opened, this);}
-		if(convoIndex2 < 4){door2.inputEnabled = true; door2.events.onInputDown.add(this.door2Opened, this);}
-		if(convoIndex3 < 4){door3.inputEnabled = true; door3.events.onInputDown.add(this.door3Opened, this);}
-		if(convoIndex4 < 4){door4.inputEnabled = true; door4.events.onInputDown.add(this.door4Opened, this);}
-		pilotButton.inputEnabled = true; pilotButton.events.onInputDown.add(this.pilotShip, this);
 	},
 	
 	update : function() {
@@ -41,6 +121,51 @@ var hallwayState = {
 		
 		// Scroll background slowly
 		this.background.tilePosition.x -= 2;
+		
+		// Show/hide ability info
+		if(abilityBox1 !== undefined) abilityBox1.alpha = 0.4;
+		if(abilityBox2 !== undefined) abilityBox2.alpha = 0.4;
+		if(abilityBox3 !== undefined) abilityBox3.alpha = 0.4;
+		if(abilityBox4 !== undefined) abilityBox4.alpha = 0.4;
+		let showbackground = false;
+		if(convoIndex1 > 0){
+			if(abilityBox1.input.pointerOver()){showbackground = true; abilityBox1.alpha = 1; game.add.tween(abilityText1).to( { alpha: 1 }, 30, "Linear", true);}
+			else game.add.tween(abilityText1).to( { alpha: 0 }, 30, "Linear", true);
+		}
+		if(convoIndex2 > 0){
+			if(abilityBox2.input.pointerOver()){showbackground = true; abilityBox2.alpha = 1; game.add.tween(abilityText2).to( { alpha: 1 }, 30, "Linear", true);}
+			else game.add.tween(abilityText2).to( { alpha: 0 }, 30, "Linear", true);
+		}
+		if(convoIndex3 > 0){
+			if(abilityBox3.input.pointerOver()){showbackground = true; abilityBox3.alpha = 1; game.add.tween(abilityText3).to( { alpha: 1 }, 30, "Linear", true);}
+			else game.add.tween(abilityText3).to( { alpha: 0 }, 30, "Linear", true);
+		}
+		if(convoIndex4 > 0){
+			if(abilityBox4.input.pointerOver()){showbackground = true; abilityBox4.alpha = 1; game.add.tween(abilityText4).to( { alpha: 1 }, 30, "Linear", true);}
+			else game.add.tween(abilityText4).to( { alpha: 0 }, 30, "Linear", true);
+		}
+		if(showbackground) game.add.tween(abilityBackground).to( { alpha: 0.8 }, 30, "Linear", true);
+		else game.add.tween(abilityBackground).to( { alpha: 0 }, 60, "Linear", true);
+		
+		// Show/hide door selectors
+		if(convoIndex1 < 4){
+			if(door1.input.pointerOver()){game.add.tween(door1).to( { alpha: 1 }, 30, "Linear", true);}
+			else game.add.tween(door1).to( { alpha: 0.2 }, 30, "Linear", true);
+		}
+		if(convoIndex2 < 4){
+			if(door2.input.pointerOver()){game.add.tween(door2).to( { alpha: 1 }, 30, "Linear", true);}
+			else game.add.tween(door2).to( { alpha: 0.2 }, 30, "Linear", true);
+		}
+		if(convoIndex3 < 4){
+			if(door3.input.pointerOver()){game.add.tween(door3).to( { alpha: 1 }, 30, "Linear", true);}
+			else game.add.tween(door3).to( { alpha: 0.2 }, 30, "Linear", true);
+		}
+		if(convoIndex4 < 4){
+			if(door4.input.pointerOver()){game.add.tween(door4).to( { alpha: 1 }, 30, "Linear", true);}
+			else game.add.tween(door4).to( { alpha: 0.2 }, 30, "Linear", true);
+		}
+		if(pilotButton.input.pointerOver()){game.add.tween(pilotButton).to( { alpha: 1 }, 30, "Linear", true);}
+		else game.add.tween(pilotButton).to( { alpha: 0.2 }, 30, "Linear", true);
 	},
 	
 	door1Opened: function() {
