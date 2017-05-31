@@ -1,5 +1,5 @@
 // Parameters
-var gravDistance = 300;
+var gravDistance = 250;
 
 // Just for the gravAttach function
 var gravRockPosX, gravRockPosY;

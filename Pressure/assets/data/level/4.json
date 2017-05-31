@@ -1,0 +1,14 @@
+{
+
+	"timestamps": [
+		
+		// Orbiting rocks, grav rocks in tough formations
+		
+		// Prepare the player for the final level
+		
+		{"time":, "objects": [{"type":"SPDUP"}]},
+		{"time":, "objects": [{"type":"END"}]}
+		
+	]
+
+}

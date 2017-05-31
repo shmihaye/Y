@@ -1,0 +1,14 @@
+{
+
+	"timestamps": [
+		
+		// Introduce orbiting rocks
+		
+		// A little breather after level 3 :)
+		
+		{"time":, "objects": [{"type":"SPDUP"}]},
+		{"time":, "objects": [{"type":"END"}]}
+		
+	]
+
+}
