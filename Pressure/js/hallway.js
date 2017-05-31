@@ -97,6 +97,7 @@ var hallwayState = {
 			abilityBox4 = game.add.sprite(positions[count], 528, 'abilityBox4');
 			abilityBox4.fixedToCamera = true;
 			abilityBox4.inputEnabled = true;
+			if(convoIndex4 == 4) abilityBox4.events.onInputDown.add(this.secret, this);
 		}
 		
 		// Create energy bar
@@ -130,25 +131,25 @@ var hallwayState = {
 		this.background.tilePosition.x -= 2;
 		
 		// Show/hide ability info
-		if(abilityBox1 !== undefined) abilityBox1.alpha = 0.4;
-		if(abilityBox2 !== undefined) abilityBox2.alpha = 0.4;
-		if(abilityBox3 !== undefined) abilityBox3.alpha = 0.4;
-		if(abilityBox4 !== undefined) abilityBox4.alpha = 0.4;
+		if(abilityBox1 !== undefined){abilityBox1.alpha = 0.5; game.add.tween(abilityBox1.cameraOffset).to( { y: 528 }, 30, "Linear", true);}
+		if(abilityBox2 !== undefined){abilityBox2.alpha = 0.5; game.add.tween(abilityBox2.cameraOffset).to( { y: 528 }, 30, "Linear", true);}
+		if(abilityBox3 !== undefined){abilityBox3.alpha = 0.5; game.add.tween(abilityBox3.cameraOffset).to( { y: 528 }, 30, "Linear", true);}
+		if(abilityBox4 !== undefined){abilityBox4.alpha = 0.5; game.add.tween(abilityBox4.cameraOffset).to( { y: 528 }, 30, "Linear", true);}
 		let showbackground = false;
 		if(convoIndex1 > 0){
-			if(abilityBox1.input.pointerOver()){showbackground = true; abilityBox1.alpha = 1; game.add.tween(abilityText1).to( { alpha: 1 }, 30, "Linear", true);}
+			if(abilityBox1.input.pointerOver()){showbackground = true; abilityBox1.alpha = 1; game.add.tween(abilityBox1.cameraOffset).to( { y: 512 }, 30, "Linear", true); game.add.tween(abilityText1).to( { alpha: 1 }, 30, "Linear", true);}
 			else game.add.tween(abilityText1).to( { alpha: 0 }, 30, "Linear", true);
 		}
 		if(convoIndex2 > 0){
-			if(abilityBox2.input.pointerOver()){showbackground = true; abilityBox2.alpha = 1; game.add.tween(abilityText2).to( { alpha: 1 }, 30, "Linear", true);}
+			if(abilityBox2.input.pointerOver()){showbackground = true; abilityBox2.alpha = 1; game.add.tween(abilityBox2.cameraOffset).to( { y: 512 }, 30, "Linear", true); game.add.tween(abilityText2).to( { alpha: 1 }, 30, "Linear", true);}
 			else game.add.tween(abilityText2).to( { alpha: 0 }, 30, "Linear", true);
 		}
 		if(convoIndex3 > 0){
-			if(abilityBox3.input.pointerOver()){showbackground = true; abilityBox3.alpha = 1; game.add.tween(abilityText3).to( { alpha: 1 }, 30, "Linear", true);}
+			if(abilityBox3.input.pointerOver()){showbackground = true; abilityBox3.alpha = 1; game.add.tween(abilityBox3.cameraOffset).to( { y: 512 }, 30, "Linear", true); game.add.tween(abilityText3).to( { alpha: 1 }, 30, "Linear", true);}
 			else game.add.tween(abilityText3).to( { alpha: 0 }, 30, "Linear", true);
 		}
 		if(convoIndex4 > 0){
-			if(abilityBox4.input.pointerOver()){showbackground = true; abilityBox4.alpha = 1; game.add.tween(abilityText4).to( { alpha: 1 }, 30, "Linear", true);}
+			if(abilityBox4.input.pointerOver()){showbackground = true; abilityBox4.alpha = 1; game.add.tween(abilityBox4.cameraOffset).to( { y: 512 }, 30, "Linear", true); game.add.tween(abilityText4).to( { alpha: 1 }, 30, "Linear", true);}
 			else game.add.tween(abilityText4).to( { alpha: 0 }, 30, "Linear", true);
 		}
 		if(showbackground) game.add.tween(abilityBackground).to( { alpha: 0.8 }, 30, "Linear", true);
@@ -206,5 +207,11 @@ var hallwayState = {
 	pilotShip: function() {
 		
 		game.state.start('Play');
+	},
+	
+	secret: function() {
+		var shh = game.add.sprite(0, 0, 'secret');
+		game.add.tween(shh).to( { alpha: 0 }, 1000, "Linear", true, 2000);
+		shh.fixedToCamera = true;
 	}
 };

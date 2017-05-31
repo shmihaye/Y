@@ -91,6 +91,7 @@ Game.Load.prototype = {
 		game.load.image('d4v32', 'd4v32.png');
 		game.load.image('d4v33', 'd4v33.png');
 		game.load.image('d4v34', 'd4v34.png');
+		game.load.image('secret', 'secret.png');
 		
 		game.load.image('abilityBox1', 'abilityBox1.png');
 		game.load.image('abilityBox2', 'abilityBox2.png');
