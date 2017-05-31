@@ -40,9 +40,9 @@ var P4 = {
 		energyBar.scale.y = 0.5;
 		energyBar.fixedToCamera = true;
 		
-		slot1 = game.add.text(0, 0, choice1, { font: "26px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
-		slot2 = game.add.text(0, 0, choice2, { font: "26px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
-	 	slot3 = game.add.text(0, 0, choice3, { font: "26px Source Sans Pro", fill: unselected_color, align: "left", wordWrap: true,wordWrapWidth: 800 })
+		slot1 = game.add.text(0, 0, choice1, { font: "26px Source Sans Pro", fill: patrestclr, align: "left",  wordWrap: true,wordWrapWidth: 800})
+		slot2 = game.add.text(0, 0, choice2, { font: "26px Source Sans Pro", fill: patrestclr, align: "left",  wordWrap: true,wordWrapWidth: 800})
+	 	slot3 = game.add.text(0, 0, choice3, { font: "26px Source Sans Pro", fill: patrestclr, align: "left", wordWrap: true,wordWrapWidth: 800 })
     
     	exitSign = game.add.text(375,500, 'exit', {font: "32px Source Sans Pro", fill: '#8B0000', align: "left" })
 
@@ -107,11 +107,11 @@ var P4 = {
 		
 	
 	color_change: function(item) {
-		item.fill = selected_color
+		item.fill = pathoverclr
 	},
 	
 	color_revert: function(item) {
-		item.fill = unselected_color
+		item.fill = patrestclr
 		
 	},
 //	nextDia1: (item) => {
