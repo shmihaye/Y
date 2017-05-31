@@ -4,17 +4,17 @@ var D4 = {
 	create: function() {
 
 		// library of all text for a given "chapter"
-		 DiaA = "Heh, you came back? after that shit show?"
-		 DiaB = "This leg is damn great, compared to my head."
-		 DiaC = "The crew here, they aren't like my old unit."
+		 DiaA = "Heh, you came back? after that shit show? You're a brave one"
+		 DiaB = "This leg is damn great, compared to my head. Needs less repairs"
+		 DiaC = "You all aren't like my old unit you don't turn a blind eye on me"
 		
-		 DiaA1 = " It..you..I...my demons come out sometimes and.."
+		 DiaA1 = " It..you..I...my demons come out sometimes and..it gets messy."
 		 DiaA2 = " I've never had someone around during that before."
-		 DiaA3 = " Thank you, for sticking around, means a lot"
+		 DiaA3 = " Been alone for so long, having you there's a life-saver"
 		
 		 DiaB1 = " You'd think getting blown apart would mess with your head."
-		 DiaB2 = " But no, that heals without any bother"
-		 DiaB3 = " The isolation, the abandonment..The body can't handle that"
+		 DiaB2 = " But no, that healed without little bother"
+		 DiaB3 = " The isolation, the abandonment all that time after..The mind can't handle that"
 		
 		 DiaC1 = " You aren't like them, they're not bad people. Just afraid"
 		 DiaC2 = " But you aren't scared of hurt people...."
@@ -40,9 +40,9 @@ var D4 = {
 		energyBar.scale.y = 0.5;
 		energyBar.fixedToCamera = true;
 		
-		slot1 = game.add.text(0, 0, choice1, { font: "32px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
-		slot2 = game.add.text(0, 0, choice2, { font: "32px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
-	 	slot3 = game.add.text(0, 0, choice3, { font: "32px Source Sans Pro", fill: unselected_color, align: "left", wordWrap: true,wordWrapWidth: 800 })
+		slot1 = game.add.text(0, 0, choice1, { font: "30px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
+		slot2 = game.add.text(0, 0, choice2, { font: "30px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
+	 	slot3 = game.add.text(0, 0, choice3, { font: "30px Source Sans Pro", fill: unselected_color, align: "left", wordWrap: true,wordWrapWidth: 800 })
     
     	exitSign = game.add.text(375,500, 'exit', {font: "32px Source Sans Pro", fill: '#8B0000', align: "left" })
 
@@ -56,15 +56,21 @@ var D4 = {
 //  	slot3.input.enableDrag()
 
 
+   		slot1.stroke = '#000000';
+    	slot1.strokeThickness = 6;
 		slot1.events.onInputOver.add(this.color_change, slot1)
   		slot1.events.onInputOut.add(this.color_revert, slot1)
  		slot1.events.onInputDown.add(this.nextDia1, slot1)
+   		
 
+   		slot2.stroke = '#000000';
+    	slot2.strokeThickness = 6;
     	slot2.events.onInputOver.add(this.color_change, slot2)
   		slot2.events.onInputOut.add(this.color_revert, slot2)
 		slot2.events.onInputDown.add(this.nextDia2, slot2)
 
-
+   		slot3.stroke = '#000000';
+    	slot3.strokeThickness = 6;
     	slot3.events.onInputOver.add(this.color_change, slot3)
   		slot3.events.onInputOut.add(this.color_revert, slot3)
   		slot3.events.onInputDown.add(this.nextDia3, slot3)
@@ -74,11 +80,12 @@ var D4 = {
   		exitSign.events.onInputDown.add(this.moveon, exitSign)
 
 
+
 	},
 	
 	update: function() {
-		slot2.y = (Acount*36)+12
-		slot3.y = ((Acount+Bcount)*36)+24
+		slot2.y = (Acount*36)+18
+		slot3.y = ((Acount+Bcount)*36)+33
 
 		if (Acount+Bcount+Ccount >= 9){
 			slot1.inputEnabled = false

@@ -12,12 +12,12 @@ var D3 = {
 		 DiaA2 = " Out of sight out of mind."
 		 DiaA3 = " We are a number, a unit, a casualty.."
 		
-		 DiaB1 = " 3 months alone in the hospital taught me"
-		 DiaB2 = " 10 years wihtout a word from them taught me"
+		 DiaB1 = " 3 months alone in the hospital taught me,"
+		 DiaB2 = " 10 years wihtout a word from them taught me."
 		 DiaB3 = " People like me get left behind, no one comes looking"
 		
 		 DiaC1 = " My unit didn't want to remember me,"
-		 DiaC2 = " I am just a bad memory."
+		 DiaC2 = " I am just a bad memory,"
 		 DiaC3 = " and this ship could be one too..."
 		
 		choice1 = DiaA
@@ -40,9 +40,9 @@ var D3 = {
 		energyBar.scale.y = 0.5;
 		energyBar.fixedToCamera = true;
 		
-		slot1 = game.add.text(0, 0, choice1, { font: "32px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
-		slot2 = game.add.text(0, 0, choice2, { font: "32px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
-	 	slot3 = game.add.text(0, 0, choice3, { font: "32px Source Sans Pro", fill: unselected_color, align: "left", wordWrap: true,wordWrapWidth: 800 })
+		slot1 = game.add.text(0, 0, choice1, { font: "30px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
+		slot2 = game.add.text(0, 0, choice2, { font: "30px Source Sans Pro", fill: unselected_color, align: "left",  wordWrap: true,wordWrapWidth: 800})
+	 	slot3 = game.add.text(0, 0, choice3, { font: "30px Source Sans Pro", fill: unselected_color, align: "left", wordWrap: true,wordWrapWidth: 800 })
 
     	exitSign = game.add.text(375,500, 'exit', {font: "32px Source Sans Pro", fill: '#8B0000', align: "left" })
 
@@ -56,15 +56,21 @@ var D3 = {
 //  	slot3.input.enableDrag()
 
 
+   		slot1.stroke = '#000000';
+    	slot1.strokeThickness = 6;
 		slot1.events.onInputOver.add(this.color_change, slot1)
   		slot1.events.onInputOut.add(this.color_revert, slot1)
  		slot1.events.onInputDown.add(this.nextDia1, slot1)
+   		
 
+   		slot2.stroke = '#000000';
+    	slot2.strokeThickness = 6;
     	slot2.events.onInputOver.add(this.color_change, slot2)
   		slot2.events.onInputOut.add(this.color_revert, slot2)
 		slot2.events.onInputDown.add(this.nextDia2, slot2)
 
-
+   		slot3.stroke = '#000000';
+    	slot3.strokeThickness = 6;
     	slot3.events.onInputOver.add(this.color_change, slot3)
   		slot3.events.onInputOut.add(this.color_revert, slot3)
   		slot3.events.onInputDown.add(this.nextDia3, slot3)
@@ -78,7 +84,7 @@ var D3 = {
 	
 	update: function() {
 		slot2.y = (Acount*36)+12
-		slot3.y = ((Acount+Bcount)*36)+24
+		slot3.y = ((Acount+Bcount)*36)+12
 
 		if (Acount+Bcount+Ccount >= 9){
 			slot1.inputEnabled = false
