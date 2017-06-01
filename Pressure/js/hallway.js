@@ -2,6 +2,7 @@
 var door1, door2, door3, door4, pilotButton, mouse;
 var abilityBox1, abilityBox2, abilityBox3, abilityBox4, textBackground;
 var abilityText1, abilityText2, abilityText3, abilityText4;
+var doorSound, pilotSound, tooltipSound, selectedSound;
 
 var hallwayState = {
 	
@@ -106,6 +107,12 @@ var hallwayState = {
 		energyBar.scale.y = 0.5;
 		energyBar.fixedToCamera = true;
 		
+		// Prepare sound effects
+		tooltipSound = game.add.audio('tooltip');
+		doorSound = game.add.audio('door');
+		pilotSound = game.add.audio('pilot');
+		selectedSound = game.add.audio('selected');
+		
 		// Create invisible mouse sprite for the camera to follow
 		mouse = game.add.sprite(0, 0, 'rock');
 		mouse.anchor.set(0.5);
@@ -131,55 +138,57 @@ var hallwayState = {
 		this.background.tilePosition.x -= 2;
 		
 		// Show/hide ability info
-		if(abilityBox1 !== undefined){abilityBox1.alpha = 0.5; game.add.tween(abilityBox1.cameraOffset).to( { y: 528 }, 30, "Linear", true);}
-		if(abilityBox2 !== undefined){abilityBox2.alpha = 0.5; game.add.tween(abilityBox2.cameraOffset).to( { y: 528 }, 30, "Linear", true);}
-		if(abilityBox3 !== undefined){abilityBox3.alpha = 0.5; game.add.tween(abilityBox3.cameraOffset).to( { y: 528 }, 30, "Linear", true);}
-		if(abilityBox4 !== undefined){abilityBox4.alpha = 0.5; game.add.tween(abilityBox4.cameraOffset).to( { y: 528 }, 30, "Linear", true);}
-		let showbackground = false;
 		if(convoIndex1 > 0){
-			if(abilityBox1.input.pointerOver()){showbackground = true; abilityBox1.alpha = 1; game.add.tween(abilityBox1.cameraOffset).to( { y: 512 }, 30, "Linear", true); game.add.tween(abilityText1).to( { alpha: 1 }, 30, "Linear", true);}
-			else game.add.tween(abilityText1).to( { alpha: 0 }, 30, "Linear", true);
+			if(abilityBox1.input.pointerOver() && abilityBox1.cameraOffset.y == 528){tooltipSound.play(); abilityBox1.alpha = 1; game.add.tween(abilityBox1.cameraOffset).to( { y: 512 }, 30, "Linear", true); game.add.tween(abilityText1).to( { alpha: 1 }, 30, "Linear", true);}
+			else if(!abilityBox1.input.pointerOver()){abilityBox1.alpha = 0.5; game.add.tween(abilityBox1.cameraOffset).to( { y: 528 }, 30, "Linear", true); game.add.tween(abilityText1).to( { alpha: 0 }, 30, "Linear", true);}
 		}
 		if(convoIndex2 > 0){
-			if(abilityBox2.input.pointerOver()){showbackground = true; abilityBox2.alpha = 1; game.add.tween(abilityBox2.cameraOffset).to( { y: 512 }, 30, "Linear", true); game.add.tween(abilityText2).to( { alpha: 1 }, 30, "Linear", true);}
-			else game.add.tween(abilityText2).to( { alpha: 0 }, 30, "Linear", true);
+			if(abilityBox2.input.pointerOver() && abilityBox2.cameraOffset.y == 528){tooltipSound.play(); abilityBox2.alpha = 1; game.add.tween(abilityBox2.cameraOffset).to( { y: 512 }, 30, "Linear", true); game.add.tween(abilityText2).to( { alpha: 1 }, 30, "Linear", true);}
+			else if(!abilityBox2.input.pointerOver()){abilityBox2.alpha = 0.5; game.add.tween(abilityBox2.cameraOffset).to( { y: 528 }, 30, "Linear", true); game.add.tween(abilityText2).to( { alpha: 0 }, 30, "Linear", true);}
 		}
 		if(convoIndex3 > 0){
-			if(abilityBox3.input.pointerOver()){showbackground = true; abilityBox3.alpha = 1; game.add.tween(abilityBox3.cameraOffset).to( { y: 512 }, 30, "Linear", true); game.add.tween(abilityText3).to( { alpha: 1 }, 30, "Linear", true);}
-			else game.add.tween(abilityText3).to( { alpha: 0 }, 30, "Linear", true);
+			if(abilityBox3.input.pointerOver() && abilityBox3.cameraOffset.y == 528){tooltipSound.play(); abilityBox3.alpha = 1; game.add.tween(abilityBox3.cameraOffset).to( { y: 512 }, 30, "Linear", true); game.add.tween(abilityText3).to( { alpha: 1 }, 30, "Linear", true);}
+			else if(!abilityBox3.input.pointerOver()){abilityBox3.alpha = 0.5; game.add.tween(abilityBox3.cameraOffset).to( { y: 528 }, 30, "Linear", true); game.add.tween(abilityText3).to( { alpha: 0 }, 30, "Linear", true);}
 		}
 		if(convoIndex4 > 0){
-			if(abilityBox4.input.pointerOver()){showbackground = true; abilityBox4.alpha = 1; game.add.tween(abilityBox4.cameraOffset).to( { y: 512 }, 30, "Linear", true); game.add.tween(abilityText4).to( { alpha: 1 }, 30, "Linear", true);}
-			else game.add.tween(abilityText4).to( { alpha: 0 }, 30, "Linear", true);
+			if(abilityBox4.input.pointerOver() && abilityBox4.cameraOffset.y == 528){tooltipSound.play(); abilityBox4.alpha = 1; game.add.tween(abilityBox4.cameraOffset).to( { y: 512 }, 30, "Linear", true); game.add.tween(abilityText4).to( { alpha: 1 }, 30, "Linear", true);}
+			else if(!abilityBox4.input.pointerOver()){abilityBox4.alpha = 0.5; game.add.tween(abilityBox4.cameraOffset).to( { y: 528 }, 30, "Linear", true); game.add.tween(abilityText4).to( { alpha: 0 }, 30, "Linear", true);}
 		}
-		if(showbackground) game.add.tween(abilityBackground).to( { alpha: 0.8 }, 30, "Linear", true);
+		let showBackground = false;
+		if(convoIndex1 > 0 && abilityBox1.input.pointerOver()) showBackground = true;
+		if(convoIndex2 > 0 && abilityBox2.input.pointerOver()) showBackground = true;
+		if(convoIndex3 > 0 && abilityBox3.input.pointerOver()) showBackground = true;
+		if(convoIndex4 > 0 && abilityBox4.input.pointerOver()) showBackground = true;
+		
+		if(showBackground) game.add.tween(abilityBackground).to( { alpha: 0.8 }, 30, "Linear", true);
 		else game.add.tween(abilityBackground).to( { alpha: 0 }, 60, "Linear", true);
 		
 		// Show/hide door selectors
 		if(convoIndex1 < 4){
-			if(door1.input.pointerOver()){game.add.tween(door1).to( { alpha: 1 }, 30, "Linear", true);}
-			else game.add.tween(door1).to( { alpha: 0.2 }, 30, "Linear", true);
+			if(door1.input.pointerOver() && door1.alpha == 0.2){doorSound.play(); game.add.tween(door1).to( { alpha: 1 }, 30, "Linear", true);}
+			else if(!door1.input.pointerOver()) game.add.tween(door1).to( { alpha: 0.2 }, 30, "Linear", true);
 		}
 		if(convoIndex2 < 4){
-			if(door2.input.pointerOver()){game.add.tween(door2).to( { alpha: 1 }, 30, "Linear", true);}
-			else game.add.tween(door2).to( { alpha: 0.2 }, 30, "Linear", true);
+			if(door2.input.pointerOver() && door2.alpha == 0.2){doorSound.play(); game.add.tween(door2).to( { alpha: 1 }, 30, "Linear", true);}
+			else if(!door2.input.pointerOver()) game.add.tween(door2).to( { alpha: 0.2 }, 30, "Linear", true);
 		}
 		if(convoIndex3 < 4){
-			if(door3.input.pointerOver()){game.add.tween(door3).to( { alpha: 1 }, 30, "Linear", true);}
-			else game.add.tween(door3).to( { alpha: 0.2 }, 30, "Linear", true);
+			if(door3.input.pointerOver() && door3.alpha == 0.2){doorSound.play(); game.add.tween(door3).to( { alpha: 1 }, 30, "Linear", true);}
+			else if(!door3.input.pointerOver()) game.add.tween(door3).to( { alpha: 0.2 }, 30, "Linear", true);
 		}
 		if(convoIndex4 < 4){
-			if(door4.input.pointerOver()){game.add.tween(door4).to( { alpha: 1 }, 30, "Linear", true);}
-			else game.add.tween(door4).to( { alpha: 0.2 }, 30, "Linear", true);
+			if(door4.input.pointerOver() && door4.alpha == 0.2){doorSound.play(); game.add.tween(door4).to( { alpha: 1 }, 30, "Linear", true);}
+			else if(!door4.input.pointerOver()) game.add.tween(door4).to( { alpha: 0.2 }, 30, "Linear", true);
 		}
-		if(pilotButton.input.pointerOver()){game.add.tween(pilotButton).to( { alpha: 1 }, 30, "Linear", true);}
-		else game.add.tween(pilotButton).to( { alpha: 0.2 }, 30, "Linear", true);
+		if(pilotButton.input.pointerOver() && pilotButton.alpha == 0.2){pilotSound.play(); game.add.tween(pilotButton).to( { alpha: 1 }, 30, "Linear", true);}
+		else if(!pilotButton.input.pointerOver()) game.add.tween(pilotButton).to( { alpha: 0.2 }, 30, "Linear", true);
 	},
 	
 	door1Opened: function() {
 		
 		// Go to Patricia's next conversation
 		convoIndex1++;
+		tooltipSound.play();
 		game.state.start('P' + convoIndex1.toString());
 	},
 	
@@ -187,6 +196,7 @@ var hallwayState = {
 		
 		// Go to Bridget's next conversation
 		convoIndex2++;
+		tooltipSound.play();
 		game.state.start('B' + convoIndex2.toString());
 	},
 	
@@ -194,6 +204,7 @@ var hallwayState = {
 		
 		// Go to Delson's next conversation
 		convoIndex3++;
+		tooltipSound.play();
 		game.state.start('D' + convoIndex3.toString());
 	},
 	
@@ -201,11 +212,12 @@ var hallwayState = {
 		
 		// Go to D4V3's next conversation
 		convoIndex4++;
+		tooltipSound.play();
 		game.state.start('R' + convoIndex4.toString());
 	},
 	
 	pilotShip: function() {
-		
+		selectedSound.play();
 		game.state.start('Play');
 	},
 	

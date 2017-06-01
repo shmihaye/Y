@@ -9,16 +9,16 @@ var B1 = {
 		 DiaC = "This ship has so much potential."
 		
 		 DiaA1 = " This isn’t my first expedition into deep space, you know."
-		 DiaA2 = " In fact, I used to be the damn captain of my very own crew aboard the Jackal Six. "
+		 DiaA2 = " In fact, I used to be the damn captain of my very own crew aboard the Jackal Six."
 		 DiaA3 = " Under my supervision, our crew of twelve ran at peak efficiency."
 		
 		 DiaB1 = " Leading people like this, these kinda sheepish folk."
 		 DiaB2 = " That hide in their room when they get scared."
-		 DiaB3 = " Its no easy feat, but I know a thing or two about being the boss."
+		 DiaB3 = " It's no easy feat, but I know a thing or two about being the boss."
 		
 		 DiaC1 = " It eats at me to see it go to waste."
-		 DiaC2 = " These people know what to do......"
-		 DiaC3 = " I wish they'd just do it Godammit."
+		 DiaC2 = " These people know what to do..."
+		 DiaC3 = " I just wish they'd do it dammit."
 		
 		choice1 = DiaA
 		choice2 = DiaB

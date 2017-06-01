@@ -8,13 +8,13 @@ var B4 = {
 		 DiaB = "I got the shields running at damn near max!"
 		 DiaC = "And I'm doing my best to make amends with the crew."
 		
-		 DiaA1 = " I had a lot on my mind, and I’m really glad you sat through and listened to me"
+		 DiaA1 = " I had a lot on my mind, and I’m really glad you sat through and listened to me."
 		 DiaA2 = " I’m getting up there in years and that scares me,"
-		 DiaA3 = " but that shouldn't stop me, I can't afford to be scared"
+		 DiaA3 = " but that shouldn't stop me, I can't afford to be scared."
 		
 		 DiaB1 = " Thankfully that didn't require me running around all crazy like Patty."
 		 DiaB2 = " Or tearing my hair out like Delson."
-		 DiaB3 = " I'm sure they are doing all they can, bless them"
+		 DiaB3 = " I'm sure they are doing all they can, bless them."
 		
 		 DiaC1 = " I've been playing on the N64 with D4V3."
 		 DiaC2 = " You'd think a robot would be good at it."

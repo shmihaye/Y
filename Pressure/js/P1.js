@@ -4,7 +4,7 @@ var P1 = {
 	create: function() {
 		
 		// library of all text for a given "chapter"
-		 DiaA = "Yes I know the primary engine has been making a rattling noise."
+		 DiaA = "Yes, I know the primary engine has been making a rattling noise."
 		 DiaB = "Oh. I...I didn't mean to snap, its just that..."
 		 DiaC = "I’m still adjusting but I think I can manage."
 		
@@ -16,7 +16,7 @@ var P1 = {
 		 DiaB2 = " I used to cherish the moments of silence in between the roaring of engines."
 		 DiaB3 = " But out here, there’s just somethin’ unsettling about all this quiet."
 		
-		 DiaC1 = " I would’ve adjusted if we didn't have to go chasing into uncharted space…"
+		 DiaC1 = " I would’ve adjusted if we didn't have to go chasing into uncharted space..."
 		 DiaC2 = " it just had to be us, y’know?"
 		 DiaC3 = " Listen to me blab. I don't mean to keep ya if y’ need to be somewhere."
 		

@@ -110,12 +110,33 @@ Game.Load.prototype = {
 		game.load.image('abilityBox2', 'abilityBox2.png');
 		game.load.image('abilityBox3', 'abilityBox3.png');
 		game.load.image('abilityBox4', 'abilityBox4.png');
+		
+		// Load game sounds and music
+		this.load.path = 'assets/audio/';
+		//game.load.audio('titleMusic', ['title.mp3','title.ogg']);
+		game.load.audio('break1', ['break1.mp3']);
+		game.load.audio('break2', ['break2.mp3']);
+		game.load.audio('break3', ['break3.mp3']);
+		game.load.audio('break4', ['break4.mp3']);
+		game.load.audio('break5', ['break5.mp3']);
+		game.load.audio('grab', ['grab.mp3']);
+		game.load.audio('release', ['release.mp3']);
+		game.load.audio('door', ['door.mp3']);
+		game.load.audio('hurt', ['hurt.mp3']);
+		game.load.audio('pilot', ['pilot.mp3']);
+		game.load.audio('tooltip', ['tooltip.mp3']);
+		game.load.audio('selected', ['selected.mp3']);
 	},
 	create: function() {
 		// Disable preload bar crop while we wait for mp3 decoding
 		this.preloadBar.cropEnabled = false;
 	},
 	update: function() {
+		// Wait for music mp3s to properly decode
+		//if(this.cache.isSoundDecoded('titleMusic') && this.cache.isSoundDecoded('mainMusic')) {
+			// When the music is ready, advance to title screen!
+			//this.state.start('Play');
+		//}
 		this.state.start('Play');
 	}
 };

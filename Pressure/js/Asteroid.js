@@ -11,6 +11,7 @@ Asteroid.prototype = Object.create(Phaser.Sprite.prototype);
 Asteroid.prototype.constructor = Asteroid;
 
 Asteroid.prototype.die = function(){
-	
+	// Play random break sound :)
+	breakSounds[Math.round(Math.random()*4)].play();
 	this.kill();
 }

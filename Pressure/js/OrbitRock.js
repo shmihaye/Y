@@ -17,7 +17,8 @@ OrbitRock.prototype = Object.create(Phaser.Sprite.prototype);
 OrbitRock.prototype.constructor = OrbitRock;
 
 OrbitRock.prototype.die = function(){
-	
+	// Play random break sound :)
+	breakSounds[Math.round(Math.random()*4)].play();
 	if(this.moon != null){
 		this.moon.body.acceleration.x = 0;
 		this.moon.body.acceleration.y = 0;

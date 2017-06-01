@@ -4,19 +4,20 @@ var B2 = {
 	create: function() {
 
 		// library of all text for a given "chapter"
-		 DiaA = "Hey Captain, how goes the clusterfuck?"
+		 //DiaA = "Hey Captain, how goes the clusterfuck?" << alt
+		 DiaA = "Hey Captain, how goes herding cats?"
 		 DiaB = "Listen, I'm going to keep voicing my mind."
-		 DiaC = "I won't take your job, but I'll do it if I must"
+		 DiaC = "I won't take your job, but I'll do it if I must."
 		
 		 DiaA1 = " I told ya this would be difficult."
-		 DiaA2 = " Craziest route combine with this crew..."
+		 DiaA2 = " Craziest route combined with this crew..."
 		 DiaA3 = " I'm doing everything I can but I will need your help eventually."
 		
 		 DiaB1 = " I'm wasting my time and yours if I don't."
-		 DiaB2 = " I owe it to myself "
+		 DiaB2 = " I owe it to myself."
 		 DiaB3 = " This is what I do."
 		
-		 DiaC1 = " It's not personal, its my duty,"
+		 DiaC1 = " It's not personal, it's my duty,"
 		 DiaC2 = " I'm not getting any younger."
 		 DiaC3 = " And this crew isn't getting any more capable."
 		

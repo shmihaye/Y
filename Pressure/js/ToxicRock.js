@@ -15,7 +15,8 @@ ToxicRock.prototype = Object.create(Phaser.Sprite.prototype);
 ToxicRock.prototype.constructor = ToxicRock;
 
 ToxicRock.prototype.die = function(){
-	
+	// Play random break sound :)
+	breakSounds[Math.round(Math.random()*4)].play();
 	this.kill();
 }
 

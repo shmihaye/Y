@@ -14,7 +14,7 @@ var P2 = {
 		
 		 DiaB1 = " Sometimes I can’t sleep because it’s so quiet."
 		 DiaB2 = " On nights like that I take my sheets to the engine room."
-		 DiaB3 = " and let the hum of the machinery put me under. It’s...therapeutic."
+		 DiaB3 = " And let the hum of the machinery put me under. It’s...therapeutic."
 		
 		 DiaC1 = " I wanted to get away. I wanted to be on my own..."
 		 DiaC2 = " Even if it meant I couldn’t turn back. A kind of trial by fire, y’know? "

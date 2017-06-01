@@ -13,8 +13,8 @@ var B3 = {
 		 DiaA3 = " Who am I if I don't lead."
 		
 		 DiaB1 = " They need me! But I can't give that anymore."
-		 DiaB2 = " I'm too slow now, you are what we need"
-		 DiaB3 = " That behavior..That wasn't me in my prime"
+		 DiaB2 = " I'm too slow now, you are what we need."
+		 DiaB3 = " That behavior...That wasn't like me in my prime."
 		
 		 DiaC1 = " Maybe now I can practice what I preach."
 		 DiaC2 = " I am no longer fit to lead,"

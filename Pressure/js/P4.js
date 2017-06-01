@@ -12,7 +12,7 @@ var P4 = {
 		 DiaA2 = " But after one bad night, I found myself completely abandoned."
 		 DiaA3 = " I’ve never really been able to trust anyone since."
 		
-		 DiaB1 = " Sure I could pretend like I’m doin’ okay, but.."
+		 DiaB1 = " Sure I could pretend like I’m doin’ okay, but..."
 		 DiaB2 = " the honest truth is that I felt alone surrounded by this crew."
 		 DiaB3 = " But bein’ on this mission in deep, uncharted space has forced me to adapt, I suppose."
 		

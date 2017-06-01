@@ -13,12 +13,12 @@ var D2 = {
 		 DiaA3 = " It makes my blood run cold."
 		
 		 DiaB1 = " People forget the painful memories."
-		 DiaB2 = " And thats fine.. when you arent that memory."
-		 DiaB3 = " When you are, there are ways that we can forget oursleves."
+		 DiaB2 = " And that's fine... when you aren't that memory."
+		 DiaB3 = " When you are, there are ways that we can forget ourselves."
 		
 		 DiaC1 = " I'm just following orders, doing what I gotta do."
 		 DiaC2 = " So many people need help, I can't put me before them."
-		 DiaC3 = " I can handle myself... I have to."
+		 DiaC3 = " I can handle myself...I have to."
 		
 		choice1 = DiaA
 		choice2 = DiaB

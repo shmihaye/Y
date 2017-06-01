@@ -1,6 +1,8 @@
 
 // Global variables for play state
 var player, obstacles, background, timestep, levelData, speedUp, energyReduction;
+var breakSounds = [];
+var grabSound, releaseSound, hurtSound;
 var levelNum = 0;
 var addObstacles = [];
 
@@ -40,6 +42,15 @@ var playState = {
 		// Load in level data
 		levelData = game.cache.getJSON('level');
 		timestep = 0;
+
+		// Prepare sound effects
+		for(let i = 1; i <= 5; i++){
+			var sound = game.add.audio('break' + i.toString());
+			breakSounds.push(sound);
+		}
+		grabSound = game.add.audio('grab');
+		releaseSound = game.add.audio('release');
+		hurtSound = game.add.audio('hurt');
 		
 		// Initialize keyboard controls
 		game.input.mouse.capture = true;
@@ -134,16 +145,18 @@ function grabObject(claw, obstacle){
 		player.grabbed = obstacle;
 		obstacle.body.velocity.x = 0;
 		obstacle.body.velocity.y = 0;
+		grabSound.play();
 	}
 }
 function hurtShip(player, obstacle){
 	// If the player touches an obstacle that hasn't been grabbed, lower energy
-	if(obstacle != player.grabbed && !obstacle.friendly && player.invincibility == 0){energy -= 30; player.invincibility = 60;}
+	if(obstacle != player.grabbed && !obstacle.friendly && player.invincibility == 0){hurtSound.play(); energy -= 25; player.invincibility = 60;}
 }
 function hurtShield(shield, obstacle){
-	// If an obstacle hit the shield, destroy the obstacle
+	// If an obstacle hits the shield, deflect the obstacle
 	if(obstacle != player.grabbed && !obstacle.friendly && player.shield.active){
-		obstacle.kill();
+		obstacle.body.velocity.x *= -1;
+		obstacle.body.velocity.y *= -1;
 	}
 }
 function checkBounds(obstacle){

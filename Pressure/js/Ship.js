@@ -279,6 +279,7 @@ Ship.prototype.update = function(){
 			this.grabbed.friendly = true;
 			this.grabbed = null;
 			this.grabCooldown = 40;
+			releaseSound.play();
 		}
 	}
 	
