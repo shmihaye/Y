@@ -4,21 +4,21 @@ var B1 = {
 	create: function() {
 		
 		// library of all text for a given "chapter"
-		 DiaA = "Reminds me of the service, being out like this."
-		 DiaB = "These asteroids hit real hard..."
-		 DiaC = "Come and have a drink cap."
+		 DiaA = "Greetings captain. Is there something you need?"
+		 DiaB = "I can certainly show you the ropes."
+		 DiaC = "This ship has so much potential."
 		
-		 DiaA1 = " Hopefully I won't get as many.. souvenirs from this."
-		 DiaA2 = " Sorry was that too grim for you?"
-		 DiaA3 = " My comedy is a bit uuhh.. out of practice I guess."
+		 DiaA1 = " This isn’t my first expedition into deep space, you know."
+		 DiaA2 = " In fact, I used to be the damn captain of my very own crew aboard the Jackal Six. "
+		 DiaA3 = " Under my supervision, our crew of twelve ran at peak efficiency."
 		
-		 DiaB1 = " At least my leg has atuo stablizers."
-		 DiaB2 = " I won't be falling on anyone when things get shaky."
-		 DiaB3 = " They even called me 'ol steady' before I had this thing."
+		 DiaB1 = " Leading people like this, these kinda sheepish folk."
+		 DiaB2 = " That hide in their room when they get scared."
+		 DiaB3 = " Its no easy feat, but I know a thing or two about being the boss."
 		
-		 DiaC1 = " I have my private stash here."
-		 DiaC2 = " Better get some before I wisen up and down it all."
-		 DiaC3 = " You should see my collection back home! It's magnificent."
+		 DiaC1 = " It eats at me to see it go to waste."
+		 DiaC2 = " These people know what to do......"
+		 DiaC3 = " I wish they'd just do it Godammit."
 		
 		choice1 = DiaA
 		choice2 = DiaB
@@ -40,9 +40,9 @@ var B1 = {
 		energyBar.scale.y = 0.5;
 		energyBar.fixedToCamera = true;
 		
-		slot1 = game.add.text(0, 0, choice1, { font: "32px Source Sans Pro", fill: bridrestclr, align: "left",  wordWrap: true,wordWrapWidth: 800})
-		slot2 = game.add.text(0, 0, choice2, { font: "32px Source Sans Pro", fill: bridrestclr, align: "left",  wordWrap: true,wordWrapWidth: 800})
-	 	slot3 = game.add.text(0, 0, choice3, { font: "32px Source Sans Pro", fill: bridrestclr, align: "left", wordWrap: true,wordWrapWidth: 800 })
+		slot1 = game.add.text(0, 0, choice1, { font: "26px Source Sans Pro", fill: bridrestclr, align: "left",  wordWrap: true,wordWrapWidth: 800})
+		slot2 = game.add.text(0, 0, choice2, { font: "26px Source Sans Pro", fill: bridrestclr, align: "left",  wordWrap: true,wordWrapWidth: 800})
+	 	slot3 = game.add.text(0, 0, choice3, { font: "26px Source Sans Pro", fill: bridrestclr, align: "left", wordWrap: true,wordWrapWidth: 800 })
 
     	exitSign = game.add.text(375,500, 'exit', {font: "32px Source Sans Pro", fill: '#8B0000', align: "left" })
 

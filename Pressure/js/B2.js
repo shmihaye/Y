@@ -4,21 +4,21 @@ var B2 = {
 	create: function() {
 
 		// library of all text for a given "chapter"
-		 DiaA = "Feels wrong going off on our own like this."
-		 DiaB = "We could float off and we'd be forgotten."
-		 DiaC = "I don't regret the decision, but I don't like it."
+		 DiaA = "Hey Captain, how goes the clusterfuck?"
+		 DiaB = "Listen, I'm going to keep voicing my mind."
+		 DiaC = "I won't take your job, but I'll do it if I must"
 		
-		 DiaA1 = " Like being in a lake in the middle of the night."
-		 DiaA2 = " That used to be a rush, but now..."
-		 DiaA3 = " It makes my blood run cold."
+		 DiaA1 = " I told ya this would be difficult."
+		 DiaA2 = " Craziest route combine with this crew..."
+		 DiaA3 = " I'm doing everything I can but I will need your help eventually."
 		
-		 DiaB1 = " People forget the painful memories."
-		 DiaB2 = " And thats fine.. when you arent that memory."
-		 DiaB3 = " When you are, there are ways that we can forget oursleves."
+		 DiaB1 = " I'm wasting my time and yours if I don't."
+		 DiaB2 = " I owe it to myself "
+		 DiaB3 = " This is what I do."
 		
-		 DiaC1 = " I'm just following orders, doing what I gotta do."
-		 DiaC2 = " So many people need help, I can't put me before them."
-		 DiaC3 = " I can handle myself... I have to."
+		 DiaC1 = " It's not personal, its my duty,"
+		 DiaC2 = " I'm not getting any younger."
+		 DiaC3 = " And this crew isn't getting any more capable."
 		
 		choice1 = DiaA
 		choice2 = DiaB
