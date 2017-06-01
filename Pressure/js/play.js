@@ -1,7 +1,7 @@
 
 // Global variables for play state
 var player, obstacles, background, timestep, levelData, speedUp, energyReduction;
-var levelNum = 3;
+var levelNum = 0;
 var addObstacles = [];
 
 // Play state container
