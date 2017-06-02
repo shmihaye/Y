@@ -30,7 +30,7 @@
 	{"time":75, "objects": [{"type":"Asteroid", "y":180, "scale":1.5}, {"type":"FragRock", "y":210, "scale":1.5}, {"type":"Asteroid", "y":240, "scale":1.5}, {"type":"Asteroid", "y":270, "scale":1.5}, {"type":"FragRock", "y":300, "scale":1.5}]},
 	{"time":78, "objects": [{"type":"Asteroid", "y":420, "scale":1.5}, {"type":"FragRock", "y":390, "scale":1.5}, {"type":"Asteroid", "y":360, "scale":1.5}, {"type":"Asteroid", "y":330, "scale":1.5}, {"type":"FragRock", "y":300, "scale":1.5}]},
 	
-	{"time":85, "objects": [{"type":"SPDUP"}]},
+	{"time":88, "objects": [{"type":"SPDUP"}]},
 	
 	{"time":90, "objects": [{"type":"END"}]}
 	
