@@ -23,7 +23,7 @@ FragRock.prototype.update = function(){
 
 FragRock.prototype.die = function(){
 	// Play random break sound :)
-	breakSounds[Math.round(Math.random()*4)].play();
+	breakSounds[Math.round(Math.random()*4)].play('',0,sfxVolume);
 	if(this.canBreak){
 		var fragment1 = {type:"FragRock2", x:this.x, y:this.y, scale:this.scale.x, primedCooldown:20, xvel:-200, yvel:100, canBreak:false};
 		var fragment2 = {type:"FragRock3", x:this.x, y:this.y, scale:this.scale.x, primedCooldown:20, xvel:200, yvel:100, canBreak:false};

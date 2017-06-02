@@ -12,7 +12,7 @@ Asteroid.prototype.constructor = Asteroid;
 
 Asteroid.prototype.die = function(){
 	// Play random break sound :)
-	breakSounds[Math.round(Math.random()*4)].play();
+	breakSounds[Math.round(Math.random()*4)].play('',0,sfxVolume);
 	// Create particles
 	emitter.x = this.x;
 	emitter.y = this.y;

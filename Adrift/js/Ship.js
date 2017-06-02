@@ -42,7 +42,7 @@ function Ship(game, image){
 	this.shieldEnabled = false;
 	if(convoIndex2 > 0){
 		this.shieldEnabled = true;
-		this.shield = game.add.sprite(0, 0, 'gravRock');
+		this.shield = game.add.sprite(0, 0, 'shield');
 		game.physics.arcade.enable(this.shield);
 		this.shield.anchor.set(0.5);
 		this.shield.scale.set(0.5);
@@ -280,7 +280,7 @@ Ship.prototype.update = function(){
 			this.grabbed.friendly = 40;
 			this.grabbed = null;
 			this.grabCooldown = 40;
-			releaseSound.play();
+			releaseSound.play('',0,sfxVolume);
 		}
 	}
 	

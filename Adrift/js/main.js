@@ -16,7 +16,6 @@ var convoIndex4 = 0;
 // font colors for the narrative state
 var unselected_color = "#7FFFD4"
 var selected_color = "#00BFFF"
-
 var patrestclr = "#4e7d48"
 var pathoverclr = "#7a9b76"
 var delrestclr = "#5e2f23"
@@ -25,7 +24,8 @@ var bridrestclr = "#565264"
 var bridhoverclr =  "#706b7f"
 var d4restclr = "#80432f"
 var d4hoverclr = "#9e6654"
-
+// Sound effect volume
+var sfxVolume = 0.05;
 
 
 
@@ -69,6 +69,7 @@ Game.Load.prototype = {
 		game.load.image('arm1', 'arm1.png');
 		game.load.image('arm2', 'arm2.png');
 		game.load.spritesheet('claw', 'claw.png', 12, 12);
+		game.load.image('shield', 'shield.png');
 		
 		game.load.image('rock', 'rock.png');
 		game.load.spritesheet('gravRock', 'gravRock.png', 64, 64);

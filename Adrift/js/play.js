@@ -159,12 +159,14 @@ function grabObject(claw, obstacle){
 		player.grabbed = obstacle;
 		obstacle.body.velocity.x = 0;
 		obstacle.body.velocity.y = 0;
-		grabSound.play();
+		grabSound.play('',0,sfxVolume);
 	}
 }
 function hurtShip(player, obstacle){
 	// If the player touches an obstacle that hasn't been grabbed, lower energy
-	if(obstacle != player.grabbed && obstacle.friendly <= 0 && player.invincibility == 0){hurtSound.play(); energy -= 26; player.invincibility = 60;}
+	if(obstacle != player.grabbed && obstacle.friendly <= 0 && player.invincibility == 0){
+		hurtSound.play('',0,sfxVolume); energy -= 26; player.invincibility = 60;
+	}
 }
 function hurtShield(shield, obstacle){
 	// If an obstacle hits the shield, stop the obstacle in its tracks
