@@ -83,7 +83,11 @@ Game.Load.prototype = {
 		game.load.image('particle2', 'particle2.png');
 		game.load.image('particle3', 'particle3.png');
 		
-		game.load.image('hallwayDoor', 'hallwayDoor.png');
+		game.load.image('selectChair', 'selectChair.png');
+		game.load.image('selectD4V3', 'selectD4V3.png');
+		game.load.image('selectDelson', 'selectDelson.png');
+		game.load.image('selectBridget', 'selectBridget.png');
+		game.load.image('selectPatricia', 'selectPatricia.png');
 		game.load.image('spaceBackground', 'spaceBackground.png');
 		game.load.image('hallwayBackground', 'hallwayBackground.png');
 		game.load.image('textBackground', 'textBackground.png');
