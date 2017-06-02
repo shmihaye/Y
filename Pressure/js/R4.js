@@ -4,21 +4,21 @@ var R4 = {
 	create: function() {
 
 		// library of all text for a given "chapter"
-		 DiaA = "Heh, you came back? after that shit show?"
-		 DiaB = "This leg is damn great, compared to my head."
-		 DiaC = "The crew here, they aren't like my old unit."
+		 DiaA = "I have made some breakthroughs Captain!"
+		 DiaB = "My approach was wrong."
+		 DiaC = "And I think I understand."
 		
-		 DiaA1 = " It..you..I...my demons come out sometimes and.."
-		 DiaA2 = " I've never had someone around during that before."
-		 DiaA3 = " Thank you, for sticking around, means a lot"
+		 DiaA1 = " There is no fixing people, like I fix our terminals."
+		 DiaA2 = " All we can do is care for them and be there when we are needed."
+		 DiaA3 = " Not just when we are asked for."
 		
-		 DiaB1 = " You'd think getting blown apart would mess with your head."
-		 DiaB2 = " But no, that heals without any bother"
-		 DiaB3 = " The isolation, the abandonment..The body can't handle that"
+		 DiaB1 = " All they need is someone to reach out."
+		 DiaB2 = " Someone who isn't scared of them."
+		 DiaB3 = " Someone to just stop, listen and understand."
 		
-		 DiaC1 = " You aren't like them, they're not bad people. Just afraid"
-		 DiaC2 = " But you aren't scared of hurt people...."
-		 DiaC3 = " You let those memories change you and teach you."
+		 DiaC1 = " They are scared..."
+		 DiaC2 = " Scared of opening up and scared of being rejected."
+		 DiaC3 = " We need each other Captain, for more than just flying."
 		
 		choice1 = DiaA
 		choice2 = DiaB
@@ -84,8 +84,8 @@ var R4 = {
 	},
 	
 	update: function() {
-		slot2.y = (Acount*36)+12
-		slot3.y = ((Acount+Bcount)*36)+24
+		slot2.y = (Acount*39)+12
+		slot3.y = ((Acount+Bcount)*39)+24
 
 		if (Acount+Bcount+Ccount >= 9){
 			slot1.inputEnabled = false

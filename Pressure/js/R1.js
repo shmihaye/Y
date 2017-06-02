@@ -4,21 +4,21 @@ var R1 = {
 	create: function() {
 		
 		// library of all text for a given "chapter"
-		 DiaA = "Reminds me of the service, being out like this."
-		 DiaB = "These asteroids hit real hard..."
-		 DiaC = "Come and have a drink cap."
+		 DiaA = "Hello Commander! I'm just hanging out as you can see."
+		 DiaB = "The crew is all in their quarters, despite my invitations."
+		 DiaC = "Such a silly lot!"
 		
-		 DiaA1 = " Hopefully I won't get as many.. souvenirs from this."
-		 DiaA2 = " Sorry was that too grim for you?"
-		 DiaA3 = " My comedy is a bit uuhh.. out of practice I guess."
+		 DiaA1 = " Not much to do when we aren't dodging huge rocks"
+		 DiaA2 = " Speaking of, you are getting pretty good"
+		 DiaA3 = " Just don't sneeze while we are going, we might go boom."
 		
-		 DiaB1 = " At least my leg has atuo stablizers."
-		 DiaB2 = " I won't be falling on anyone when things get shaky."
-		 DiaB3 = " They even called me 'ol steady' before I had this thing."
+		 DiaB1 = " I send them and my bi-daily progress reports,"
+		 DiaB2 = " and I always sign off with an invitation for yoga"
+		 DiaB3 = " I mean look! I'm so good at it!"
 		
-		 DiaC1 = " I have my private stash here."
-		 DiaC2 = " Better get some before I wisen up and down it all."
-		 DiaC3 = " You should see my collection back home! It's magnificent."
+		 DiaC1 = " Deslon and Patricia haven't said a word since we went off course!"
+		 DiaC2 = " I don't know what kind of game they are playing."
+		 DiaC3 = " But I will win! I have a mute button!"
 		
 		choice1 = DiaA
 		choice2 = DiaB
@@ -83,8 +83,8 @@ var R1 = {
 	},
 	
 	update: function() {
-		slot2.y = (Acount*36)+12
-		slot3.y = ((Acount+Bcount)*36)+24
+		slot2.y = (Acount*42)+12
+		slot3.y = ((Acount+Bcount)*42)+24
 
 		if (Acount+Bcount+Ccount >= 9){
 			slot1.inputEnabled = false

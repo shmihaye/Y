@@ -4,21 +4,21 @@ var R3 = {
 	create: function() {
 
 		// library of all text for a given "chapter"
-		 DiaA = "Do you think anyone is going to care about us?"
-		 DiaB = "It doesn't matter..."
-		 DiaC = "Somethings aren't worth recovering..."
+		 DiaA = "Captain, am I missing something?"
+		 DiaB = "We can fix whatever may be going."
+		 DiaC = "I just don't understand."
 		
-		 DiaA1 = " Sure they'll miss the meds, but not us."
-		 DiaA2 = " Out of sight out of mind."
-		 DiaA3 = " We are a number, a unit, a casualty.."
+		 DiaA1 = " There's no logic to their behavior."
+		 DiaA2 = " They are living in suboptimal conditions."
+		 DiaA3 = " Why choose to proceed like that."
 		
-		 DiaB1 = " 3 months alone in the hospital taught me"
-		 DiaB2 = " 10 years wihtout a word from them taught me"
-		 DiaB3 = " People like me get left behind, no one comes looking"
+		 DiaB1 = " If I had a broken subroutine, I get it fixed."
+		 DiaB2 = " Errors in programming too, are snuffed out"
+		 DiaB3 = " What can I do if we don't know what's going on."
 		
-		 DiaC1 = " My unit didn't want to remember me,"
-		 DiaC2 = " I am just a bad memory."
-		 DiaC3 = " and this ship could be one too..."
+		 DiaC1 = " If something is wrong why not come and fix it?"
+		 DiaC2 = " I have Eliza protocal, I'm a capable!"
+		 DiaC3 = " But, I cannot help if they do not come to me."
 		
 		choice1 = DiaA
 		choice2 = DiaB

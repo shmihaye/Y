@@ -4,21 +4,21 @@ var R2 = {
 	create: function() {
 
 		// library of all text for a given "chapter"
-		 DiaA = "Feels wrong going off on our own like this."
-		 DiaB = "We could float off and we'd be forgotten."
-		 DiaC = "I don't regret the decision, but I don't like it."
+		 DiaA = "You missed the Yoga...Its ok, so did everyone."
+		 DiaB = "Perhaps they are putting in extra time toward their duties!"
+		 DiaC = "I'm begining to think that their tension isn't from they're physical stature."
 		
-		 DiaA1 = " Like being in a lake in the middle of the night."
-		 DiaA2 = " That used to be a rush, but now..."
-		 DiaA3 = " It makes my blood run cold."
+		 DiaA1 = " Also Bridget deleted my classic game emulators..."
+		 DiaA2 = " She claimed the sensors were suboptimal."
+		 DiaA3 = " They were, but still! I wrote them myself."
 		
-		 DiaB1 = " People forget the painful memories."
-		 DiaB2 = " And thats fine.. when you arent that memory."
-		 DiaB3 = " When you are, there are ways that we can forget oursleves."
+		 DiaB1 = " I'm sure they are handling themselves nicely."
+		 DiaB2 = " This new mission is so exciting!"
+		 DiaB3 = " Back when these routes were made there was a 50% mortality rate!"
 		
-		 DiaC1 = " I'm just following orders, doing what I gotta do."
-		 DiaC2 = " So many people need help, I can't put me before them."
-		 DiaC3 = " I can handle myself... I have to."
+		 DiaC1 = " But they still operate in their usual parameters."
+		 DiaC2 = " They would report if there were issues."
+		 DiaC3 = " It is in the protocal."
 		
 		choice1 = DiaA
 		choice2 = DiaB
@@ -84,8 +84,8 @@ var R2 = {
 	},
 	
 	update: function() {
-		slot2.y = (Acount*36)+12
-		slot3.y = ((Acount+Bcount)*36)+24
+		slot2.y = (Acount*42)+12
+		slot3.y = ((Acount+Bcount)*42)+24
 
 		if (Acount+Bcount+Ccount >= 9){
 			slot1.inputEnabled = false
