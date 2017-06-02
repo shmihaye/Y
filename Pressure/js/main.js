@@ -78,6 +78,9 @@ Game.Load.prototype = {
 		game.load.image('fragRock2', 'fragRock2.png');
 		game.load.image('fragRock3', 'fragRock3.png');
 		game.load.image('fragRock4', 'fragRock4.png');
+		game.load.image('particle1', 'particle1.png');
+		game.load.image('particle2', 'particle2.png');
+		game.load.image('particle3', 'particle3.png');
 		
 		game.load.image('hallwayDoor', 'hallwayDoor.png');
 		game.load.image('spaceBackground', 'spaceBackground.png');

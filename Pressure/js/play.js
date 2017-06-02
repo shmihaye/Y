@@ -1,6 +1,6 @@
 
 // Global variables for play state
-var player, obstacles, background, timestep, levelData, speedUp, energyReduction;
+var player, obstacles, background, timestep, levelData, speedUp, energyReduction, emitter;
 var breakSounds = [];
 var grabSound, releaseSound, hurtSound;
 var levelNum = 0;
@@ -54,6 +54,10 @@ var playState = {
 		
 		// Initialize keyboard controls
 		game.input.mouse.capture = true;
+		
+		// Create particle emitter
+		emitter = game.add.emitter(0, 0, 100);
+		emitter.makeParticles(['particle1','particle2','particle3']);
 		
 		// Create energy bar
 		energyReduction = game.add.sprite(65, 580, 'bar');
@@ -127,6 +131,11 @@ var playState = {
 		energyBar.scale.x = energy/30;
 		if(energyBar.scale.x > energyReduction.scale.x) energyReduction.scale.x = energyBar.scale.x;
 		else if(energyBar.scale.x < energyReduction.scale.x) energyReduction.scale.x -= 0.02;
+		
+		// Fade particles
+		emitter.forEachAlive(
+			function(p){ p.alpha= p.lifespan / emitter.lifespan; p.scale.setTo(2); p.body.allowGravity = false;}
+		);
 	},
 	
 	render: function() {

@@ -19,6 +19,10 @@ OrbitRock.prototype.constructor = OrbitRock;
 OrbitRock.prototype.die = function(){
 	// Play random break sound :)
 	breakSounds[Math.round(Math.random()*4)].play();
+	// Create particles
+	emitter.x = this.x;
+	emitter.y = this.y;
+	emitter.start(true, 2000, null, 5);
 	if(this.moon != null){
 		this.moon.body.acceleration.x = 0;
 		this.moon.body.acceleration.y = 0;
