@@ -167,10 +167,10 @@ function hurtShip(player, obstacle){
 	if(obstacle != player.grabbed && obstacle.friendly <= 0 && player.invincibility == 0){hurtSound.play(); energy -= 26; player.invincibility = 60;}
 }
 function hurtShield(shield, obstacle){
-	// If an obstacle hits the shield, deflect the obstacle
+	// If an obstacle hits the shield, stop the obstacle in its tracks
 	if(obstacle != player.grabbed && obstacle.friendly <= 0 && player.shield.active){
-		obstacle.body.velocity.x *= -1;
-		obstacle.body.velocity.y *= -1;
+		obstacle.body.velocity.x = 0;
+		obstacle.body.velocity.y = 0;
 	}
 }
 function checkBounds(obstacle){
