@@ -3,6 +3,7 @@ var door1, door2, door3, door4, pilotButton, mouse;
 var abilityBox1, abilityBox2, abilityBox3, abilityBox4, textBackground;
 var abilityText1, abilityText2, abilityText3, abilityText4;
 var doorSound, pilotSound, tooltipSound, selectedSound;
+var lastConvo = 0;
 
 var hallwayState = {
 	
@@ -16,22 +17,22 @@ var hallwayState = {
 		game.add.sprite(0, 0, 'hallwayBackground');
 		
 		// Add doors
-		if(convoIndex1 < 4){
+		if(convoIndex1 < 4 && lastConvo != 1){
 			door1 = game.add.sprite(30, 320, 'hallwayDoor');
 			door1.inputEnabled = true;
 			door1.events.onInputDown.add(this.door1Opened, this);
 		}
-		if(convoIndex2 < 4){
+		if(convoIndex2 < 4 && lastConvo != 2){
 			door2 = game.add.sprite(230, 320, 'hallwayDoor');
 			door2.inputEnabled = true;
 			door2.events.onInputDown.add(this.door2Opened, this);
 		}
-		if(convoIndex3 < 4){
+		if(convoIndex3 < 4 && lastConvo != 3){
 			door3 = game.add.sprite(435, 320, 'hallwayDoor');
 			door3.inputEnabled = true;
 			door3.events.onInputDown.add(this.door3Opened, this);
 		}
-		if(convoIndex4 < 4){
+		if(convoIndex4 < 4 && lastConvo != 4){
 			door4 = game.add.sprite(645, 320, 'hallwayDoor');
 			door4.inputEnabled = true;
 			door4.events.onInputDown.add(this.door4Opened, this);
@@ -164,19 +165,19 @@ var hallwayState = {
 		else game.add.tween(abilityBackground).to( { alpha: 0 }, 60, "Linear", true);
 		
 		// Show/hide door selectors
-		if(convoIndex1 < 4){
+		if(convoIndex1 < 4 && lastConvo != 1){
 			if(door1.input.pointerOver() && door1.alpha == 0.2){doorSound.play(); game.add.tween(door1).to( { alpha: 1 }, 30, "Linear", true);}
 			else if(!door1.input.pointerOver()) game.add.tween(door1).to( { alpha: 0.2 }, 30, "Linear", true);
 		}
-		if(convoIndex2 < 4){
+		if(convoIndex2 < 4 && lastConvo != 2){
 			if(door2.input.pointerOver() && door2.alpha == 0.2){doorSound.play(); game.add.tween(door2).to( { alpha: 1 }, 30, "Linear", true);}
 			else if(!door2.input.pointerOver()) game.add.tween(door2).to( { alpha: 0.2 }, 30, "Linear", true);
 		}
-		if(convoIndex3 < 4){
+		if(convoIndex3 < 4 && lastConvo != 3){
 			if(door3.input.pointerOver() && door3.alpha == 0.2){doorSound.play(); game.add.tween(door3).to( { alpha: 1 }, 30, "Linear", true);}
 			else if(!door3.input.pointerOver()) game.add.tween(door3).to( { alpha: 0.2 }, 30, "Linear", true);
 		}
-		if(convoIndex4 < 4){
+		if(convoIndex4 < 4 && lastConvo != 4){
 			if(door4.input.pointerOver() && door4.alpha == 0.2){doorSound.play(); game.add.tween(door4).to( { alpha: 1 }, 30, "Linear", true);}
 			else if(!door4.input.pointerOver()) game.add.tween(door4).to( { alpha: 0.2 }, 30, "Linear", true);
 		}
@@ -189,6 +190,7 @@ var hallwayState = {
 		// Go to Patricia's next conversation
 		convoIndex1++;
 		tooltipSound.play();
+		lastConvo = 1;
 		game.state.start('P' + convoIndex1.toString());
 	},
 	
@@ -197,6 +199,7 @@ var hallwayState = {
 		// Go to Bridget's next conversation
 		convoIndex2++;
 		tooltipSound.play();
+		lastConvo = 2;
 		game.state.start('B' + convoIndex2.toString());
 	},
 	
@@ -205,6 +208,7 @@ var hallwayState = {
 		// Go to Delson's next conversation
 		convoIndex3++;
 		tooltipSound.play();
+		lastConvo = 3;
 		game.state.start('D' + convoIndex3.toString());
 	},
 	
@@ -213,11 +217,13 @@ var hallwayState = {
 		// Go to D4V3's next conversation
 		convoIndex4++;
 		tooltipSound.play();
+		lastConvo = 4;
 		game.state.start('R' + convoIndex4.toString());
 	},
 	
 	pilotShip: function() {
 		selectedSound.play();
+		lastConvo = 0;
 		game.state.start('Play');
 	},
 	

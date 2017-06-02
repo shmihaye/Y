@@ -271,12 +271,13 @@ Ship.prototype.update = function(){
 		this.grabbed.body.velocity.y = 0;
 		this.grabbed.body.acceleration.x = 0;
 		this.grabbed.body.acceleration.y = 0;
+		this.grabbed.primed = true;
+		if(!this.grabbed.alive) this.grabbed = null;
 		// Release grabbed object if mouse button is no longer down
 		if(!game.input.activePointer.leftButton.isDown){
 			this.grabbed.body.velocity.y = 50*(this.grabbed.y - prevy);
 			this.grabbed.body.velocity.x = 50*(this.grabbed.x - prevx);
-			this.grabbed.primed = true;
-			this.grabbed.friendly = true;
+			this.grabbed.friendly = 40;
 			this.grabbed = null;
 			this.grabCooldown = 40;
 			releaseSound.play();

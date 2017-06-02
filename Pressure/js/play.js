@@ -136,6 +136,11 @@ var playState = {
 		emitter.forEachAlive(
 			function(p){ p.alpha= p.lifespan / emitter.lifespan; p.scale.setTo(2); p.body.allowGravity = false;}
 		);
+		
+		// Tick down friendly
+		obstacles.forEachAlive(
+			function(obstacle){ if(obstacle.friendly > 0) obstacle.friendly--;}
+		);
 	},
 	
 	render: function() {
@@ -159,11 +164,11 @@ function grabObject(claw, obstacle){
 }
 function hurtShip(player, obstacle){
 	// If the player touches an obstacle that hasn't been grabbed, lower energy
-	if(obstacle != player.grabbed && !obstacle.friendly && player.invincibility == 0){hurtSound.play(); energy -= 25; player.invincibility = 60;}
+	if(obstacle != player.grabbed && obstacle.friendly <= 0 && player.invincibility == 0){hurtSound.play(); energy -= 26; player.invincibility = 60;}
 }
 function hurtShield(shield, obstacle){
 	// If an obstacle hits the shield, deflect the obstacle
-	if(obstacle != player.grabbed && !obstacle.friendly && player.shield.active){
+	if(obstacle != player.grabbed && obstacle.friendly <= 0 && player.shield.active){
 		obstacle.body.velocity.x *= -1;
 		obstacle.body.velocity.y *= -1;
 	}
@@ -211,7 +216,7 @@ function createObj(spawnObj){
 	if(spawnObj.canBreak !== undefined) newObj.canBreak = spawnObj.canBreak;
 	else newObj.canBreak = true;
 	if(newObj != null){
-		newObj.friendly = false;
+		newObj.friendly = 0;
 		newObj.body.gravity.y = 0;
 		newObj.anchor.set(0.5);
 		game.add.existing(newObj);

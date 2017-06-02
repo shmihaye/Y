@@ -32,7 +32,7 @@ var R4 = {
 		BG = game.add.sprite(0, 0, 'room4Background');
 		
 		// Add character sprite
-		game.add.sprite(0, 0, 'd4v34');
+		game.add.sprite(242, 252, 'd4v34');
 		
 		// Create energy bar
 		energyBar = game.add.sprite(65, 580, 'bar');
