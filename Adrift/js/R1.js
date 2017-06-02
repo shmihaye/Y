@@ -8,15 +8,15 @@ var R1 = {
 		 DiaB = "The crew is all in their quarters, despite my invitations."
 		 DiaC = "Such a silly lot!"
 		
-		 DiaA1 = " Not much to do when we aren't dodging huge rocks"
-		 DiaA2 = " Speaking of, you are getting pretty good"
+		 DiaA1 = " Not much to do when we aren't dodging huge rocks."
+		 DiaA2 = " Speaking of, you are getting pretty good."
 		 DiaA3 = " Just don't sneeze while we are going, we might go boom."
 		
-		 DiaB1 = " I send them and my bi-daily progress reports,"
-		 DiaB2 = " and I always sign off with an invitation for yoga"
+		 DiaB1 = " I send them my bi-daily progress reports,"
+		 DiaB2 = " and I always sign off with an invitation for yoga."
 		 DiaB3 = " I mean look! I'm so good at it!"
 		
-		 DiaC1 = " Deslon and Patricia haven't said a word since we went off course!"
+		 DiaC1 = " Delson and Patricia haven't said a word since we went off course!"
 		 DiaC2 = " I don't know what kind of game they are playing."
 		 DiaC3 = " But I will win! I have a mute button!"
 		

@@ -259,6 +259,7 @@ Ship.prototype.update = function(){
 	else this.claw.animations.play('closed');
 	
 	// Move grabbed object with claw
+	if(this.grabbed != null && !this.grabbed.alive) this.grabbed = null;
 	if(this.grabbed != null){
 		let prevx = this.grabbed.x;
 		let prevy = this.grabbed.y;
@@ -272,7 +273,6 @@ Ship.prototype.update = function(){
 		this.grabbed.body.acceleration.x = 0;
 		this.grabbed.body.acceleration.y = 0;
 		this.grabbed.primed = true;
-		if(!this.grabbed.alive) this.grabbed = null;
 		// Release grabbed object if mouse button is no longer down
 		if(!game.input.activePointer.leftButton.isDown){
 			this.grabbed.body.velocity.y = 50*(this.grabbed.y - prevy);

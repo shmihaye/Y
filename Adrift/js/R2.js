@@ -4,9 +4,9 @@ var R2 = {
 	create: function() {
 
 		// library of all text for a given "chapter"
-		 DiaA = "You missed the Yoga...Its ok, so did everyone."
+		 DiaA = "You missed the Yoga...It's ok, so did everyone else."
 		 DiaB = "Perhaps they are putting in extra time toward their duties!"
-		 DiaC = "I'm begining to think that their tension isn't from they're physical stature."
+		 DiaC = "I'm begining to think that their tension isn't from their physical stature."
 		
 		 DiaA1 = " Also Bridget deleted my classic game emulators..."
 		 DiaA2 = " She claimed the sensors were suboptimal."
@@ -18,7 +18,7 @@ var R2 = {
 		
 		 DiaC1 = " But they still operate in their usual parameters."
 		 DiaC2 = " They would report if there were issues."
-		 DiaC3 = " It is in the protocal."
+		 DiaC3 = " It is in the protocol."
 		
 		choice1 = DiaA
 		choice2 = DiaB

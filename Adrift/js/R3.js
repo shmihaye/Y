@@ -5,19 +5,19 @@ var R3 = {
 
 		// library of all text for a given "chapter"
 		 DiaA = "Captain, am I missing something?"
-		 DiaB = "We can fix whatever may be going."
+		 DiaB = "We can fix whatever may be going on."
 		 DiaC = "I just don't understand."
 		
 		 DiaA1 = " There's no logic to their behavior."
 		 DiaA2 = " They are living in suboptimal conditions."
-		 DiaA3 = " Why choose to proceed like that."
+		 DiaA3 = " Why choose to proceed like that?"
 		
-		 DiaB1 = " If I had a broken subroutine, I get it fixed."
-		 DiaB2 = " Errors in programming too, are snuffed out"
-		 DiaB3 = " What can I do if we don't know what's going on."
+		 DiaB1 = " If I had a broken subroutine, I would get it fixed."
+		 DiaB2 = " Errors in programming too, are snuffed out."
+		 DiaB3 = " What can I do if I don't know what's going on?"
 		
 		 DiaC1 = " If something is wrong why not come and fix it?"
-		 DiaC2 = " I have Eliza protocal, I'm a capable!"
+		 DiaC2 = " I have Eliza protocil, I'm capable!"
 		 DiaC3 = " But, I cannot help if they do not come to me."
 		
 		choice1 = DiaA
