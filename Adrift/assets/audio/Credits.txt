@@ -1,7 +1,7 @@
 Sounds from soundjay.com:
 tooltip.mp3 -- button-20.mp3
 pilot.mp3 -- button-11.mp3
-door.mpe -- button-21.mp3
+door.mp3 -- button-21.mp3
 grab.mp3 -- button-48.mp3
 release.mp3 -- button-16.mp3
 break1-5.mp3 -- footsteps-on-icy-ground-01.mp3
