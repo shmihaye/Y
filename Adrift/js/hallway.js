@@ -18,26 +18,26 @@ var hallwayState = {
 		
 		// Add doors
 		if(convoIndex1 < 4 && lastConvo != 1){
-			door1 = game.add.sprite(30, 320, 'hallwayDoor');
+			door1 = game.add.sprite(79, 125, 'selectPatricia');
 			door1.inputEnabled = true;
 			door1.events.onInputDown.add(this.door1Opened, this);
 		}
 		if(convoIndex2 < 4 && lastConvo != 2){
-			door2 = game.add.sprite(230, 320, 'hallwayDoor');
+			door2 = game.add.sprite(331, 126, 'selectBridget');
 			door2.inputEnabled = true;
 			door2.events.onInputDown.add(this.door2Opened, this);
 		}
 		if(convoIndex3 < 4 && lastConvo != 3){
-			door3 = game.add.sprite(435, 320, 'hallwayDoor');
+			door3 = game.add.sprite(548, 127, 'selectDelson');
 			door3.inputEnabled = true;
 			door3.events.onInputDown.add(this.door3Opened, this);
 		}
 		if(convoIndex4 < 4 && lastConvo != 4){
-			door4 = game.add.sprite(645, 320, 'hallwayDoor');
+			door4 = game.add.sprite(739, 126, 'selectD4V3');
 			door4.inputEnabled = true;
 			door4.events.onInputDown.add(this.door4Opened, this);
 		}
-		pilotButton = game.add.sprite(1015, 320, 'hallwayDoor');
+		pilotButton = game.add.sprite(1124, 196, 'selectChair');
 		pilotButton.inputEnabled = true;
 		pilotButton.events.onInputDown.add(this.pilotShip, this);
 		
