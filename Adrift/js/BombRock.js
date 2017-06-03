@@ -12,9 +12,9 @@ function BombRock(game, image) {
 	
 	// Add animations
 	this.animations.add('default', [0,1,2], 10, true);
-	this.animations.play('default');
 	var anim = this.animations.add('explode', [3,4,5,6,7,8,9,10,11,12,13], 20, false);
 	anim.killOnComplete = true;
+	this.animations.play('default');
 	this.exploded = false;
 	
 	// Resize hitbox
