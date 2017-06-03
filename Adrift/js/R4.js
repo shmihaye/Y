@@ -12,7 +12,7 @@ var R4 = {
 		 DiaA2 = " All we can do is care for them and be there when we are needed."
 		 DiaA3 = " Not just when we are asked for."
 		
-		 DiaB1 = " All they need is someone to reach out."
+		 DiaB1 = " All they need is someone to reach out to."
 		 DiaB2 = " Someone who isn't scared of them."
 		 DiaB3 = " Someone to just stop, listen and understand."
 		
@@ -32,7 +32,7 @@ var R4 = {
 		BG = game.add.sprite(0, 0, 'room4Background');
 		
 		// Add character sprite
-		game.add.sprite(242, 252, 'd4v34');
+		game.add.sprite(278, 262, 'd4v34');
 		
 		// Create energy bar
 		energyBar = game.add.sprite(65, 580, 'bar');
