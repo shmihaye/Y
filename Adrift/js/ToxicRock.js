@@ -8,7 +8,6 @@ function ToxicRock(game, image) {
 	// Animations
 	this.animations.add('default', [0, 1, 2, 3, 4], 10, true);
 	this.animations.play('default');
-	
 }
 
 ToxicRock.prototype = Object.create(Phaser.Sprite.prototype);

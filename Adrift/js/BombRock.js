@@ -16,9 +16,6 @@ function BombRock(game, image) {
 	anim.killOnComplete = true;
 	this.animations.play('default');
 	this.exploded = false;
-	
-	// Resize hitbox
-	this.body.setSize(30, 30, 17, 17);
 };
 
 BombRock.prototype = Object.create(Phaser.Sprite.prototype);

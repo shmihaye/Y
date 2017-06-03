@@ -7,9 +7,6 @@ function FragRock(game, image) {
 	// Physics
 	game.physics.arcade.enable(this);
 	this.canBreak = false;
-	
-	// Resize hitbox
-	this.body.setSize(30, 30, 17, 17);
 }
 
 FragRock.prototype = Object.create(Phaser.Sprite.prototype);

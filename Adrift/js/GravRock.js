@@ -17,9 +17,6 @@ function GravRock(game, image) {
 	this.animations.add('default', [0,1,2,3,4,5,6,7,8,9,10], 10, true);
 	this.animations.play('default');
 	
-	// Resize hitbox
-	this.body.setSize(30, 30, 17, 17);
-	
 };
 
 GravRock.prototype = Object.create(Phaser.Sprite.prototype);
