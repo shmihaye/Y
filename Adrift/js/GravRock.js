@@ -48,7 +48,7 @@ GravRock.prototype.update = function() {
 }
 
 GravRock.prototype.die = function(){
-	
+	implodeSound.play('',0,sfxVolume);
 	this.kill();
 }
 

@@ -13,7 +13,7 @@ function BombRock(game, image) {
 	// Add animations
 	this.animations.add('default', [0,1,2], 10, true);
 	this.animations.play('default');
-	var anim = this.animations.add('explode', [3,4,5,6,7,8,9,10,11,12,13], 10, false);
+	var anim = this.animations.add('explode', [3,4,5,6,7,8,9,10,11,12,13], 20, false);
 	anim.killOnComplete = true;
 	this.exploded = false;
 	
@@ -26,6 +26,7 @@ BombRock.prototype.constructor = BombRock;
 
 BombRock.prototype.die = function(){
 	if(!this.exploded){
+		explodeSound.play('',0,sfxVolume);
 		this.exploded = true;
 		let obstacleLength = obstacles.children.length;
 		for(let i = 0; i < obstacleLength; i++){

@@ -49,7 +49,7 @@ var hallwayState = {
 		abilityText1.setTextBounds(250, 64, 300, 400);
 		abilityText1.fixedToCamera = true;
 		abilityText1.alpha = 0;
-		abilityText2 = game.add.text(0, 0, 'Shield\n Bridget\'s ability\n Level ' + convoIndex2.toString() + '\n\n Press space for a temporary deflection shield', style1);
+		abilityText2 = game.add.text(0, 0, 'Shield\n Bridget\'s ability\n Level ' + convoIndex2.toString() + '\n\n Press space to stop nearby objects in their tracks', style1);
 		abilityText2.setTextBounds(250, 64, 300, 400);
 		abilityText2.fixedToCamera = true;
 		abilityText2.alpha = 0;

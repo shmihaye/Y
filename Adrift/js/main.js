@@ -130,6 +130,13 @@ Game.Load.prototype = {
 		game.load.audio('pilot', ['pilot.mp3']);
 		game.load.audio('tooltip', ['tooltip.mp3']);
 		game.load.audio('selected', ['selected.mp3']);
+		game.load.audio('boom', ['explode.mp3']);
+		game.load.audio('implode', ['implode.mp3']);
+		game.load.audio('dash', ['dash.mp3']);
+		game.load.audio('punch', ['punch.mp3']);
+		game.load.audio('shield', ['shield.mp3']);
+		game.load.audio('radar', ['radar.mp3']);
+		game.load.audio('error', ['error.mp3']);
 	},
 	create: function() {
 		// Disable preload bar crop while we wait for mp3 decoding

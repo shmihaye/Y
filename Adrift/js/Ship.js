@@ -119,19 +119,19 @@ Ship.prototype.update = function(){
 	// If a key is double-tapped, quickly move the ship in that direction.
 	if(this.dashTime >= 0){ // Check to make sure the ability isn't on cooldown.
 		if(game.input.keyboard.justPressed(Phaser.Keyboard.A)){
-			if(this.dashDirection == 0 && this.dashTime > 0){this.body.velocity.x = -this.dashSpeed; this.dashTime = -this.dashCooldown; this.tint = 0x0000ff;}
+			if(this.dashDirection == 0 && this.dashTime > 0){dashSound.play('',0,sfxVolume); this.body.velocity.x = -this.dashSpeed; this.dashTime = -this.dashCooldown; this.tint = 0x0000ff;}
 			else{this.dashDirection = 0; this.dashTime = 20;}
 		}
 		if(game.input.keyboard.justPressed(Phaser.Keyboard.D)){
-			if(this.dashDirection == 1 && this.dashTime > 0){this.body.velocity.x = this.dashSpeed; this.dashTime = -this.dashCooldown; this.tint = 0x0000ff;}
+			if(this.dashDirection == 1 && this.dashTime > 0){dashSound.play('',0,sfxVolume); this.body.velocity.x = this.dashSpeed; this.dashTime = -this.dashCooldown; this.tint = 0x0000ff;}
 			else{this.dashDirection = 1; this.dashTime = 20;}
 		}
 		if(game.input.keyboard.justPressed(Phaser.Keyboard.W)){
-			if(this.dashDirection == 2 && this.dashTime > 0){this.body.velocity.y = -this.dashSpeed; this.dashTime = -this.dashCooldown; this.tint = 0x0000ff;}
+			if(this.dashDirection == 2 && this.dashTime > 0){dashSound.play('',0,sfxVolume); this.body.velocity.y = -this.dashSpeed; this.dashTime = -this.dashCooldown; this.tint = 0x0000ff;}
 			else{this.dashDirection = 2; this.dashTime = 20;}
 		}
 		if(game.input.keyboard.justPressed(Phaser.Keyboard.S)){
-			if(this.dashDirection == 3 && this.dashTime > 0){this.body.velocity.y = this.dashSpeed; this.dashTime = -this.dashCooldown; this.tint = 0x0000ff;}
+			if(this.dashDirection == 3 && this.dashTime > 0){dashSound.play('',0,sfxVolume); this.body.velocity.y = this.dashSpeed; this.dashTime = -this.dashCooldown; this.tint = 0x0000ff;}
 			else{this.dashDirection = 3; this.dashTime = 20;}
 		}
 	}
@@ -152,15 +152,26 @@ Ship.prototype.update = function(){
 		if(this.shield.scale.x < this.shieldSize) this.shield.scale.setTo(this.shield.scale.x + 0.1);
 		else{ // When the shielding is finished
 			this.shield.active = false;
-			this.shield.alpha = 0.1;
+			this.shield.alpha = 0.2;
 		}
 	}
 	// If the shield is not active, shrink it until it hits a scale of 1 (ready for use again)
 	else{
-		if(this.shield.scale.x > 0.7) this.shield.scale.setTo(this.shield.scale.x - this.shieldRegen);
+		if(this.shield.scale.x > 0.7){
+			this.shield.scale.setTo(this.shield.scale.x - this.shieldRegen);
+			if(game.input.keyboard.justPressed(Phaser.Keyboard.SPACEBAR)){
+				//Flash if summoned before ready
+				errorSound.play('',0,sfxVolume);
+				this.shield.flash = 40;
+			}
+			if(this.shield.flash % 4 == 1) this.shield.visible = !this.shield.visible;
+			if(this.shield.flash > 0) this.shield.flash--;
+			else this.shield.visible = true;
+		}
 		else if(game.input.keyboard.justPressed(Phaser.Keyboard.SPACEBAR)){ // The shield is ready & summoned!
 			this.shield.active = true;
 			this.shield.alpha = 0.8;
+			shieldSound.play('',0,sfxVolume);
 		}
 	}}
 	
@@ -173,8 +184,8 @@ Ship.prototype.update = function(){
 				// Call punchObject on all obstacles that overlap with the claw
 				game.physics.arcade.overlap(this.claw, obstacles, punchObject, null, this);
 				this.punchTime = -this.punchCooldown;
-				this.claw.tint = 0x0000ff;
 				this.claw.scale.x = 4;
+				punchSound.play('',0,sfxVolume);
 			}
 			else this.punchTime = 20;
 		}
@@ -182,7 +193,7 @@ Ship.prototype.update = function(){
 	if(this.punchTime > 0) this.punchTime--;
 	else if(this.punchTime < 0){
 		if(this.punchTime == -this.punchCooldown + 8){
-			this.claw.tint = 0xADD8E6; // Add blue tint after initial speed burst
+			this.claw.tint = 0xADD8E6; // Add blue tint after punch
 			this.claw.scale.setTo(2);
 		}
 		if(this.punchTime == -1) this.claw.tint = 0xffffff; // Remove tint when cooldown is over
@@ -194,7 +205,9 @@ Ship.prototype.update = function(){
 		let radarSize = this.radar.length;
 		for(let i = 0; i < radarSize; i++){
 			let radarSprite = this.radar[i];
-			if(radarSprite.trackObj.x < 850 || !radarSprite.trackObj.alive) radarSprite.kill();
+			if(radarSprite.trackObj.x < 850 || !radarSprite.trackObj.alive){
+				radarSprite.kill();
+			}
 			else{
 				radarSprite.y = radarSprite.trackObj.y;
 				if(radarSprite.blinkTimer <= 0){

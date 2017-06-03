@@ -2,7 +2,7 @@
 // Global variables for play state
 var player, obstacles, background, timestep, levelData, speedUp, energyReduction, emitter;
 var breakSounds = [];
-var grabSound, releaseSound, hurtSound;
+var grabSound, releaseSound, hurtSound, explodeSound, implodeSound, dashSound, punchSound, radarSound;
 var levelNum = 0;
 var addObstacles = [];
 
@@ -51,6 +51,13 @@ var playState = {
 		grabSound = game.add.audio('grab');
 		releaseSound = game.add.audio('release');
 		hurtSound = game.add.audio('hurt');
+		explodeSound = game.add.audio('boom');
+		implodeSound = game.add.audio('implode');
+		dashSound = game.add.audio('dash');
+		punchSound = game.add.audio('punch');
+		radarSound = game.add.audio('radar');
+		shieldSound = game.add.audio('shield');
+		errorSound = game.add.audio('error');
 		
 		// Initialize keyboard controls
 		game.input.mouse.capture = true;
@@ -232,6 +239,7 @@ function createObj(spawnObj){
 				radarSprite.tint = 0xADD8E6;
 				radarSprite.blinkTimer = 10;
 				player.radar.push(radarSprite);
+				radarSound.play('',0,sfxVolume);
 			}
 		}
 		// Add moon if creating an OrbitRock

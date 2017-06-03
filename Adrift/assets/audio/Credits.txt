@@ -7,3 +7,10 @@ release.mp3 -- button-16.mp3
 break1-5.mp3 -- footsteps-on-icy-ground-01.mp3
 selected.mp3 -- button-3.mp3
 hurt.mp3 -- button-4.mp3
+dash.mp3 -- button-43.mp3
+punch.mp3 -- button-22.mp3
+radar.mp3 -- button-31.mp3
+explode.mp3 -- smack-1.mp3
+implode.mp3 -- mechanical-clonk-1.mp3
+shield.mp3 -- clong-2.mp3
+error.mp3 -- button-22.mp3
