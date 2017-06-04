@@ -82,6 +82,13 @@ Game.Load.prototype = {
 		game.load.image('particle1', 'particle1.png');
 		game.load.image('particle2', 'particle2.png');
 		game.load.image('particle3', 'particle3.png');
+
+		game.load.image('earth', 'earth.png');
+		game.load.image('terraNovus', 'terraNovus.png');
+		game.load.image('nebula', 'nebula.png');
+		game.load.spritesheet('pioneer1', 'pioneer1.png', 64, 64);
+		game.load.spritesheet('beacon', 'beacon.png', 64, 64);
+		game.load.image('dotLine', 'dotLine.png');
 		
 		game.load.image('selectChair', 'selectChair.png');
 		game.load.image('selectD4V3', 'selectD4V3.png');
@@ -161,6 +168,7 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO);
 // Add game states
 game.state.add('Boot', Game.Boot); // Booting up
 game.state.add('Load', Game.Load); // Loading assets
+//game.state.add('Intro', introState) // Opening cutscene
 game.state.add('Play', playState); // Playing the game
 game.state.add('Hallway', hallwayState); // Navigating the hallway
 game.state.add('P1', P1); // Patricia conversation 1
