@@ -3,7 +3,7 @@
 var player, obstacles, background, timestep, levelData, speedUp, energyReduction, emitter, beacon;
 var breakSounds = [];
 var grabSound, releaseSound, hurtSound, explodeSound, implodeSound, dashSound, punchSound, radarSound;
-var levelNum = 5;
+var levelNum = 0;
 var addObstacles = [];
 
 // Play state container
