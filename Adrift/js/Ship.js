@@ -78,6 +78,7 @@ function Ship(game, image){
 	// Add grabbed pointer
 	this.grabbed = null;
 	this.grabCooldown = 0;
+	this.grabbedBeacon = false;
 	
 	// Resize hitbox
 	this.body.setSize(50, 50, 7, 7);
@@ -268,7 +269,7 @@ Ship.prototype.update = function(){
 	this.claw.y = this.arm2.y + (72 * angleY);
 	
 	// Open and close claw
-	if(!game.input.activePointer.leftButton.isDown) this.claw.animations.play('open');
+	if(!game.input.activePointer.leftButton.isDown && !this.grabbedBeacon) this.claw.animations.play('open');
 	else this.claw.animations.play('closed');
 	
 	// Move grabbed object with claw
@@ -287,7 +288,7 @@ Ship.prototype.update = function(){
 		this.grabbed.body.acceleration.y = 0;
 		this.grabbed.primed = true;
 		// Release grabbed object if mouse button is no longer down
-		if(!game.input.activePointer.leftButton.isDown){
+		if(!game.input.activePointer.leftButton.isDown && !this.grabbedBeacon){
 			this.grabbed.body.velocity.y = 50*(this.grabbed.y - prevy);
 			this.grabbed.body.velocity.x = 50*(this.grabbed.x - prevx);
 			this.grabbed.friendly = 40;
@@ -306,6 +307,7 @@ Ship.prototype.update = function(){
 		else if(this.invincibility % 4 == 0) this.visible = !this.visible;
 		this.invincibility--;
 	}
+	
 }
 function punchObject(claw, obstacle){
 	// Punch all obstacles away at the claw's angle

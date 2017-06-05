@@ -1,6 +1,6 @@
 
 // Global variables for play state
-var player, obstacles, background, timestep, levelData, speedUp, energyReduction, emitter;
+var player, obstacles, background, timestep, levelData, speedUp, energyReduction, emitter, beacon;
 var breakSounds = [];
 var grabSound, releaseSound, hurtSound, explodeSound, implodeSound, dashSound, punchSound, radarSound;
 var levelNum = 5;
@@ -74,9 +74,17 @@ var playState = {
 		energyBar = game.add.sprite(65, 580, 'bar');
 		energyBar.scale.x = 3;
 		energyBar.scale.y = 0.5;
+		
+		// Fade in from black
+		this.camera.flash('#ffffff');
 	},
 	
 	update: function() {
+		
+		// Call grabBeacon if the claw overlaps with the beacon (if the beacon is not undefined)
+		if(beacon !== undefined){
+			game.physics.arcade.overlap(player.claw, beacon, grabBeacon, null, this);
+		}
 		
 		// Call grabObject if the claw overlaps with an obstacle
 		game.physics.arcade.overlap(player.claw, obstacles, grabObject, null, this);
@@ -107,13 +115,30 @@ var playState = {
 				// Create equivalent object
 				let spawnObj = spawnList.objects.shift();
 				
-				// Go to hallway state at the end of the level
-				if(spawnObj.type == 'END'){
+				if(spawnObj.type == 'FORCEFIN'){
+					// Force transition to ending if the player has waited too long
+					this.camera.fade('#ffffff', 8000);
+					this.camera.onFadeComplete.add(endGame,this);
+				}
+				else if(spawnObj.type == 'FIN'){
+					// Spawn beacon and slow background scrolling at the end of the last level
+					beacon = game.add.sprite(850, 300, 'beacon');
+					beacon.animations.add('default',[0,1,2,3,4,5,6], 10, true);
+					beacon.animations.play('default');
+					game.physics.arcade.enable(beacon);
+					beacon.body.velocity.x = -30;
+					beacon.scale.setTo(3);
+					beacon.anchor.set(0.5);
+					speedUp = 0.25;
+				}
+				else if(spawnObj.type == 'END'){
+					// Go to hallway state at the end of the level
 					levelNum++;
 					this.camera.fade('#ffffff');
 					this.camera.onFadeComplete.add(fadeComplete,this);
 				}
 				else if(spawnObj.type == 'SPDUP'){
+					// Speed up background scrolling if SPDUP
 					speedUp *= 2;
 				}
 				else createObj(spawnObj);
@@ -148,14 +173,17 @@ var playState = {
 		obstacles.forEachAlive(
 			function(obstacle){ if(obstacle.friendly > 0) obstacle.friendly--;}
 		);
+		
+		// Stop the beacon once it reaches the center of the stage
+		if(beacon !== undefined && beacon.x < 400){beacon.body.velocity.x = 0;}
 	},
 	
 	render: function() {
 		// Display debug information
 		game.debug.text(`Debugging Phaser ${Phaser.VERSION}`, 20, 560, 'yellow');
 		game.debug.text('FPS: ' + game.time.fps, 20, 580, 'yellow');
-		//for (let i = 0, len = obstacles.children.length; i < len; i++){if(obstacles.children[i].alive) game.debug.body(obstacles.children[i]);}
-		//game.debug.body(player);
+		for (let i = 0, len = obstacles.children.length; i < len; i++){if(obstacles.children[i].alive) game.debug.body(obstacles.children[i]);}
+		game.debug.body(player);
 	}
 };
 
@@ -167,6 +195,15 @@ function grabObject(claw, obstacle){
 		obstacle.body.velocity.x = 0;
 		obstacle.body.velocity.y = 0;
 		grabSound.play('',0,sfxVolume);
+	}
+}
+function grabBeacon(claw, beacon){
+	// If the grab key is pressed on the beacon, transition to the credits state
+	if(game.input.activePointer.leftButton.justPressed()){
+		player.grabbed = beacon;
+		player.grabbedBeacon = true;
+		this.camera.fade('#ffffff', 8000);
+		this.camera.onFadeComplete.add(endGame,this);
 	}
 }
 function hurtShip(player, obstacle){
@@ -218,7 +255,7 @@ function createObj(spawnObj){
 	else newObj.body.velocity.y = 0;
 	if(newObj != null){
 		if(spawnObj.type == 'FragRock2' || spawnObj.type == 'FragRock3' || spawnObj.type == 'FragRock4' || spawnObj.type == 'gravRock') newObj.body.setSize(20, 20, 22, 22);
-		else newObj.body.setSize(30, 30, 17, 17);
+		else newObj.body.setSize(40, 40, 12, 12);
 	}
 	if(spawnObj.scale !== undefined) newObj.scale.setTo(spawnObj.scale);
 	else newObj.scale.setTo(1);
@@ -262,7 +299,12 @@ function createObj(spawnObj){
 		}
 	}
 }
+// Go to hallway once fade is complete
 function fadeComplete(){
 	hallStart = 600;
 	this.state.start('Hallway'); 
+}
+// Go to ending once fade is complete
+function endGame(){
+	this.state.start('Credits'); 
 }

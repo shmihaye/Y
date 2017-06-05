@@ -1,7 +1,7 @@
 {
 
 	"timestamps": [
-		
+
 		{"time":3, "objects": [{"type":"ToxicRock", "y":50, "scale":1.6, "xvel":-70}, {"type":"ToxicRock", "y":100, "scale":1.4, "xvel":-75}, {"type":"ToxicRock", "y":150, "scale":1.5, "xvel":-65}, {"type":"ToxicRock", "y":200, "scale":1.5, "xvel":-60}, {"type":"ToxicRock", "y":250, "scale":1.6, "xvel":-75}, {"type":"ToxicRock", "y":300, "scale":1.6, "xvel":-70}, {"type":"ToxicRock", "y":350, "scale":1.4, "xvel":-65}, {"type":"ToxicRock", "y":400, "scale":1.5, "xvel":-70}, {"type":"ToxicRock", "y":450, "scale":1.6, "xvel":-60}, {"type":"ToxicRock", "y":500, "scale":1.5, "xvel":-75}, {"type":"ToxicRock", "y":550, "scale":1.4, "xvel":-80}]},
 		{"time":7.5, "objects": [{"type":"Asteroid", "x":400, "y":-50, "scale":1.8, "xvel":-80, "yvel":120}]},
 		{"time":8, "objects": [{"type":"Asteroid", "x":200, "y":-50, "scale":2, "xvel":-80, "yvel":-130}]},

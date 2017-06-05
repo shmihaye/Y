@@ -31,6 +31,7 @@ var sfxVolume = 0.05;
 
 var done_color = "#0000FF"
 var style1 = { font: "32px Source Sans Pro", fill: unselected_color, align: "center", wordWrap: true, wordWrapWidth: 250, boundsAlignH: "center", boundsAlignV: "middle" };
+var style2 = { font: "24px Source Sans Pro", fill: unselected_color, align: "center", wordWrap: true, wordWrapWidth: 600, boundsAlignH: "center", boundsAlignV: "middle" };
 // hallStart -- The x position where the camera should start in the hallstart
 var hallStart = 0;
 
@@ -89,6 +90,7 @@ Game.Load.prototype = {
 		game.load.spritesheet('pioneer1', 'pioneer1.png', 64, 64);
 		game.load.spritesheet('beacon', 'beacon.png', 64, 64);
 		game.load.image('dotLine', 'dotLine.png');
+		game.load.image('logo', 'logo.png');
 		
 		game.load.image('selectChair', 'selectChair.png');
 		game.load.image('selectD4V3', 'selectD4V3.png');
@@ -159,7 +161,54 @@ Game.Load.prototype = {
 			// When the music is ready, advance to title screen!
 			//this.state.start('Play');
 		//}
-		this.state.start('Play');
+		this.state.start('Title');
+	}
+};
+
+// Title state
+Game.Title = function(){};
+Game.Title.prototype = {
+	create: function(){
+		// Add background
+		this.background = game.add.tileSprite(0, 0, game.width, game.height, 'spaceBackground');
+		
+		// Add title text
+		var startText = game.add.text(0, 0, 'Press SPACE to begin', style2);
+		startText.setTextBounds(0, 400, 800, 100);
+		startText.stroke = '#000000';
+    	startText.strokeThickness = 6;
+		
+		// Add game logo
+		game.add.sprite(336, 100, 'logo');
+		
+		// Fade in from black
+		this.camera.flash('#ffffff');
+	},
+	update: function(){
+		// If space is pressed, begin intro
+		if(game.input.keyboard.justPressed(Phaser.Keyboard.SPACEBAR)){
+			this.camera.fade('#ffffff');
+			this.camera.onFadeComplete.add(startGame,this);
+		}
+		
+		// Scroll background
+		this.background.tilePosition.x -= 1;
+	}
+};
+
+// Credits state
+Game.Credits = function(){};
+Game.Credits.prototype = {
+	create: function(){
+		
+		// Create credits text
+		var credits = game.add.text(0, 0, 'THE END\nThe beacon has been retrieved. Thanks for playing!\n\nCredits:\nBrody Richards | Programmer, Writer\nFreeman Tao | Programmer, Level Designer\nKaylie Cetera | Character & Environment Artist\nRaymond Reedy | Space Artist, Writer\nShayne Hayes | Programmer, Producer', style2);
+		credits.setTextBounds(100, 64, 600, 400);
+		credits.stroke = '#000000';
+    	credits.strokeThickness = 6;
+		
+		// Fade in from black
+		this.camera.flash('#ffffff');
 	}
 };
 
@@ -168,7 +217,8 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO);
 // Add game states
 game.state.add('Boot', Game.Boot); // Booting up
 game.state.add('Load', Game.Load); // Loading assets
-//game.state.add('Intro', introState) // Opening cutscene
+game.state.add('Intro', introState) // Opening cutscene
+game.state.add('Title', Game.Title) // Title screen
 game.state.add('Play', playState); // Playing the game
 game.state.add('Hallway', hallwayState); // Navigating the hallway
 game.state.add('P1', P1); // Patricia conversation 1
@@ -187,5 +237,11 @@ game.state.add('R1', R1); // D4V3 conversation 1
 game.state.add('R2', R2); // D4V3 conversation 2
 game.state.add('R3', R3); // D4V3 conversation 3
 game.state.add('R4', R4); // D4V3 conversation 4
+game.state.add('Credits', Game.Credits) // Ending and credits
 // Begin boot state
 game.state.start('Boot');
+
+// Go to intro when fade is complete
+function startGame(){
+	this.state.start('Intro'); 
+}
