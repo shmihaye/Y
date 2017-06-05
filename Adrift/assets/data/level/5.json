@@ -58,6 +58,7 @@
 		
 		{"time":84, "objects": [{"type":"SPDUP"}]},
 		{"time":86, "objects": [{"type":"FIN"}]}
+		{"time":116, "objects": [{"type":"FORCEFIN"}]},
 		
 	]
 
