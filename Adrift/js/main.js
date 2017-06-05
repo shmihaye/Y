@@ -9,10 +9,10 @@ var energy = 100;
 var energyRegen = 0.05;
 var energyBar;
 // convoIndex1-4 -- how many times the player has talked to characters 1-4
-var convoIndex1 = 0;
-var convoIndex2 = 0;
-var convoIndex3 = 0;
-var convoIndex4 = 0;
+var convoIndex1 = 1;
+var convoIndex2 = 1;
+var convoIndex3 = 1;
+var convoIndex4 = 1;
 // font colors for the narrative state
 var unselected_color = "#7FFFD4"
 var selected_color = "#00BFFF"

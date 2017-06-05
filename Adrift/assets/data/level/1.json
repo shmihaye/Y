@@ -1,38 +1,36 @@
 {
   "timestamps": [
 	
-	{"time":0, "objects": [{"type":"Asteroid", "y":100, "scale":1.5}, {"type":"Asteroid", "y":400, "scale":2}]},
+	{"time":0, "objects": [{"type":"Asteroid", "y":100, "scale":1.5, "xvel":-190, "yvel":20}, {"type":"Asteroid", "y":450, "scale":2, "xvel":-210, "yvel":-20}]},
   
-	{"time":10, "objects": [{"type":"Asteroid", "y":100, "scale":2}, {"type":"FragRock", "y":300, "scale":2.6}, {"type":"Asteroid", "y":500, "scale":1.8}]},
+	{"time":5, "objects": [{"type":"Asteroid", "y":80, "scale":2, "xvel":-120, "yvel":15}, {"type":"FragRock", "y":300, "scale":2.6, "xvel":-120}, {"type":"Asteroid", "y":520, "scale":1.8, "xvel":-120, "yvel":-15}]},
 	
-	{"time":20, "objects": [{"type":"BombRock", "y":400, "scale":1.6, "yvel":-10}]},
+	{"time":10, "objects": [{"type":"BombRock", "y":80, "scale":1.6, "xvel":-130, "yvel":30}]},
 	
-	{"time":25, "objects": [{"type":"Asteroid", "y":100, "scale":1.5, "yvel":5}, {"type":"FragRock", "y":200, "scale":1.5, "yvel":-5}, {"type":"Asteroid", "y":300, "scale":1.5, "yvel":5}, {"type":"FragRock", "y":400, "scale":1.5, "yvel":-5}]},
+	{"time":12, "objects": [{"type":"Asteroid", "y":100, "scale":2.1, "yvel":10}, {"type":"FragRock", "y":160, "scale":2.1, "yvel":10}, {"type":"Asteroid", "y":300, "scale":2.1, "yvel":10}, {"type":"FragRock", "y":360, "scale":2.1, "yvel":10}]},
 	
-	{"time":30, "objects": [{"type":"Asteroid", "y":550, "scale":3, "xvel":-300, "yvel":-10}]},
-	{"time":32, "objects": [{"type":"Asteroid", "y":500, "scale":3, "xvel":-300, "yvel":10}]},
-	{"time":34, "objects": [{"type":"Asteroid", "y":300, "scale":3, "xvel":-300, "yvel":10}]},
+	{"time":17, "objects": [{"type":"FragRock", "y":100, "scale":2, "xvel":-130, "yvel":20}, {"type":"FragRock", "y":450, "scale":2, "xvel":-140, "yvel":-10}]},
+	{"time":18.5, "objects": [{"type":"FragRock", "y":200, "scale":1.5, "xvel":-140, "yvel":20}, {"type":"FragRock", "y":500, "scale":1.5, "xvel":-130, "yvel":-10}]},
+	{"time":20, "objects": [{"type":"FragRock", "y":150, "scale":3, "xvel":-125, "yvel":15}, {"type":"FragRock", "y":450, "scale":3, "xvel":-140}]},
 	
-	{"time":40, "objects": [{"type":"FragRock", "y":100, "scale":2, "yvel":-10}, {"type":"FragRock", "y":400, "scale":2, "yvel":-5}]},
-	{"time":43, "objects": [{"type":"FragRock", "y":200, "scale":1.5, "yvel":10}, {"type":"FragRock", "y":500, "scale":1.5, "yvel":5}]},
-	{"time":46, "objects": [{"type":"FragRock", "y":150, "scale":3, "yvel":15}, {"type":"FragRock", "y":450, "scale":3}]},
-	{"time":49, "objects": [{"type":"BombRock", "y":300, "scale":2}, {"type":"Asteroid", "y":400, "scale":2}]},
-	{"time":55, "objects": [{"type":"FragRock", "y":50, "scale":1.5}, {"type":"FragRock", "y":100, "scale":1.5}, {"type":"FragRock", "y":150, "scale":1.5}, {"type":"FragRock", "y":200, "scale":1.5}, {"type":"FragRock", "y":250, "scale":1.5}, {"type":"FragRock", "y":300, "scale":1.5}, {"type":"FragRock", "y":350, "scale":1.5}, {"type":"FragRock", "y":400, "scale":1.5}, {"type":"FragRock", "y":450, "scale":1.5}, {"type":"FragRock", "y":500, "scale":1.5}, {"type":"FragRock", "y":550, "scale":1.5}]},
-
-	{"time":60, "objects": [{"type":"Asteroid", "y":100, "scale":2.5, "xvel":-100, "yvel":5}, {"type":"Asteroid", "y":500, "scale":2.5, "xvel":-100, "yvel":-5}, {"type":"Asteroid", "y":300, "xvel":-100, "scale":2.5}]},
+	{"time":25, "objects": [{"type":"BombRock", "y":300, "scale":2, "xvel":-140}, {"type":"Asteroid", "y":400, "scale":2, "xvel":-140}]},
 	
-	{"time":62, "objects": [{"type":"BombRock", "y":50, "scale":2, "xvel":-60}, {"type":"BombRock", "y":550, "scale":2, "xvel":-60}]},
+	{"time":26.5, "objects": [{"type":"FragRock", "y":50, "scale":1.5}, {"type":"FragRock", "y":100, "scale":1.5}, {"type":"FragRock", "y":150, "scale":1.5}, {"type":"FragRock", "y":200, "scale":1.5}, {"type":"FragRock", "y":250, "scale":1.5}, {"type":"FragRock", "y":300, "scale":1.5}, {"type":"FragRock", "y":350, "scale":1.5}, {"type":"FragRock", "y":400, "scale":1.5}, {"type":"FragRock", "y":450, "scale":1.5}, {"type":"FragRock", "y":500, "scale":1.5}, {"type":"FragRock", "y":550, "scale":1.5}]},
 	
-	{"time":64, "objects": [{"type":"BombRock", "y":50, "scale":2, "xvel":-60}, {"type":"BombRock", "y":550, "scale":2, "xvel":-60}]},
+	{"time":32, "objects": [{"type":"BombRock", "x":850, "y":150, "scale":2, "xvel":-80, "yvel":10}, {"type":"Asteroid", "x":850, "y":450, "scale":2, "xvel":-80, "yvel":-10}]},
+	{"time":33, "objects": [{"type":"Asteroid", "x":900, "y":270, "scale":2, "xvel":-80, "yvel":-10}, {"type":"BombRock", "x":900, "y":330, "scale":2, "xvel":-80, "yvel":10}]},
 	
-	{"time":69, "objects": [{"type":"Asteroid", "y":30, "scale":1.5}, {"type":"FragRock", "y":60, "scale":1.5}, {"type":"Asteroid", "y":90, "scale":1.5}, {"type":"Asteroid", "y":120, "scale":1.5}, {"type":"FragRock", "y":150, "scale":1.5}]},
-	{"time":72, "objects": [{"type":"Asteroid", "y":570, "scale":1.5}, {"type":"FragRock", "y":540, "scale":1.5}, {"type":"Asteroid", "y":510, "scale":1.5}, {"type":"Asteroid", "y":480, "scale":1.5}, {"type":"FragRock", "y":450, "scale":1.5}]},
-	{"time":75, "objects": [{"type":"Asteroid", "y":180, "scale":1.5}, {"type":"FragRock", "y":210, "scale":1.5}, {"type":"Asteroid", "y":240, "scale":1.5}, {"type":"Asteroid", "y":270, "scale":1.5}, {"type":"FragRock", "y":300, "scale":1.5}]},
-	{"time":78, "objects": [{"type":"Asteroid", "y":420, "scale":1.5}, {"type":"FragRock", "y":390, "scale":1.5}, {"type":"Asteroid", "y":360, "scale":1.5}, {"type":"Asteroid", "y":330, "scale":1.5}, {"type":"FragRock", "y":300, "scale":1.5}]},
+	{"time":36, "objects": [{"type":"Asteroid", "y":50, "scale":1.5, "xvel":-200}, {"type":"FragRock", "y":90, "scale":1.5, "xvel":-200}, {"type":"Asteroid", "y":130, "scale":1.5, "xvel":-200}, {"type":"Asteroid", "y":170, "scale":1.5, "xvel":-200}, {"type":"FragRock", "y":210, "scale":1.5, "xvel":-200}]},
+	{"time":37.5, "objects": [{"type":"Asteroid", "y":550, "scale":1.5, "xvel":-200}, {"type":"FragRock", "y":510, "scale":1.5, "xvel":-200}, {"type":"Asteroid", "y":470, "scale":1.5, "xvel":-200}, {"type":"Asteroid", "y":430, "scale":1.5, "xvel":-200}, {"type":"FragRock", "y":390, "scale":1.5, "xvel":-200}]},
 	
-	{"time":88, "objects": [{"type":"SPDUP"}]},
+	{"time":39.5, "objects": [{"type":"Asteroid", "x":1050, "y":150, "scale":2.2, "xvel":-155, "yvel":10}, {"type":"FragRock", "x":1050, "y":300, "scale":2.1, "xvel":-150}, {"type":"Asteroid", "y":450, "scale":2.2, "xvel":-155, "yvel":-10}]},
 	
-	{"time":90, "objects": [{"type":"END"}]}
+	{"time":41.5, "objects": [{"type":"Asteroid", "y":180, "scale":1.5, "xvel":-200}, {"type":"FragRock", "y":210, "scale":1.5, "xvel":-200}, {"type":"Asteroid", "y":240, "scale":1.5, "xvel":-200}, {"type":"Asteroid", "y":270, "scale":1.5, "xvel":-200}, {"type":"FragRock", "y":300, "scale":1.5, "xvel":-200}]},
+	{"time":43, "objects": [{"type":"Asteroid", "y":420, "scale":1.5, "xvel":-200}, {"type":"FragRock", "y":390, "scale":1.5, "xvel":-200}, {"type":"Asteroid", "y":360, "scale":1.5, "xvel":-200}, {"type":"Asteroid", "y":330, "scale":1.5, "xvel":-200}, {"type":"FragRock", "y":300, "scale":1.5, "xvel":-200}]},
+	
+	{"time":51, "objects": [{"type":"SPDUP"}]},
+	
+	{"time":53, "objects": [{"type":"END"}]}
 	
   ]
 }
