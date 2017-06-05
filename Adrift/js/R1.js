@@ -44,7 +44,7 @@ var R1 = {
 		slot2 = game.add.text(0, 0, choice2, { font: "32px Source Sans Pro", fill: d4restclr, align: "left",  wordWrap: true,wordWrapWidth: 800})
 	 	slot3 = game.add.text(0, 0, choice3, { font: "32px Source Sans Pro", fill: d4restclr, align: "left", wordWrap: true,wordWrapWidth: 800 })
 
-    	exitSign = game.add.text(375,500, 'exit', {font: "32px Source Sans Pro", fill: '#8B0000', align: "left" })
+    	exitSign = game.add.text(375,500, '', {font: "32px Source Sans Pro", fill: '#8B0000', align: "left" })
 
     	slot1.inputEnabled = true
     	slot2.inputEnabled = true
@@ -74,6 +74,8 @@ var R1 = {
   		slot3.events.onInputOut.add(this.color_revert, slot3)
   		slot3.events.onInputDown.add(this.nextDia3, slot3)
 
+   		exitSign.stroke = '#000000';
+    	exitSign.strokeThickness = 6;
 		exitSign.events.onInputOver.add(this.color_change, exitSign)
   		exitSign.events.onInputOut.add(this.color_revert, exitSign)
   		exitSign.events.onInputDown.add(this.moveon, exitSign)
@@ -93,6 +95,7 @@ var R1 = {
 //			slot1.fill = done_color
 //			slot2.fill = done_color
 //			slot3.fill = done_color
+			exitSign.text = 'Exit'
 			exitSign.inputEnabled = true
 
 		}

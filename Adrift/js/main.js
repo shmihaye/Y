@@ -14,7 +14,7 @@ var convoIndex2 = 0;
 var convoIndex3 = 0;
 var convoIndex4 = 0;
 // font colors for the narrative state
-var unselected_color = "#7FFFD4"
+var unselected_color = "#FFFAF0"
 var selected_color = "#00BFFF"
 var patrestclr = "#4e7d48"
 var pathoverclr = "#7a9b76"
@@ -22,8 +22,8 @@ var delrestclr = "#5e2f23"
 var delhoverclr = "#764134"
 var bridrestclr = "#565264"
 var bridhoverclr =  "#706b7f"
-var d4restclr = "#80432f"
-var d4hoverclr = "#9e6654"
+var d4restclr = "#2E86C1"
+var d4hoverclr = "#5DADE2"
 // Sound effect volume
 var sfxVolume = 0.05;
 
