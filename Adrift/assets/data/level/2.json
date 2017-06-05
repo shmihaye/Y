@@ -12,8 +12,10 @@
 		
 		{"time":13, "objects": [{"type":"GravRock", "y":150, "scale":2.2}]},
 		{"time":15, "objects": [{"type":"BombRock", "y":330, "scale":1.9, "xvel":-120}]},
+		
 			{"time":17.9, "objects": [{"type":"Asteroid", "y":210, "scale":2.5, "xvel":-115}]},
 		{"time":18, "objects": [{"type":"ToxicRock", "y":400, "scale":1, "xvel":-140}]},
+		{"time":19.5, "objects": [{"type":"ToxicRock", "y":500, "scale":1.2, "xvel":-150, "yvel":-20}]},
 		{"time":21, "objects": [{"type":"ToxicRock", "y":350, "scale":1.4, "xvel":-140, "yvel":15}]},
 		{"time":22, "objects": [{"type":"FragRock", "y":370, "scale":1.3, "xvel":-140}]},
 			{"time":22.5, "objects": [{"type":"Asteroid", "y":170, "scale":2.8, "xvel":-120}]},
@@ -25,7 +27,7 @@
 		{"time":26.8, "objects": [{"type":"ToxicRock", "y":520, "scale":1.5, "xvel":-130, "yvel":-20}]},
 		{"time":27.5, "objects": [{"type":"FragRock", "y":400, "scale":1.5, "xvel":-135}]},
 			{"time":29, "objects": [{"type":"BombRock", "y":210, "scale":2.3, "xvel":-140}]},
-		{"time":30, "objects": [{"type":"Asteroid", "y":380, "scale":1.7, "xvel":-130}]},
+		{"time":30, "objects": [{"type":"Asteroid", "y":380, "scale":1.7, "xvel":-130, "yvel":-10}]},
 		{"time":31, "objects": [{"type":"ToxicRock", "y":530, "scale":1.5, "xvel":-140, "yvel":-15}]},
 			{"time":31.1, "objects": [{"type":"ToxicRock", "y":200, "scale":2.6, "xvel":-120}]},
 		{"time":32.5, "objects": [{"type":"ToxicRock", "y":320, "scale":1.4, "xvel":-140, "yvel":10}, {"type":"ToxicRock", "y":500, "scale":1.5, "xvel":-150, "yvel":-15}]},
@@ -35,7 +37,7 @@
 		{"time":36, "objects": [{"type":"Asteroid", "y":480, "scale":1.5, "xvel":-130, "yvel":-15}]},
 			{"time":36.9, "objects": [{"type":"Asteroid", "y":160, "scale":2.9, "xvel":-120}]},
 		{"time":37, "objects": [{"type":"ToxicRock", "y":330, "scale":1.6, "xvel":-140}]},
-		{"time":38, "objects": [{"type":"ToxicRock", "y":450, "scale":1.7, "xvel":-150}]},
+		{"time":38, "objects": [{"type":"ToxicRock", "y":450, "scale":1.7, "xvel":-150, "yvel":-20}]},
 		
 		{"time":45, "objects": [{"type":"Asteroid", "y":200, "scale":3}]},
 		
