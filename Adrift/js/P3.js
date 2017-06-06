@@ -85,8 +85,8 @@ var P3 = {
 	},
 	
 	update: function() {
-		slot2.y = (Acount*36)+36
-		slot3.y = ((Acount+Bcount)*36)+48
+		slot2.y = (Acount*36)+42
+		slot3.y = ((Acount+Bcount)*36)+54
 
 		if (Acount+Bcount+Ccount >= 9){
 			slot1.inputEnabled = false
