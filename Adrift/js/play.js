@@ -181,13 +181,13 @@ var playState = {
 		if(beacon !== undefined && beacon.x < 400){beacon.body.velocity.x = 0;}
 	},
 	
-	render: function() {
+	/*render: function() {
 		// Display debug information
 		game.debug.text(`Debugging Phaser ${Phaser.VERSION}`, 20, 560, 'yellow');
 		game.debug.text('FPS: ' + game.time.fps, 20, 580, 'yellow');
 		for (let i = 0, len = obstacles.children.length; i < len; i++){if(obstacles.children[i].alive) game.debug.body(obstacles.children[i]);}
 		game.debug.body(player);
-	}
+	}*/
 };
 
 // Misc. functions (phaser doesn't like them inside the play state container...)
