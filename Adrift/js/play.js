@@ -254,7 +254,8 @@ function createObj(spawnObj){
 	if(spawnObj.yvel !== undefined) newObj.body.velocity.y = spawnObj.yvel;
 	else newObj.body.velocity.y = 0;
 	if(newObj != null){
-		if(spawnObj.type == 'FragRock2' || spawnObj.type == 'FragRock3' || spawnObj.type == 'FragRock4' || spawnObj.type == 'gravRock') newObj.body.setSize(20, 20, 22, 22);
+		if(spawnObj.type == 'FragRock2' || spawnObj.type == 'FragRock3' || spawnObj.type == 'FragRock4' || spawnObj.type == 'GravRock') newObj.body.setSize(20, 20, 22, 22);
+		else if(spawnObj.type == 'FragRock' || spawnObj.type == 'BombRock') newObj.body.setSize(30, 30, 17, 17);
 		else newObj.body.setSize(40, 40, 12, 12);
 	}
 	if(spawnObj.scale !== undefined) newObj.scale.setTo(spawnObj.scale);

@@ -202,7 +202,7 @@ Game.Credits.prototype = {
 	create: function(){
 		
 		// Create credits text
-		var credits = game.add.text(0, 0, 'THE END\nThe beacon has been retrieved. Thanks for playing!\n\nCredits:\nBrody Richards | Programmer, Writer\nFreeman Tao | Programmer, Level Designer\nKaylie Cetera | Character & Environment Artist\nRaymond Reedy | Space Artist, Writer\nShayne Hayes | Programmer, Producer', style2);
+		var credits = game.add.text(0, 0, 'THE END\nYou have retrieved the beacon. Thanks for playing!\n\nCredits:\nBrody Richards | Programmer, Writer\nFreeman Tao | Programmer, Level Designer\nKaylie Cetera | Character & Environment Artist\nRaymond Reedy | Space Artist, Writer\nShayne Hayes | Programmer, Producer', style2);
 		credits.setTextBounds(100, 64, 600, 400);
 		credits.stroke = '#000000';
     	credits.strokeThickness = 6;
