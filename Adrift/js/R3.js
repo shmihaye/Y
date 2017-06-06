@@ -17,8 +17,8 @@ var R3 = {
 		 DiaB3 = " What can I do if I don't know what's going on?"
 		
 		 DiaC1 = " If something is wrong why not come and fix it?"
-		 DiaC2 = " I have Eliza protocil, I'm capable!"
-		 DiaC3 = " But, I cannot help if they do not come to me."
+		 DiaC2 = " I have Eliza protocol, I'm capable!"
+		 DiaC3 = " But I cannot help if they do not come to me."
 		
 		choice1 = DiaA
 		choice2 = DiaB

@@ -282,7 +282,8 @@ function createObj(spawnObj){
 		obstacles.add(newObj);
 		// If a new object is created offscreen, add a new sprite to the player's radar
 		if(player.radarEnabled && newObj.x > 850){
-			if(spawnObj.type == 'Asteroid' || (convoIndex4 > 1 && (spawnObj.type == 'FragRock' || spawnObj.type == 'GravRock')) || (convoIndex4 > 2 && spawnObj.type == 'BombRock')){
+			if(spawnObj.type == 'Asteroid' || (convoIndex4 > 1 && (spawnObj.type == 'FragRock' || spawnObj.type == 'BombRock')) || (convoIndex4 > 2 && (spawnObj.type == 'ToxicRock' || spawnObj.type == 'OrbitRock'))
+				|| (convoIndex4 > 3 && spawnObj.type == 'GravRock')){
 				var radarSprite = game.add.sprite(780, newObj.y, newObj.key);
 				radarSprite.anchor.set(0.5);
 				radarSprite.trackObj = newObj;
