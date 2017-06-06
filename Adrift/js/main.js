@@ -162,7 +162,7 @@ Game.Load.prototype = {
 			// When the music is ready, advance to title screen!
 			//this.state.start('Play');
 		//}
-		this.state.start('Hallway');
+		this.state.start('Title');
 	}
 };
 
