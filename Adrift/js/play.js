@@ -77,6 +77,9 @@ var playState = {
 		
 		// Fade in from black
 		this.camera.flash('#ffffff');
+		
+		// Player will enter the right side of the hallway after the play state
+		hallStart = 600;
 	},
 	
 	update: function() {
@@ -233,6 +236,7 @@ function destroyObstacles(obstacle1, obstacle2){
 	}
 }
 function createObj(spawnObj){
+	// Create object with constructor
 	var newObj = null;
 	if(spawnObj.type == 'Asteroid') newObj = new Asteroid(game, 'rock');
 	else if(spawnObj.type == 'GravRock') newObj = new GravRock(game, 'gravRock');
@@ -244,7 +248,7 @@ function createObj(spawnObj){
 	else if(spawnObj.type == 'ToxicRock') newObj = new ToxicRock(game, 'toxicRock');
 	else if(spawnObj.type == 'OrbitRock') newObj = new OrbitRock(game, 'rock');
 	
-	// Retrieve object properties
+	// Retrieve object properties (or set defaults)
 	if(spawnObj.x !== undefined) newObj.x = spawnObj.x;
 	else newObj.x = 1100;
 	if(spawnObj.y !== undefined) newObj.y = spawnObj.y;
@@ -254,8 +258,11 @@ function createObj(spawnObj){
 	if(spawnObj.yvel !== undefined) newObj.body.velocity.y = spawnObj.yvel;
 	else newObj.body.velocity.y = 0;
 	if(newObj != null){
+		// Set hitbox sizes
+		// (For some reason setting the hitbox sizes from within the objects was only working half the time...)
 		if(spawnObj.type == 'FragRock2' || spawnObj.type == 'FragRock3' || spawnObj.type == 'FragRock4' || spawnObj.type == 'GravRock') newObj.body.setSize(20, 20, 22, 22);
-		else if(spawnObj.type == 'FragRock' || spawnObj.type == 'BombRock') newObj.body.setSize(30, 30, 17, 17);
+		else if(spawnObj.type == 'FragRock') newObj.body.setSize(26, 26, 19, 19);
+		else if(spawnObj.type == 'BombRock') newObj.body.setSize(30, 30, 17, 17);
 		else newObj.body.setSize(40, 40, 12, 12);
 	}
 	if(spawnObj.scale !== undefined) newObj.scale.setTo(spawnObj.scale);
@@ -267,6 +274,7 @@ function createObj(spawnObj){
 	if(spawnObj.canBreak !== undefined) newObj.canBreak = spawnObj.canBreak;
 	else newObj.canBreak = true;
 	if(newObj != null){
+		// Set a few more default properties
 		newObj.friendly = 0;
 		newObj.body.gravity.y = 0;
 		newObj.anchor.set(0.5);
@@ -284,7 +292,7 @@ function createObj(spawnObj){
 				radarSound.play('',0,sfxVolume);
 			}
 		}
-		// Add moon if creating an OrbitRock
+		// Add moon if creating an OrbitRock (doing it from within OrbitRock itself can be glitchy)
 		if(spawnObj.type == 'OrbitRock'){
 			var orbitMoon = new OrbitRock(game, 'rock');
 			orbitMoon.x = newObj.x;
@@ -302,7 +310,6 @@ function createObj(spawnObj){
 }
 // Go to hallway once fade is complete
 function fadeComplete(){
-	hallStart = 600;
 	this.state.start('Hallway'); 
 }
 // Go to ending once fade is complete

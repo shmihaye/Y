@@ -9,8 +9,8 @@ var B4 = {
 		 DiaC = "And I'm doing my best to make amends with the crew."
 		
 		 DiaA1 = " I had a lot on my mind, and I’m really glad you sat through and listened to me."
-		 DiaA2 = " I’m getting up there in years and that scares me,"
-		 DiaA3 = " but that shouldn't stop me, I can't afford to be scared."
+		 DiaA2 = " I’m getting up there in years and that scares me."
+		 DiaA3 = " But that shouldn't stop me, I can't afford to be scared."
 		
 		 DiaB1 = " Thankfully that didn't require me running around all crazy like Patty."
 		 DiaB2 = " Or tearing my hair out like Delson."
@@ -44,7 +44,7 @@ var B4 = {
 		slot2 = game.add.text(0, 0, choice2, { font: "32px Source Sans Pro", fill: bridrestclr, align: "left",  wordWrap: true,wordWrapWidth: 800})
 	 	slot3 = game.add.text(0, 0, choice3, { font: "32px Source Sans Pro", fill: bridrestclr, align: "left", wordWrap: true,wordWrapWidth: 800 })
     
-    	exitSign = game.add.text(375,500, 'exit', {font: "32px Source Sans Pro", fill: '#8B0000', align: "left" })
+    	exitSign = game.add.text(375,530, '', {font: "32px Source Sans Pro", fill: '#8B0000', align: "left" })
 
     	slot1.inputEnabled = true
     	slot2.inputEnabled = true
@@ -83,8 +83,8 @@ var B4 = {
 	},
 	
 	update: function() {
-		slot2.y = (Acount*40)+12
-		slot3.y = ((Acount+Bcount)*40)+24
+		slot2.y = (Acount*44)+12
+		slot3.y = ((Acount+Bcount)*44)+24
 
 		if (Acount+Bcount+Ccount >= 9){
 			slot1.inputEnabled = false
@@ -93,6 +93,7 @@ var B4 = {
 //		slot1.fill = done_color
 //		slot2.fill = done_color
 //		slot3.fill = done_color
+			exitSign.text = 'Exit'
 			exitSign.inputEnabled = true
 
 		}

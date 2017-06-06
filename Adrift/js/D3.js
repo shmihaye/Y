@@ -13,7 +13,7 @@ var D3 = {
 		 DiaA3 = " We are a number, a unit, a casualty..."
 		
 		 DiaB1 = " 3 months alone in the hospital taught me,"
-		 DiaB2 = " 10 years wihtout a word from them taught me."
+		 DiaB2 = " 10 years without a word from them taught me."
 		 DiaB3 = " People like me get left behind, no one comes looking."
 		
 		 DiaC1 = " My unit didn't want to remember me."
@@ -44,7 +44,7 @@ var D3 = {
 		slot2 = game.add.text(0, 0, choice2, { font: "30px Source Sans Pro", fill: delrestclr, align: "left",  wordWrap: true,wordWrapWidth: 800})
 	 	slot3 = game.add.text(0, 0, choice3, { font: "30px Source Sans Pro", fill: delrestclr, align: "left", wordWrap: true,wordWrapWidth: 800 })
 
-    	exitSign = game.add.text(375,500, '', {font: "32px Source Sans Pro", fill: '#8B0000', align: "left" })
+    	exitSign = game.add.text(375,530, '', {font: "32px Source Sans Pro", fill: '#8B0000', align: "left" })
 
     	slot1.inputEnabled = true
     	slot2.inputEnabled = true
@@ -86,7 +86,7 @@ var D3 = {
 	
 	update: function() {
 		slot2.y = (Acount*36)+12
-		slot3.y = ((Acount+Bcount)*36)+12
+		slot3.y = ((Acount+Bcount)*36)+24
 
 		if (Acount+Bcount+Ccount >= 9){
 			slot1.inputEnabled = false

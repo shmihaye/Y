@@ -44,7 +44,7 @@ var D4 = {
 		slot2 = game.add.text(0, 0, choice2, { font: "30px Source Sans Pro", fill: delrestclr, align: "left",  wordWrap: true,wordWrapWidth: 800})
 	 	slot3 = game.add.text(0, 0, choice3, { font: "30px Source Sans Pro", fill: delrestclr, align: "left", wordWrap: true,wordWrapWidth: 800 })
     
-    	exitSign = game.add.text(375,500, '', {font: "32px Source Sans Pro", fill: '#8B0000', align: "left" })
+    	exitSign = game.add.text(375,530, '', {font: "32px Source Sans Pro", fill: '#8B0000', align: "left" })
 
     	slot1.inputEnabled = true
     	slot2.inputEnabled = true
@@ -86,7 +86,7 @@ var D4 = {
 	},
 	
 	update: function() {
-		slot2.y = (Acount*38)+18
+		slot2.y = (Acount*40)+18
 		slot3.y = ((Acount+Bcount)*48)+45
 
 		if (Acount+Bcount+Ccount >= 9){

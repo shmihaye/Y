@@ -104,6 +104,7 @@ Game.Load.prototype = {
 		game.load.image('room2Background', 'room2Background.png');
 		game.load.image('room3Background', 'room3Background.png');
 		game.load.image('room4Background', 'room4Background.png');
+		game.load.image('creditsBackground', 'creditsBackground.png');
 		
 		game.load.image('patricia1', 'patricia1.png');
 		game.load.image('patricia2', 'patricia2.png');
@@ -161,7 +162,7 @@ Game.Load.prototype = {
 			// When the music is ready, advance to title screen!
 			//this.state.start('Play');
 		//}
-		this.state.start('Title');
+		this.state.start('Hallway');
 	}
 };
 
@@ -200,10 +201,11 @@ Game.Title.prototype = {
 Game.Credits = function(){};
 Game.Credits.prototype = {
 	create: function(){
+		game.add.tileSprite(0, 0, game.width, game.height, 'creditsBackground');
 		
 		// Create credits text
-		var credits = game.add.text(0, 0, 'THE END\nYou have retrieved the beacon. Thanks for playing!\n\nCredits:\nBrody Richards | Programmer, Writer\nFreeman Tao | Programmer, Level Designer\nKaylie Cetera | Character & Environment Artist\nRaymond Reedy | Space Artist, Writer\nShayne Hayes | Programmer, Producer', style2);
-		credits.setTextBounds(100, 64, 600, 400);
+		var credits = game.add.text(0, 0, 'THE END\nYou have retrieved the beacon. Thanks for playing!\nCredits:\nBrody Richards | Programmer, Writer\nFreeman | Programmer, Level Designer\nKaylie Cetera | Character & Environment Artist\nRaymond Reedy | Space Artist, Writer\nShayne Hayes | Programmer, Producer', style2);
+		credits.setTextBounds(100, 64, 600, 200);
 		credits.stroke = '#000000';
     	credits.strokeThickness = 6;
 		
