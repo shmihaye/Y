@@ -126,7 +126,7 @@ var hallwayState = {
 		// Play music
 		if(hallStart == 600){
 			hallwayMusic = this.add.audio('hallwayMusic');
-			hallwayMusic.play('', 0, 0.75, true);
+			//hallwayMusic.play('', 0, 0.75, true);
 		}
 	},
 	

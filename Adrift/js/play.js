@@ -111,7 +111,7 @@ var playState = {
 		// Play music (unless this is a demo)
 		if(demoNum == 0){
 			playMusic = this.add.audio('playMusic');
-			playMusic.play('', 0, 0.75, true);
+			//playMusic.play('', 0, 0.75, true);
 		}
 		
 	},
