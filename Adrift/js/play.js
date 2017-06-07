@@ -304,7 +304,12 @@ function createObj(spawnObj){
 	else if(spawnObj.type == 'FragRock3') newObj = new FragRock(game, 'fragRock3');
 	else if(spawnObj.type == 'FragRock4') newObj = new FragRock(game, 'fragRock4');
 	else if(spawnObj.type == 'ToxicRock') newObj = new ToxicRock(game, 'toxicRock');
-	else if(spawnObj.type == 'OrbitRock') newObj = new OrbitRock(game, 'rock');
+	else if(spawnObj.type == 'OrbitRock'){
+		newObj = new OrbitRock(game, 'orbitRock');
+		// Add orbitRock animation
+		newObj.animations.add('default', [0,1,2,3,4,5,6,7,8], 15, true);
+		newObj.animations.play('default');
+	}
 	
 	// Retrieve object properties (or set defaults)
 	if(spawnObj.x !== undefined) newObj.x = spawnObj.x;
@@ -320,7 +325,7 @@ function createObj(spawnObj){
 		// (For some reason setting the hitbox sizes from within the objects was only working half the time...)
 		if(spawnObj.type == 'FragRock2' || spawnObj.type == 'FragRock3' || spawnObj.type == 'FragRock4' || spawnObj.type == 'GravRock') newObj.body.setSize(20, 20, 22, 22);
 		else if(spawnObj.type == 'FragRock') newObj.body.setSize(26, 26, 19, 19);
-		else if(spawnObj.type == 'BombRock') newObj.body.setSize(30, 30, 17, 17);
+		else if(spawnObj.type == 'BombRock' || spawnObj.type == 'orbitRock') newObj.body.setSize(30, 30, 17, 17);
 		else newObj.body.setSize(40, 40, 12, 12);
 	}
 	if(spawnObj.scale !== undefined) newObj.scale.setTo(spawnObj.scale);
