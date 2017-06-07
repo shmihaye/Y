@@ -10,7 +10,7 @@ var energyRegen = 0.05;
 var energyBar;
 // convoIndex1-4 -- how many times the player has talked to characters 1-4
 var convoIndex1 = 0;
-var convoIndex2 = 3;
+var convoIndex2 = 0;
 var convoIndex3 = 0;
 var convoIndex4 = 0;
 // font colors for the narrative state
@@ -131,8 +131,8 @@ Game.Load.prototype = {
 		
 		// Load game sounds and music
 		this.load.path = 'assets/audio/';
-		game.load.audio('playMusic', ['play.mp3','play.ogg']);
-		game.load.audio('hallwayMusic', ['hallway.mp3','hallway.ogg']);
+		//game.load.audio('playMusic', ['play.mp3','play.ogg']);
+		//game.load.audio('hallwayMusic', ['hallway.mp3','hallway.ogg']);
 		game.load.audio('break1', ['break1.mp3']);
 		game.load.audio('break2', ['break2.mp3']);
 		game.load.audio('break3', ['break3.mp3']);
@@ -159,10 +159,10 @@ Game.Load.prototype = {
 	},
 	update: function() {
 		// Wait for music mp3s to properly decode
-		if(this.cache.isSoundDecoded('playMusic') && this.cache.isSoundDecoded('hallwayMusic')) {
+		//if(this.cache.isSoundDecoded('playMusic') && this.cache.isSoundDecoded('hallwayMusic')) {
 			// When the music is ready, advance to title screen!
-			this.state.start('Title');
-		}
+			this.state.start('Hallway');
+		//}
 	}
 };
 

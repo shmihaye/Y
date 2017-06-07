@@ -121,7 +121,7 @@ var hallwayState = {
 		this.camera.follow(mouse, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
 		this.camera.deadzone = new Phaser.Rectangle(200, 0, 400, 600);
 		game.camera.x = hallStart;
-		if(hallStart == 600) this.camera.flash('#ffffff');
+		this.camera.flash('#ffffff');
 	},
 	
 	update : function() {

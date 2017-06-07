@@ -188,7 +188,7 @@ var D1 = {
 
 	moveon: function(item){
 		demoNum = 8;
-		game.state.start('Hallway');
+		game.state.start('Play');
 
 
 	}

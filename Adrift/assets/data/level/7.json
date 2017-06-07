@@ -1,0 +1,12 @@
+{
+
+	"timestamps": [
+	
+		{"time":1, "objects": [{"type":"Asteroid", "y":300, "scale":2}]},
+		
+		{"time":10, "objects": [{"type":"SPDUP"}]},
+		{"time":15, "objects": [{"type":"END"}]}
+
+	]
+
+}

@@ -142,7 +142,7 @@ Ship.prototype.update = function(){
 	else if(this.dashTime < 0){ // Dash was just used, cooldown in effect.
 		if(this.dashTime == -this.dashCooldown + 8){
 			this.tint = 0xADD8E6; // Add blue tint after initial speed burst
-			if(demoNum == 6){
+			if(demoNum == 6 && !demoComplete){
 				demoComplete = true;
 				var demoCompleteText = game.add.text(0, 0, 'Nice!', style2);
 				demoCompleteText.setTextBounds(100, 64, 600, 200);
@@ -331,7 +331,7 @@ function punchObject(claw, obstacle){
 	obstacle.body.velocity.y = claw.punchStrength * Math.sin(3.14 * claw.angle/180);
 	obstacle.friendly = true;
 	obstacle.primed = true;
-	if(demoNum == 8){
+	if(demoNum == 8 && !demoComplete){
 		demoComplete = true;
 		var demoCompleteText = game.add.text(0, 0, 'Great!', style2);
 		demoCompleteText.setTextBounds(100, 64, 600, 200);

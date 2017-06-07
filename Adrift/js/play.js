@@ -1,6 +1,6 @@
 
 // Global variables for play state
-var player, obstacles, background, timestep, levelData, speedUp, energyReduction, emitter, beacon, demoComplete = false;
+var player, obstacles, background, timestep, levelData, speedUp, energyReduction, emitter, beacon;
 var breakSounds = [];
 var grabSound, releaseSound, hurtSound, explodeSound, implodeSound, dashSound, punchSound, radarSound;
 var levelNum = 0, demoNum = 0;
@@ -13,7 +13,7 @@ var playState = {
 		
 		// Load next level data
 		let levelName = '';
-		if(demoLevel > 0) levelName = demoLevel.toString() + '.json';
+		if(demoNum > 0){levelName = demoNum.toString() + '.json'; demoComplete = false;}
 		else levelName = levelNum.toString() + '.json';
 		game.load.path = 'assets/data/level/';
 		game.load.json('level', levelName);
@@ -83,15 +83,27 @@ var playState = {
 		// Add demo controls text
 		if(demoNum > 0){
 			var demoText;
-			if(demoNum == 6) demoText = game.add.text(0, 0, 'Double-tap WASD for an evasive dash', style2);
-			else if(demoNum == 7) demoText = game.add.text(0, 0, 'Press SPACE to freeze nearby objects', style2);
-			else if(demoNum == 8) demoText = game.add.text(0, 0, 'Double-click an object to shove it away', style2);
+			var abilityIcon;
+			if(demoNum == 6){
+				abilityIcon = game.add.sprite(368, 70, 'abilityBox1');
+				demoText = game.add.text(0, 0, 'Double-tap WASD for an evasive dash', style2);
+			}
+			else if(demoNum == 7){
+				abilityIcon = game.add.sprite(368, 70, 'abilityBox2');
+				demoText = game.add.text(0, 0, 'Press SPACE to freeze nearby objects', style2);
+			}
+			else if(demoNum == 8){
+				abilityIcon = game.add.sprite(368, 70, 'abilityBox3');
+				demoText = game.add.text(0, 0, 'Double-click an object to shove it away', style2);
+			}
 			else if(demoNum == 9){
-				demoText = game.add.text(0, 0, 'Icons will notify you of incoming object', style2);
+				abilityIcon = game.add.sprite(368, 70, 'abilityBox4');
+				demoText = game.add.text(0, 0, 'Icons will notify you of incoming objects', style2);
 				demoComplete = true;
 			}
-			demoText.setTextBounds(100, 64, 600, 200);
-			game.add.tween(demoText).to( { alpha: 0 }, 200, "Linear", true, 2000);
+			demoText.setTextBounds(100, 34, 600, 150);
+			game.add.tween(demoText).to( { alpha: 0 }, 200, "Linear", true, 3000);
+			game.add.tween(abilityIcon).to( { alpha: 0 }, 200, "Linear", true, 3000);
 			demoText.stroke = '#000000';
 			demoText.strokeThickness = 6;
 		}
@@ -169,7 +181,7 @@ var playState = {
 		}
 		timestep++;
 		
-		// If the player runs out of energy, restart the stage
+		// If the player runs out of energy, restart the stage (except during demo levels)
 		if(energy <= 0){
 			this.camera.fade('#ffffff');
 			this.camera.onFadeComplete.add(fadeComplete,this);
@@ -234,7 +246,7 @@ function hurtShip(player, obstacle){
 	if(obstacle != player.grabbed && obstacle.friendly <= 0 && player.invincibility == 0){
 		hurtSound.play('',0,sfxVolume); 
 		if(demoNum == 9) demoComplete = false;
-		energy -= 26; 
+		if(demoNum == 0) energy -= 26; 
 		player.invincibility = 60;
 	}
 }
@@ -243,7 +255,7 @@ function hurtShield(shield, obstacle){
 	if(obstacle != player.grabbed && obstacle.friendly <= 0 && player.shield.active){
 		obstacle.body.velocity.x = 0;
 		obstacle.body.velocity.y = 0;
-		if(demoNum == 7){
+		if(demoNum == 7 && !demoComplete){
 			demoComplete = true;
 			var demoCompleteText = game.add.text(0, 0, 'Good!', style2);
 			demoCompleteText.setTextBounds(100, 64, 600, 200);

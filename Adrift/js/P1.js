@@ -189,7 +189,7 @@ var P1 = {
 
 	moveon: function(item){
 		demoNum = 6;
-		game.state.start('Hallway');
+		game.state.start('Play');
 
 
 	}
