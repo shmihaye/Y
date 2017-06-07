@@ -190,7 +190,7 @@ var B1 = {
 	},
 
 	moveon: function(item){
-		demoLevel = 7;
+		demoNum = 7;
 		game.state.start('Play');
 
 

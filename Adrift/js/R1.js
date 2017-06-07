@@ -189,7 +189,7 @@ var R1 = {
 	},
 
 	moveon: function(item){
-		demoLevel = 9;
+		demoNum = 9;
 		game.state.start('Hallway');
 
 

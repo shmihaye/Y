@@ -92,6 +92,8 @@ var playState = {
 			}
 			demoText.setTextBounds(100, 64, 600, 200);
 			game.add.tween(demoText).to( { alpha: 0 }, 200, "Linear", true, 2000);
+			demoText.stroke = '#000000';
+			demoText.strokeThickness = 6;
 		}
 		
 	},
@@ -241,7 +243,14 @@ function hurtShield(shield, obstacle){
 	if(obstacle != player.grabbed && obstacle.friendly <= 0 && player.shield.active){
 		obstacle.body.velocity.x = 0;
 		obstacle.body.velocity.y = 0;
-		if(demoNum == 7) demoComplete = true;
+		if(demoNum == 7){
+			demoComplete = true;
+			var demoCompleteText = game.add.text(0, 0, 'Good!', style2);
+			demoCompleteText.setTextBounds(100, 64, 600, 200);
+			game.add.tween(demoCompleteText).to( { alpha: 0 }, 200, "Linear", true, 1000);
+			demoCompleteText.stroke = '#000000';
+			demoCompleteText.strokeThickness = 6;
+		}
 	}
 }
 function checkBounds(obstacle){
