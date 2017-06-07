@@ -2,7 +2,7 @@
 // Global variables for play state
 var player, obstacles, background, timestep, levelData, speedUp, energyReduction, emitter, beacon;
 var breakSounds = [];
-var grabSound, releaseSound, hurtSound, explodeSound, implodeSound, dashSound, punchSound, radarSound;
+var grabSound, releaseSound, hurtSound, explodeSound, implodeSound, dashSound, punchSound, radarSound, playMusic;
 var levelNum = 0, demoNum = 0;
 var addObstacles = [];
 
@@ -108,6 +108,12 @@ var playState = {
 			demoText.strokeThickness = 6;
 		}
 		
+		// Play music (unless this is a demo)
+		if(demoNum == 0){
+			playMusic = this.add.audio('playMusic');
+			playMusic.play('', 0, 0.75, true);
+		}
+		
 	},
 	
 	update: function() {
@@ -168,7 +174,7 @@ var playState = {
 				}
 				else if(spawnObj.type == 'END'){
 					// Go to hallway state at the end of the level
-					levelNum++;
+					if(demoNum == 0) levelNum++;
 					this.camera.fade('#ffffff');
 					this.camera.onFadeComplete.add(fadeComplete,this);
 				}
@@ -177,10 +183,12 @@ var playState = {
 					speedUp *= 2;
 					// Fade in week number at end of level (except for demo levels and last level)
 					if(demoNum == 0 && levelNum != 5){
-						var endText = game.add.text(0, 0, 'Week ' + (levelNum+1).toString(), style2);
-						endText.setTextBounds(100, 34, 600, 150);
+						var endText = game.add.text(0, 0, 'Week ' + (levelNum+2).toString(), style1);
+						endText.setTextBounds(100, 150, 600, 250);
 						endText.alpha = 0;
 						game.add.tween(endText).to( { alpha: 1 }, 200, "Linear", true, 200);
+						endText.stroke = '#000000';
+						endText.strokeThickness = 6;
 					}
 				}
 				else createObj(spawnObj);
@@ -237,6 +245,7 @@ function grabObject(claw, obstacle){
 		obstacle.body.velocity.x = 0;
 		obstacle.body.velocity.y = 0;
 		grabSound.play('',0,sfxVolume);
+		if(obstacle.constructor === ToxicRock) hurtSound.play('',0,sfxVolume); 
 	}
 }
 function grabBeacon(claw, beacon){
@@ -361,7 +370,7 @@ function createObj(spawnObj){
 // Go to hallway once fade is complete
 function fadeComplete(){
 	if(demoNum > 0 && !demoComplete) this.state.start('Play');
-	else{demoNum = 0; this.state.start('Hallway');}
+	else{demoNum = 0; this.state.start('Hallway'); playMusic.pause();}
 }
 // Go to ending once fade is complete
 function endGame(){

@@ -62,7 +62,7 @@
 			{"time":51, "objects": [{"type":"Asteroid", "x":850, "y":20, "scale":4, "xvel":-500, "yvel":5}, {"type":"Asteroid", "x":850, "y":580, "scale":4, "xvel":-500, "yvel":-5}]},
 		
 		{"time":60, "objects": [{"type":"SPDUP"}]},
-		{"time":62, "objects": [{"type":"END"}]}
+		{"time":67, "objects": [{"type":"END"}]}
 		
 	]
 

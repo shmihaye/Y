@@ -131,8 +131,8 @@ Game.Load.prototype = {
 		
 		// Load game sounds and music
 		this.load.path = 'assets/audio/';
-		//game.load.audio('playMusic', ['play.mp3','play.ogg']);
-		//game.load.audio('hallwayMusic', ['hallway.mp3','hallway.ogg']);
+		game.load.audio('playMusic', ['play.mp3','play.ogg']);
+		game.load.audio('hallwayMusic', ['hallway.mp3','hallway.ogg']);
 		game.load.audio('break1', ['break1.mp3']);
 		game.load.audio('break2', ['break2.mp3']);
 		game.load.audio('break3', ['break3.mp3']);
@@ -159,10 +159,10 @@ Game.Load.prototype = {
 	},
 	update: function() {
 		// Wait for music mp3s to properly decode
-		//if(this.cache.isSoundDecoded('playMusic') && this.cache.isSoundDecoded('hallwayMusic')) {
+		if(this.cache.isSoundDecoded('playMusic') && this.cache.isSoundDecoded('hallwayMusic')) {
 			// When the music is ready, advance to title screen!
 			this.state.start('Title');
-		//}
+		}
 	}
 };
 

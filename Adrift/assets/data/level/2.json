@@ -60,7 +60,7 @@
 		{"time":86.5, "objects": [{"type":"ToxicRock", "y":300, "scale":3.5, "xvel":-135}]},
 		
 		{"time":95, "objects": [{"type":"SPDUP"}]},
-		{"time":97, "objects": [{"type":"END"}]}
+		{"time":102, "objects": [{"type":"END"}]}
 	
 	]
 

@@ -2,7 +2,7 @@
 var door1, door2, door3, door4, pilotButton, mouse;
 var abilityBox1, abilityBox2, abilityBox3, abilityBox4, textBackground;
 var abilityText1, abilityText2, abilityText3, abilityText4;
-var doorSound, pilotSound, tooltipSound, selectedSound;
+var doorSound, pilotSound, tooltipSound, selectedSound, hallwayMusic;
 var lastConvo = 0;
 
 var hallwayState = {
@@ -122,6 +122,12 @@ var hallwayState = {
 		this.camera.deadzone = new Phaser.Rectangle(200, 0, 400, 600);
 		game.camera.x = hallStart;
 		this.camera.flash('#ffffff');
+		
+		// Play music
+		if(hallStart == 600){
+			hallwayMusic = this.add.audio('hallwayMusic');
+			hallwayMusic.play('', 0, 0.75, true);
+		}
 	},
 	
 	update : function() {
@@ -227,6 +233,7 @@ var hallwayState = {
 	
 	pilotShip: function() {
 		selectedSound.play('',0,sfxVolume);
+		hallwayMusic.pause();
 		lastConvo = 0;
 		hallStart = 600;
 		game.state.start('Play');
