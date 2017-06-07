@@ -175,12 +175,12 @@ var playState = {
 				else if(spawnObj.type == 'SPDUP'){
 					// Speed up background scrolling if SPDUP
 					speedUp *= 2;
-					// Fade in week number at end of level (except for demo levels)
-					if(demoNum == 0){
+					// Fade in week number at end of level (except for demo levels and last level)
+					if(demoNum == 0 && levelNum != 5){
 						var endText = game.add.text(0, 0, 'Week ' + (levelNum+1).toString(), style2);
 						endText.setTextBounds(100, 34, 600, 150);
 						endText.alpha = 0;
-						game.add.tween(demoText).to( { alpha: 1 }, 200, "Linear", true, 200);
+						game.add.tween(endText).to( { alpha: 1 }, 200, "Linear", true, 200);
 					}
 				}
 				else createObj(spawnObj);
