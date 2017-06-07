@@ -54,7 +54,7 @@
 		
 		{"time":69, "objects": [{"type":"ToxicRock", "y":50, "scale":1}, {"type":"ToxicRock", "y":100, "scale":1}, {"type":"ToxicRock", "y":150, "scale":1}, {"type":"ToxicRock", "y":200, "scale":1}, {"type":"ToxicRock", "y":250, "scale":1}, {"type":"ToxicRock", "y":300, "scale":1}, {"type":"ToxicRock", "y":350, "scale":1}, {"type":"ToxicRock", "y":400, "scale":1}, {"type":"ToxicRock", "y":450, "scale":1}, {"type":"ToxicRock", "y":100, "scale":1}, {"type":"ToxicRock", "y":500, "scale":1}, {"type":"ToxicRock", "y":100, "scale":1}, {"type":"ToxicRock", "y":550, "scale":1}]},
 		
-		{"time":76, "objects": [{"type":"GravRock", "x":200, "y":-50, "scale":2, "yvel":350}]},
+		{"time":74, "objects": [{"type":"GravRock", "x":200, "y":-50, "scale":2, "yvel":350}]},
 		
 		{"time":84, "objects": [{"type":"SPDUP"}]},
 		{"time":90, "objects": [{"type":"FIN"}]},

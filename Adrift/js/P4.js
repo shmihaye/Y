@@ -44,7 +44,7 @@ var P4 = {
 		slot2 = game.add.text(0, 0, choice2, { font: "26px Source Sans Pro", fill: patrestclr, align: "left",  wordWrap: true,wordWrapWidth: 800})
 	 	slot3 = game.add.text(0, 0, choice3, { font: "26px Source Sans Pro", fill: patrestclr, align: "left", wordWrap: true,wordWrapWidth: 800 })
     
-    	exitSign = game.add.text(375,530, '', {font: "32px Source Sans Pro", fill: '#8B0000', align: "left" })
+    	exitSign = game.add.text(375,500, '', {font: "32px Source Sans Pro", fill: '#8B0000', align: "left" })
 
     	slot1.inputEnabled = true
     	slot2.inputEnabled = true
@@ -188,7 +188,7 @@ var P4 = {
 	},
 
 	moveon: function(item){
-		hallStart = 0;
+		
 		game.state.start('Hallway');
 
 

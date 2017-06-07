@@ -1,9 +1,9 @@
 
 // Global variables for play state
-var player, obstacles, background, timestep, levelData, speedUp, energyReduction, emitter, beacon;
+var player, obstacles, background, timestep, levelData, speedUp, energyReduction, emitter, beacon, demoComplete = false;
 var breakSounds = [];
 var grabSound, releaseSound, hurtSound, explodeSound, implodeSound, dashSound, punchSound, radarSound;
-var levelNum = 0;
+var levelNum = 0, demoNum = 0;
 var addObstacles = [];
 
 // Play state container
@@ -12,7 +12,9 @@ var playState = {
 	preload: function(){
 		
 		// Load next level data
-		let levelName = levelNum.toString() + '.json';
+		let levelName = '';
+		if(demoLevel > 0) levelName = demoLevel.toString() + '.json';
+		else levelName = levelNum.toString() + '.json';
 		game.load.path = 'assets/data/level/';
 		game.load.json('level', levelName);
 	},
@@ -78,8 +80,20 @@ var playState = {
 		// Fade in from black
 		this.camera.flash('#ffffff');
 		
-		// Player will enter the right side of the hallway after the play state
-		hallStart = 600;
+		// Add demo controls text
+		if(demoNum > 0){
+			var demoText;
+			if(demoNum == 6) demoText = game.add.text(0, 0, 'Double-tap WASD for an evasive dash', style2);
+			else if(demoNum == 7) demoText = game.add.text(0, 0, 'Press SPACE to freeze nearby objects', style2);
+			else if(demoNum == 8) demoText = game.add.text(0, 0, 'Double-click an object to shove it away', style2);
+			else if(demoNum == 9){
+				demoText = game.add.text(0, 0, 'Icons will notify you of incoming object', style2);
+				demoComplete = true;
+			}
+			demoText.setTextBounds(100, 64, 600, 200);
+			game.add.tween(demoText).to( { alpha: 0 }, 200, "Linear", true, 2000);
+		}
+		
 	},
 	
 	update: function() {
@@ -133,6 +147,10 @@ var playState = {
 					beacon.scale.setTo(3);
 					beacon.anchor.set(0.5);
 					speedUp = 0.25;
+					// Destroy all remaining obstacles
+					obstacles.forEachAlive(
+						function(obstacle){ obstacle.die();}
+					);
 				}
 				else if(spawnObj.type == 'END'){
 					// Go to hallway state at the end of the level
@@ -212,7 +230,10 @@ function grabBeacon(claw, beacon){
 function hurtShip(player, obstacle){
 	// If the player touches an obstacle that hasn't been grabbed, lower energy
 	if(obstacle != player.grabbed && obstacle.friendly <= 0 && player.invincibility == 0){
-		hurtSound.play('',0,sfxVolume); energy -= 26; player.invincibility = 60;
+		hurtSound.play('',0,sfxVolume); 
+		if(demoNum == 9) demoComplete = false;
+		energy -= 26; 
+		player.invincibility = 60;
 	}
 }
 function hurtShield(shield, obstacle){
@@ -220,6 +241,7 @@ function hurtShield(shield, obstacle){
 	if(obstacle != player.grabbed && obstacle.friendly <= 0 && player.shield.active){
 		obstacle.body.velocity.x = 0;
 		obstacle.body.velocity.y = 0;
+		if(demoNum == 7) demoComplete = true;
 	}
 }
 function checkBounds(obstacle){
@@ -311,7 +333,8 @@ function createObj(spawnObj){
 }
 // Go to hallway once fade is complete
 function fadeComplete(){
-	this.state.start('Hallway'); 
+	if(demoNum > 0 && !demoComplete) this.state.start('Play');
+	else{demoNum = 0; this.state.start('Hallway');}
 }
 // Go to ending once fade is complete
 function endGame(){

@@ -45,7 +45,7 @@ var hallwayState = {
 		abilityBackground = game.add.sprite(250, 64, 'textBackground');
 		abilityBackground.alpha = 0;
 		abilityBackground.fixedToCamera = true;
-		abilityText1 = game.add.text(0, 0, '>> Dash <<\n\nDouble-tap a direction for an evasive dash\n\nPatricia\'s ability\nLevel ' + convoIndex1.toString(), style1);
+		abilityText1 = game.add.text(0, 0, '>> Dash <<\n\nDouble-tap WASD for an evasive dash\n\nPatricia\'s ability\nLevel ' + convoIndex1.toString(), style1);
 		abilityText1.setTextBounds(250, 64, 300, 400);
 		abilityText1.fixedToCamera = true;
 		abilityText1.alpha = 0;
@@ -191,6 +191,7 @@ var hallwayState = {
 		convoIndex1++;
 		tooltipSound.play('',0,sfxVolume);
 		lastConvo = 1;
+		hallStart = 0;
 		game.state.start('P' + convoIndex1.toString());
 	},
 	
@@ -200,6 +201,7 @@ var hallwayState = {
 		convoIndex2++;
 		tooltipSound.play('',0,sfxVolume);
 		lastConvo = 2;
+		hallStart = 0;
 		game.state.start('B' + convoIndex2.toString());
 	},
 	
@@ -209,6 +211,7 @@ var hallwayState = {
 		convoIndex3++;
 		tooltipSound.play('',0,sfxVolume);
 		lastConvo = 3;
+		hallStart = 0;
 		game.state.start('D' + convoIndex3.toString());
 	},
 	
@@ -218,12 +221,14 @@ var hallwayState = {
 		convoIndex4++;
 		tooltipSound.play('',0,sfxVolume);
 		lastConvo = 4;
+		hallStart = 0;
 		game.state.start('R' + convoIndex4.toString());
 	},
 	
 	pilotShip: function() {
 		selectedSound.play('',0,sfxVolume);
 		lastConvo = 0;
+		hallStart = 600;
 		game.state.start('Play');
 	},
 	

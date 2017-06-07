@@ -48,6 +48,8 @@ function Ship(game, image){
 		this.shield.scale.set(0.5);
 		this.shield.active = false;
 		this.shield.alpha = 0.1;
+		this.shield.timer = 0;
+		this.shieldTimer = 60 * convoIndex2/2;
 		this.shieldSize = 2 + (0.5 * convoIndex2); // The size & duration of the shield: min = 2.5, max = 4
 		this.shieldRegen = 0.001 * convoIndex2; // The rate at which the shield regenerates after use: min = 0.001, max = 0.004
 	}
@@ -138,7 +140,10 @@ Ship.prototype.update = function(){
 	}
 	if(this.dashTime > 0) this.dashTime--; // Key is single-tapped and ready for dash!
 	else if(this.dashTime < 0){ // Dash was just used, cooldown in effect.
-		if(this.dashTime == -this.dashCooldown + 8) this.tint = 0xADD8E6; // Add blue tint after initial speed burst
+		if(this.dashTime == -this.dashCooldown + 8){
+			this.tint = 0xADD8E6; // Add blue tint after initial speed burst
+			if(demoNum == 6) demoComplete = true;
+		}
 		if(this.dashTime == -1) this.tint = 0xffffff; // Remove tint when cooldown is over
 		this.dashTime++;
 	}}
@@ -152,8 +157,11 @@ Ship.prototype.update = function(){
 	if(this.shield.active){
 		if(this.shield.scale.x < this.shieldSize) this.shield.scale.setTo(this.shield.scale.x + 0.1);
 		else{ // When the shielding is finished
-			this.shield.active = false;
-			this.shield.alpha = 0.2;
+			if(this.shield.timer > 0) this.shield.timer--;
+			else{
+				this.shield.active = false;
+				this.shield.alpha = 0.1;
+			}
 		}
 	}
 	// If the shield is not active, shrink it until it hits a scale of 1 (ready for use again)
@@ -172,6 +180,7 @@ Ship.prototype.update = function(){
 		else if(game.input.keyboard.justPressed(Phaser.Keyboard.SPACEBAR)){ // The shield is ready & summoned!
 			this.shield.active = true;
 			this.shield.alpha = 0.8;
+			this.shield.timer = this.shieldTimer;
 			shieldSound.play('',0,sfxVolume);
 		}
 	}}
@@ -315,5 +324,5 @@ function punchObject(claw, obstacle){
 	obstacle.body.velocity.y = claw.punchStrength * Math.sin(3.14 * claw.angle/180);
 	obstacle.friendly = true;
 	obstacle.primed = true;
-	
+	if(demoNum == 8) demoComplete = true;
 }
