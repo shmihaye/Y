@@ -50,7 +50,7 @@ function Ship(game, image){
 		this.shield.alpha = 0.1;
 		this.shield.timer = 0;
 		this.shieldTimer = 60 * convoIndex2/2;
-		this.shieldSize = 2 + (0.5 * convoIndex2); // The size & duration of the shield: min = 2.5, max = 4
+		this.shieldSize = 3 + (0.5 * convoIndex2); // The size & duration of the shield: min = 3.5, max = 5
 		this.shieldRegen = 0.001 * convoIndex2; // The rate at which the shield regenerates after use: min = 0.001, max = 0.004
 	}
 	
@@ -144,8 +144,7 @@ Ship.prototype.update = function(){
 			this.tint = 0xADD8E6; // Add blue tint after initial speed burst
 			if(demoNum == 6 && !demoComplete){
 				demoComplete = true;
-				var demoCompleteText = game.add.text(0, 0, 'Nice!', style2);
-				demoCompleteText.setTextBounds(100, 64, 600, 200);
+				var demoCompleteText = game.add.text(player.x-20, player.y, 'Nice!', style2);
 				game.add.tween(demoCompleteText).to( { alpha: 0 }, 200, "Linear", true, 1000);
 				demoCompleteText.stroke = '#000000';
 				demoCompleteText.strokeThickness = 6;
@@ -333,8 +332,7 @@ function punchObject(claw, obstacle){
 	obstacle.primed = true;
 	if(demoNum == 8 && !demoComplete){
 		demoComplete = true;
-		var demoCompleteText = game.add.text(0, 0, 'Great!', style2);
-		demoCompleteText.setTextBounds(100, 64, 600, 200);
+		var demoCompleteText = game.add.text(player.claw.x, player.claw.y, 'Great!', style2);
 		game.add.tween(demoCompleteText).to( { alpha: 0 }, 200, "Linear", true, 1000);
 		demoCompleteText.stroke = '#000000';
 		demoCompleteText.strokeThickness = 6;

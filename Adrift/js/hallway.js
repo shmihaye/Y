@@ -45,7 +45,7 @@ var hallwayState = {
 		abilityBackground = game.add.sprite(250, 64, 'textBackground');
 		abilityBackground.alpha = 0;
 		abilityBackground.fixedToCamera = true;
-		abilityText1 = game.add.text(0, 0, '>> Dash <<\n\nDouble-tap WASD for an evasive dash\n\nPatricia\'s ability\nLevel ' + convoIndex1.toString(), style1);
+		abilityText1 = game.add.text(0, 0, '>> Dash <<\n\nDouble-tap a direction for an evasive dash\n\nPatricia\'s ability\nLevel ' + convoIndex1.toString(), style1);
 		abilityText1.setTextBounds(250, 64, 300, 400);
 		abilityText1.fixedToCamera = true;
 		abilityText1.alpha = 0;

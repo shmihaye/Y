@@ -85,25 +85,25 @@ var playState = {
 			var demoText;
 			var abilityIcon;
 			if(demoNum == 6){
-				abilityIcon = game.add.sprite(368, 70, 'abilityBox1');
-				demoText = game.add.text(0, 0, 'Double-tap WASD for an evasive dash', style2);
+				abilityIcon = game.add.sprite(368, 35, 'abilityBox1');
+				demoText = game.add.text(0, 0, '>> Dash <<\n\nDouble-tap a direction for an evasive dash', style2);
 			}
 			else if(demoNum == 7){
-				abilityIcon = game.add.sprite(368, 70, 'abilityBox2');
-				demoText = game.add.text(0, 0, 'Press SPACE to freeze nearby objects', style2);
+				abilityIcon = game.add.sprite(368, 35, 'abilityBox2');
+				demoText = game.add.text(0, 0, '>> Shield <<\n\nPress SPACE to freeze nearby objects', style2);
 			}
 			else if(demoNum == 8){
-				abilityIcon = game.add.sprite(368, 70, 'abilityBox3');
-				demoText = game.add.text(0, 0, 'Double-click an object to shove it away', style2);
+				abilityIcon = game.add.sprite(368, 35, 'abilityBox3');
+				demoText = game.add.text(0, 0, '>> Punch <<\n\nDouble-click an object with the claw to shove it away', style2);
 			}
 			else if(demoNum == 9){
-				abilityIcon = game.add.sprite(368, 70, 'abilityBox4');
-				demoText = game.add.text(0, 0, 'Icons will notify you of incoming objects', style2);
+				abilityIcon = game.add.sprite(368, 35, 'abilityBox4');
+				demoText = game.add.text(0, 0, '>> Radar <<\n\nIcons will notify you of incoming objects', style2);
 				demoComplete = true;
 			}
 			demoText.setTextBounds(100, 34, 600, 150);
-			game.add.tween(demoText).to( { alpha: 0 }, 200, "Linear", true, 3000);
-			game.add.tween(abilityIcon).to( { alpha: 0 }, 200, "Linear", true, 3000);
+			game.add.tween(demoText).to( { alpha: 0 }, 200, "Linear", true, 5000);
+			game.add.tween(abilityIcon).to( { alpha: 0 }, 200, "Linear", true, 5000);
 			demoText.stroke = '#000000';
 			demoText.strokeThickness = 6;
 		}
@@ -175,6 +175,13 @@ var playState = {
 				else if(spawnObj.type == 'SPDUP'){
 					// Speed up background scrolling if SPDUP
 					speedUp *= 2;
+					// Fade in week number at end of level (except for demo levels)
+					if(demoNum == 0){
+						var endText = game.add.text(0, 0, 'Week ' + (levelNum+1).toString(), style2);
+						endText.setTextBounds(100, 34, 600, 150);
+						endText.alpha = 0;
+						game.add.tween(demoText).to( { alpha: 1 }, 200, "Linear", true, 200);
+					}
 				}
 				else createObj(spawnObj);
 			}
@@ -257,8 +264,7 @@ function hurtShield(shield, obstacle){
 		obstacle.body.velocity.y = 0;
 		if(demoNum == 7 && !demoComplete){
 			demoComplete = true;
-			var demoCompleteText = game.add.text(0, 0, 'Good!', style2);
-			demoCompleteText.setTextBounds(100, 64, 600, 200);
+			var demoCompleteText = game.add.text(player.x-20, player.y, 'Good!', style2);
 			game.add.tween(demoCompleteText).to( { alpha: 0 }, 200, "Linear", true, 1000);
 			demoCompleteText.stroke = '#000000';
 			demoCompleteText.strokeThickness = 6;
