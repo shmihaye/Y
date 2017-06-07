@@ -32,8 +32,8 @@ var sfxVolume = 0.05;
 var done_color = "#0000FF"
 var style1 = { font: "32px Source Sans Pro", fill: unselected_color, align: "center", wordWrap: true, wordWrapWidth: 250, boundsAlignH: "center", boundsAlignV: "middle" };
 var style2 = { font: "24px Source Sans Pro", fill: unselected_color, align: "center", wordWrap: true, wordWrapWidth: 600, boundsAlignH: "center", boundsAlignV: "middle" };
-// hallStart -- The x position where the camera should start in the hallstart
-var hallStart = 0;
+// hallStart -- The x position where the camera should start in the hallway
+var hallStart = 600;
 
 // Boot state
 Game.Boot = function(){};
