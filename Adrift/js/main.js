@@ -210,8 +210,21 @@ Game.Credits.prototype = {
 		credits.stroke = '#000000';
     	credits.strokeThickness = 6;
 		
+		// Add restart text
+		var restartText = game.add.text(0, 0, 'Press SPACE to restart', style2);
+		restartText.setTextBounds(0, 500, 800, 100);
+		restartText.stroke = '#000000';
+    	restartText.strokeThickness = 6;
+		
 		// Fade in from black
 		this.camera.flash('#ffffff');
+	},
+	update: function(){
+		// If space is pressed, go to Title
+		if(game.input.keyboard.justPressed(Phaser.Keyboard.SPACEBAR)){
+			this.camera.fade('#ffffff');
+			this.camera.onFadeComplete.add(restartGame,this);
+		}
 	}
 };
 
@@ -247,4 +260,16 @@ game.state.start('Boot');
 // Go to intro when fade is complete
 function startGame(){
 	this.state.start('Intro'); 
+}
+
+// Go to title when fade is complete and reset important variables
+function restartGame(){
+	this.state.start('Title');
+	convoIndex1 = 0;
+	convoIndex2 = 0;
+	convoIndex3 = 0;
+	convoIndex4 = 0;
+	energy = 100;
+	levelNum = 0;
+	hallStart = 600;
 }
