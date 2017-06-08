@@ -212,9 +212,9 @@ var playState = {
 					// Fade in week number at end of level (except for demo levels and last level)
 					if(demoNum == 0 && levelNum != 5){
 						var endText;
-						if(levelNum == 4) endText = game.add.text(0, 0, 'Week ' + (2+levelNum) + '\n' + (5-levelNum).toString() + 'weeks away from the beacon', style1);
-						else endText = game.add.text(0, 0, 'Week ' + (2+levelNum) + '\n' + (5-levelNum).toString() + 'weeks away from the beacon', style1);
-						endText.setTextBounds(100, 150, 600, 250);
+						if(levelNum == 4) endText = game.add.text(0, 0, 'Week ' + (2+levelNum) + '\n1 week away from the beacon', style1);
+						else endText = game.add.text(0, 0, 'Week ' + (2+levelNum) + '\n' + (5-levelNum).toString() + ' weeks away from the beacon', style1);
+						endText.setTextBounds(0, 150, 800, 250);
 						endText.alpha = 0;
 						game.add.tween(endText).to( { alpha: 1 }, 200, "Linear", true, 200);
 						endText.stroke = '#000000';
