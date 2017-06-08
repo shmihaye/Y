@@ -233,7 +233,7 @@ var hallwayState = {
 	
 	pilotShip: function() {
 		selectedSound.play('',0,sfxVolume);
-		hallwayMusic.pause();
+		//hallwayMusic.pause();
 		lastConvo = 0;
 		hallStart = 600;
 		game.state.start('Play');

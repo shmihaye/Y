@@ -411,7 +411,12 @@ function createObj(spawnObj){
 // Go to hallway once fade is complete
 function fadeComplete(){
 	if(demoNum > 0 && !demoComplete) this.state.start('Play');
-	else{demoNum = 0; this.state.start('Hallway'); playMusic.pause();}
+	else{
+		//if(demoNum == 0) playMusic.pause();
+		demoNum = 0;
+		this.state.start('Hallway');
+		
+	}
 }
 // Go to ending once fade is complete
 function endGame(){
