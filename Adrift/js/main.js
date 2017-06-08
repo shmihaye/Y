@@ -167,7 +167,7 @@ Game.Load.prototype = {
 		// Wait for music mp3s to properly decode
 		if(this.cache.isSoundDecoded('playMusic') && this.cache.isSoundDecoded('hallwayMusic')) {
 			// When the music is ready, advance to title screen!
-			this.state.start('Title');
+			this.state.start('Hallway');
 		}
 	}
 };

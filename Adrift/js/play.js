@@ -4,7 +4,7 @@ var player, obstacles, background, timestep, levelData, speedUp, energyReduction
 var breakSounds = [];
 var grabSound, releaseSound, hurtSound, explodeSound, implodeSound, dashSound, punchSound, radarSound, playMusic;
 var abilityIcon1, abilityIcon2, abilityIcon3, abilityIcon4;
-var levelNum = 0, demoNum = 0;
+var levelNum = 4, demoNum = 0;
 var addObstacles = [];
 
 // Play state container
