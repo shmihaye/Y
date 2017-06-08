@@ -1,8 +1,9 @@
 
 // Global variables for play state
-var player, obstacles, background, timestep, levelData, speedUp, energyReduction, emitter, beacon;
+var player, obstacles, background, timestep, levelData, speedUp, energyReduction, emitter, beacon, wasd;
 var breakSounds = [];
 var grabSound, releaseSound, hurtSound, explodeSound, implodeSound, dashSound, punchSound, radarSound, playMusic;
+var abilityIcon1, abilityIcon2, abilityIcon3, abilityIcon4;
 var levelNum = 0, demoNum = 0;
 var addObstacles = [];
 
@@ -114,6 +115,33 @@ var playState = {
 			//playMusic.play('', 0, 0.75, true);
 		}
 		
+		// Add wasd sprite if levelNum is 0
+		if(levelNum == 0){
+			wasd = game.add.sprite(player.x, player.y, 'wasd');
+			wasd.anchor.set(0.5);
+			wasd.scale.set(2);
+		}
+		else wasd = null;
+		
+		// Determine ability icon positions
+		let count = 0;
+		if(convoIndex1 > 0) count++;
+		if(convoIndex2 > 0) count++;
+		if(convoIndex3 > 0) count++;
+		if(convoIndex4 > 0) count++;
+		let positions = [];
+		if(count == 1) positions = [368]
+		else if(count == 2) positions = [328, 408]
+		else if(count == 3) positions = [288, 368, 448]
+		else positions = [248, 328, 408, 488]
+		count = 0;
+		
+		// Add ability icons
+		if(convoIndex1 > 0){abilityIcon1 = game.add.sprite(positions[count], 518, 'abilityIcon1'); count++;}
+		if(convoIndex2 > 0){abilityIcon2 = game.add.sprite(positions[count], 518, 'abilityIcon2'); count++;}
+		if(convoIndex3 > 0){abilityIcon3 = game.add.sprite(positions[count], 518, 'abilityIcon3'); count++;}
+		if(convoIndex4 > 0){abilityIcon4 = game.add.sprite(positions[count], 518, 'abilityIcon4');}
+		
 	},
 	
 	update: function() {
@@ -183,7 +211,9 @@ var playState = {
 					speedUp *= 2;
 					// Fade in week number at end of level (except for demo levels and last level)
 					if(demoNum == 0 && levelNum != 5){
-						var endText = game.add.text(0, 0, 'Week ' + (levelNum+2).toString(), style1);
+						var endText;
+						if(levelNum == 4) endText = game.add.text(0, 0, 'Week ' + (2+levelNum) + '\n' + (5-levelNum).toString() + 'weeks away from the beacon' + , style1);
+						else endText = game.add.text(0, 0, 'Week ' + (2+levelNum) + '\n' + (5-levelNum).toString() + 'weeks away from the beacon', style1);
 						endText.setTextBounds(100, 150, 600, 250);
 						endText.alpha = 0;
 						game.add.tween(endText).to( { alpha: 1 }, 200, "Linear", true, 200);
@@ -194,7 +224,7 @@ var playState = {
 				else createObj(spawnObj);
 			}
 		}
-		timestep++;
+		if(wasd == null) timestep++; // Advance time unless wasd art is displayed
 		
 		// If the player runs out of energy, restart the stage (except during demo levels)
 		if(energy <= 0){
@@ -248,7 +278,10 @@ function grabObject(claw, obstacle){
 		obstacle.body.velocity.x = 0;
 		obstacle.body.velocity.y = 0;
 		grabSound.play('',0,sfxVolume);
-		if(obstacle.constructor === ToxicRock) hurtSound.play('',0,sfxVolume); 
+		if(obstacle.constructor === ToxicRock){
+			hurtSound.play('',0,sfxVolume);
+			energy -= 10;
+		}
 	}
 }
 function grabBeacon(claw, beacon){

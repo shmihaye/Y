@@ -78,25 +78,25 @@ var hallwayState = {
 		
 		// Add buttons
 		if(convoIndex1 > 0){
-			abilityBox1 = game.add.sprite(positions[count], 528, 'abilityBox1');
+			abilityBox1 = game.add.sprite(positions[count], 518, 'abilityIcon1');
 			abilityBox1.fixedToCamera = true;
 			abilityBox1.inputEnabled = true;
 			count++;
 		}
 		if(convoIndex2 > 0){
-			abilityBox2 = game.add.sprite(positions[count], 528, 'abilityBox2');
+			abilityBox2 = game.add.sprite(positions[count], 518, 'abilityIcon2');
 			abilityBox2.fixedToCamera = true;
 			abilityBox2.inputEnabled = true;
 			count++;
 		}
 		if(convoIndex3 > 0){
-			abilityBox3 = game.add.sprite(positions[count], 528, 'abilityBox3');
+			abilityBox3 = game.add.sprite(positions[count], 518, 'abilityIcon3');
 			abilityBox3.fixedToCamera = true;
 			abilityBox3.inputEnabled = true;
 			count++;
 		}
 		if(convoIndex4 > 0){
-			abilityBox4 = game.add.sprite(positions[count], 528, 'abilityBox4');
+			abilityBox4 = game.add.sprite(positions[count], 518, 'abilityIcon4');
 			abilityBox4.fixedToCamera = true;
 			abilityBox4.inputEnabled = true;
 			if(convoIndex4 == 4) abilityBox4.events.onInputDown.add(this.secret, this);
@@ -146,20 +146,20 @@ var hallwayState = {
 		
 		// Show/hide ability info
 		if(convoIndex1 > 0){
-			if(abilityBox1.input.pointerOver() && abilityBox1.cameraOffset.y == 528){tooltipSound.play('',0,sfxVolume); abilityBox1.alpha = 1; game.add.tween(abilityBox1.cameraOffset).to( { y: 512 }, 30, "Linear", true); game.add.tween(abilityText1).to( { alpha: 1 }, 30, "Linear", true);}
-			else if(!abilityBox1.input.pointerOver()){abilityBox1.alpha = 0.5; game.add.tween(abilityBox1.cameraOffset).to( { y: 528 }, 30, "Linear", true); game.add.tween(abilityText1).to( { alpha: 0 }, 30, "Linear", true);}
+			if(abilityBox1.input.pointerOver() && abilityBox1.cameraOffset.y == 518){tooltipSound.play('',0,sfxVolume); abilityBox1.alpha = 1; game.add.tween(abilityBox1.cameraOffset).to( { y: 502 }, 30, "Linear", true); game.add.tween(abilityText1).to( { alpha: 1 }, 30, "Linear", true);}
+			else if(!abilityBox1.input.pointerOver()){abilityBox1.alpha = 0.5; game.add.tween(abilityBox1.cameraOffset).to( { y: 518 }, 30, "Linear", true); game.add.tween(abilityText1).to( { alpha: 0 }, 30, "Linear", true);}
 		}
 		if(convoIndex2 > 0){
-			if(abilityBox2.input.pointerOver() && abilityBox2.cameraOffset.y == 528){tooltipSound.play('',0,sfxVolume); abilityBox2.alpha = 1; game.add.tween(abilityBox2.cameraOffset).to( { y: 512 }, 30, "Linear", true); game.add.tween(abilityText2).to( { alpha: 1 }, 30, "Linear", true);}
-			else if(!abilityBox2.input.pointerOver()){abilityBox2.alpha = 0.5; game.add.tween(abilityBox2.cameraOffset).to( { y: 528 }, 30, "Linear", true); game.add.tween(abilityText2).to( { alpha: 0 }, 30, "Linear", true);}
+			if(abilityBox2.input.pointerOver() && abilityBox2.cameraOffset.y == 518){tooltipSound.play('',0,sfxVolume); abilityBox2.alpha = 1; game.add.tween(abilityBox2.cameraOffset).to( { y: 502 }, 30, "Linear", true); game.add.tween(abilityText2).to( { alpha: 1 }, 30, "Linear", true);}
+			else if(!abilityBox2.input.pointerOver()){abilityBox2.alpha = 0.5; game.add.tween(abilityBox2.cameraOffset).to( { y: 518 }, 30, "Linear", true); game.add.tween(abilityText2).to( { alpha: 0 }, 30, "Linear", true);}
 		}
 		if(convoIndex3 > 0){
-			if(abilityBox3.input.pointerOver() && abilityBox3.cameraOffset.y == 528){tooltipSound.play('',0,sfxVolume); abilityBox3.alpha = 1; game.add.tween(abilityBox3.cameraOffset).to( { y: 512 }, 30, "Linear", true); game.add.tween(abilityText3).to( { alpha: 1 }, 30, "Linear", true);}
-			else if(!abilityBox3.input.pointerOver()){abilityBox3.alpha = 0.5; game.add.tween(abilityBox3.cameraOffset).to( { y: 528 }, 30, "Linear", true); game.add.tween(abilityText3).to( { alpha: 0 }, 30, "Linear", true);}
+			if(abilityBox3.input.pointerOver() && abilityBox3.cameraOffset.y == 518){tooltipSound.play('',0,sfxVolume); abilityBox3.alpha = 1; game.add.tween(abilityBox3.cameraOffset).to( { y: 502 }, 30, "Linear", true); game.add.tween(abilityText3).to( { alpha: 1 }, 30, "Linear", true);}
+			else if(!abilityBox3.input.pointerOver()){abilityBox3.alpha = 0.5; game.add.tween(abilityBox3.cameraOffset).to( { y: 518 }, 30, "Linear", true); game.add.tween(abilityText3).to( { alpha: 0 }, 30, "Linear", true);}
 		}
 		if(convoIndex4 > 0){
-			if(abilityBox4.input.pointerOver() && abilityBox4.cameraOffset.y == 528){tooltipSound.play('',0,sfxVolume); abilityBox4.alpha = 1; game.add.tween(abilityBox4.cameraOffset).to( { y: 512 }, 30, "Linear", true); game.add.tween(abilityText4).to( { alpha: 1 }, 30, "Linear", true);}
-			else if(!abilityBox4.input.pointerOver()){abilityBox4.alpha = 0.5; game.add.tween(abilityBox4.cameraOffset).to( { y: 528 }, 30, "Linear", true); game.add.tween(abilityText4).to( { alpha: 0 }, 30, "Linear", true);}
+			if(abilityBox4.input.pointerOver() && abilityBox4.cameraOffset.y == 518){tooltipSound.play('',0,sfxVolume); abilityBox4.alpha = 1; game.add.tween(abilityBox4.cameraOffset).to( { y: 502 }, 30, "Linear", true); game.add.tween(abilityText4).to( { alpha: 1 }, 30, "Linear", true);}
+			else if(!abilityBox4.input.pointerOver()){abilityBox4.alpha = 0.5; game.add.tween(abilityBox4.cameraOffset).to( { y: 518 }, 30, "Linear", true); game.add.tween(abilityText4).to( { alpha: 0 }, 30, "Linear", true);}
 		}
 		let showBackground = false;
 		if(convoIndex1 > 0 && abilityBox1.input.pointerOver()) showBackground = true;

@@ -136,6 +136,12 @@ var introState = {
 		
 		// Fade in from black
 		this.camera.flash('#ffffff');
+		
+		// Add skip text
+		var skipText = game.add.text(0, 0, 'Press SPACE to skip', style2);
+		skipText.setTextBounds(0, 500, 800, 100);
+		skipText.stroke = '#000000';
+    	skipText.strokeThickness = 6;
 	},
 	
 	update: function() {

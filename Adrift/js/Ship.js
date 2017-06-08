@@ -1,7 +1,7 @@
 function Ship(game, image){
 	
 	// Call to Phaser.sprite
-	Phaser.Sprite.call(this, game, 40, game.world.height-300, image);
+	Phaser.Sprite.call(this, game, 150, 300, image);
 	
 	// Add properties
 	game.physics.enable(this);
@@ -100,19 +100,39 @@ Ship.prototype.update = function(){
 		if(game.input.keyboard.isDown(Phaser.Keyboard.A)){
 			// Move left if left is pressed
 			this.body.velocity.x = -300;
+			// Remove wasd sprite when player moves
+			if(wasd != null){
+				game.add.tween(wasd).to( { alpha: 0 }, 200, "Linear", true);
+				wasd = null;
+			}
 		}
 		else if(game.input.keyboard.isDown(Phaser.Keyboard.D)){
 			// Move right if right is pressed
 			this.body.velocity.x = 300;
+			// Remove wasd sprite when player moves
+			if(wasd != null){
+				game.add.tween(wasd).to( { alpha: 0 }, 200, "Linear", true);
+				wasd = null;
+			}
 		}
 		else this.body.velocity.x = 0;
 		if(game.input.keyboard.isDown(Phaser.Keyboard.W)){
 			// Move up if up is pressed
 			this.body.velocity.y = -300;
+			// Remove wasd sprite when player moves
+			if(wasd != null){
+				game.add.tween(wasd).to( { alpha: 0 }, 200, "Linear", true);
+				wasd = null;
+			}
 		}
 		else if(game.input.keyboard.isDown(Phaser.Keyboard.S)){
 			// Move down if down is pressed
 			this.body.velocity.y = 300;
+			// Remove wasd sprite when player moves
+			if(wasd != null){
+				game.add.tween(wasd).to( { alpha: 0 }, 200, "Linear", true);
+				wasd = null;
+			}
 		}
 		else this.body.velocity.y = 0;
 	}
@@ -142,6 +162,7 @@ Ship.prototype.update = function(){
 	else if(this.dashTime < 0){ // Dash was just used, cooldown in effect.
 		if(this.dashTime == -this.dashCooldown + 8){
 			this.tint = 0xADD8E6; // Add blue tint after initial speed burst
+			abilityIcon1.alpha = 0.4;
 			if(demoNum == 6 && !demoComplete){
 				demoComplete = true;
 				var demoCompleteText = game.add.text(player.x-20, player.y, 'Nice!', style2);
@@ -150,7 +171,7 @@ Ship.prototype.update = function(){
 				demoCompleteText.strokeThickness = 6;
 			}
 		}
-		if(this.dashTime == -1) this.tint = 0xffffff; // Remove tint when cooldown is over
+		if(this.dashTime == -1){this.tint = 0xffffff; abilityIcon1.alpha = 1;} // Remove tint when cooldown is over
 		this.dashTime++;
 	}}
 	
@@ -183,11 +204,15 @@ Ship.prototype.update = function(){
 			if(this.shield.flash > 0) this.shield.flash--;
 			else this.shield.visible = true;
 		}
-		else if(game.input.keyboard.justPressed(Phaser.Keyboard.SPACEBAR)){ // The shield is ready & summoned!
-			this.shield.active = true;
-			this.shield.alpha = 0.8;
-			this.shield.timer = this.shieldTimer;
-			shieldSound.play('',0,sfxVolume);
+		else{
+			abilityIcon2.alpha = 1;
+			if(game.input.keyboard.justPressed(Phaser.Keyboard.SPACEBAR)){ // The shield is ready & summoned!
+				this.shield.active = true;
+				abilityIcon2.alpha = 0.4;
+				this.shield.alpha = 0.8;
+				this.shield.timer = this.shieldTimer;
+				shieldSound.play('',0,sfxVolume);
+			}
 		}
 	}}
 	
@@ -210,9 +235,10 @@ Ship.prototype.update = function(){
 	else if(this.punchTime < 0){
 		if(this.punchTime == -this.punchCooldown + 8){
 			this.claw.tint = 0xADD8E6; // Add blue tint after punch
+			abilityIcon3.alpha = 0.4;
 			this.claw.scale.setTo(2);
 		}
-		if(this.punchTime == -1) this.claw.tint = 0xffffff; // Remove tint when cooldown is over
+		if(this.punchTime == -1){this.claw.tint = 0xffffff; abilityIcon3.alpha = 1;} // Remove tint when cooldown is over
 		this.punchTime++;
 	}}
 	

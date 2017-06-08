@@ -92,6 +92,7 @@ Game.Load.prototype = {
 		game.load.spritesheet('beacon', 'beacon.png', 64, 64);
 		game.load.image('dotLine', 'dotLine.png');
 		game.load.image('logo', 'logo.png');
+		game.load.image('wasd', 'wasd.png');
 		
 		game.load.image('selectChair', 'selectChair.png');
 		game.load.image('selectD4V3', 'selectD4V3.png');
@@ -129,6 +130,10 @@ Game.Load.prototype = {
 		game.load.image('abilityBox2', 'abilityBox2.png');
 		game.load.image('abilityBox3', 'abilityBox3.png');
 		game.load.image('abilityBox4', 'abilityBox4.png');
+		game.load.image('abilityIcon1', 'abilityIcon1.png');
+		game.load.image('abilityIcon2', 'abilityIcon2.png');
+		game.load.image('abilityIcon3', 'abilityIcon3.png');
+		game.load.image('abilityIcon4', 'abilityIcon4.png');
 		
 		// Load game sounds and music
 		this.load.path = 'assets/audio/';
@@ -174,9 +179,15 @@ Game.Title.prototype = {
 		// Add background
 		this.background = game.add.tileSprite(0, 0, game.width, game.height, 'spaceBackground');
 		
+		// Add title credits text
+		var creditsText = game.add.text(0, 0, 'by Brody Richards, Freeman, Kaylie Cetera, Raymond Reedy, and Shayne Hayes', style2);
+		creditsText.setTextBounds(150, 170, 500, 100);
+		creditsText.stroke = '#000000';
+    	creditsText.strokeThickness = 6;
+		
 		// Add title text
 		var startText = game.add.text(0, 0, 'Press SPACE to begin', style2);
-		startText.setTextBounds(0, 400, 800, 100);
+		startText.setTextBounds(0, 500, 800, 100);
 		startText.stroke = '#000000';
     	startText.strokeThickness = 6;
 		

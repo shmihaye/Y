@@ -2,7 +2,7 @@
 
 	"timestamps": [
 	
-		{"time":0, "objects": [{"type":"BombRock", "x":160, "y":200, "scale":2, "xvel":0}, {"type":"BombRock", "x":160, "y":300, "scale":2, "xvel":0}, {"type":"BombRock", "x":160, "y":400, "scale":2, "xvel":0}]},
+		{"time":0, "objects": [{"type":"BombRock", "x":160, "y":200, "scale":2, "xvel":0}, {"type":"BombRock", "x":160, "y":400, "scale":2, "xvel":0}]},
 		
 		{"time":1, "objects": [{"type":"BombRock", "y":200, "scale":2.4, "xvel":-100}]},
 		{"time":1.5, "objects": [{"type":"ToxicRock", "y":110, "scale":2.2, "xvel":-100}, {"type":"ToxicRock", "y":290, "scale":2.3, "xvel":-100}]},

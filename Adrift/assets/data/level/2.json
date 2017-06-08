@@ -58,7 +58,7 @@
 		{"time":69.7, "objects": [{"type":"ToxicRock", "y":300, "scale":3.5, "xvel":-165}]},
 		
 		{"time":78, "objects": [{"type":"SPDUP"}]},
-		{"time":80, "objects": [{"type":"END"}]}
+		{"time":85, "objects": [{"type":"END"}]}
 	
 	]
 
