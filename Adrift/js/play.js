@@ -226,6 +226,9 @@ var playState = {
 		
 		// Stop the beacon once it reaches the center of the stage
 		if(beacon !== undefined && beacon.x < 400){beacon.body.velocity.x = 0;}
+		
+		// Keep player from moving past the right side of the screen
+		if(player.x > 800) player.x = 800;
 	},
 	
 	/*render: function() {

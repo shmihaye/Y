@@ -2,22 +2,18 @@
 
 	"timestamps": [
 	
-		{"time":0, "objects": [{"type":"BombRock", "x":160, "y":200, "scale":2, "xvel":0}, {"type":"FragRock", "x":160, "y":300, "scale":2, "xvel":0}, {"type":"BombRock", "x":160, "y":400, "scale":2, "xvel":0}]},
+		{"time":0, "objects": [{"type":"BombRock", "x":160, "y":200, "scale":2, "xvel":0}, {"type":"BombRock", "x":160, "y":300, "scale":2, "xvel":0}, {"type":"BombRock", "x":160, "y":400, "scale":2, "xvel":0}]},
 		
-		{"time":2, "objects": [{"type":"BombRock", "y":200, "scale":2.4, "xvel":-100}]},
-		{"time":2.5, "objects": [{"type":"ToxicRock", "y":110, "scale":2.2, "xvel":-100}, {"type":"ToxicRock", "y":290, "scale":2.3, "xvel":-100}]},
-		{"time":3, "objects": [{"type":"ToxicRock", "y":200, "scale":2.2, "xvel":-100}]},
+		{"time":1, "objects": [{"type":"BombRock", "y":200, "scale":2.4, "xvel":-100}]},
+		{"time":1.5, "objects": [{"type":"ToxicRock", "y":110, "scale":2.2, "xvel":-100}, {"type":"ToxicRock", "y":290, "scale":2.3, "xvel":-100}]},
+		{"time":2, "objects": [{"type":"ToxicRock", "y":200, "scale":2.2, "xvel":-100}]},
 		
-		{"time":7, "objects": [{"type":"Asteroid", "y":430, "scale":2.8, "xvel":-90}]},
-		{"time":7.8, "objects": [{"type":"ToxicRock", "y":310, "scale":2.7, "xvel":-90}, {"type":"ToxicRock", "y":550, "scale":2.7, "xvel":-90}]},
-		{"time":8.6, "objects": [{"type":"ToxicRock", "y":430, "scale":2.7, "xvel":-90}]},
+		{"time":5, "objects": [{"type":"Asteroid", "y":430, "scale":2.8, "xvel":-90}]},
+		{"time":5.8, "objects": [{"type":"ToxicRock", "y":310, "scale":2.7, "xvel":-90}, {"type":"ToxicRock", "y":550, "scale":2.7, "xvel":-90}]},
+		{"time":6.6, "objects": [{"type":"ToxicRock", "y":430, "scale":2.7, "xvel":-90}]},
 		
-		{"time":12, "objects": [{"type":"FragRock", "y":320, "scale":2.1, "xvel":-140}]},
-		{"time":12.5, "objects": [{"type":"FragRock", "y":250, "scale":2.1, "xvel":-140}, {"type":"FragRock", "y":390, "scale":2.1, "xvel":-140}]},
-		{"time":13, "objects": [{"type":"FragRock", "y":320, "scale":2.1, "xvel":-140}]},
-		
-		{"time":18, "objects": [{"type":"SPDUP"}]},
-		{"time":20, "objects": [{"type":"END"}]}
+		{"time":13, "objects": [{"type":"SPDUP"}]},
+		{"time":15, "objects": [{"type":"END"}]}
 
 	]
 
