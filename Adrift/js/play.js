@@ -137,10 +137,10 @@ var playState = {
 		count = 0;
 		
 		// Add ability icons
-		if(convoIndex1 > 0){abilityIcon1 = game.add.sprite(positions[count], 518, 'abilityIcon1'); count++;}
-		if(convoIndex2 > 0){abilityIcon2 = game.add.sprite(positions[count], 518, 'abilityIcon2'); count++;}
-		if(convoIndex3 > 0){abilityIcon3 = game.add.sprite(positions[count], 518, 'abilityIcon3'); count++;}
-		if(convoIndex4 > 0){abilityIcon4 = game.add.sprite(positions[count], 518, 'abilityIcon4');}
+		if(convoIndex1 > 0){abilityIcon1 = game.add.sprite(positions[count], 502, 'abilityIcon1'); count++;}
+		if(convoIndex2 > 0){abilityIcon2 = game.add.sprite(positions[count], 502, 'abilityIcon2'); count++;}
+		if(convoIndex3 > 0){abilityIcon3 = game.add.sprite(positions[count], 502, 'abilityIcon3'); count++;}
+		if(convoIndex4 > 0){abilityIcon4 = game.add.sprite(positions[count], 502, 'abilityIcon4');}
 		
 	},
 	
