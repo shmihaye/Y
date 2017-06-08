@@ -49,6 +49,18 @@ var introState = {
 		beacon9 = game.add.sprite(6000, 6000, 'beacon');
 		beacon10 = game.add.sprite(6000, 6000, 'beacon');
 
+		// Adjust beacon sizes
+		beacon1.scale.x = 1.7; beacon1.scale.y = 1.7;
+		beacon2.scale.x = 1.7; beacon2.scale.y = 1.7;
+		beacon3.scale.x = 1.7; beacon3.scale.y = 1.7;
+		beacon4.scale.x = 1.7; beacon4.scale.y = 1.7;
+		beacon5.scale.x = 1.7; beacon5.scale.y = 1.7;
+		beacon6.scale.x = 1.7; beacon6.scale.y = 1.7;
+		beacon7.scale.x = 1.7; beacon7.scale.y = 1.7;
+		beacon8.scale.x = 1.7; beacon8.scale.y = 1.7;
+		beacon9.scale.x = 1.7; beacon9.scale.y = 1.7;
+		beacon10.scale.x = 1.7; beacon10.scale.y = 1.7;
+
 		// Add physics to beacon7
 		game.physics.arcade.enable(beacon7);
 		beacon7.enableBody = true;
@@ -70,7 +82,7 @@ var introState = {
 		game.physics.arcade.enable(manta);
 		manta.enableBody = true;
 		manta.angle = 64;
-		manta.scale.x = 0.3; manta.scale.y = 0.3;
+		manta.scale.x = 0.5; manta.scale.y = 0.5;
 		manta.animations.add('fly1', [0,1], 10, true);
 
 		// Add dotted line sprite
@@ -100,6 +112,7 @@ var introState = {
 	
 	update: function() {
 		
+		// Part 1 of cutscene
 		// Pioneer 1 flies to Terra Novus, then disappears
 		if (cutsceneStatus == 0){
 			if (pioneer1.x <= 660){
@@ -111,7 +124,8 @@ var introState = {
 			}
 		}
 
-		// Add more text, add beacons
+		// Part 2 of cutscene
+		// Add text, add beacons, wait for pioneer 1 to return (invisible)
 		if (cutsceneStatus == 1){
 			openingText.text = passage1 + ' ' + passage2;
 			beacon1.x = 150; beacon1.y = 250;
@@ -130,19 +144,25 @@ var introState = {
 			}
 		}
 
+		// Part 3 of cutscene
+		// Change text, add nebulas, reverse pioneer 1
 		if (cutsceneStatus == 2){
 			openingText.text = passage3;
-			nebula1.x = 520; nebula1.y = 380;
-			nebula2.x = 346; nebula2.y = 301;
-			nebula3.x = 232; nebula3.y = 289;
+			nebula1.x = 540; nebula1.y = 400;
+			nebula2.x = 366; nebula2.y = 321;
+			nebula3.x = 252; nebula3.y = 309;
 			if (pioneer1.x >= 660){
 				pioneer1.body.velocity.x = -80;
 				cutsceneStatus = 3;
 			}
 		}
 
+		// Part 4 of cutscene
+		// Add text, spawn ship, reverse pioneer 1
 		if (cutsceneStatus == 3){
 			openingText.text = passage3 + ' ' + passage4;
+			manta.body.velocity.x = 10;
+			manta.body.velocity.y = 40;
 			manta.x = 465; manta.y = 410;
 			if (pioneer1.x <= 60){
 				pioneer1.body.velocity.x = 80;
@@ -150,8 +170,12 @@ var introState = {
 			}
 		}
 
+		// Part 5 of cutscene
+		// Change text, send beacon 7 into deep space, reverse pioneer 1
 		if (cutsceneStatus == 4){
 			openingText.text = passage5;
+			manta.body.velocity.x = 0;
+			manta.body.velocity.y = 0;
 			beacon7.body.velocity.x = 7;
 			beacon7.body.velocity.y = 12;
 			if (pioneer1.x >= 660){
@@ -160,16 +184,22 @@ var introState = {
 			}
 		}
 
+		// Part 6 of cutscene
+		// Add text, add dotted lines, reverse pioneer 1
 		if (cutsceneStatus == 5){
 			openingText.text = passage5 + ' ' + passage6;
 			dotLine1.x = 520; dotLine1.y = 420;
-			dotLine2.x = 485; dotLine2.y = 460;
+			dotLine2.x = 475; dotLine2.y = 470;
+			beacon7.body.velocity.x = 7;
+			beacon7.body.velocity.y = 12;
 			if (pioneer1.x <= 60){
 				pioneer1.body.velocity.x = 80;
 				cutsceneStatus = 6;
 			}
 		}
 
+		// Part 7 of cutscene
+		// Send ship into deep space, fade out
 		if (cutsceneStatus == 6){
 			dotLine1.x = 6000; dotLine1.y = 6000;
 			dotLine2.x = 6000; dotLine2.y = 6000;
@@ -199,6 +229,21 @@ var introState = {
 	},
 
 };
+
+// Function that sends Manta ship to each beacon, but it doesn't work. 
+// Reminder to Ray to delete this before final submission, unless we get it working
+//function mantaNavigate(){
+//	if (manta.x <= 150){
+//		manta.body.velocity.x = 70;
+//	} else if (manta.x >= 150){
+//		manta.body.velocity.x = 14;
+//	} else if (manta.x >= 200){
+//		manta.body.velocity.x = 30;
+//	}
+
+	//game.add.tween(manta).to( {x: 150 }, 30, "Linear", true); game.add.tween(manta).to( {y: 250 }, 30, "Linear", true);
+	//game.add.tween(manta).to( {x: 200 }, 30, "Linear", true); game.add.tween(manta).to( {y: 350 }, 30, "Linear", true);
+//}
 
 // Go to play state when fade is complete
 function playGame(){
