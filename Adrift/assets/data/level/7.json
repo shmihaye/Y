@@ -2,10 +2,12 @@
 
 	"timestamps": [
 	
-		{"time":1, "objects": [{"type":"Asteroid", "y":300, "scale":2}]},
+		{"time":3, "objects": [{"type":"ToxicRock", "y":50, "scale":2, "xvel":-130}, {"type":"ToxicRock", "y":150, "scale":2, "xvel":-130}, {"type":"ToxicRock", "y":250, "scale":2, "xvel":-130}, {"type":"ToxicRock", "y":350, "scale":2, "xvel":-130}, {"type":"ToxicRock", "y":450, "scale":2, "xvel":-130}, {"type":"ToxicRock", "y":550, "scale":2, "xvel":-130}]},
 		
-		{"time":10, "objects": [{"type":"SPDUP"}]},
-		{"time":15, "objects": [{"type":"END"}]}
+		{"time":14, "objects": [{"type":"ToxicRock", "x":50, "y":-50, "scale":2, "xvel":0, "yvel":60}, {"type":"ToxicRock", "x":150, "y":-50, "scale":2, "xvel":0, "yvel":60}, {"type":"ToxicRock", "x":250, "y":-50, "scale":2, "xvel":0, "yvel":60}, {"type":"ToxicRock", "x":350, "y":-50, "scale":2, "xvel":0, "yvel":60}, {"type":"ToxicRock", "x":450, "y":-50, "scale":2, "xvel":0, "yvel":60}, {"type":"ToxicRock", "x":550, "y":-50, "scale":2, "xvel":0, "yvel":60}, {"type":"ToxicRock", "x":650, "y":-50, "scale":2, "xvel":0, "yvel":60}, {"type":"ToxicRock", "x":750, "y":-50, "scale":2, "xvel":0, "yvel":60}, {"type":"ToxicRock", "x":50, "y":650, "scale":2, "xvel":0, "yvel":-60}, {"type":"ToxicRock", "x":150, "y":650, "scale":2, "xvel":0, "yvel":-60}, {"type":"ToxicRock", "x":250, "y":650, "scale":2, "xvel":0, "yvel":-60}, {"type":"ToxicRock", "x":350, "y":650, "scale":2, "xvel":0, "yvel":-60}, {"type":"ToxicRock", "x":450, "y":650, "scale":2, "xvel":0, "yvel":-60}, {"type":"ToxicRock", "x":550, "y":650, "scale":2, "xvel":0, "yvel":-60}, {"type":"ToxicRock", "x":650, "y":650, "scale":2, "xvel":0, "yvel":-60}, {"type":"ToxicRock", "x":750, "y":650, "scale":2, "xvel":0, "yvel":-60}]},
+		
+		{"time":25, "objects": [{"type":"SPDUP"}]},
+		{"time":27, "objects": [{"type":"END"}]}
 
 	]
 

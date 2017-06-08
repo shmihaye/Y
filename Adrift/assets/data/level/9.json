@@ -2,10 +2,16 @@
 
 	"timestamps": [
 	
-		{"time":1, "objects": [{"type":"Asteroid", "y":300, "scale":2}]},
+		{"time":5, "objects": [{"type":"Asteroid", "y":160, "scale":2, "xvel":-500}]},
 		
-		{"time":10, "objects": [{"type":"SPDUP"}]},
-		{"time":15, "objects": [{"type":"END"}]}
+		{"time":8, "objects": [{"type":"FragRock", "y":380, "scale":2, "xvel":-500}]},
+		
+		{"time":11, "objects": [{"type":"ToxicRock", "y":220, "scale":2, "xvel":-550}, {"type":"ToxicRock", "y":320, "scale":2, "xvel":-550}]},
+		
+		{"time":14, "objects": [{"type":"BombRock", "y":160, "scale":2, "xvel":-600}, {"type":"Asteroid", "y":460, "scale":2.4, "xvel":-500}]},
+		
+		{"time":17, "objects": [{"type":"SPDUP"}]},
+		{"time":19, "objects": [{"type":"END"}]}
 
 	]
 
