@@ -12,7 +12,7 @@ var D1 = {
 		 DiaA2 = " Sorry was that too grim for you?"
 		 DiaA3 = " My comedy is a bit uuhh.. out of practice I guess."
 		
-		 DiaB1 = " At least my leg has auto stablizers."
+		 DiaB1 = " At least my leg has auto stabilizers."
 		 DiaB2 = " I won't be falling on anyone when things get shaky."
 		 DiaB3 = " They even called me 'ol steady' before I had this thing."
 		
