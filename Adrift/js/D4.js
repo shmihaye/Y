@@ -5,16 +5,16 @@ var D4 = {
 
 		// library of all text for a given "chapter"
 		 DiaA = "Heh, you came back? After that shit show? You're a brave one."
-		 DiaB = "This leg is damn great, compared to my head. Needs less repairs."
+		 DiaB = "You know, this leg is damn great, compared to my head. Needs less repairs."
 		 DiaC = "You aren't like my old unit...you don't turn a blind eye on me."
 		
-		 DiaA1 = " It...you...I...my demons come out sometimes and...it gets messy."
+		 DiaA1 = " It...you...I...I’m sorry. I’m not used to anyone coming back for me."
 		 DiaA2 = " I've never had someone around during that before."
 		 DiaA3 = " Been alone for so long, having you there's a life-saver."
 		
 		 DiaB1 = " You'd think getting blown apart would mess with your head."
-		 DiaB2 = " But no, that healed without little bother."
-		 DiaB3 = " The isolation, the abandonment all that time after...The mind can't handle that."
+		 DiaB2 = " But no, that healed with little bother."
+		 DiaB3 = " The isolation, the abandonment all that time after, it’s still healing."
 		
 		 DiaC1 = " They're not bad people. Just afraid."
 		 DiaC2 = " But you aren't scared of hurt people..."

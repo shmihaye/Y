@@ -4,20 +4,20 @@ var D3 = {
 	create: function() {
 
 		// library of all text for a given "chapter"
-		 DiaA = "Do you think anyone is going to care about us?"
-		 DiaB = "It doesn't matter..."
-		 DiaC = "Somethings aren't worth recovering..."
+		 DiaA = "When I lost my leg, I got left behind Cap."
+		 DiaB = "I know all too well how these things go."
+		 DiaC = "Some things just aren't worth recovering..."
 		
-		 DiaA1 = " Sure they'll miss the meds, but not us."
-		 DiaA2 = " Out of sight out of mind."
-		 DiaA3 = " We are a number, a unit, a casualty..."
+		 DiaA1 = " Not left on the battlefield, worse than that."
+		 DiaA2 = " I was stuck crippled in the hospital, they never came looking for me."
+		 DiaA3 = " But how can I blame them, look at me I’m a mess."
 		
 		 DiaB1 = " 3 months alone in the hospital taught me,"
-		 DiaB2 = " 10 years without a word from them taught me."
+		 DiaB2 = " another 10 years without a word from them taught me."
 		 DiaB3 = " People like me get left behind, no one comes looking."
 		
 		 DiaC1 = " My unit didn't want to remember me."
-		 DiaC2 = " I am just a bad memory,"
+		 DiaC2 = " I am just a bad memory, I'm not worth it"
 		 DiaC3 = " and this ship could be one too..."
 		
 		choice1 = DiaA
