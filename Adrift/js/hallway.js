@@ -111,13 +111,13 @@ var hallwayState = {
 		this.camera.flash('#ffffff');
 		
 		// Play music
-		//if(!music.isPlaying){
+		if(!music.isPlaying){
 			if(levelNum == 0) music = game.add.audio('hallwayMusic1');
 			else music = game.add.audio('hallwayMusic' + levelNum.toString());
 			music.addMarker('time', marker, 100000);
 			music.play('time', 0, 0, true);
 			music.fadeTo(200,sfxVolume*5);
-		//}
+		}
 		
 		// Add volume sprite in upper right corner
 		volumeSprite = game.add.sprite(726, 10, 'volume');
