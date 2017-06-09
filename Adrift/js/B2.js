@@ -8,7 +8,7 @@ var B2 = {
 		 DiaB = "Listen, I'm going to keep voicing my mind."
 		 DiaC = "I won't take your job, but I'll do it if I must."
 		
-		 DiaA1 = " I told ya this would be difficult."
+		 DiaA1 = " I told you this would be difficult."
 		 DiaA2 = " Craziest route combined with this crew..."
 		 DiaA3 = " I'm doing everything I can but I will need your help eventually."
 		
