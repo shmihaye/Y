@@ -71,7 +71,7 @@ var playState = {
 			}
 			else if(demoNum == 8){
 				abilityIcon = game.add.sprite(368, 35, 'abilityBox3');
-				demoText = game.add.text(0, 0, '>> Punch <<\n\nDouble-click an object with the claw to shove it away', style2);
+				demoText = game.add.text(0, 0, '>> Punch <<\n\nDouble-click or press E on an object with the claw to shove it away', style2);
 			}
 			else if(demoNum == 9){
 				abilityIcon = game.add.sprite(368, 35, 'abilityBox4');
@@ -85,9 +85,11 @@ var playState = {
 			demoText.strokeThickness = 6;
 		}
 		
-		// Play music (unless this is a demo)
-		//music = this.add.audio('hallwayMusic1');
-		//music.play('', 0, sfxVolume*5, true);
+		// Play music
+		if(!music.isPlaying){
+			music = game.add.audio('playMusic');
+			music.play('', 0, sfxVolume*((levelNum+1)/2), true);
+		}
 		
 		// Add wasd sprite if levelNum is 0
 		if(levelNum == 0){
@@ -177,6 +179,7 @@ var playState = {
 				else if(spawnObj.type == 'END'){
 					// Go to hallway state at the end of the level
 					if(demoNum == 0){levelNum++;}
+					music.fadeTo(200,0);
 					this.camera.fade('#ffffff');
 					this.camera.onFadeComplete.add(fadeComplete,this);
 				}
@@ -388,9 +391,9 @@ function createObj(spawnObj){
 }
 // Go to hallway once fade is complete
 function fadeComplete(){
+	if(demoNum > 0){marker = (music.currentTime/1000);}
 	if(demoNum > 0 && !demoComplete) this.state.start('Play');
 	else{
-		//music.stop();
 		demoNum = 0;
 		this.state.start('Hallway');
 		
@@ -398,6 +401,6 @@ function fadeComplete(){
 }
 // Go to ending once fade is complete
 function endGame(){
-	//music.stop();
+	music.stop();
 	this.state.start('Credits'); 
 }

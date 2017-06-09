@@ -230,6 +230,13 @@ Ship.prototype.update = function(){
 			}
 			else this.punchTime = 20;
 		}
+		else if(game.input.keyboard.justPressed(Phaser.Keyboard.E)){
+			// Call punchObject on all obstacles that overlap with the claw
+			game.physics.arcade.overlap(this.claw, obstacles, punchObject, null, this);
+			this.punchTime = -this.punchCooldown;
+			this.claw.scale.x = 4;
+			punchSound.play('',0,sfxVolume);
+		}
 	}
 	if(this.punchTime > 0) this.punchTime--;
 	else if(this.punchTime < 0){

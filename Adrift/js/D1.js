@@ -188,7 +188,7 @@ var D1 = {
 
 	moveon: function(item){
 		demoNum = 8;
-		music.stop();
+		
 		game.state.start('Play');
 
 

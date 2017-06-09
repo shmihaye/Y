@@ -31,7 +31,7 @@ var d4hoverclr = "#5DADE2"
 // Sound effect volume
 var sfxVolume = 0.05, volumeSprite;
 // The current music track
-var music;
+var music, marker = 0;
 // Sound effect variables
 var breakSounds = [];
 var grabSound, releaseSound, hurtSound, explodeSound, implodeSound, dashSound, punchSound, radarSound, doorSound, pilotSound, tooltipSound, selectedSound;
@@ -267,6 +267,9 @@ Game.Title.prototype = {
 			this.camera.fade('#ffffff');
 			this.camera.onFadeComplete.add(startGame,this);
 		}
+		
+		if(volumeSprite.input.pointerOver() && volumeSprite.alpha == 0.6){pilotSound.play('',0,sfxVolume); game.add.tween(volumeSprite).to( { alpha: 1 }, 30, "Linear", true);}
+		else if(!volumeSprite.input.pointerOver()) game.add.tween(volumeSprite).to( { alpha: 0.6 }, 30, "Linear", true);
 		
 		// Scroll background
 		this.background.tilePosition.x -= 1;

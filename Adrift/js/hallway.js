@@ -111,11 +111,13 @@ var hallwayState = {
 		this.camera.flash('#ffffff');
 		
 		// Play music
-		if(!music.isPlaying){
+		//if(!music.isPlaying){
 			if(levelNum == 0) music = game.add.audio('hallwayMusic1');
 			else music = game.add.audio('hallwayMusic' + levelNum.toString());
-			music.play('', 0, sfxVolume*5, true);
-		}
+			music.addMarker('time', marker, 100000);
+			music.play('time', 0, 0, true);
+			music.fadeTo(200,sfxVolume*5);
+		//}
 		
 		// Add volume sprite in upper right corner
 		volumeSprite = game.add.sprite(726, 10, 'volume');
@@ -191,6 +193,8 @@ var hallwayState = {
 		}
 		if(pilotButton.input.pointerOver() && pilotButton.alpha == 0.2){pilotSound.play('',0,sfxVolume); game.add.tween(pilotButton).to( { alpha: 1 }, 30, "Linear", true);}
 		else if(!pilotButton.input.pointerOver()) game.add.tween(pilotButton).to( { alpha: 0.2 }, 30, "Linear", true);
+		if(volumeSprite.input.pointerOver() && volumeSprite.alpha == 0.6){pilotSound.play('',0,sfxVolume); game.add.tween(volumeSprite).to( { alpha: 1 }, 30, "Linear", true);}
+		else if(!volumeSprite.input.pointerOver()) game.add.tween(volumeSprite).to( { alpha: 0.6 }, 30, "Linear", true);
 	},
 	
 	door1Opened: function() {
@@ -235,6 +239,7 @@ var hallwayState = {
 	
 	pilotShip: function() {
 		selectedSound.play('',0,sfxVolume);
+		marker = music.currentTime/1000;
 		music.stop();
 		lastConvo = 0;
 		hallStart = 600;
