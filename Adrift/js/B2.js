@@ -5,7 +5,7 @@ var B2 = {
 
 		// library of all text for a given "chapter"
 		 DiaA = "Hey Captain, how goes the bootcamping?"
-		 DiaB = "I want to be clear; I’m not trying to take your job."
+		 DiaB = "I want to be clear, I’m not trying to take your job."
 		 DiaC = "Leading and giving directions is in my very nature."
 		
 		 DiaA1 = " I told you this would be difficult."
@@ -87,7 +87,7 @@ var B2 = {
 	
 	update: function() {
 		slot2.y = (Acount*42)+12
-		slot3.y = ((Acount+Bcount)*40)+24
+		slot3.y = ((Acount+Bcount)*42)+24
 
 		if (Acount+Bcount+Ccount >= 9){
 			slot1.inputEnabled = false
