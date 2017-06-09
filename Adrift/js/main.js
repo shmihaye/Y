@@ -8,11 +8,15 @@ var Game = {};
 var energy = 100;
 var energyRegen = 0.05;
 var energyBar;
+// levelNum and demoNum -- the current level/demo the player is entering
+var levelNum = 0, demoNum = 0;
 // convoIndex1-4 -- how many times the player has talked to characters 1-4
 var convoIndex1 = 0;
 var convoIndex2 = 0;
 var convoIndex3 = 0;
 var convoIndex4 = 0;
+// lastConvo -- the last convo state entered
+var lastConvo = 0;
 // font colors for the narrative state
 var unselected_color = "#FFFAF0"
 var selected_color = "#00BFFF"
@@ -25,8 +29,22 @@ var bridhoverclr =  "#706b7f"
 var d4restclr = "#2E86C1"
 var d4hoverclr = "#5DADE2"
 // Sound effect volume
-var sfxVolume = 0.05;
-
+var sfxVolume = 0.05, volumeSprite;
+// The current music track
+var music;
+// Sound effect variables
+var breakSounds = [];
+var grabSound, releaseSound, hurtSound, explodeSound, implodeSound, dashSound, punchSound, radarSound, doorSound, pilotSound, tooltipSound, selectedSound;
+// Global variables for play state
+var player, obstacles, background, timestep, levelData, speedUp, energyReduction, emitter, beacon, wasd;
+var abilityIcon1, abilityIcon2, abilityIcon3, abilityIcon4;
+var addObstacles = [];
+// Global variables for the hallway state
+var door1, door2, door3, door4, pilotButton, mouse;
+var abilityBox1, abilityBox2, abilityBox3, abilityBox4, textBackground;
+var abilityText1, abilityText2, abilityText3, abilityText4;
+// Global variables for intro state
+var cutsceneStatus = 0, manta, tween, beacon1, beacon2, beacon3, beacon4, beacon5, beacon6, beacon7, beacon8, beacon9, beacon10, beaconFlash;
 
 
 var done_color = "#0000FF"
@@ -94,6 +112,7 @@ Game.Load.prototype = {
 		game.load.image('dotLine', 'dotLine.png');
 		game.load.image('logo', 'logo.png');
 		game.load.image('wasd', 'wasd.png');
+		game.load.spritesheet('volume', 'volume.png', 64, 64);
 		
 		game.load.image('selectChair', 'selectChair.png');
 		game.load.image('selectD4V3', 'selectD4V3.png');
@@ -139,7 +158,11 @@ Game.Load.prototype = {
 		// Load game sounds and music
 		this.load.path = 'assets/audio/';
 		game.load.audio('playMusic', ['play.mp3','play.ogg']);
-		game.load.audio('hallwayMusic', ['hallway.mp3','hallway.ogg']);
+		game.load.audio('hallwayMusic1', ['hallway1.mp3','hallway1.ogg']);
+		game.load.audio('hallwayMusic2', ['hallway2.mp3','hallway2.ogg']);
+		game.load.audio('hallwayMusic3', ['hallway3.mp3','hallway3.ogg']);
+		game.load.audio('hallwayMusic4', ['hallway4.mp3','hallway4.ogg']);
+		game.load.audio('hallwayMusic5', ['hallway5.mp3','hallway5.ogg']);
 		game.load.audio('break1', ['break1.mp3']);
 		game.load.audio('break2', ['break2.mp3']);
 		game.load.audio('break3', ['break3.mp3']);
@@ -159,14 +182,37 @@ Game.Load.prototype = {
 		game.load.audio('shield', ['shield.mp3']);
 		game.load.audio('radar', ['radar.mp3']);
 		game.load.audio('error', ['error.mp3']);
+		
 	},
 	create: function() {
 		// Disable preload bar crop while we wait for mp3 decoding
 		this.preloadBar.cropEnabled = false;
+		
+		// Prepare sound effects
+		for(let i = 1; i <= 5; i++){
+			var sound = game.add.audio('break' + i.toString());
+			breakSounds.push(sound);
+		}
+		grabSound = game.add.audio('grab');
+		releaseSound = game.add.audio('release');
+		hurtSound = game.add.audio('hurt');
+		explodeSound = game.add.audio('boom');
+		implodeSound = game.add.audio('implode');
+		dashSound = game.add.audio('dash');
+		punchSound = game.add.audio('punch');
+		radarSound = game.add.audio('radar');
+		shieldSound = game.add.audio('shield');
+		errorSound = game.add.audio('error');
+		tooltipSound = game.add.audio('tooltip');
+		doorSound = game.add.audio('door');
+		pilotSound = game.add.audio('pilot');
+		selectedSound = game.add.audio('selected');
 	},
 	update: function() {
 		// Wait for music mp3s to properly decode
-		if(this.cache.isSoundDecoded('playMusic') && this.cache.isSoundDecoded('hallwayMusic')) {
+		if(this.cache.isSoundDecoded('playMusic') && this.cache.isSoundDecoded('hallwayMusic1')
+			&& this.cache.isSoundDecoded('hallwayMusic2') && this.cache.isSoundDecoded('hallwayMusic3')
+			&& this.cache.isSoundDecoded('hallwayMusic4') && this.cache.isSoundDecoded('hallwayMusic5')){
 			// When the music is ready, advance to title screen!
 			this.state.start('Title');
 		}
@@ -181,7 +227,7 @@ Game.Title.prototype = {
 		this.background = game.add.tileSprite(0, 0, game.width, game.height, 'spaceBackground');
 		
 		// Add title credits text
-		var creditsText = game.add.text(0, 0, 'by Brody Richards, Freeman, Kaylie Cetera, Raymond Reedy, and Shayne Hayes', style2);
+		var creditsText = game.add.text(0, 0, 'by Brody Richards, Freeman, Giovanni Benedetti, Kaylie Cetera, Raymond Reedy, and Shayne Hayes', style2);
 		creditsText.setTextBounds(150, 170, 500, 100);
 		creditsText.stroke = '#000000';
     	creditsText.strokeThickness = 6;
@@ -194,6 +240,23 @@ Game.Title.prototype = {
 		
 		// Add game logo
 		game.add.sprite(336, 100, 'logo');
+		
+		// Add volume sprite in upper right corner
+		volumeSprite = game.add.sprite(726, 10, 'volume');
+		volumeSprite.animations.add('max', [0], 10, true);
+		volumeSprite.animations.add('mid', [1], 10, true);
+		volumeSprite.animations.add('min', [2], 10, true);
+		volumeSprite.animations.add('mute', [3], 10, true);
+		if(sfxVolume == 0.05) volumeSprite.animations.play('max');
+		else if(sfxVolume == 0.025) volumeSprite.animations.play('mid');
+		else if(sfxVolume == 0.01) volumeSprite.animations.play('min');
+		else volumeSprite.animations.play('mute');
+		volumeSprite.inputEnabled = true;
+		volumeSprite.events.onInputDown.add(changeVolume, this);
+		
+		// Play music
+		music = this.add.audio('hallwayMusic1');
+		music.play('', 0, sfxVolume * 5, true);
 		
 		// Fade in from black
 		this.camera.flash('#ffffff');
@@ -217,7 +280,7 @@ Game.Credits.prototype = {
 		game.add.tileSprite(0, 0, game.width, game.height, 'creditsBackground');
 		
 		// Create credits text
-		var credits = game.add.text(0, 0, 'THE END\nYou have retrieved the beacon. Thanks for playing!\nCredits:\nBrody Richards | Programmer, Writer\nFreeman | Programmer, Level Designer\nKaylie Cetera | Character & Environment Artist\nRaymond Reedy | Space Artist, Writer\nShayne Hayes | Programmer, Producer', style2);
+		var credits = game.add.text(0, 0, 'THE END\nYou have retrieved the beacon. Thanks for playing!\nCredits:\nBrody Richards | Programmer, Writer\nFreeman | Programmer, Level Designer\nGiovanni Benedetti | Composer\nKaylie Cetera | Character & Environment Artist\nRaymond Reedy | Space Artist, Writer\nShayne Hayes | Programmer, Producer', style2);
 		credits.setTextBounds(100, 64, 600, 200);
 		credits.stroke = '#000000';
     	credits.strokeThickness = 6;
@@ -228,12 +291,17 @@ Game.Credits.prototype = {
 		restartText.stroke = '#000000';
     	restartText.strokeThickness = 6;
 		
+		// Play music
+		music = this.add.audio('hallwayMusic5');
+		music.play('', 0, sfxVolume * 5, true);
+		
 		// Fade in from black
 		this.camera.flash('#ffffff');
 	},
 	update: function(){
 		// If space is pressed, go to Title
 		if(game.input.keyboard.justPressed(Phaser.Keyboard.SPACEBAR)){
+			music.fadeOut();
 			this.camera.fade('#ffffff');
 			this.camera.onFadeComplete.add(restartGame,this);
 		}
@@ -271,7 +339,7 @@ game.state.start('Boot');
 
 // Go to intro when fade is complete
 function startGame(){
-	this.state.start('Intro'); 
+	this.state.start('Intro');
 }
 
 // Go to title when fade is complete and reset important variables
@@ -284,4 +352,26 @@ function restartGame(){
 	energy = 100;
 	levelNum = 0;
 	hallStart = 600;
+	music.stop();
+}
+
+function changeVolume(){
+	if(sfxVolume == 0.05){
+		sfxVolume = 0.025;
+		volumeSprite.animations.play('mid');
+	}
+	else if(sfxVolume == 0.025){
+		sfxVolume = 0.01;
+		volumeSprite.animations.play('min');
+	}
+	else if(sfxVolume == 0.01){
+		sfxVolume = 0;
+		volumeSprite.animations.play('mute');
+	}
+	else if(sfxVolume == 0){
+		sfxVolume = 0.05;
+		volumeSprite.animations.play('max');
+	}
+	selectedSound.play('',0,sfxVolume);
+	music.volume = sfxVolume * 5;
 }

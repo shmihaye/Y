@@ -1,13 +1,6 @@
 
-var door1, door2, door3, door4, pilotButton, mouse;
-var abilityBox1, abilityBox2, abilityBox3, abilityBox4, textBackground;
-var abilityText1, abilityText2, abilityText3, abilityText4;
-var doorSound, pilotSound, tooltipSound, selectedSound, hallwayMusic;
-var lastConvo = 0;
-
+// Hallway state container
 var hallwayState = {
-	
-	
 	
 	create: function() {
 		
@@ -108,12 +101,6 @@ var hallwayState = {
 		energyBar.scale.y = 0.5;
 		energyBar.fixedToCamera = true;
 		
-		// Prepare sound effects
-		tooltipSound = game.add.audio('tooltip');
-		doorSound = game.add.audio('door');
-		pilotSound = game.add.audio('pilot');
-		selectedSound = game.add.audio('selected');
-		
 		// Create invisible mouse sprite for the camera to follow
 		mouse = game.add.sprite(0, 0, 'rock');
 		mouse.anchor.set(0.5);
@@ -124,10 +111,25 @@ var hallwayState = {
 		this.camera.flash('#ffffff');
 		
 		// Play music
-		if(hallStart == 600){
-			hallwayMusic = this.add.audio('hallwayMusic');
-			//hallwayMusic.play('', 0, 0.75, true);
+		if(!music.isPlaying){
+			if(levelNum == 0) music = game.add.audio('hallwayMusic1');
+			else music = game.add.audio('hallwayMusic' + levelNum.toString());
+			music.play('', 0, sfxVolume*5, true);
 		}
+		
+		// Add volume sprite in upper right corner
+		volumeSprite = game.add.sprite(726, 10, 'volume');
+		volumeSprite.animations.add('max', [0], 10, true);
+		volumeSprite.animations.add('mid', [1], 10, true);
+		volumeSprite.animations.add('min', [2], 10, true);
+		volumeSprite.animations.add('mute', [3], 10, true);
+		if(sfxVolume == 0.05) volumeSprite.animations.play('max');
+		else if(sfxVolume == 0.025) volumeSprite.animations.play('mid');
+		else if(sfxVolume == 0.01) volumeSprite.animations.play('min');
+		else volumeSprite.animations.play('mute');
+		volumeSprite.inputEnabled = true;
+		volumeSprite.fixedToCamera = true;
+		volumeSprite.events.onInputDown.add(changeVolume, this);
 	},
 	
 	update : function() {
@@ -233,7 +235,7 @@ var hallwayState = {
 	
 	pilotShip: function() {
 		selectedSound.play('',0,sfxVolume);
-		//hallwayMusic.pause();
+		music.stop();
 		lastConvo = 0;
 		hallStart = 600;
 		game.state.start('Play');

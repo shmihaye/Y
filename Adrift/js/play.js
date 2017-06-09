@@ -1,12 +1,4 @@
 
-// Global variables for play state
-var player, obstacles, background, timestep, levelData, speedUp, energyReduction, emitter, beacon, wasd;
-var breakSounds = [];
-var grabSound, releaseSound, hurtSound, explodeSound, implodeSound, dashSound, punchSound, radarSound, playMusic;
-var abilityIcon1, abilityIcon2, abilityIcon3, abilityIcon4;
-var levelNum = 0, demoNum = 0;
-var addObstacles = [];
-
 // Play state container
 var playState = {
 	
@@ -45,22 +37,6 @@ var playState = {
 		// Load in level data
 		levelData = game.cache.getJSON('level');
 		timestep = 0;
-
-		// Prepare sound effects
-		for(let i = 1; i <= 5; i++){
-			var sound = game.add.audio('break' + i.toString());
-			breakSounds.push(sound);
-		}
-		grabSound = game.add.audio('grab');
-		releaseSound = game.add.audio('release');
-		hurtSound = game.add.audio('hurt');
-		explodeSound = game.add.audio('boom');
-		implodeSound = game.add.audio('implode');
-		dashSound = game.add.audio('dash');
-		punchSound = game.add.audio('punch');
-		radarSound = game.add.audio('radar');
-		shieldSound = game.add.audio('shield');
-		errorSound = game.add.audio('error');
 		
 		// Initialize keyboard controls
 		game.input.mouse.capture = true;
@@ -110,10 +86,8 @@ var playState = {
 		}
 		
 		// Play music (unless this is a demo)
-		if(demoNum == 0){
-			playMusic = this.add.audio('playMusic');
-			//playMusic.play('', 0, 0.75, true);
-		}
+		//music = this.add.audio('hallwayMusic1');
+		//music.play('', 0, sfxVolume*5, true);
 		
 		// Add wasd sprite if levelNum is 0
 		if(levelNum == 0){
@@ -202,7 +176,7 @@ var playState = {
 				}
 				else if(spawnObj.type == 'END'){
 					// Go to hallway state at the end of the level
-					if(demoNum == 0) levelNum++;
+					if(demoNum == 0){levelNum++;}
 					this.camera.fade('#ffffff');
 					this.camera.onFadeComplete.add(fadeComplete,this);
 				}
@@ -226,7 +200,7 @@ var playState = {
 		}
 		if(wasd == null) timestep++; // Advance time unless wasd art is displayed
 		
-		// If the player runs out of energy, restart the stage (except during demo levels)
+		// If the player runs out of energy, exit to hallway (except during demo levels)
 		if(energy <= 0){
 			this.camera.fade('#ffffff');
 			this.camera.onFadeComplete.add(fadeComplete,this);
@@ -278,7 +252,7 @@ function grabObject(claw, obstacle){
 		obstacle.body.velocity.x = 0;
 		obstacle.body.velocity.y = 0;
 		grabSound.play('',0,sfxVolume);
-		if(obstacle.constructor === ToxicRock && demoLevel == 0){
+		if(obstacle.constructor === ToxicRock && demoNum == 0){
 			hurtSound.play('',0,sfxVolume);
 			energy -= 26;
 		}
@@ -416,7 +390,7 @@ function createObj(spawnObj){
 function fadeComplete(){
 	if(demoNum > 0 && !demoComplete) this.state.start('Play');
 	else{
-		//if(demoNum == 0) playMusic.pause();
+		//music.stop();
 		demoNum = 0;
 		this.state.start('Hallway');
 		
@@ -424,5 +398,6 @@ function fadeComplete(){
 }
 // Go to ending once fade is complete
 function endGame(){
+	//music.stop();
 	this.state.start('Credits'); 
 }

@@ -86,6 +86,7 @@ var B1 = {
 	},
 	
 	update: function() {
+		
 		slot2.y = (Acount*38)+12
 		slot3.y = ((Acount+Bcount)*36)+24
 
@@ -191,6 +192,7 @@ var B1 = {
 
 	moveon: function(item){
 		demoNum = 7;
+		music.stop();
 		game.state.start('Play');
 
 

@@ -97,7 +97,7 @@ Ship.prototype.update = function(){
 	// Ship movement
 	// Do not move if the dash ability was just used (if it is enabled)
 	if(!this.dashEnabled || this.dashTime > -this.dashCooldown + 8){
-		if(game.input.keyboard.isDown(Phaser.Keyboard.A)){
+		if(game.input.keyboard.isDown(Phaser.Keyboard.A) || game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
 			// Move left if left is pressed
 			this.body.velocity.x = -300;
 			// Remove wasd sprite when player moves
@@ -106,7 +106,7 @@ Ship.prototype.update = function(){
 				wasd = null;
 			}
 		}
-		else if(game.input.keyboard.isDown(Phaser.Keyboard.D)){
+		else if(game.input.keyboard.isDown(Phaser.Keyboard.D) || game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
 			// Move right if right is pressed
 			this.body.velocity.x = 300;
 			// Remove wasd sprite when player moves
@@ -116,7 +116,7 @@ Ship.prototype.update = function(){
 			}
 		}
 		else this.body.velocity.x = 0;
-		if(game.input.keyboard.isDown(Phaser.Keyboard.W)){
+		if(game.input.keyboard.isDown(Phaser.Keyboard.W) || game.input.keyboard.isDown(Phaser.Keyboard.UP)){
 			// Move up if up is pressed
 			this.body.velocity.y = -300;
 			// Remove wasd sprite when player moves
@@ -125,7 +125,7 @@ Ship.prototype.update = function(){
 				wasd = null;
 			}
 		}
-		else if(game.input.keyboard.isDown(Phaser.Keyboard.S)){
+		else if(game.input.keyboard.isDown(Phaser.Keyboard.S) || game.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
 			// Move down if down is pressed
 			this.body.velocity.y = 300;
 			// Remove wasd sprite when player moves
@@ -141,19 +141,19 @@ Ship.prototype.update = function(){
 	if(this.dashEnabled){
 	// If a key is double-tapped, quickly move the ship in that direction.
 	if(this.dashTime >= 0){ // Check to make sure the ability isn't on cooldown.
-		if(game.input.keyboard.justPressed(Phaser.Keyboard.A)){
+		if(game.input.keyboard.justPressed(Phaser.Keyboard.A) || game.input.keyboard.justPressed(Phaser.Keyboard.LEFT)){
 			if(this.dashDirection == 0 && this.dashTime > 0){dashSound.play('',0,sfxVolume); this.body.velocity.x = -this.dashSpeed; this.dashTime = -this.dashCooldown; this.tint = 0x0000ff;}
 			else{this.dashDirection = 0; this.dashTime = 20;}
 		}
-		if(game.input.keyboard.justPressed(Phaser.Keyboard.D)){
+		if(game.input.keyboard.justPressed(Phaser.Keyboard.D) || game.input.keyboard.justPressed(Phaser.Keyboard.RIGHT)){
 			if(this.dashDirection == 1 && this.dashTime > 0){dashSound.play('',0,sfxVolume); this.body.velocity.x = this.dashSpeed; this.dashTime = -this.dashCooldown; this.tint = 0x0000ff;}
 			else{this.dashDirection = 1; this.dashTime = 20;}
 		}
-		if(game.input.keyboard.justPressed(Phaser.Keyboard.W)){
+		if(game.input.keyboard.justPressed(Phaser.Keyboard.W) || game.input.keyboard.justPressed(Phaser.Keyboard.UP)){
 			if(this.dashDirection == 2 && this.dashTime > 0){dashSound.play('',0,sfxVolume); this.body.velocity.y = -this.dashSpeed; this.dashTime = -this.dashCooldown; this.tint = 0x0000ff;}
 			else{this.dashDirection = 2; this.dashTime = 20;}
 		}
-		if(game.input.keyboard.justPressed(Phaser.Keyboard.S)){
+		if(game.input.keyboard.justPressed(Phaser.Keyboard.S) || game.input.keyboard.justPressed(Phaser.Keyboard.DOWN)){
 			if(this.dashDirection == 3 && this.dashTime > 0){dashSound.play('',0,sfxVolume); this.body.velocity.y = this.dashSpeed; this.dashTime = -this.dashCooldown; this.tint = 0x0000ff;}
 			else{this.dashDirection = 3; this.dashTime = 20;}
 		}
@@ -320,7 +320,7 @@ Ship.prototype.update = function(){
 		let prevy = this.grabbed.y;
 		this.grabbed.x += (this.claw.x - lastclawx);
 		this.grabbed.y += (this.claw.y - lastclawy);
-		if (this.grabbed.constructor.name === 'ToxicRock' && demoLevel == 0) {
+		if (this.grabbed.constructor.name === 'ToxicRock' && demoNum == 0) {
 			energy--;
 		}
 		this.grabbed.body.velocity.x = 0;

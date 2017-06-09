@@ -190,6 +190,7 @@ var R1 = {
 
 	moveon: function(item){
 		demoNum = 9;
+		music.stop();
 		game.state.start('Play');
 
 

@@ -1,8 +1,5 @@
 
-// Global variables for intro state
-var cutsceneStatus = 0, manta, tween, beacon1, beacon2, beacon3, beacon4, beacon5, beacon6, beacon7, beacon8, beacon9, beacon10, beaconFlash;
-
-// Intro State Container
+// Intro state container
 var introState = {
 	
 	create: function() {
@@ -244,6 +241,7 @@ var introState = {
 			manta.body.velocity.x = 14;
 			manta.body.velocity.y = 24;
 			if (pioneer1.x >= 660){
+				music.fadeOut();
 				this.camera.fade('#ffffff');
 				this.camera.onFadeComplete.add(playGame,this);
 			}
@@ -275,5 +273,6 @@ function mantaNavigate(){
 
 // Go to play state when fade is complete
 function playGame(){
+	music.stop();
 	this.state.start('Play'); 
 }
