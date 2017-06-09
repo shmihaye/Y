@@ -394,14 +394,18 @@ function createObj(spawnObj){
 		}
 		// Add moon if creating an OrbitRock (doing it from within OrbitRock itself can be glitchy)
 		if(spawnObj.type == 'OrbitRock'){
-			var orbitMoon = new OrbitRock(game, 'rock');
+			var orbitMoon = new OrbitRock(game, 'orbitRock2');
 			orbitMoon.x = newObj.x;
 			orbitMoon.y = newObj.y + 100;
-			orbitMoon.scale.setTo(1);
+			orbitMoon.body.setSize(20, 20, 22, 22);
+			orbitMoon.scale.setTo(3);
 			orbitMoon.primed = false;
 			orbitMoon.friendly = false;
 			orbitMoon.body.gravity.y = 0;
 			orbitMoon.anchor.set(0.5);
+			// Add orbitRock moon animation
+			orbitMoon.animations.add('default', [0,1,2,3,4,5,6,7,8,9,10,11], 15, true);
+			orbitMoon.animations.play('default');
 			game.add.existing(orbitMoon);
 			obstacles.add(orbitMoon);
 			newObj.moon = orbitMoon;
