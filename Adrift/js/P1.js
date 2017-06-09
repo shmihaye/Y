@@ -32,7 +32,7 @@ var P1 = {
 		BG = game.add.sprite(0, 0, 'room1Background');
 		
 		// Add character sprite
-		game.add.sprite(61, 313, 'patricia1');
+		game.add.sprite(275, 301, 'patricia3');
 		
 		// Create energy bar
 		energyBar = game.add.sprite(65, 580, 'bar');

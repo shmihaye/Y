@@ -6,7 +6,7 @@ var R2 = {
 		// library of all text for a given "chapter"
 		 DiaA = "You missed the Yoga...It's ok, so did everyone else."
 		 DiaB = "Perhaps they are putting in extra time toward their duties!"
-		 DiaC = "I'm begining to think that their tension isn't from their physical stature."
+		 DiaC = "I'm beginning to think that their tension isn't from their physical stature."
 		
 		 DiaA1 = " Also Bridget deleted my classic game emulators..."
 		 DiaA2 = " She claimed the sensors were suboptimal."
