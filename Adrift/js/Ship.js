@@ -320,7 +320,7 @@ Ship.prototype.update = function(){
 		let prevy = this.grabbed.y;
 		this.grabbed.x += (this.claw.x - lastclawx);
 		this.grabbed.y += (this.claw.y - lastclawy);
-		if (this.grabbed.constructor.name === 'ToxicRock') {
+		if (this.grabbed.constructor.name === 'ToxicRock' && demoLevel == 0) {
 			energy--;
 		}
 		this.grabbed.body.velocity.x = 0;

@@ -278,9 +278,9 @@ function grabObject(claw, obstacle){
 		obstacle.body.velocity.x = 0;
 		obstacle.body.velocity.y = 0;
 		grabSound.play('',0,sfxVolume);
-		if(obstacle.constructor === ToxicRock){
+		if(obstacle.constructor === ToxicRock && demoLevel == 0){
 			hurtSound.play('',0,sfxVolume);
-			energy -= 10;
+			energy -= 26;
 		}
 	}
 }
