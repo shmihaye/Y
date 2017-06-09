@@ -5,20 +5,20 @@ var B2 = {
 
 		// library of all text for a given "chapter"
 		 DiaA = "Hey Captain, how goes the bootcamping?"
-		 DiaB = "Listen, I'm going to keep voicing my mind."
-		 DiaC = "I won't take your job, but I'll do it if I must."
+		 DiaB = "I want to be clear, I’m not trying to take your job."
+		 DiaC = "Leading and giving directions is in my very nature."
 		
 		 DiaA1 = " I told you this would be difficult."
-		 DiaA2 = " Craziest route combined with this crew..."
-		 DiaA3 = " I'm doing everything I can but I will need your help eventually."
+		 DiaA2 = " Buggering off into deep space with this crew?"
+		 DiaA3 = " Here’s hoping we don’t croak before they get their shit together."
 		
-		 DiaB1 = " I'm wasting my time and yours if I don't."
-		 DiaB2 = " I owe it to myself."
-		 DiaB3 = " This is what I do."
+		 DiaB1 = " I just… well I have a habit of telling people off."
+		 DiaB2 = " I’m not used to working without people to manage."
+		 DiaB3 = " I feel like my potential is being… not wasted, but diminished."
 		
-		 DiaC1 = " It's not personal, it's my duty,"
-		 DiaC2 = " I'm not getting any younger."
-		 DiaC3 = " And this crew isn't getting any more capable."
+		 DiaC1 = " I'm not getting any younger. That’s clear to me."
+		 DiaC2 = " I don’t want to give up what I believe is my strongest quality."
+		 DiaC3 = " But at the same time, I don’t want to intrude on your authority, captain."
 		
 		choice1 = DiaA
 		choice2 = DiaB
@@ -87,7 +87,7 @@ var B2 = {
 	
 	update: function() {
 		slot2.y = (Acount*42)+12
-		slot3.y = ((Acount+Bcount)*40)+24
+		slot3.y = ((Acount+Bcount)*42)+24
 
 		if (Acount+Bcount+Ccount >= 9){
 			slot1.inputEnabled = false

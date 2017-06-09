@@ -5,8 +5,8 @@ var D1 = {
 		
 		// library of all text for a given "chapter"
 		 DiaA = "Reminds me of the service, being out like this."
-		 DiaB = "These asteroids hit real hard..."
-		 DiaC = "Come and have a drink cap."
+		 DiaB = "Haven’t experienced this crazy of flying since then."
+		 DiaC = "But I have kept up my liquor collection going over the years."
 		
 		 DiaA1 = " Hopefully I won't get as many.. souvenirs from this."
 		 DiaA2 = " Sorry was that too grim for you?"
@@ -16,9 +16,9 @@ var D1 = {
 		 DiaB2 = " I won't be falling on anyone when things get shaky."
 		 DiaB3 = " They even called me 'ol steady' before I had this thing."
 		
-		 DiaC1 = " I have my private stash here."
+		 DiaC1 = " At least I don’t have to hide it from my CO anymore."
 		 DiaC2 = " Better get some before I wisen up and down it all."
-		 DiaC3 = " You should see my collection back home! It's magnificent."
+		 DiaC3 = " Really takes the edge off of dodging meteors and the uneasy quiet"
 		
 		choice1 = DiaA
 		choice2 = DiaB
@@ -84,7 +84,7 @@ var D1 = {
 	
 	update: function() {
 		slot2.y = (Acount*38)+12
-		slot3.y = ((Acount+Bcount)*36)+24
+		slot3.y = ((Acount+Bcount)*42)+24
 
 		if (Acount+Bcount+Ccount >= 9){
 			slot1.inputEnabled = false

@@ -4,21 +4,21 @@ var B3 = {
 	create: function() {
 
 		// library of all text for a given "chapter"
-		 DiaA = "Have I gone too far Captain?"
-		 DiaB = "These people need to be put to work."
+		 DiaA = "It’s not that I don’t respect your authority, Captain…"
+		 DiaB = "These people need a kick in the ass."
 		 DiaC = "I can do my job, don't worry about that."
 		
-		 DiaA1 = " I get up in the morning, scared that I'm not what I used to be."
-		 DiaA2 = " Age is catching me Captain, I've been running for so long."
-		 DiaA3 = " Who am I if I don't lead."
+		 DiaA1 = " it’s that I’m afraid I’m losing who I am."
+		 DiaA2 = " I’m getting old, captain."
+		 DiaA3 = " I’m not ready to face that."
 		
-		 DiaB1 = " They need me! But I can't give that anymore."
-		 DiaB2 = " I'm too slow now, you are what we need."
-		 DiaB3 = " That behavior...That wasn't like me in my prime."
+		 DiaB1 = " But I’m not the one wearing those boots anymore, am I?"
+		 DiaB2 = " As I get older, I’ve gotten slower."
+		 DiaB3 = " And I don’t know how to deal with that."
 		
-		 DiaC1 = " Maybe now I can practice what I preach."
-		 DiaC2 = " I am no longer fit to lead,"
-		 DiaC3 = " Lt. Colonel Bridget Bryce reporting for duty."
+		 DiaC1 = " But I’m afraid of losing what makes me who I am."
+		 DiaC2 = " If I can’t pull my own weight, I’m hardly fit to lead..."
+		 DiaC3 = " as I knew I would be someday."
 		
 		choice1 = DiaA
 		choice2 = DiaB
