@@ -283,8 +283,8 @@ Game.Credits.prototype = {
 		game.add.tileSprite(0, 0, game.width, game.height, 'creditsBackground');
 		
 		// Create credits text
-		var credits = game.add.text(0, 0, 'THE END\nYou have retrieved the beacon. Thanks for playing!\nCredits:\nBrody Richards | Programmer, Writer\nFreeman | Programmer, Level Designer\nGiovanni Benedetti | Composer\nKaylie Cetera | Character & Environment Artist\nRaymond Reedy | Space Artist, Writer\nShayne Hayes | Programmer, Producer', style2);
-		credits.setTextBounds(100, 64, 600, 200);
+		var credits = game.add.text(0, 0, 'THE END\nYou have retrieved the beacon. Thanks for playing!\nCredits:\nBrody Richards | Programmer, Writer\nFreeman | Programmer, Level Designer\nGiovanni Benedetti | Composer, Ray\'s Cool Cousin\nKaylie Cetera | Character & Environment Artist\nRaymond Reedy | Space Artist, Writer\nShayne Hayes | Programmer, Producer', style2);
+		credits.setTextBounds(100, 100, 600, 200);
 		credits.stroke = '#000000';
     	credits.strokeThickness = 6;
 		
@@ -304,7 +304,7 @@ Game.Credits.prototype = {
 	update: function(){
 		// If space is pressed, go to Title
 		if(game.input.keyboard.justPressed(Phaser.Keyboard.SPACEBAR)){
-			music.fadeOut();
+			music.stop();
 			this.camera.fade('#ffffff');
 			this.camera.onFadeComplete.add(restartGame,this);
 		}
@@ -342,22 +342,27 @@ game.state.start('Boot');
 
 // Go to intro when fade is complete
 function startGame(){
+	this.camera.onFadeComplete.removeAll(this);
 	this.state.start('Intro');
 }
 
 // Go to title when fade is complete and reset important variables
 function restartGame(){
-	this.state.start('Title');
 	convoIndex1 = 0;
 	convoIndex2 = 0;
 	convoIndex3 = 0;
 	convoIndex4 = 0;
+	cutsceneStatus = 0;
 	energy = 100;
+	lastConvo = 0;
 	levelNum = 0;
 	hallStart = 600;
 	music.stop();
+	this.camera.onFadeComplete.removeAll(this);
+	this.state.start('Title');
 }
 
+// Change volume when speaker button is clicked
 function changeVolume(){
 	if(sfxVolume == 0.05){
 		sfxVolume = 0.025;
