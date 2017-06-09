@@ -4,21 +4,21 @@ var B4 = {
 	create: function() {
 
 		// library of all text for a given "chapter"
-		 DiaA = "Evening Captain!"
+		 DiaA = "Evening Captain."
 		 DiaB = "I got the shields running at damn near max!"
 		 DiaC = "And I'm doing my best to make amends with the crew."
 		
 		 DiaA1 = " I had a lot on my mind, and I’m really glad you sat through and listened to me."
 		 DiaA2 = " I’m getting up there in years and that scares me."
-		 DiaA3 = " But that shouldn't stop me, I can't afford to be scared."
+		 DiaA3 = " But I’m not afraid to follow your lead, captain. I’m proud to have you as my superior."
 		
-		 DiaB1 = " Thankfully that didn't require me running around all crazy like Patty."
-		 DiaB2 = " Or tearing my hair out like Delson."
-		 DiaB3 = " I'm sure they are doing all they can, bless them."
+		 DiaB1 = " Thankfully that didn't require me to sing to the equipment like Patty."
+		 DiaB2 = " Or drink my weight in whiskey Delson."
+		 DiaB3 = " Who am I to judge? I’m a stubborn old bird who can’t keep her mouth shut"
 		
-		 DiaC1 = " I've been playing on the N64 with D4V3."
-		 DiaC2 = " You'd think a robot would be good at it."
-		 DiaC3 = " You'd be wrong."
+		 DiaC1 = " Apparently calling D4V3 a ‘frakkin’ toaster’ is “insensitive.”"
+		 DiaC2 = " Turns out his uncle was literally a toaster."
+		 DiaC3 = " It’s a wonder his cooking is such rubbish."
 		
 		choice1 = DiaA
 		choice2 = DiaB

@@ -12,8 +12,8 @@ var B1 = {
 		 DiaA2 = " In fact, I used to be the damn captain of my very own crew aboard the Jackal Six."
 		 DiaA3 = " Under my supervision, our crew of twelve ran at peak efficiency."
 		
-		 DiaB1 = " Leading people like this, these kinda sheepish folk."
-		 DiaB2 = " That hide in their room when they get scared."
+		 DiaB1 = " Leading people and taking charge is in my blood."
+		 DiaB2 = " You’ll find that I rarely back down, captain."
 		 DiaB3 = " It's no easy feat, but I know a thing or two about being the boss."
 		
 		 DiaC1 = " It eats at me to see it go to waste."
