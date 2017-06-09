@@ -87,17 +87,8 @@ var playState = {
 		
 		// Play music
 		if(!music.isPlaying){
-			if(demoNum == 0){
-				music = game.add.audio('playMusic');
-				music.play('', 0, sfxVolume*((levelNum+1)/2), true);
-			}
-			else{
-				if(levelNum == 0) music = game.add.audio('hallwayMusic1');
-				else music = game.add.audio('hallwayMusic' + levelNum.toString());
-				music.addMarker('time', marker, 100000);
-				music.play('time', 0, 0, true);
-				music.fadeTo(200,sfxVolume*5);
-			}
+			music = game.add.audio('playMusic');
+			music.play('', 0, sfxVolume*((levelNum+1)/2), true);
 		}
 		
 		// Add wasd sprite if levelNum is 0
@@ -187,8 +178,7 @@ var playState = {
 				}
 				else if(spawnObj.type == 'END'){
 					// Go to hallway state at the end of the level
-					if(demoNum == 0){levelNum++;}
-					music.fadeTo(200,0);
+					if(demoNum == 0){levelNum++; music.fadeTo(200,0);}
 					this.camera.fade('#ffffff');
 					this.camera.onFadeComplete.add(fadeComplete,this);
 				}
@@ -401,7 +391,6 @@ function createObj(spawnObj){
 // Go to hallway once fade is complete
 function fadeComplete(){
 	this.camera.onFadeComplete.removeAll(this);
-	if(demoNum > 0){marker = (music.currentTime/1000);}
 	if(demoNum > 0 && !demoComplete) this.state.start('Play');
 	else{
 		demoNum = 0;

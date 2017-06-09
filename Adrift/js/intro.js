@@ -274,5 +274,6 @@ function mantaNavigate(){
 // Go to play state when fade is complete
 function playGame(){
 	music.stop();
+	this.camera.onFadeComplete.removeAll(this);
 	this.state.start('Play'); 
 }
