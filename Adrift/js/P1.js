@@ -13,10 +13,10 @@ var P1 = {
 		 DiaA3 = " Whoever wrote this is either an idiot or a genius, I can't tell."
 		
 		 DiaB1 = " All the ships I've worked on were in-atmosphere back at the depot."
-		 DiaB2 = " I used to cherish the moments of silence in between the roaring of engines."
+		 DiaB2 = " And I used to cherish the moments of silence in between the roaring of engines."
 		 DiaB3 = " But out here, there’s just somethin’ unsettling about all this quiet."
 		
-		 DiaC1 = " I would’ve adjusted if we didn't have to go chasing into uncharted space..."
+		 DiaC1 = " I would’ve adjusted if we didn't have to go chasing some beacon into uncharted space..."
 		 DiaC2 = " it just had to be us, y’know?"
 		 DiaC3 = " Listen to me blab. I don't mean to keep ya if y’ need to be somewhere."
 		

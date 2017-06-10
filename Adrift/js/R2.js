@@ -4,17 +4,17 @@ var R2 = {
 	create: function() {
 
 		// library of all text for a given "chapter"
-		 DiaA = "You missed the Yoga...It's ok, so did everyone else."
+		 DiaA = "You missed the yoga again...It's ok, so did everyone else."
 		 DiaB = "Perhaps they are putting in extra time toward their duties!"
 		 DiaC = "I'm beginning to think that their tension isn't from their physical stature."
 		
 		 DiaA1 = " Also Bridget deleted my classic game emulators..."
 		 DiaA2 = " She claimed the sensors were suboptimal."
-		 DiaA3 = " They were, but still! I wrote them myself."
+		 DiaA3 = " They were, but still! I wrote those emulators myself."
 		
-		 DiaB1 = " I'm sure they are handling themselves nicely."
-		 DiaB2 = " This new mission is so exciting!"
-		 DiaB3 = " Back when these routes were made there was a 50% mortality rate!"
+		 DiaB1 = " We know the ship could always be running better."
+		 DiaB2 = " Especially considering how imperative this mission this is."
+		 DiaB3 = " Did you know, when these routes were made there was a 50% mortality rate?"
 		
 		 DiaC1 = " But they still operate in their usual parameters."
 		 DiaC2 = " They would report if there were issues."
@@ -87,7 +87,7 @@ var R2 = {
 	
 	update: function() {
 		slot2.y = (Acount*42)+12
-		slot3.y = ((Acount+Bcount)*42)+24
+		slot3.y = ((Acount+Bcount)*53)+36
 
 		if (Acount+Bcount+Ccount >= 9){
 			slot1.inputEnabled = false

@@ -4,12 +4,12 @@ var P3 = {
 	create: function() {
 
 		// library of all text for a given "chapter"
-		 DiaA = "I miss the sun, boss. I miss lyin’ on my back in the cornfields back home, just takin’ in th’ warmth."
+		 DiaA = "I miss the sun, Captain. I miss lyin’ on my back in the cornfields back home, just takin’ in the warmth."
 		 DiaB = "I never went t’ college...I went out partyin’ an’ drinkin’."
 		 DiaC = "Durin’ the years after, I landed a job at the Missouri port, I was still afraid."
 		
 		 DiaA1 = " The stars just remind me of what I’m missing: home. But I can’t go back."
-		 DiaA2 = " But I can’t go back. I need to prove that I can handle livin’ on my own."
+		 DiaA2 = " I need to prove that I can handle livin’ on my own."
 		 DiaA3 = " I need to prove that I can...that I can handle it this time."
 		
 		 DiaB1 = " Soon I found myself out of friends and out of money."

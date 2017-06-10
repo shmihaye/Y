@@ -10,11 +10,11 @@ var R1 = {
 		
 		 DiaA1 = " Not much to do when we aren't dodging huge rocks."
 		 DiaA2 = " Speaking of, you are getting pretty good."
-		 DiaA3 = " Just don't sneeze while we are going, we might go boom."
+		 DiaA3 = " Just don't sneeze while piloting, or we might all die."
 		
 		 DiaB1 = " I send them my bi-daily progress reports,"
 		 DiaB2 = " and I always sign off with an invitation for yoga."
-		 DiaB3 = " I mean look! I'm so good at it!"
+		 DiaB3 = " I’m quite good at it, as you can tell!"
 		
 		 DiaC1 = " Delson and Patricia haven't said a word since we went off course!"
 		 DiaC2 = " I don't know what kind of game they are playing."
@@ -86,7 +86,7 @@ var R1 = {
 	
 	update: function() {
 		slot2.y = (Acount*44)+12
-		slot3.y = ((Acount+Bcount)*42)+24
+		slot3.y = ((Acount+Bcount)*44)+24
 
 		if (Acount+Bcount+Ccount >= 9){
 			slot1.inputEnabled = false

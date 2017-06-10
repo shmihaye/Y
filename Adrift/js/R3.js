@@ -9,15 +9,15 @@ var R3 = {
 		 DiaC = "I just don't understand."
 		
 		 DiaA1 = " There's no logic to their behavior."
-		 DiaA2 = " They are living in suboptimal conditions."
+		 DiaA2 = " They are living with conflicting emotions and counter-productive mindsets."
 		 DiaA3 = " Why choose to proceed like that?"
 		
 		 DiaB1 = " If I had a broken subroutine, I would get it fixed."
-		 DiaB2 = " Errors in programming too, are snuffed out."
-		 DiaB3 = " What can I do if I don't know what's going on?"
+		 DiaB2 = " Errors in programming are snuffed out, eventually."
+		 DiaB3 = " I don’t understand how they can let these knowingly hinder them."
 		
 		 DiaC1 = " If something is wrong why not come and fix it?"
-		 DiaC2 = " I have Eliza protocol, I'm capable!"
+		 DiaC2 = " I may not have a heart, but ‘sympathy’ is among my primary functions."
 		 DiaC3 = " But I cannot help if they do not come to me."
 		
 		choice1 = DiaA
@@ -86,7 +86,7 @@ var R3 = {
 	},
 	
 	update: function() {
-		slot2.y = (Acount*36)+18
+		slot2.y = (Acount*38)+18
 		slot3.y = ((Acount+Bcount)*38)+48 
 
 		if (Acount+Bcount+Ccount >= 9){
