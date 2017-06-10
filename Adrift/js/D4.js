@@ -8,7 +8,7 @@ var D4 = {
 		 DiaB = "You know, this leg is damn great, compared to my head. Needs less repairs."
 		 DiaC = "You aren't like my old unit...you don't turn a blind eye on me."
 		
-		 DiaA1 = " It...you...I...I’m sorry. I’m not used to anyone coming back for me."
+		 DiaA1 = " It...you...I’m sorry. I’m not used to anyone coming back for me."
 		 DiaA2 = " I've never had someone around during that before."
 		 DiaA3 = " Been alone for so long, having you there's a life-saver."
 		

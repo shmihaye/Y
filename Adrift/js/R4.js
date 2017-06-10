@@ -86,7 +86,7 @@ var R4 = {
 	},
 	
 	update: function() {
-		slot2.y = (Acount*42)+12
+		slot2.y = (Acount*44)+12
 		slot3.y = ((Acount+Bcount)*39)+30
 
 		if (Acount+Bcount+Ccount >= 9){
