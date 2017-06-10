@@ -125,9 +125,9 @@ var hallwayState = {
 		volumeSprite.animations.add('mid', [1], 10, true);
 		volumeSprite.animations.add('min', [2], 10, true);
 		volumeSprite.animations.add('mute', [3], 10, true);
-		if(sfxVolume == 0.05) volumeSprite.animations.play('max');
-		else if(sfxVolume == 0.025) volumeSprite.animations.play('mid');
-		else if(sfxVolume == 0.01) volumeSprite.animations.play('min');
+		if(sfxVolume == 0.1) volumeSprite.animations.play('max');
+		else if(sfxVolume == 0.05) volumeSprite.animations.play('mid');
+		else if(sfxVolume == 0.025) volumeSprite.animations.play('min');
 		else volumeSprite.animations.play('mute');
 		volumeSprite.inputEnabled = true;
 		volumeSprite.fixedToCamera = true;

@@ -247,9 +247,9 @@ Game.Title.prototype = {
 		volumeSprite.animations.add('mid', [1], 10, true);
 		volumeSprite.animations.add('min', [2], 10, true);
 		volumeSprite.animations.add('mute', [3], 10, true);
-		if(sfxVolume == 0.05) volumeSprite.animations.play('max');
-		else if(sfxVolume == 0.025) volumeSprite.animations.play('mid');
-		else if(sfxVolume == 0.01) volumeSprite.animations.play('min');
+		if(sfxVolume == 0.1) volumeSprite.animations.play('max');
+		else if(sfxVolume == 0.05) volumeSprite.animations.play('mid');
+		else if(sfxVolume == 0.025) volumeSprite.animations.play('min');
 		else volumeSprite.animations.play('mute');
 		volumeSprite.inputEnabled = true;
 		volumeSprite.events.onInputDown.add(changeVolume, this);
@@ -382,5 +382,5 @@ function changeVolume(){
 		volumeSprite.animations.play('max');
 	}
 	selectedSound.play('',0,sfxVolume);
-	music.volume = sfxVolume * 3;
+	music.volume = sfxVolume * 2;
 }
