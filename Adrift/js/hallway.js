@@ -116,9 +116,9 @@ var hallwayState = {
 		volumeSprite.animations.add('mid', [1], 10, true);
 		volumeSprite.animations.add('min', [2], 10, true);
 		volumeSprite.animations.add('mute', [3], 10, true);
-		if(sfxVolume == 0.4) volumeSprite.animations.play('max');
-		else if(sfxVolume == 0.1) volumeSprite.animations.play('mid');
-		else if(sfxVolume == 0.025) volumeSprite.animations.play('min');
+		if(sfxVolume == 1) volumeSprite.animations.play('max');
+		else if(sfxVolume == 0.3) volumeSprite.animations.play('mid');
+		else if(sfxVolume == 0.1) volumeSprite.animations.play('min');
 		else volumeSprite.animations.play('mute');
 		volumeSprite.inputEnabled = true;
 		volumeSprite.fixedToCamera = true;
@@ -194,9 +194,9 @@ var hallwayState = {
 		if(!music.isPlaying){
 			if(levelNum == 0) music = game.add.audio('hallwayMusic1');
 			else music = game.add.audio('hallwayMusic' + levelNum.toString());
-			music.addMarker('time', marker, 206 - marker, sfxVolume*2, true);
+			music.addMarker('time', marker, 206 - marker, sfxVolume, true);
 			music.play('time', 0, 0, false);
-			music.fadeTo(200,sfxVolume*2);
+			music.fadeTo(200,sfxVolume);
 		}
 		else if((music.currentTime/1000) + marker > 205) marker = 0;
 	},

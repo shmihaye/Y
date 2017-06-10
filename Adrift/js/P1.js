@@ -4,7 +4,7 @@ var P1 = {
 	create: function() {
 		
 		// library of all text for a given "chapter"
-		 DiaA = "Yes, I know the primary engine has been making a rattling noise."
+		 DiaA = "Yes Captain, I know the primary engine has been making a rattling noise."
 		 DiaB = "Oh. I...I didn't mean to snap, its just that..."
 		 DiaC = "I’m still adjusting but I think I can manage."
 		

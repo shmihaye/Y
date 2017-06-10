@@ -86,9 +86,11 @@ var playState = {
 		}
 		
 		// Play music
-		if(!music.isPlaying && demoNum == 0){
-			music = game.add.audio('playMusic');
-			music.play('', 0, sfxVolume*((levelNum+1)/3), true);
+		if(!music.isPlaying && demoNum == 0 && sfxVolume != 0){
+			if(levelNum < 2) music = game.add.audio('playMusic1');
+			else if(levelNum < 4) music = game.add.audio('playMusic2');
+			else music = game.add.audio('playMusic3');
+			music.play('', 0, sfxVolume, false);
 		}
 		
 		// Add wasd sprite if levelNum is 0
@@ -189,8 +191,8 @@ var playState = {
 					// Fade in week number at end of level (except for demo levels and last level)
 					if(demoNum == 0 && levelNum != 5){
 						var endText;
-						if(levelNum == 4) endText = game.add.text(0, 0, 'Week ' + (2+levelNum) + '\n1 week away from the beacon', style1);
-						else endText = game.add.text(0, 0, 'Week ' + (2+levelNum) + '\n' + (5-levelNum).toString() + ' weeks away from the beacon', style1);
+						if(levelNum == 4) endText = game.add.text(0, 0, 'Week ' + (1+levelNum) + '\n1 week away from the beacon', style1);
+						else endText = game.add.text(0, 0, 'Week ' + (1+levelNum) + '\n' + (5-levelNum).toString() + ' weeks away from the beacon', style1);
 						endText.setTextBounds(0, 150, 800, 250);
 						endText.alpha = 0;
 						game.add.tween(endText).to( { alpha: 1 }, 200, "Linear", true, 200);

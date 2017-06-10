@@ -29,7 +29,7 @@ var bridhoverclr =  "#706b7f"
 var d4restclr = "#2E86C1"
 var d4hoverclr = "#5DADE2"
 // Sound effect volume
-var sfxVolume = 0.4, volumeSprite;
+var sfxVolume = 1, volumeSprite;
 // The current music track
 var music, marker = 0;
 // Sound effect variables
@@ -157,7 +157,9 @@ Game.Load.prototype = {
 		
 		// Load game sounds and music
 		this.load.path = 'assets/audio/';
-		game.load.audio('playMusic', ['play.mp3','play.ogg']);
+		game.load.audio('playMusic1', ['play1.mp3','play1.ogg']);
+		game.load.audio('playMusic2', ['play2.mp3','play2.ogg']);
+		game.load.audio('playMusic3', ['play3.mp3','play3.ogg']);
 		game.load.audio('hallwayMusic1', ['hallway1.mp3','hallway1.ogg']);
 		game.load.audio('hallwayMusic2', ['hallway2.mp3','hallway2.ogg']);
 		game.load.audio('hallwayMusic3', ['hallway3.mp3','hallway3.ogg']);
@@ -210,7 +212,8 @@ Game.Load.prototype = {
 	},
 	update: function() {
 		// Wait for music mp3s to properly decode
-		if(this.cache.isSoundDecoded('playMusic') && this.cache.isSoundDecoded('hallwayMusic1')
+		if(this.cache.isSoundDecoded('playMusic1') && this.cache.isSoundDecoded('playMusic2')
+			&& this.cache.isSoundDecoded('playMusic3') && this.cache.isSoundDecoded('hallwayMusic1')
 			&& this.cache.isSoundDecoded('hallwayMusic2') && this.cache.isSoundDecoded('hallwayMusic3')
 			&& this.cache.isSoundDecoded('hallwayMusic4') && this.cache.isSoundDecoded('hallwayMusic5')){
 			// When the music is ready, advance to title screen!
@@ -241,16 +244,16 @@ Game.Title.prototype = {
 		volumeSprite.animations.add('mid', [1], 10, true);
 		volumeSprite.animations.add('min', [2], 10, true);
 		volumeSprite.animations.add('mute', [3], 10, true);
-		if(sfxVolume == 0.4) volumeSprite.animations.play('max');
-		else if(sfxVolume == 0.1) volumeSprite.animations.play('mid');
-		else if(sfxVolume == 0.025) volumeSprite.animations.play('min');
+		if(sfxVolume == 1) volumeSprite.animations.play('max');
+		else if(sfxVolume == 0.3) volumeSprite.animations.play('mid');
+		else if(sfxVolume == 0.1) volumeSprite.animations.play('min');
 		else volumeSprite.animations.play('mute');
 		volumeSprite.inputEnabled = true;
 		volumeSprite.events.onInputDown.add(changeVolume, this);
 		
 		// Play music
 		music = this.add.audio('hallwayMusic1');
-		music.play('', 0, sfxVolume * 2, true);
+		music.play('', 0, sfxVolume, true);
 		
 		// Fade in from black
 		this.camera.flash('#ffffff');
@@ -290,7 +293,7 @@ Game.Credits.prototype = {
 		
 		// Play music
 		music = this.add.audio('hallwayMusic5');
-		music.play('', 0, sfxVolume * 3, true);
+		music.play('', 0, sfxVolume, true);
 		
 		// Fade in from black
 		this.camera.flash('#ffffff');
@@ -359,22 +362,22 @@ function restartGame(){
 
 // Change volume when speaker button is clicked
 function changeVolume(){
-	if(sfxVolume == 0.4){
-		sfxVolume = 0.1;
+	if(sfxVolume == 1){
+		sfxVolume = 0.3;
 		volumeSprite.animations.play('mid');
 	}
-	else if(sfxVolume == 0.1){
-		sfxVolume = 0.025;
+	else if(sfxVolume == 0.3){
+		sfxVolume = 0.1;
 		volumeSprite.animations.play('min');
 	}
-	else if(sfxVolume == 0.025){
+	else if(sfxVolume == 0.1){
 		sfxVolume = 0;
 		volumeSprite.animations.play('mute');
 	}
 	else if(sfxVolume == 0){
-		sfxVolume = 0.4;
+		sfxVolume = 1;
 		volumeSprite.animations.play('max');
 	}
 	selectedSound.play('',0,sfxVolume);
-	music.volume = sfxVolume * 2;
+	music.volume = sfxVolume;
 }
