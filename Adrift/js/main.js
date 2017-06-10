@@ -226,12 +226,6 @@ Game.Title.prototype = {
 		// Add background
 		this.background = game.add.tileSprite(0, 0, game.width, game.height, 'spaceBackground');
 		
-		// Add title credits text
-		var creditsText = game.add.text(0, 0, 'by Brody Richards, Freeman, Giovanni Benedetti, Kaylie Cetera, Raymond Reedy, and Shayne Hayes', style2);
-		creditsText.setTextBounds(150, 170, 500, 100);
-		creditsText.stroke = '#000000';
-    	creditsText.strokeThickness = 6;
-		
 		// Add title text
 		var startText = game.add.text(0, 0, 'Press SPACE to begin', style2);
 		startText.setTextBounds(0, 500, 800, 100);

@@ -110,15 +110,6 @@ var hallwayState = {
 		game.camera.x = hallStart;
 		this.camera.flash('#ffffff');
 		
-		// Play music
-		if(!music.isPlaying){
-			if(levelNum == 0) music = game.add.audio('hallwayMusic1');
-			else music = game.add.audio('hallwayMusic' + levelNum.toString());
-			music.addMarker('time', marker, 100000);
-			music.play('time', 0, 0, true);
-			music.fadeTo(200,sfxVolume*2);
-		}
-		
 		// Add volume sprite in upper right corner
 		volumeSprite = game.add.sprite(726, 10, 'volume');
 		volumeSprite.animations.add('max', [0], 10, true);
@@ -198,6 +189,16 @@ var hallwayState = {
 		else if(!pilotButton.input.pointerOver()) game.add.tween(pilotButton).to( { alpha: 0.2 }, 30, "Linear", true);
 		if(volumeSprite.input.pointerOver() && volumeSprite.alpha == 0.6){pilotSound.play('',0,sfxVolume); game.add.tween(volumeSprite).to( { alpha: 1 }, 30, "Linear", true);}
 		else if(!volumeSprite.input.pointerOver()) game.add.tween(volumeSprite).to( { alpha: 0.6 }, 30, "Linear", true);
+		
+		// Play music
+		if(!music.isPlaying){
+			if(levelNum == 0) music = game.add.audio('hallwayMusic1');
+			else music = game.add.audio('hallwayMusic' + levelNum.toString());
+			music.addMarker('time', marker, music.duration - marker);
+			marker = 0;
+			music.play('time', 0, 0, false);
+			music.fadeTo(200,sfxVolume*2);
+		}
 	},
 	
 	door1Opened: function() {
