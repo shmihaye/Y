@@ -29,7 +29,7 @@ var bridhoverclr =  "#706b7f"
 var d4restclr = "#2E86C1"
 var d4hoverclr = "#5DADE2"
 // Sound effect volume
-var sfxVolume = 0.05, volumeSprite;
+var sfxVolume = 0.1, volumeSprite;
 // The current music track
 var music, marker = 0;
 // Sound effect variables
@@ -365,22 +365,22 @@ function restartGame(){
 
 // Change volume when speaker button is clicked
 function changeVolume(){
-	if(sfxVolume == 0.05){
-		sfxVolume = 0.025;
+	if(sfxVolume == 0.1){
+		sfxVolume = 0.05;
 		volumeSprite.animations.play('mid');
 	}
-	else if(sfxVolume == 0.025){
-		sfxVolume = 0.01;
+	else if(sfxVolume == 0.05){
+		sfxVolume = 0.025;
 		volumeSprite.animations.play('min');
 	}
-	else if(sfxVolume == 0.01){
+	else if(sfxVolume == 0.025){
 		sfxVolume = 0;
 		volumeSprite.animations.play('mute');
 	}
 	else if(sfxVolume == 0){
-		sfxVolume = 0.05;
+		sfxVolume = 0.1;
 		volumeSprite.animations.play('max');
 	}
 	selectedSound.play('',0,sfxVolume);
-	music.volume = sfxVolume * 5;
+	music.volume = sfxVolume * 3;
 }

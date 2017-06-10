@@ -116,7 +116,7 @@ var hallwayState = {
 			else music = game.add.audio('hallwayMusic' + levelNum.toString());
 			music.addMarker('time', marker, 100000);
 			music.play('time', 0, 0, true);
-			music.fadeTo(200,sfxVolume*5);
+			music.fadeTo(200,sfxVolume*2.5);
 		}
 		
 		// Add volume sprite in upper right corner
