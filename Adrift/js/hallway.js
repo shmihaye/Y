@@ -194,11 +194,11 @@ var hallwayState = {
 		if(!music.isPlaying){
 			if(levelNum == 0) music = game.add.audio('hallwayMusic1');
 			else music = game.add.audio('hallwayMusic' + levelNum.toString());
-			music.addMarker('time', marker, music.duration - marker);
-			marker = 0;
+			music.addMarker('time', marker, 206 - marker, sfxVolume*2, true);
 			music.play('time', 0, 0, false);
 			music.fadeTo(200,sfxVolume*2);
 		}
+		else if((music.currentTime/1000) + marker > 205) marker = 0;
 	},
 	
 	door1Opened: function() {
@@ -243,7 +243,7 @@ var hallwayState = {
 	
 	pilotShip: function() {
 		selectedSound.play('',0,sfxVolume);
-		marker = music.currentTime/1000;
+		marker = marker + (music.currentTime/1000);
 		music.stop();
 		lastConvo = 0;
 		hallStart = 600;

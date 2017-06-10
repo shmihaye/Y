@@ -86,7 +86,7 @@ var playState = {
 		}
 		
 		// Play music
-		if(!music.isPlaying){
+		if(!music.isPlaying && demoNum == 0){
 			music = game.add.audio('playMusic');
 			music.play('', 0, sfxVolume*((levelNum+1)/3), true);
 		}
@@ -403,7 +403,6 @@ function fadeComplete(){
 }
 // Go to ending once fade is complete
 function endGame(){
-	music.stop();
 	this.camera.onFadeComplete.removeAll(this);
 	this.state.start('Credits'); 
 }
