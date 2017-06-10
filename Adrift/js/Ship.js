@@ -47,7 +47,7 @@ function Ship(game, image){
 		this.shield.anchor.set(0.5);
 		this.shield.scale.set(0.5);
 		this.shield.active = false;
-		this.shield.alpha = 0.1;
+		this.shield.alpha = 0.4;
 		this.shield.timer = 0;
 		this.shieldTimer = 60 * convoIndex2/2;
 		this.shieldSize = 3 + (0.5 * convoIndex2); // The size & duration of the shield: min = 3.5, max = 5
@@ -187,7 +187,7 @@ Ship.prototype.update = function(){
 			if(this.shield.timer > 0) this.shield.timer--;
 			else{
 				this.shield.active = false;
-				this.shield.alpha = 0.1;
+				this.shield.alpha = 0.4;
 			}
 		}
 	}

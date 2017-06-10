@@ -204,6 +204,7 @@ var playState = {
 		
 		// If the player runs out of energy, exit to hallway (except during demo levels)
 		if(energy <= 0){
+			if(demoNum == 0){music.fadeTo(200,0);}
 			this.camera.fade('#ffffff');
 			this.camera.onFadeComplete.add(fadeComplete,this);
 		}
