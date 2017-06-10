@@ -256,7 +256,7 @@ Game.Title.prototype = {
 		
 		// Play music
 		music = this.add.audio('hallwayMusic1');
-		music.play('', 0, sfxVolume * 5, true);
+		music.play('', 0, sfxVolume * 2, true);
 		
 		// Fade in from black
 		this.camera.flash('#ffffff');
@@ -296,7 +296,7 @@ Game.Credits.prototype = {
 		
 		// Play music
 		music = this.add.audio('hallwayMusic5');
-		music.play('', 0, sfxVolume * 5, true);
+		music.play('', 0, sfxVolume * 3, true);
 		
 		// Fade in from black
 		this.camera.flash('#ffffff');
@@ -304,7 +304,7 @@ Game.Credits.prototype = {
 	update: function(){
 		// If space is pressed, go to Title
 		if(game.input.keyboard.justPressed(Phaser.Keyboard.SPACEBAR)){
-			music.stop();
+			music.fadeTo(200,0);
 			this.camera.fade('#ffffff');
 			this.camera.onFadeComplete.add(restartGame,this);
 		}

@@ -158,6 +158,7 @@ var playState = {
 				
 				if(spawnObj.type == 'FORCEFIN'){
 					// Force transition to ending if the player has waited too long
+					music.fadeTo(200,0);
 					this.camera.fade('#ffffff', 8000);
 					this.camera.onFadeComplete.add(endGame,this);
 				}
@@ -266,6 +267,7 @@ function grabBeacon(claw, beacon){
 	if(game.input.activePointer.leftButton.justPressed()){
 		player.grabbed = beacon;
 		player.grabbedBeacon = true;
+		music.fadeTo(200,0);
 		this.camera.fade('#ffffff', 8000);
 		this.camera.onFadeComplete.add(endGame,this);
 	}
