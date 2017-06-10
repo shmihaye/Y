@@ -13,8 +13,8 @@ var B4 = {
 		 DiaA3 = " But I’m not afraid to follow your lead, captain. I’m proud to have you as my superior."
 		
 		 DiaB1 = " Thankfully that didn't require me to sing to the equipment like Patty."
-		 DiaB2 = " Or drink my weight in whiskey Delson."
-		 DiaB3 = " Who am I to judge? I’m a stubborn old bird who can’t keep her mouth shut"
+		 DiaB2 = " Or drink my weight in whiskey like Delson."
+		 DiaB3 = " Who am I to judge? I’m a stubborn old bird who can’t keep her mouth shut."
 		
 		 DiaC1 = " Apparently calling D4V3 a ‘frakkin’ toaster’ is “insensitive.”"
 		 DiaC2 = " Turns out his uncle was literally a toaster."

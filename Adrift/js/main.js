@@ -354,6 +354,7 @@ function restartGame(){
 	convoIndex4 = 0;
 	cutsceneStatus = 0;
 	energy = 100;
+	energyRegen = 0.05;
 	lastConvo = 0;
 	levelNum = 0;
 	hallStart = 600;

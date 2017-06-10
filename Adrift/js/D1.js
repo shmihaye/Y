@@ -6,11 +6,11 @@ var D1 = {
 		// library of all text for a given "chapter"
 		 DiaA = "Reminds me of the service, being out like this."
 		 DiaB = "Haven’t experienced this crazy of flying since then."
-		 DiaC = "But I have kept up my liquor collection going over the years."
+		 DiaC = "But I have kept my liquor collection going over the years."
 		
-		 DiaA1 = " Hopefully I won't get as many.. souvenirs from this."
+		 DiaA1 = " Hopefully I won't get as many...souvenirs from this."
 		 DiaA2 = " Sorry was that too grim for you?"
-		 DiaA3 = " My comedy is a bit uuhh.. out of practice I guess."
+		 DiaA3 = " My comedy is a bit uuhh...out of practice I guess."
 		
 		 DiaB1 = " At least my leg has auto stabilizers."
 		 DiaB2 = " I won't be falling on anyone when things get shaky."
@@ -18,7 +18,7 @@ var D1 = {
 		
 		 DiaC1 = " At least I don’t have to hide it from my CO anymore."
 		 DiaC2 = " Better get some before I wisen up and down it all."
-		 DiaC3 = " Really takes the edge off of dodging meteors and the uneasy quiet"
+		 DiaC3 = " Really takes the edge off of dodging meteors and the uneasy quiet."
 		
 		choice1 = DiaA
 		choice2 = DiaB

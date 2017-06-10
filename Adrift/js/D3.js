@@ -10,15 +10,15 @@ var D3 = {
 		
 		 DiaA1 = " Not left on the battlefield, worse than that."
 		 DiaA2 = " I was stuck crippled in the hospital, they never came looking for me."
-		 DiaA3 = " But how can I blame them, look at me I’m a mess."
+		 DiaA3 = " But how can I blame them. Look at me, I’m a mess."
 		
 		 DiaB1 = " 3 months alone in the hospital taught me,"
 		 DiaB2 = " another 10 years without a word from them taught me."
 		 DiaB3 = " People like me get left behind, no one comes looking."
 		
 		 DiaC1 = " My unit didn't want to remember me."
-		 DiaC2 = " I am just a bad memory, I'm not worth it"
-		 DiaC3 = " and this ship could be one too..."
+		 DiaC2 = " I am just a bad memory, I'm not worth it."
+		 DiaC3 = " And this ship could be one too..."
 		
 		choice1 = DiaA
 		choice2 = DiaB

@@ -14,7 +14,7 @@ var B2 = {
 		
 		 DiaB1 = " I just… well I have a habit of telling people off."
 		 DiaB2 = " I’m not used to working without people to manage."
-		 DiaB3 = " I feel like my potential is being… not wasted, but diminished."
+		 DiaB3 = " I feel like my potential is being...not wasted, but diminished."
 		
 		 DiaC1 = " I'm not getting any younger. That’s clear to me."
 		 DiaC2 = " I don’t want to give up what I believe is my strongest quality."

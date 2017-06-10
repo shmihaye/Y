@@ -4,7 +4,7 @@ var B3 = {
 	create: function() {
 
 		// library of all text for a given "chapter"
-		 DiaA = "It’s not that I don’t respect your authority, Captain…"
+		 DiaA = "It’s not that I don’t respect your authority, Captain..."
 		 DiaB = "These people need a kick in the ass."
 		 DiaC = "I can do my job, don't worry about that."
 		

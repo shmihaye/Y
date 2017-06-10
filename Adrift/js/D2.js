@@ -14,7 +14,7 @@ var D2 = {
 		
 		 DiaB1 = " People forget the painful memories."
 		 DiaB2 = " What’s the point of holding onto something that hurts?"
-		 DiaB3 = " And that's fine... when you aren't that memory."
+		 DiaB3 = " And that's fine...when you aren't that memory."
 		
 		 DiaC1 = " Not like we have much of a choice."
 		 DiaC2 = " So many people need help, I can't put me before them."
@@ -84,7 +84,7 @@ var D2 = {
 	},
 	
 	update: function() {
-		slot2.y = (Acount*38)+12
+		slot2.y = (Acount*42)+12
 		slot3.y = ((Acount+Bcount)*40)+24
 
 		if (Acount+Bcount+Ccount >= 9){
