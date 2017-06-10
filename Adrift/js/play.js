@@ -88,7 +88,7 @@ var playState = {
 		// Play music
 		if(!music.isPlaying){
 			music = game.add.audio('playMusic');
-			music.play('', 0, sfxVolume*((levelNum+1)/2.5), true);
+			music.play('', 0, sfxVolume*((levelNum+1)/2), true);
 		}
 		
 		// Add wasd sprite if levelNum is 0
