@@ -29,7 +29,7 @@ var bridhoverclr =  "#706b7f"
 var d4restclr = "#2E86C1"
 var d4hoverclr = "#5DADE2"
 // Sound effect volume
-var sfxVolume = 0.1, volumeSprite;
+var sfxVolume = 0.4, volumeSprite;
 // The current music track
 var music, marker = 0;
 // Sound effect variables
@@ -241,8 +241,8 @@ Game.Title.prototype = {
 		volumeSprite.animations.add('mid', [1], 10, true);
 		volumeSprite.animations.add('min', [2], 10, true);
 		volumeSprite.animations.add('mute', [3], 10, true);
-		if(sfxVolume == 0.1) volumeSprite.animations.play('max');
-		else if(sfxVolume == 0.05) volumeSprite.animations.play('mid');
+		if(sfxVolume == 0.4) volumeSprite.animations.play('max');
+		else if(sfxVolume == 0.1) volumeSprite.animations.play('mid');
 		else if(sfxVolume == 0.025) volumeSprite.animations.play('min');
 		else volumeSprite.animations.play('mute');
 		volumeSprite.inputEnabled = true;
@@ -359,11 +359,11 @@ function restartGame(){
 
 // Change volume when speaker button is clicked
 function changeVolume(){
-	if(sfxVolume == 0.1){
-		sfxVolume = 0.05;
+	if(sfxVolume == 0.4){
+		sfxVolume = 0.1;
 		volumeSprite.animations.play('mid');
 	}
-	else if(sfxVolume == 0.05){
+	else if(sfxVolume == 0.1){
 		sfxVolume = 0.025;
 		volumeSprite.animations.play('min');
 	}
@@ -372,7 +372,7 @@ function changeVolume(){
 		volumeSprite.animations.play('mute');
 	}
 	else if(sfxVolume == 0){
-		sfxVolume = 0.1;
+		sfxVolume = 0.4;
 		volumeSprite.animations.play('max');
 	}
 	selectedSound.play('',0,sfxVolume);
