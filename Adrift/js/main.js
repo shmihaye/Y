@@ -267,19 +267,19 @@ Game.Title.prototype = {
 		
 		// It's a secret to everyone
 		if(konami != 10){
-		if(game.input.keyboard.justPressed(Phaser.Keyboard.UP)){
+		if(game.input.keyboard.justPressed(Phaser.Keyboard.UP) || game.input.keyboard.justPressed(Phaser.Keyboard.W)){
 			if(konami == 0 || konami == 1) konami++;
 			else konami = 0;
 		}
-		if(game.input.keyboard.justPressed(Phaser.Keyboard.DOWN)){
+		if(game.input.keyboard.justPressed(Phaser.Keyboard.DOWN) || game.input.keyboard.justPressed(Phaser.Keyboard.S)){
 			if(konami == 2 || konami == 3) konami++;
 			else konami = 0;
 		}
-		if(game.input.keyboard.justPressed(Phaser.Keyboard.LEFT)){
+		if(game.input.keyboard.justPressed(Phaser.Keyboard.LEFT) || game.input.keyboard.justPressed(Phaser.Keyboard.A)){
 			if(konami == 4 || konami == 6) konami++;
 			else konami = 0;
 		}
-		if(game.input.keyboard.justPressed(Phaser.Keyboard.RIGHT)){
+		if(game.input.keyboard.justPressed(Phaser.Keyboard.RIGHT) || game.input.keyboard.justPressed(Phaser.Keyboard.D)){
 			if(konami == 5 || konami == 7) konami++;
 			else konami = 0;
 		}

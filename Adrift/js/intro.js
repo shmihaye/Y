@@ -22,6 +22,7 @@ var introState = {
 		manta.anchor.set(0.5);
 		manta.scale.x = 0.5; manta.scale.y = 0.5;
 		manta.animations.add('fly1', [0,1], 10, true);
+		manta.animations.add('nothing', [2], 10, true);
 
 		// Add planet earth
 		planetEarth = game.add.sprite(80, 300, 'earth');
@@ -106,7 +107,8 @@ var introState = {
 		
 		// Play animations
 		pioneer1.animations.play('fly');
-		manta.animations.play('fly1');
+		if(konami == 10) manta.animations.play('nothing');
+		else manta.animations.play('fly1');
 		beacon1.animations.play('pulsate');
 		beacon2.animations.play('pulsate');
 		beacon3.animations.play('pulsate');

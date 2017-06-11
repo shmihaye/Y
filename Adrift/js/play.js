@@ -259,7 +259,7 @@ function grabObject(claw, obstacle){
 		obstacle.body.velocity.y = 0;
 		grabSound.play('',0,sfxVolume);
 		if(obstacle.constructor === ToxicRock && demoNum == 0){
-			hurtSound.play('',0,sfxVolume*0.7);
+			hurtSound.play('',0,sfxVolume*0.5);
 			energy -= 26;
 		}
 	}
@@ -277,7 +277,7 @@ function grabBeacon(claw, beacon){
 function hurtShip(player, obstacle){
 	// If the player touches an obstacle that hasn't been grabbed, lower energy
 	if(obstacle != player.grabbed && obstacle.friendly <= 0 && player.invincibility == 0){
-		hurtSound.play('',0,sfxVolume*0.7); 
+		hurtSound.play('',0,sfxVolume*0.5); 
 		if(demoNum == 9) demoComplete = false;
 		if(demoNum == 0) energy -= 26; 
 		player.invincibility = 60;

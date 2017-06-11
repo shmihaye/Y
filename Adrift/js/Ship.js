@@ -373,7 +373,7 @@ function punchObject(claw, obstacle){
 		demoCompleteText.strokeThickness = 6;
 	}
 	if(obstacle.constructor === ToxicRock && demoNum == 0){
-		hurtSound.play('',0,sfxVolume*0.7);
+		hurtSound.play('',0,sfxVolume*0.5);
 		energy -= 26;
 	}
 }
