@@ -277,22 +277,22 @@ Game.Title.prototype = {
 		}
 		if(game.input.keyboard.justPressed(Phaser.Keyboard.LEFT)){
 			if(konami == 4 || konami == 6) konami++;
-			ekse konami = 0;
+			else konami = 0;
 		}
 		if(game.input.keyboard.justPressed(Phaser.Keyboard.RIGHT)){
 			if(konami == 5 || konami == 7) konami++;
-			ekse konami = 0;
+			else konami = 0;
 		}
 		if(game.input.keyboard.justPressed(Phaser.Keyboard.A)){
 			if(konami == 9){
 				selectedSound.play('',0,sfxVolume);
 				konami++;
 			}
-			ekse konami = 0;
+			else konami = 0;
 		}
 		if(game.input.keyboard.justPressed(Phaser.Keyboard.B)){
 			if(konami == 8) konami++;
-			ekse konami = 0;
+			else konami = 0;
 		}}
 		
 		if(volumeSprite.input.pointerOver() && volumeSprite.alpha == 0.6){pilotSound.play('',0,sfxVolume); game.add.tween(volumeSprite).to( { alpha: 1 }, 30, "Linear", true);}
@@ -355,6 +355,7 @@ game.state.add('B1', B1); // Bridget conversation 1
 game.state.add('B2', B2); // Bridget conversation 2
 game.state.add('B3', B3); // Bridget conversation 3
 game.state.add('B4', B4); // Bridget conversation 4
+game.state.add('B5', B5); // Nothing
 game.state.add('D1', D1); // Delson conversation 1
 game.state.add('D2', D2); // Delson conversation 2
 game.state.add('D3', D3); // Delson conversation 3
