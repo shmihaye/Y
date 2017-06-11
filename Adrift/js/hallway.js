@@ -81,6 +81,7 @@ var hallwayState = {
 			abilityBox2.fixedToCamera = true;
 			abilityBox2.inputEnabled = true;
 			count++;
+			if(convoIndex2 == 4) abilityBox2.events.onInputDown.add(this.secret, this);
 		}
 		if(convoIndex3 > 0){
 			abilityBox3 = game.add.sprite(positions[count], 502, 'abilityIcon3');
@@ -254,5 +255,10 @@ var hallwayState = {
 		var shh = game.add.sprite(0, 0, 'secret');
 		game.add.tween(shh).to( { alpha: 0 }, 1000, "Linear", true, 2000);
 		shh.fixedToCamera = true;
+	},
+	
+	secret2: function() {
+		hallStart = 0;
+		game.state.start('B5');
 	}
 };

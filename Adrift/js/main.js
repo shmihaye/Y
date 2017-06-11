@@ -44,7 +44,7 @@ var door1, door2, door3, door4, pilotButton, mouse;
 var abilityBox1, abilityBox2, abilityBox3, abilityBox4, textBackground;
 var abilityText1, abilityText2, abilityText3, abilityText4;
 // Global variables for intro state
-var cutsceneStatus = 0, manta, tween, beacon1, beacon2, beacon3, beacon4, beacon5, beacon6, beacon7, beacon8, beacon9, beacon10, beaconFlash;
+var cutsceneStatus = 0, manta, tween, beacon1, beacon2, beacon3, beacon4, beacon5, beacon6, beacon7, beacon8, beacon9, beacon10, beaconFlash, konami = 0;
 
 
 var done_color = "#0000FF"
@@ -264,6 +264,36 @@ Game.Title.prototype = {
 			this.camera.fade('#ffffff');
 			this.camera.onFadeComplete.add(startGame,this);
 		}
+		
+		// It's a secret to everyone
+		if(konami != 10){
+		if(game.input.keyboard.justPressed(Phaser.Keyboard.UP)){
+			if(konami == 0 || konami == 1) konami++;
+			else konami = 0;
+		}
+		if(game.input.keyboard.justPressed(Phaser.Keyboard.DOWN)){
+			if(konami == 2 || konami == 3) konami++;
+			else konami = 0;
+		}
+		if(game.input.keyboard.justPressed(Phaser.Keyboard.LEFT)){
+			if(konami == 4 || konami == 6) konami++;
+			ekse konami = 0;
+		}
+		if(game.input.keyboard.justPressed(Phaser.Keyboard.RIGHT)){
+			if(konami == 5 || konami == 7) konami++;
+			ekse konami = 0;
+		}
+		if(game.input.keyboard.justPressed(Phaser.Keyboard.A)){
+			if(konami == 9){
+				selectedSound.play('',0,sfxVolume);
+				konami++;
+			}
+			ekse konami = 0;
+		}
+		if(game.input.keyboard.justPressed(Phaser.Keyboard.B)){
+			if(konami == 8) konami++;
+			ekse konami = 0;
+		}}
 		
 		if(volumeSprite.input.pointerOver() && volumeSprite.alpha == 0.6){pilotSound.play('',0,sfxVolume); game.add.tween(volumeSprite).to( { alpha: 1 }, 30, "Linear", true);}
 		else if(!volumeSprite.input.pointerOver()) game.add.tween(volumeSprite).to( { alpha: 0.6 }, 30, "Linear", true);

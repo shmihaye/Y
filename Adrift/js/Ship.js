@@ -72,7 +72,9 @@ function Ship(game, image){
 	
 	// Add animations
 	this.animations.add('fly', [0,1], 10, true);
-	this.animations.play('fly');
+	this.animations.add('nothing', [2], 10, true);
+	if(konami == 10) this.animations.play('nothing');
+	else this.animations.play('fly');
 	this.claw.animations.add('closed', [0], 10, true);
 	this.claw.animations.add('open', [1], 10, true);
 	this.claw.animations.play('open');
