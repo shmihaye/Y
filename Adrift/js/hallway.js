@@ -144,19 +144,19 @@ var hallwayState = {
 		
 		// Show/hide ability info
 		if(convoIndex1 > 0){
-			if(abilityBox1.input.pointerOver() && abilityBox1.cameraOffset.y == 502){tooltipSound.play('',0,sfxVolume); abilityBox1.alpha = 1; game.add.tween(abilityBox1.cameraOffset).to( { y: 492 }, 30, "Linear", true); game.add.tween(abilityText1).to( { alpha: 1 }, 30, "Linear", true);}
+			if(abilityBox1.input.pointerOver() && abilityBox1.cameraOffset.y == 502){tooltipSound.play('',0,sfxVolume*0.7); abilityBox1.alpha = 1; game.add.tween(abilityBox1.cameraOffset).to( { y: 492 }, 30, "Linear", true); game.add.tween(abilityText1).to( { alpha: 1 }, 30, "Linear", true);}
 			else if(!abilityBox1.input.pointerOver()){abilityBox1.alpha = 0.5; game.add.tween(abilityBox1.cameraOffset).to( { y: 502 }, 30, "Linear", true); game.add.tween(abilityText1).to( { alpha: 0 }, 30, "Linear", true);}
 		}
 		if(convoIndex2 > 0){
-			if(abilityBox2.input.pointerOver() && abilityBox2.cameraOffset.y == 502){tooltipSound.play('',0,sfxVolume); abilityBox2.alpha = 1; game.add.tween(abilityBox2.cameraOffset).to( { y: 492 }, 30, "Linear", true); game.add.tween(abilityText2).to( { alpha: 1 }, 30, "Linear", true);}
+			if(abilityBox2.input.pointerOver() && abilityBox2.cameraOffset.y == 502){tooltipSound.play('',0,sfxVolume*0.7); abilityBox2.alpha = 1; game.add.tween(abilityBox2.cameraOffset).to( { y: 492 }, 30, "Linear", true); game.add.tween(abilityText2).to( { alpha: 1 }, 30, "Linear", true);}
 			else if(!abilityBox2.input.pointerOver()){abilityBox2.alpha = 0.5; game.add.tween(abilityBox2.cameraOffset).to( { y: 502 }, 30, "Linear", true); game.add.tween(abilityText2).to( { alpha: 0 }, 30, "Linear", true);}
 		}
 		if(convoIndex3 > 0){
-			if(abilityBox3.input.pointerOver() && abilityBox3.cameraOffset.y == 502){tooltipSound.play('',0,sfxVolume); abilityBox3.alpha = 1; game.add.tween(abilityBox3.cameraOffset).to( { y: 492 }, 30, "Linear", true); game.add.tween(abilityText3).to( { alpha: 1 }, 30, "Linear", true);}
+			if(abilityBox3.input.pointerOver() && abilityBox3.cameraOffset.y == 502){tooltipSound.play('',0,sfxVolume*0.7); abilityBox3.alpha = 1; game.add.tween(abilityBox3.cameraOffset).to( { y: 492 }, 30, "Linear", true); game.add.tween(abilityText3).to( { alpha: 1 }, 30, "Linear", true);}
 			else if(!abilityBox3.input.pointerOver()){abilityBox3.alpha = 0.5; game.add.tween(abilityBox3.cameraOffset).to( { y: 502 }, 30, "Linear", true); game.add.tween(abilityText3).to( { alpha: 0 }, 30, "Linear", true);}
 		}
 		if(convoIndex4 > 0){
-			if(abilityBox4.input.pointerOver() && abilityBox4.cameraOffset.y == 502){tooltipSound.play('',0,sfxVolume); abilityBox4.alpha = 1; game.add.tween(abilityBox4.cameraOffset).to( { y: 492 }, 30, "Linear", true); game.add.tween(abilityText4).to( { alpha: 1 }, 30, "Linear", true);}
+			if(abilityBox4.input.pointerOver() && abilityBox4.cameraOffset.y == 502){tooltipSound.play('',0,sfxVolume*0.7); abilityBox4.alpha = 1; game.add.tween(abilityBox4.cameraOffset).to( { y: 492 }, 30, "Linear", true); game.add.tween(abilityText4).to( { alpha: 1 }, 30, "Linear", true);}
 			else if(!abilityBox4.input.pointerOver()){abilityBox4.alpha = 0.5; game.add.tween(abilityBox4.cameraOffset).to( { y: 502 }, 30, "Linear", true); game.add.tween(abilityText4).to( { alpha: 0 }, 30, "Linear", true);}
 		}
 		let showBackground = false;
@@ -170,22 +170,22 @@ var hallwayState = {
 		
 		// Show/hide door selectors
 		if(convoIndex1 < 4 && lastConvo != 1){
-			if(door1.input.pointerOver() && door1.alpha == 0.2){doorSound.play('',0,sfxVolume); game.add.tween(door1).to( { alpha: 1 }, 30, "Linear", true);}
+			if(door1.input.pointerOver() && door1.alpha == 0.2){doorSound.play('',0,sfxVolume*0.7); game.add.tween(door1).to( { alpha: 1 }, 30, "Linear", true);}
 			else if(!door1.input.pointerOver()) game.add.tween(door1).to( { alpha: 0.2 }, 30, "Linear", true);
 		}
 		if(convoIndex2 < 4 && lastConvo != 2){
-			if(door2.input.pointerOver() && door2.alpha == 0.2){doorSound.play('',0,sfxVolume); game.add.tween(door2).to( { alpha: 1 }, 30, "Linear", true);}
+			if(door2.input.pointerOver() && door2.alpha == 0.2){doorSound.play('',0,sfxVolume*0.7); game.add.tween(door2).to( { alpha: 1 }, 30, "Linear", true);}
 			else if(!door2.input.pointerOver()) game.add.tween(door2).to( { alpha: 0.2 }, 30, "Linear", true);
 		}
 		if(convoIndex3 < 4 && lastConvo != 3){
-			if(door3.input.pointerOver() && door3.alpha == 0.2){doorSound.play('',0,sfxVolume); game.add.tween(door3).to( { alpha: 1 }, 30, "Linear", true);}
+			if(door3.input.pointerOver() && door3.alpha == 0.2){doorSound.play('',0,sfxVolume*0.7); game.add.tween(door3).to( { alpha: 1 }, 30, "Linear", true);}
 			else if(!door3.input.pointerOver()) game.add.tween(door3).to( { alpha: 0.2 }, 30, "Linear", true);
 		}
 		if(convoIndex4 < 4 && lastConvo != 4){
-			if(door4.input.pointerOver() && door4.alpha == 0.2){doorSound.play('',0,sfxVolume); game.add.tween(door4).to( { alpha: 1 }, 30, "Linear", true);}
+			if(door4.input.pointerOver() && door4.alpha == 0.2){doorSound.play('',0,sfxVolume*0.7); game.add.tween(door4).to( { alpha: 1 }, 30, "Linear", true);}
 			else if(!door4.input.pointerOver()) game.add.tween(door4).to( { alpha: 0.2 }, 30, "Linear", true);
 		}
-		if(pilotButton.input.pointerOver() && pilotButton.alpha == 0.2){pilotSound.play('',0,sfxVolume); game.add.tween(pilotButton).to( { alpha: 1 }, 30, "Linear", true);}
+		if(pilotButton.input.pointerOver() && pilotButton.alpha == 0.2){pilotSound.play('',0,sfxVolume*0.7); game.add.tween(pilotButton).to( { alpha: 1 }, 30, "Linear", true);}
 		else if(!pilotButton.input.pointerOver()) game.add.tween(pilotButton).to( { alpha: 0.2 }, 30, "Linear", true);
 		if(volumeSprite.input.pointerOver() && volumeSprite.alpha == 0.6){pilotSound.play('',0,sfxVolume); game.add.tween(volumeSprite).to( { alpha: 1 }, 30, "Linear", true);}
 		else if(!volumeSprite.input.pointerOver()) game.add.tween(volumeSprite).to( { alpha: 0.6 }, 30, "Linear", true);
@@ -205,7 +205,7 @@ var hallwayState = {
 		
 		// Go to Patricia's next conversation
 		convoIndex1++;
-		tooltipSound.play('',0,sfxVolume);
+		tooltipSound.play('',0,sfxVolume*0.7);
 		lastConvo = 1;
 		hallStart = 0;
 		game.state.start('P' + convoIndex1.toString());
@@ -215,7 +215,7 @@ var hallwayState = {
 		
 		// Go to Bridget's next conversation
 		convoIndex2++;
-		tooltipSound.play('',0,sfxVolume);
+		tooltipSound.play('',0,sfxVolume*0.7);
 		lastConvo = 2;
 		hallStart = 0;
 		game.state.start('B' + convoIndex2.toString());
@@ -225,7 +225,7 @@ var hallwayState = {
 		
 		// Go to Delson's next conversation
 		convoIndex3++;
-		tooltipSound.play('',0,sfxVolume);
+		tooltipSound.play('',0,sfxVolume*0.7);
 		lastConvo = 3;
 		hallStart = 0;
 		game.state.start('D' + convoIndex3.toString());
@@ -235,14 +235,14 @@ var hallwayState = {
 		
 		// Go to D4V3's next conversation
 		convoIndex4++;
-		tooltipSound.play('',0,sfxVolume);
+		tooltipSound.play('',0,sfxVolume*0.7);
 		lastConvo = 4;
 		hallStart = 0;
 		game.state.start('R' + convoIndex4.toString());
 	},
 	
 	pilotShip: function() {
-		selectedSound.play('',0,sfxVolume);
+		selectedSound.play('',0,sfxVolume*0.7);
 		marker = marker + (music.currentTime/1000);
 		music.stop();
 		lastConvo = 0;
