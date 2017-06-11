@@ -81,7 +81,7 @@ var hallwayState = {
 			abilityBox2.fixedToCamera = true;
 			abilityBox2.inputEnabled = true;
 			count++;
-			if(convoIndex2 == 4) abilityBox2.events.onInputDown.add(this.secret, this);
+			if(convoIndex2 == 4) abilityBox2.events.onInputDown.add(this.secret2, this);
 		}
 		if(convoIndex3 > 0){
 			abilityBox3 = game.add.sprite(positions[count], 502, 'abilityIcon3');
