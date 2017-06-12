@@ -5,7 +5,7 @@ var P1 = {
 		
 		// library of all text for a given "chapter"
 		 DiaA = "Yes Captain, I know the primary engine has been making a rattling noise."
-		 DiaB = "Oh. I...I didn't mean to snap, its just that..."
+		 DiaB = "Oh. I...I didn't mean to snap, it's just that..."
 		 DiaC = "I’m still adjusting but I think I can manage."
 		
 		 DiaA1 = " I’ve been pouring over the schematics for the last two hours,"
