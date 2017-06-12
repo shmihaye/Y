@@ -29,11 +29,13 @@
 		{"time":15.2, "objects": [{"type":"Asteroid", "y":50, "scale":2.4, "xvel":-130, "yvel":10}, {"type":"ToxicRock", "y":120, "scale":2.3, "xvel":-140}, {"type":"Asteroid", "y":200, "scale":2.1, "xvel":-110}, {"type":"Asteroid", "y":270, "scale":2.5, "xvel":-140}, {"type":"ToxicRock", "y":350, "scale":2.4, "xvel":-130}, {"type":"Asteroid", "y":430, "scale":2.3, "xvel":-115}, {"type":"ToxicRock", "y":500, "scale":2.6, "xvel":-130, "yvel":-10}]},	
 		{"time":17.5, "objects": [{"type":"GravRock", "y":500, "scale":3, "xvel":-350}]},
 		
+	{"time":23, "objects": [{"type":"ToxicRock", "x":850, "y":50, "scale":2.4, "xvel":-270}, {"type":"ToxicRock", "x":850, "y":560, "scale":2.3, "xvel":-250}]},
 		{"time":24, "objects": [{"type":"Asteroid", "x":850, "y":350, "scale":1.8, "xvel":-90}]},
 		{"time":26.5, "objects": [{"type":"GravRock", "x":850, "y":250, "scale":2, "xvel":-110}]},
 		{"time":27.3, "objects": [{"type":"Asteroid", "x":970, "y":100, "scale":2.1, "xvel":-140}]},
 		{"time":28, "objects": [{"type":"BombRock", "x":850, "y":500, "scale":1.9, "xvel":-140}]},
 		
+	{"time":31, "objects": [{"type":"FragRock", "x":850, "y":50, "scale":2.3, "xvel":-250}, {"type":"Asteroid", "x":850, "y":560, "scale":2.6, "xvel":-250}]},
 		{"time":31.5, "objects": [{"type":"FragRock", "x":850, "y":150, "scale":2, "xvel":-120}]},
 		{"time":32.5, "objects": [{"type":"FragRock", "x":850, "y":500, "scale":2.4, "xvel":-120}]},
 		{"time":33.5, "objects": [{"type":"GravRock", "x":900, "y":400, "scale":2.1, "xvel":-130}]},
@@ -45,6 +47,8 @@
 		{"time":43, "objects": [{"type":"OrbitRock", "y":200, "scale":2.1, "xvel":-120}]},
 		{"time":43.5, "objects": [{"type":"OrbitRock", "y":420, "scale":2.2, "xvel":-110}]},
 		
+	{"time":46, "objects": [{"type":"ToxicRock", "y":50, "scale":1.8, "xvel":-270}, {"type":"ToxicRock", "y":560, "scale":1.9, "xvel":-280}]},
+		
 		{"time":49.5, "objects": [{"type":"FragRock", "x":850, "y":100, "scale":2.4, "xvel":-110}, {"type":"ToxicRock", "x":850, "y":280, "scale":2.1, "xvel":-115}, {"type":"BombRock", "x":850, "y":410, "scale":2, "xvel":-105}]},
 		{"time":51, "objects": [{"type":"GravRock", "x":600, "y":-50, "scale":1.8, "xvel":-140, "yvel":240}]},
 		
@@ -52,6 +56,7 @@
 		{"time":56.5, "objects": [{"type":"Asteroid", "x":850, "y":70, "scale":1.9, "xvel":-140, "yvel":25}]},
 		{"time":57.5, "objects": [{"type":"BombRock", "x":850, "y":540, "scale":1.8, "xvel":-160, "yvel":-40}, {"type":"OrbitRock", "x":850, "y":320, "scale":2.4, "xvel":-130}]},
 		{"time":58.5, "objects": [{"type":"ToxicRock", "x":850, "y":200, "scale":2, "xvel":-200}, {"type":"ToxicRock", "x":850, "y":500, "scale":2, "xvel":-200}]},
+	{"time":59, "objects": [{"type":"FragRock", "y":50, "scale":2.4, "xvel":-260}, {"type":"ToxicRock", "y":560, "scale":2.3, "xvel":-250}, {"type":"FragRock", "y":300, "scale":2.5, "xvel":-260}]},
 		
 		{"time":67, "objects": [{"type":"SPDUP"}]},
 		{"time":74, "objects": [{"type":"END"}]}
