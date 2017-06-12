@@ -120,12 +120,15 @@ var playState = {
 		if(convoIndex3 > 0){abilityIcon3 = game.add.sprite(positions[count], 502, 'abilityIcon3'); count++;}
 		if(convoIndex4 > 0){abilityIcon4 = game.add.sprite(positions[count], 502, 'abilityIcon4');}
 		
+		// Set beacon to null
+		beacon = null;
+		
 	},
 	
 	update: function() {
 		
 		// Call grabBeacon if the claw overlaps with the beacon (if the beacon is not undefined)
-		if(beacon !== undefined){
+		if(beacon != null){
 			game.physics.arcade.overlap(player.claw, beacon, grabBeacon, null, this);
 		}
 		
@@ -235,7 +238,7 @@ var playState = {
 		);
 		
 		// Stop the beacon once it reaches the center of the stage
-		if(beacon !== undefined && beacon.x < 400){beacon.body.velocity.x = 0;}
+		if(beacon != null && beacon.x < 400){beacon.body.velocity.x = 0;}
 		
 		// Keep player from moving past the right side of the screen
 		if(player.x > 800) player.x = 800;
